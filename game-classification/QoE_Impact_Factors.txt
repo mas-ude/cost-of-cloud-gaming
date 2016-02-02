@@ -1,0 +1,53 @@
+List of parameters that impact the QoE of a game and may be essential to classify games.
+
+Quality of Eperience in a Gaming Session on User Level is based on:
+
+- Expectation of User (based on players experience and promises that are made by the game) -> User parameters important
+
+QoS:
+
+'Game' (not focus)
+
+- Sound Quality
+- Story
+- Athmosphere
+- Gameplay
+- Individualizability (i.e. FOV Sliders, Colour blind mode)
+- game pace (turn-based, real-time, fast, slow)
+
+Social (not focus)
+
+- Teamwork, Friendliness (i.e. friends, trolls)
+- perceived Fairness (i.e. Balance, Luck)
+- 'Self-Novelty' (i.e. skins)
+
+Player Performance
+
+- Winning/Losing
+- perceived self-improvement
+- Beating a challenge (i.e. High performance)
+
+Technical
+
+- Resolution / Graphical Fidelity
+- Network Delay / Total Delay (ms)
+- Synchronization among players (ms)
+- Frequency of 'Interruptions' (1/s) i.e. loading screen
+- Length of 'Interruptions' (s)
+- Frame rate (1/s) impacts delay
+- Tick rate (1/s) impacts synchronization and delay
+
+
+Interesting to Research:
+
+Impact of (Network QoS x Game) on Applications QoS.
+Impact of Application QoS on QoE.
+
+
+Technical Dimensions of Games that impact the QoS (We focus on Technical and Performance)
+
+- required reaction time (ms)
+? Accuracy and precision of input actions (i.e. cursor movement speed)
+? frequency of actions (1/s) APM
+? camera perspective that may be chosen by the player
+? 'Genre'
