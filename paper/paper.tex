@@ -17,8 +17,6 @@
 
 \usepackage[acronym, nomain, nowarn]{glossaries}
 \loadglsentries{acronyms}
-\usepackage{csquotes}
-\usepackage{booktabs}
 \usepackage[hyphens]{url}
 \usepackage[pdfhighlight=/O, hidelinks, unicode=true]{hyperref}
 \usepackage{mathtools}
@@ -27,14 +25,15 @@
 \usepackage{subcaption}
 \usepackage[load-configurations={abbreviations,binary}, per-mode=symbol]{siunitx}
 \sisetup{load-configurations = abbreviations,binary-units}
+\usepackage{csquotes}
+\usepackage{booktabs}
 \usepackage{tabu}
 \makeglossaries
-\usepackage[url=false,doi=false,backend=biber,style=ieee,isbn=false,sorting=none,minnames=1,maxnames=6]{biblatex}
+\usepackage[url=true,doi=true,backend=biber,style=ieee,isbn=false,sorting=none,minnames=1,maxnames=6]{biblatex}
 \addbibresource{literature.bib}
 \usepackage[inline]{enumitem}
 
 \usepackage[np]{numprint}
-
 \npstyleenglish
 
 
@@ -69,12 +68,13 @@ a@informatik.uni-wuerzburg.de}}
 %\input{abstract}
 %\input{introduction}
 %\input{big-picture}
-%\input{relatedwork}
+\input{notes}
+\input{relatedwork}
 %\input{model}
 %\input{simulation}
 %\input{game-classification}
 %\input{conclusion}
-\input{notes}
+
 
 \printbibliography 
 
