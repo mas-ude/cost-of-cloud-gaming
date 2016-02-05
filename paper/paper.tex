@@ -23,8 +23,9 @@
 \usepackage{fixmath}
 \usepackage{algorithm2e}
 \usepackage{subcaption}
-\usepackage[load-configurations={abbreviations,binary}, per-mode=symbol]{siunitx}
-\sisetup{load-configurations = abbreviations,binary-units}
+\usepackage{siunitx}
+\DeclareSIUnit{\EUR}{\text{\texteuro}}
+\sisetup{load-configurations = abbreviations,binary-units, per-mode=fraction}
 \usepackage{csquotes}
 \usepackage{booktabs}
 \usepackage{tabu}
@@ -61,19 +62,14 @@ b\\
 a@informatik.uni-wuerzburg.de}}
 
 
-\newcommand{\myparagraph}[1]{\subsubsection{#1}}
-
 \maketitle
 
-%\input{abstract}
-%\input{introduction}
-%\input{big-picture}
-\input{notes}
+\input{abstract}
+\input{introduction}
 \input{relatedwork}
-%\input{model}
-%\input{simulation}
-%\input{game-classification}
-%\input{conclusion}
+\input{background}
+\input{model}
+\input{conclusion}
 
 
 \printbibliography 
