@@ -3,9 +3,9 @@ library(ggplot2)
 # load the data file you want to plot
 
 # navigate to data folder
-setwd("data")
+#setwd("git/cost-of-cloud-gaming/data/")
 df.priced <- data.frame()
-csv.list <- Sys.glob("*.csv")
+csv.list <- Sys.glob("steamdata-*.csv")
 for (csv.file in csv.list) {
   print(csv.file)
   tmp <- read.csv(file=csv.file)

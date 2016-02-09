@@ -93,11 +93,24 @@ Modelannahme: Kosten pro Nutzung (realistisch eher in Blöcken verrechnet)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Data}
 
-Bereits Gesammelte Daten
+The leading question for the user side of the cost-benefit analysis is: ``How can we properly estimate the value a user gets from a specific service?'' with an additional question of ``What is the definition of value in this context?''
 
+Simply counting the number of games one gets for a specific amount of money may be the easiest value metric but may also fall short. Therefore, this paper evaluates further approaches that also take game lengths and press review scores into account.
+
+In order to achieve this, data had to be collected from various sources and merged into a consistent data base. All the scraping and merging code as well as the data itself can be found in the repositories at TODO to be verified by third parties. The following sections describe the individual data sources.
 
 %%%%%%%%%%%%
 \subsubsection{Steam API + SteamSpy Datensätze+Graphen}
+
+Steam Sales:
+Large seasonal sales (christmas, summer, lunar new year, halloween, fall, spring, ...) of many/most games on the platform usually rebates of 50\% and up.
+Weekly sales
+Daily sales
+Weekend sales
+Free weekends
+
+
+
 \url{https://github.com/mas-ude/steam-data-stats} Steam + SteamSpy REST API Datensammler + ein paar Graphplotter (und eher ergebnislose Clustering-Versuche); für sinnvolle Analsyen müsste man dazu aber viel häufiger Datensätze generieren. Beispielausgaben:
 
 CDF der Preise auf Steam (Juli ‘15) \ref{fig:steam-prices}
@@ -118,6 +131,28 @@ Violinenplot der durchschnittlichen Spielzeit aufgeteilt auf unterschiedliche Pr
 \label{fig:steam-cost-vs-playtime-violin}
 \end{figure}
 
+%%%%%%%%%%%%
+\subsubsection{HowLongToBeat Data}
+
+Data scraped from \url{howlongtobeat.com}. This site allows for manual reporting of playthrough times of games on any platform. Times are separated into different play styles (e.g. ``main story'', ``completionist'') and only an aggregated time is shown. For this analysis only the average playtime of all play styles is taken into account.
+It should however be stressed again, that this is a self-reporting site without strong validity checks. This has to be considered when contemplating the accuracy and validity of the data.
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/gamelengths-density.pdf}
+	\caption{Density plot of the average game lengths over all play styles.}
+\label{fig:gamelengths-density}
+\end{figure}
+
+Nonetheless, the distribution of game lengths from this set can still be worth to look at in the context of putting value to games for consumers of different platforms. As seen in Figure~\ref{fig:gamelengths-density} the play lengths vary greatly, with the median at \SI{7.5}{\hour} and a long tail of long play times reaching \SI{420}{\hour}.
+
+
+%%%%%%%%%%%%
+\subsubsection{Metacritic Data}
+
+Game lengths can not only serve as an indicator of the amount of content a game has to offer, but can also serve as an engagement metric to estimate a user's amount of satisfaction. More fitting engagement metrics could also be employed.
+
+% TODO: include or compare with data from opencritic.com as soon as their API is public/usable
 
 %%%%%%%%%%%%
 \subsubsection{platform-market-comparison/games-per-year.R}
@@ -153,5 +188,7 @@ End-to-End Lag Model and Simulation in R. Now a standalone (submitted) paper at 
 	\item Other popularity measures? (e.g. steamspy owner data?)
 	\item Influence of E2E lag on games? (could be theorized indirectly through e2e lag sim + categorization attempts)
 	\item Hardware requirements of games?
+
+	\item Price History? Maybe using steamdb.info?
 \end{itemize}
 
