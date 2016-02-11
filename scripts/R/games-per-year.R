@@ -1,7 +1,6 @@
 library(ggplot2)
 
-
-
+#setwd("git/cost-of-cloud-gaming/data/")
 
 # all cost calculated for region 1 EU in Euros; cost converted from other regions (UK/US) with current exchange rates plus taxes
 
@@ -9,13 +8,41 @@ library(ggplot2)
 budget <- seq(0, 1000, 50)
 
 ## update to current exchange rates here
-exchangerate.GBPtoEUR <- 1.41160
-exchangerate.USDtoEUR <- 1.09205
+# rates of 20160211
+exchangerate.GBPtoEUR <- 1.27270
+exchangerate.USDtoEUR <- 0.882388
 
 ## factor in additional cost factors
 # consider broadband Internet access costs (might not be available in rural areas)
 broadband.enabled <- FALSE
 
+
+################################################################################
+#### Geforce Now
+# German Perspective
+gfnow.monthly <- 9.99
+gfnow.hw <- 201.99   # shield tv box, 16GB (the smallest one)
+
+
+# calculate worth in steam prices
+gfnow.steamprices <- merge(gfnow.games, df.steam, by ="name", all.x = TRUE)
+sum(gfnow.steamprices$price.y, na.rm = TRUE) 
+mean(gfnow.steamprices$price.y, na.rm = TRUE)
+
+# calculate average metacritic score of gf now
+df.metacritic.pc <- subset(df.metacritic, platform == "pc")
+gfnow.metacritic  <- merge(gfnow.games, df.metacritic.pc, by.x ="name", by.y = "title", all.x = TRUE)
+mean(gfnow.metacritic$score, na.rm = TRUE)
+
+# calculate game lengths
+df.hltb.pc <- subset(df.hltb, platform == "PC")
+gfnow.hltb  <- merge(gfnow.games, df.hltb.pc, by.x ="name", by.y = "title", all.x = TRUE)
+sum(gfnow.hltb$combined_length, na.rm = TRUE)
+mean(gfnow.hltb$combined_length, na.rm = TRUE)
+
+
+
+################################################################################
 #### ps now streaming
 # US, CA, UK only; using US as data source, as info on UK is insufficient:
 # https://en.wikipedia.org/wiki/List_of_PlayStation_Now_games
@@ -30,8 +57,6 @@ psnow.monthly <- 12.99 * exchangerate.GBPtoEUR
 psnow.hw <- 329 # as of 2015/11/04
 
 ## size of included catalog
-psnow.games <- read.csv("data/psnow-games.csv", header = TRUE, sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
-
 psnow.subscription.numgames <- length(psnow.games$Included.In.Subscription[psnow.games$Included.In.Subscription == TRUE])
   
   

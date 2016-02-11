@@ -6,9 +6,8 @@ library(plyr)
 # scrape the data with https://github.com/mas-ude/metacritic_scraper
 # and place it in the data folder
 
-# setwd("git/steam-data-stats/platform-market-comparison/")
 
-df.metacritic <- read.csv("data/metacritic-20151227.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
+df.metacritic <- read.csv("metacritic-20160209.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 df.metacritic$platform <- as.factor(df.metacritic$platform)
 df.metacritic$release <- as.Date(df.metacritic$release, format = "%B %d, %Y")
 ggplot(df.metacritic, aes(x=score, color=platform)) + stat_ecdf()
@@ -20,7 +19,7 @@ ggplot(df.metacritic, aes(x=score, color=platform)) + stat_density(position = "d
 df.metacritic$year = strftime(df.metacritic$release, "%Y")
 releases.peryear = count(df.metacritic, vars = c("year", "platform"))
 ggplot(releases.peryear, aes(x=year, y=freq, fill=platform)) + geom_bar(stat="identity", position = "stack")
-ggsave("releases-per-year.pdf")
+ggsave("releases-per-year.pdf", width=12, height=8)
 
 
 ##############

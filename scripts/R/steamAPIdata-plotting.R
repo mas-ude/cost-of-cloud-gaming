@@ -25,7 +25,7 @@ ggsave("steam-prices.pdf", width=12, height=8)
 
 ##############
 
-df.priced <- read.csv(file="steamdata.csv")
+df.steam <- read.csv(file="steamdata-20160206.csv")
 
 
 ggplot(df.priced, aes(x=owners)) + stat_ecdf() + scale_x_log10()
