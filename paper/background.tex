@@ -163,41 +163,4 @@ Game lengths can not only serve as an indicator of the amount of content a game 
 
 
 
-%%%%%%%%%%%%
-\subsubsection{platform-market-comparison/games-per-year.R}
-
- hat den ersten Versuch einer Nutzenrechnung für Spieler auf verschiedenen Plattformen. Script könnte leicht angepasst und erweitert werden. Beispielausgabe \ref{fig:gamesperyear-over-budget}, \ref{fig:steam-prices}
-
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/gamesperyear-over-budget.pdf}
-	\caption{Models for several platforms showing the number of games per year that can be bought with a specific \$ budget.}
-\label{fig:gamesperyear-over-budget}
-\end{figure}
-
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/games-over-year.pdf}
-	\caption{Models for several platforms showing the number of games that can be bought over the years subscribed to / using this service.}
-\label{fig:games-over-years}
-\end{figure}
-
-
-\subsubsection{E2E Lag}
-End-to-End Lag Model and Simulation in R. Now a standalone (submitted) paper at \url{https://github.com/mas-ude/onlinegame-lag-sim}. Can be referenced to argue the need for low E2E lag (meaning low network delay, but also the need for high fps).
-
-
-%%%%%%%%%%%%
-\subsubsection{Other Useful Data for Model Creation}
-
-\begin{itemize}
-	\item Game costs (current cost possible via Steam dataset; historic price data more difficult)
-	\item Length of games (either via howlongtobeat dataset (via \url{https://github.com/mas-ude/gamelengths-scraper}), SteamSpy data, or could also additionally manually parse more Steam data)
-	\item Gaming score/ratings/rankings (via Metacritic dataset (via \url{https://github.com/mas-ude/metacritic_scraper}), or might want to additionally scrape steam user review scores)
-	\item Other popularity measures? (e.g. steamspy owner data?)
-	\item Influence of E2E lag on games? (could be theorized indirectly through e2e lag sim + categorization attempts)
-	\item Hardware requirements of games?
-
-	\item Price History? Maybe using steamdb.info?
-\end{itemize}
 
