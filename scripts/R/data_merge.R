@@ -1,7 +1,7 @@
 library(ggplot2)
 
 # set the working directory
-setwd("/home/you/git/wherever/it/is/")
+setwd("/Users/sv/Desktop/cost-of-cloud-gaming/scripts/R/")
 
 # === LOADING DATA ===
 
@@ -16,9 +16,10 @@ df.metacritic = subset(df.metacritic, platform == "pc")
 
 # Delete all platforms which are not 'PC', 'Mac' or 'Linux'
 df.hltb1 = subset(df.hltb, platform == "PC")
-df.hltb2 = subset(df.hltb, platform == "Mac")
-df.hltb3 = subset(df.hltb, platform == "Linux")
-df.hltb = rbind(df.hltb1, df.hltb2, df.hltb3)
+#df.hltb2 = subset(df.hltb, platform == "Mac")
+#df.hltb3 = subset(df.hltb, platform == "Linux")
+df.hltb = df.hltb1
+#df.hltb = rbind(df.hltb1, df.hltb2, df.hltb3)
 
 # Merge all three dataframes into one
 # https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html
@@ -34,6 +35,8 @@ df.consolidated <- merge(df.merge_step1, df.hltb, by.x = "name", by.y = "title")
 # - maybe it would be good to ignore numbers?
 
 # Applying function toupper() (strings as upper case) as a workaround for missing case insensitivity
+
+#summary(df.consolidated)
 
 # == CUSTOM BINNING ===
 
@@ -92,7 +95,6 @@ for (i in 1:nrow(df.consolidated)) {
 }
 df.consolidated = df.tmp
 
-#TODO: Do more binning
 
 # === BASIC STATISTICS ===
 
@@ -110,10 +112,10 @@ df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$score)),]
 cor(df.cons.tmp$score, df.cons.tmp$combined_length)
 # ggplot(df.cons.tmp, aes(x=combined_length, y=score)) + geom_point() + scale_x_log10() + scale_y_log10() 
 
-#TODO: Do more statistics
-
 # === PLOTS ===
 
-ggplot(df.consolidated, aes(x=score, y=owners, size=combined_length, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() 
+ggplot(df.consolidated, aes(x=score, y=owners, size=combined_length, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
+ggsave("score-owners.pdf", width=12, height=8)
 
-#TODO: Do more plots
+ggplot(df.consolidated, aes(x=combined_length, y=owners, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
+ggsave("combinedlength-owners.pdf", width=12, height=8)
