@@ -89,7 +89,7 @@ for (i in 1:nrow(df.consolidated)) {
       row$score_category <- "91-100"
     } 
   } else {
-    row$score_category <- "NA"
+    row$score_category <- NA
   }
   df.tmp <- rbind(df.tmp, data.frame(row))
 }
@@ -119,3 +119,6 @@ ggsave("score-owners.pdf", width=12, height=8)
 
 ggplot(df.consolidated, aes(x=combined_length, y=owners, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
 ggsave("combinedlength-owners.pdf", width=12, height=8)
+
+ggplot(data = subset(df.consolidated, !is.na(score_category)), aes(score_category)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
+ggplot(data = subset(df.consolidated, !is.na(price_category)), aes(price_category)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
