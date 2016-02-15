@@ -146,7 +146,7 @@ The average monthly customer price $\bar{p}$ aggregates the monthly subscription
 
 \begin{align} \label{eq:computational_efficiency}
 	\frac{\epsilon \cdot Cap \cdot \bar{p}}{Cap} :=& \underbrace{\frac{C_{cap}}{Cap}}_{C_{u}} \cdot m =\\
-	=\frac{C_{cap}}{Cap} :=& \epsilon \cdot \bar{p}
+	= C_{u} = \frac{C_{cap}}{Cap} :=& \epsilon \cdot \bar{p}
 \end{align}
 
 When treating the costs of the regional data center as blackbox (operational and capital costs for the data center, and required game licensing fees), the analysis can concentrate on the required capacity and licensing cost $C_{u}$ per connected user $u$.
@@ -155,9 +155,22 @@ When treating the costs of the regional data center as blackbox (operational and
 %	ce = \frac{C_{cap}}{Cap} \quad .
 %\end{equation}
 
-For obtaining the required minimum margin $m$, the capacity and licensing cost per user $ce$ needs to be below XXXXXXXX Euro.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%SOME DATA CONSIDERATIONS:
+%According to http://venturebeat.com/2014/01/15/steam-has-75-million-registered-users-third-party-steam-controllers-and-other-tidbits-from-valves-dev-days/
+% Customer base of Steam was 75 Million active users in 2014. 
+% %Vermutlich Nutzerzahl mittlerweile hoeher. Schaetzungen waeren also konservativ ausgerichtet.
+%According to http://store.steampowered.com/stats/?l=german
+% Höchststand (simultaneous): 12 406 722 Nutzer maximal, Feb 13 - Feb 15
+% Peak immer abends. Niedrigster Wert bei <7.5 Mio Nutzern
+% => \epsilon von 75/12,406722 = 6,0451100621
+% Eigentlich, da steam wächst, > 6 eine gute Annahme. Wir könnten versuchen Schranken zu definieren.
+% Wenn wir annehmen, dass Skalierung gut funktioniert, benoetigen wir keinen Buffer. Sollen wir Buffer verwenden?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\todo[inline]{NOW LET'S ADD THE DATA}
+\todo[inline]{NOW LET'S ADD THE DATA. Check the 12.4 Mio. E.g. user older data. Introduce customer base data and reasoning above. Illustrate that epsilon will be around 6.}
+
+For obtaining the required minimum margin $m$, the capacity and licensing cost per user $ce$ needs to be below XXXXXXXX Euro. Considering a capacity $Cap$ for 12.4 Mio active users, this refers to a total capacity cost $C_{Cap}$ of XXXXX Euro.
 
 The overbooking ratio $\epsilon$ could also be increased by models fostering the off-peak usage, e.g., off-peak subscriptions that only allow access to the platform outside peak hours. When considering a substantial increase of the $\epsilon$ to $1.5$---the realistic maximum when considering the high peak time centricity of the gaming use case---, we obtain a substantially lowered $C_{u}$ requirement of 
 
