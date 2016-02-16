@@ -26,6 +26,10 @@ df.hltb = df.hltb1
 df.merge_step1 <- merge(df.steamdata, df.metacritic, by.x = "name", by.y = "title")
 df.consolidated <- merge(df.merge_step1, df.hltb, by.x = "name", by.y = "title")
 
+# Added years to calculate age of the game
+df.consolidated$release <- as.Date(df.consolidated$release, format = "%B %d, %Y")
+df.consolidated$year = strftime(df.consolidated$release, "%Y")
+
 # Some ideas for better results
 
 # adist() returns the Levenshtein distance of two strings
@@ -100,17 +104,25 @@ df.consolidated = df.tmp
 
 # Correlation coefficient between owners and Metacritic score
 df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$score)),]
-cor(df.cons.tmp$owners, df.cons.tmp$score)
+cor(df.cons.tmp$score, df.cons.tmp$owners)
+# ~ 0.2174691
 
 # Correlation coefficient between owners and game length
 df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$combined_length)),]
-cor(df.cons.tmp$owners, df.cons.tmp$combined_length)
+cor(df.cons.tmp$combined_length, df.cons.tmp$owners)
+# ~ 0.1767494
 
 # Correlation coefficient between game length and Metacritic score
 df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$combined_length)),]
 df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$score)),]
 cor(df.cons.tmp$score, df.cons.tmp$combined_length)
-# ggplot(df.cons.tmp, aes(x=combined_length, y=score)) + geom_point() + scale_x_log10() + scale_y_log10() 
+# ~ 0.1926917
+
+# Correlation coefficient between Metacritic score and user score
+df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$user_score)),]
+df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$score)),]
+cor(df.cons.tmp$score, df.cons.tmp$user_score)
+# ~ 0.5996651
 
 # === PLOTS ===
 
@@ -122,3 +134,9 @@ ggsave("combinedlength-owners.pdf", width=12, height=8)
 
 ggplot(data = subset(df.consolidated, !is.na(score_category)), aes(score_category)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
 ggplot(data = subset(df.consolidated, !is.na(price_category)), aes(price_category)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
+
+#releases.peryear = count(df.consolidated, vars = c("year", "score_category"))
+#ggplot(releases.peryear, aes(x=year, y=freq, fill=score_category)) + geom_bar(stat="identity", position = "stack")
+#ggsave("releases-per-year.pdf", width=12, height=8)
+
+#ggplot(df.consolidated, aes(x=score, y=user_score, size=combined_length, color=price)) + geom_point() + geom_smooth(method='lm',formula=y~x)
