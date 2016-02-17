@@ -1,118 +1,12 @@
 %!TEX root = paper.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Cloud Gaming Provider Models}
+%\section{Cloud Gaming Provider Models}
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Cost Model}
-
-
-\todo[inline]{Vermutlich lassen wir das Extensive Model vorerst sein, was bedeuten wuerde, dass wir bei Efficiency einsteigen koennten...}
-
-$c$: cost
-$t$: time
-$d$: demand
-$p$: price
-$u$: use(?)
-$i$: investment(?)
-
-%%%%%%%%%%%%
-\subsubsection{CAPEX}
-
-Regionale Data Center => SERVER HARDWARE? (siehe unterhalb?)
-
-Gaming Server (GPU-Enabled) => vermutlich ebenso aggregiert enthalten unten?
-
-Entwicklungskosten für Software-Plattform(?) => noch nicht enthalten? Wie hoch sind die Anpassungskosten?
-
-CAPEX in our case is a dimensioning problem.
-
-CAPEX are typically used in the sense of depreciation costs. We have to define the runtime of hardware and calculate the cost per user and year to understand whether it is profitable on a per contract basis later on.
-
-Probably we have to fill this model on a per regional data center perspective??
-
-\begin{align*}
-u_{peak} = Users \cdot peak\_load\_factor \\
-d_{peak\_resource} = peak\_use \cdot d_{average\_resource} \\
-d_{peak\_quality} = peak\_use \cdot overprovisioning \\
-c_{infrastructure} = d_{peak\_quality} \cdot i_{resource\_unit}
-\end{align*}
-
-$game\_adaptation\_costs = XXXXX$ => meine Vermutung: Integration über Prozentsatz am Licensing in OPEX leichter, da schätzbar?
-
-Depreciation times in Germany for mainframes: 7 years [Quelle noch ausstaendig.. Gesetz?]
-fm: I would argue that gaming servers lose their value much more quickly than regular servers: you won't be able to run a current game on a 7-year old machine in a reasonable quality. At least the number of games will be very limited, reducing their value. 
-You would probably need to mix in new hardware every 2-3 years.
-
-Ok, but what's the full cycle to completely swap the hardware or double it up? If it is 5-6 years, then the depreciation time is 5-6 years. If it is lower than that, we go lower etc. etc. It is fair to argue 7 years is too much, but the server might have a 7-year value if it is generic hardware that is just used for games. Otherwise the value has decreased to 0 in the 5-6 years range. I need to do some research here :D
-
-\begin{align*}
-CAPEX_{year} = \frac{c_{infrastructure}}{7} \\
-CAPEX_{contract} = \frac{CAPEX_{year}}{users}
-\end{align*}
-Note: Users are kept static for the one-shot analysis. 
-
-
-%%%%%%%%%%%%
-\subsubsection{OPEX}
-
-OPEX consists of several components: Network traffic generates costs (interconnection fees and/or wholesale Internet access fees); energy; maintenance (replacement units and cost to replace and monitor things); licensing (probably it's a per year fee rather than a ``purchase'' => shift to CAPEX otherwise)
-
-\begin{align*}
-t_{use} = users \cdot t_{avg\_per\_year} \\
-c_{energy} = t_{use} \cdot d_{avg\_energy} \cdot p_{energy\_unit} \\
-c_{network} = t_{use} \cdot d_{avg\_network\_res} \cdot p_{network\_unit} \\
-c_{maintenance} = t_{use} \cdot failure\_propability \cdot c_{failure} \\
-c_{licensing} = t_{use} \cdot p_{license\_per\_t_{use}} \\
-OPEX_{year} = c_{energy} + c_{network} + c_{maintenance} + c_{licensing} \\
-OPEX_{contract} = \frac{OPEX_{year}}{users}
-\end{align*}
-
-failure costs: (personnel; replacement\_units; etc.) 
-
-%%%%%%%%%%%%
-\subsubsection{CUSTOMER COSTS / CONSUMER RATIONALE}
-
-The customer pays the revenue (see below) + hardware costs. Substitutes (like Steam or classical console games) can be compared on this basis or on the revenue side to understand how much one can price for it.
-
-200(++) for hardware but probably we can use the depreciation time of 4 years here. 
-=> Hardware costs: $ \frac{\SI{200}{\EUR}}{5}  = \SI{40}{\EUR}$
-
-\begin{align}
-End\_customer\_cost\_per\_year = R/users + 40
-\end{align}
-
-Now compare to alternatives. An alternative i is dominated by j if $End\_customer\_cost\_per\_year ** i > End\_customer\_cost\_per\_year ** j$
-
-Alternative products are: Console games, PC games, steam, etc.
-
-If no feasible revenue model can be found to both generate profit and to satisfy the customer rationale, the model is unsuccessful and does not stand the competition with substitutes.
-
-
+\section{Supply-Side Efficiency Modelling} % OR ONLY: THE SUPPLIER'S PROBLEM
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Revenue Model}
 
-\begin{align*}
-p_{year} &= 12 \cdot p_{month} \\
-p &= \frac{p_{year}}{avg\_time\_per\_year} \\
-R &= p  \cdot t_{usage} \text{ OR } p_{year} \cdot users
-\end{align*}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Profit Model}
-
-\begin{align*}
-M(P & =R-C)E \\
-C &= CAPEX\_per\_contract + OPEX\_per\_contract \\
-R &= \text{see above...}
-\end{align*}
-
-$M / E$ are external factors, which are probably not supported by equations. Let's see later.
-
-
-\subsection{Computational Efficiency}
+%\subsection{Computational Efficiency}
 
 Based on the collected consumer price figures of Section XXX, this section will elaborate on the required computational efficiency, i.e., cost per hosted subscriber, in order to successfully establish cloud gaming approaches on the market. Due to the limited available data, this investigation will follow a one data center assumption. Due to the demands of cloud gaming to serve both high performance and low latency, regional data centers will play a dominant role in the provider side cost modelling. 
 
