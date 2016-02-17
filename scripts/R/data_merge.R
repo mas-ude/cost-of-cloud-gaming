@@ -124,6 +124,13 @@ df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$score)),]
 cor(df.cons.tmp$score, df.cons.tmp$user_score)
 # ~ 0.5996651
 
+# Correlation coefficient between price score and owners
+df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$price)),]
+df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$owners)),]
+cor(df.cons.tmp$owners, df.cons.tmp$price)
+# ~ -0.02796098
+
+
 # === PLOTS ===
 
 ggplot(df.consolidated, aes(x=score, y=owners, size=combined_length, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
@@ -131,6 +138,9 @@ ggsave("score-owners.pdf", width=12, height=8)
 
 ggplot(df.consolidated, aes(x=combined_length, y=owners, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
 ggsave("combinedlength-owners.pdf", width=12, height=8)
+
+ggplot(df.consolidated, aes(x=price, y=owners, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
+ggsave("price-owners.pdf", width=12, height=8)
 
 ggplot(data = subset(df.consolidated, !is.na(score_category)), aes(score_category)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
 ggplot(data = subset(df.consolidated, !is.na(price_category)), aes(price_category)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
