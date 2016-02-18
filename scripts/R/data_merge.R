@@ -107,6 +107,11 @@ df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$score)),]
 cor(df.cons.tmp$score, df.cons.tmp$owners)
 # ~ 0.2174691
 
+# Correlation coefficient between owners and Metacritic user score
+df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$user_score)),]
+cor(df.cons.tmp$user_score, df.cons.tmp$owners)
+# ~ 0.1000701
+
 # Correlation coefficient between owners and game length
 df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$combined_length)),]
 cor(df.cons.tmp$combined_length, df.cons.tmp$owners)
@@ -124,26 +129,38 @@ df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$score)),]
 cor(df.cons.tmp$score, df.cons.tmp$user_score)
 # ~ 0.5996651
 
-# Correlation coefficient between price score and owners
+# Correlation coefficient between price and owners
 df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$price)),]
 df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$owners)),]
 cor(df.cons.tmp$owners, df.cons.tmp$price)
 # ~ -0.02796098
 
+# Correlation coefficient between age and owners
+# df.consolidated$year = as.numeric(df.consolidated$year)
+# df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$year)),]
+# df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$owners)),]
+# cor(df.cons.tmp$owners, df.cons.tmp$year)
+# ~
 
 # === PLOTS ===
 
 ggplot(df.consolidated, aes(x=score, y=owners, size=combined_length, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
-ggsave("score-owners.pdf", width=12, height=8)
+ggsave("rel-score-owners.pdf", width=12, height=8)
 
 ggplot(df.consolidated, aes(x=combined_length, y=owners, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
-ggsave("combinedlength-owners.pdf", width=12, height=8)
+ggsave("rel-combinedlength-owners.pdf", width=12, height=8)
 
 ggplot(df.consolidated, aes(x=price, y=owners, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
-ggsave("price-owners.pdf", width=12, height=8)
+ggsave("rel-price-owners.pdf", width=12, height=8)
 
 ggplot(data = subset(df.consolidated, !is.na(score_category)), aes(score_category)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
+ggsave("rel-score-category-owners.pdf", width=12, height=8)
 ggplot(data = subset(df.consolidated, !is.na(price_category)), aes(price_category)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
+ggsave("rel-price-category-owners.pdf", width=12, height=8)
+
+#df.consolidated$year = as.numeric(df.consolidated$year)
+#ggplot(data = subset(df.consolidated, !is.na(year)), aes(year)) + stat_summary_bin(aes(y = owners), fun.y = "mean", geom = "bar")
+#ggsave("rel-year-owners.pdf", width=12, height=8)
 
 #releases.peryear = count(df.consolidated, vars = c("year", "score_category"))
 #ggplot(releases.peryear, aes(x=year, y=freq, fill=score_category)) + geom_bar(stat="identity", position = "stack")
