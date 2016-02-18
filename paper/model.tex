@@ -51,30 +51,63 @@ When treating the costs of the regional data center as blackbox (operational and
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %SOME DATA CONSIDERATIONS:
-%According to http://venturebeat.com/2014/01/15/steam-has-75-million-registered-users-third-party-steam-controllers-and-other-tidbits-from-valves-dev-days/
-% Customer base of Steam was 75 Million active users in 2014. 
-% %Vermutlich Nutzerzahl mittlerweile hoeher. Schaetzungen waeren also konservativ ausgerichtet.
-%According to http://store.steampowered.com/stats/?l=german
+
+
+% ALTE DATEN:
+% Anderer Messpunkt:
 % Höchststand (simultaneous): 12 406 722 Nutzer maximal, Feb 13 - Feb 15
 % Peak immer abends. Niedrigster Wert bei <7.5 Mio Nutzern
 % => \epsilon von 75/12,406722 = 6,0451100621
 % Eigentlich, da steam wächst, > 6 eine gute Annahme. Wir könnten versuchen Schranken zu definieren.
 % Wenn wir annehmen, dass Skalierung gut funktioniert, benoetigen wir keinen Buffer. Sollen wir Buffer verwenden?
+
+% NEUE DATEN:
+% ANGLE 1:
+%According to http://venturebeat.com/2014/01/15/steam-has-75-million-registered-users-third-party-steam-controllers-and-other-tidbits-from-valves-dev-days/
+% Customer base of Steam was 75 Million active users in 2014. 
+% %Vermutlich Nutzerzahl mittlerweile hoeher. Schaetzungen waeren also konservativ ausgerichtet.
+%According to http://store.steampowered.com/stats/?l=german
+% Testzeitraum: Feb 16 – 18
+% Höchststand (simultaneous): 11 645 185	 Nutzer maximal
+%	-> Anteil Grundgesamtheit: 0.1552691333
+%	-> Epsilon: 6.4404301005 (75/11,645185)
+% Tiefststand (simultaneous): 6 527 571 
+%	-> Relatives Wachstum: 1.7839997451 = 78%
+
+% ANGLE 2: 
+% Data from ``Enabling Experiments for Energy-Efficient Data Center Networks on OpenFlow-based Platform''
+% Data is on server loads for video traffic (Video on Demand) of a big ISP in Vietnam
+% Does not give indications on parent population. So, we will compare the steam data with this data in a relativ fashion.
+% Thursday values in Fig 2. are most peaky. So we take them.
+% Höchststand: 71.190% at 17.530 (da time. Half past 5)
+% Tiefststand: 7.971 % at 7.88 (day time time. Almost 8 o'clock – nobody watches video)
+% 	-> Relatives Wachstum: 8.9311253293 = 893.1%
+% Umgelegt vom Mindesstand bei Steam waere das dann:
+%	6 527 571 * 8.9311253293 = 58.298.554,697 (geringfuegig verschoeben zu den initialen Daten%
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\todo[inline]{NOW LET'S ADD THE DATA. Check the 12.4 Mio. E.g. user older data. Introduce customer base data and reasoning above. Illustrate that epsilon will be around 6.}
+\todo[inline]{NOW LET'S ADD THE DATA. Check the 12.4m. E.g. user older data. Introduce customer base data and reasoning above. Illustrate that epsilon will be around 6.}
 
-For obtaining the required minimum margin $m$, the capacity and licensing cost per user $ce$ needs to be below XXXXXXXX Euro. Considering a capacity $Cap$ for 12.4 Mio active users, this refers to a total capacity cost $C_{Cap}$ of XXXXX Euro.
+When considering a measurement iteration between Feb 16 and 18, the minimum and maximum number of simultaneously connected users\footnote{\url{http://store.steampowered.com/stats/}, accessed: Feb 18, 2016} is 6.53m and 11.65m	 resp. Setting the maximum in relationship with the 75 million active steam users\footnote{http://venturebeat.com/2014/01/15/steam-has-75-million-registered-users-third-party-steam-controllers-and-other-tidbits-from-valves-dev-days/, last accessed: Feb 18, 2016}, we can calculate an $\epsilon_{max}$ of $6.44$. For crossvalidation purposes, link load considerations for other media streaming services may also be considered: When comparing the relative load level change between the minimum and maximum utilisation of a large Vietnamese ISP's Video on Demand (VoD) streaming server as given in \cite{thanh2012enabling} (reconstructed data for Thursday in Fig 2. as most peaky day), with the comparable change in the case, we would obtain a maximum number of simultaneously connected users of 58.3 million and an $\epsilon_{min}$ of $1.2931034483$. While the discrepancy may appear high, the associated payment modalities may be at cause: While steam sells game licenses, VoD services often use a subscription services (a flat rate for a given time period). For the subsequent analysis we will consider the range between the minimum $\epsilon_{min}$ and maximum $\epsilon_{max}$.
 
-The overbooking ratio $\epsilon$ could also be increased by models fostering the off-peak usage, e.g., off-peak subscriptions that only allow access to the platform outside peak hours. When considering a substantial increase of the $\epsilon$ to $1.5$---the realistic maximum when considering the high peak time centricity of the gaming use case---, we obtain a substantially lowered $C_{u}$ requirement of 
+As a result, the capacity and licensing cost per user $C_u$ needs to be below XXXXXXXX (for $\epsilon_{max}$)  or XXXX Euro ($\epsilon_{min}$) for obtaining the required minimum margin $m$. Scaling theses costs to the population of $11.65m$ and  $58.3m$ users, we obtain a total server capacity cost $C_{Cap}$, which should not exceed XXX and XXX Euro resp. 
 
-\todo[inline]{ADD DATA}
+%Thus, we can characterise that the successful cloud game provider will have a maximum $C_{u}$ in the following bounds:
+% for a successful market operation.
 
-Due to the requirement of using special hardware that is focused on the gaming use case, hardware sharing with other cloud applications seems unrealistic. Thus, we can characterise that the successful will have a maximum $C_{u}$ in the following bounds:
 
-\todo[inline]{XXX}
 
-This maximum does not consider that the operator may not be able to fully utilize the available capacity or may not hold the optimal game licenses at all times. Thus, in practice, the required hardware costs per subscriber have to be lower than $C_{u}$ .
+
+Due to the requirement of using special hardware that is focused on the gaming use case, hardware sharing with other cloud applications seems unrealistic. Thus $C_u$ can hardly be reduced by cloud service collaboration. However, to lower the investment demands, the platform operator could aim at increasing the overbooking ratio $\epsilon_{min}$ for the subscription case closer to the $\epsilon_{max}$ of the classical purchasing model. The could provider could, for example, offer off-peak subscriptions that allow the access to the platform only outside of peak hours.
+
+%by deploying subscription models that foster the off-peak usage, i.e., off-peak subscriptions that allow the access to the platform only outside of peak hours. This may allow a convergence of $C_u$ for subscription-based charging models close to $\epsilon_{max}$.
+
+%When considering a substantial increase of the $\epsilon$ to $8$---the realistic maximum when considering the high peak time centricity of the gaming use case---, we obtain a substantially lowered $C_{u}$ requirement of $6.44$. 
+
+%\todo[inline]{ADD DATA}
+
+This maximum does not consider that the operator may not be able to fully utilize the available capacity or may not hold the optimal game licenses at all times. Thus, in practice, we recommend target $C_{u}$ values to be lower than the calculate values.
 
 \todo[inline]{NOW LET'S INTERPRET IF THAT SOUNDS LIKE A HARD THING TO DO OR NOT. AND THERE WE GO.}
 
