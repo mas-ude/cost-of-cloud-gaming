@@ -41,3 +41,55 @@ End-to-End Lag Model and Simulation in R. Now a standalone (submitted) paper at 
 
 	\item Price History? Maybe using steamdb.info?
 \end{itemize}
+
+\section{Input by Svenja}
+
+After having had a closer look at the merged dataset, several possible relationships between metrics emerge. The success of a game in this case was associated with the ownership, so the more people own a game, the more successful it is.
+
+First of all a few correlation coefficients:
+\begin{itemize}
+	\item Metacritic score + ownership: 0.2174691 --> This indicates a small effect.
+	\item Metacritic user score + ownership: 0.1000701 --> This indicates a small effect, but somehow smaller than the correlation above.
+	\item Game length (combined length) + ownership: 0.1767494 --> This indicates a small effect. 
+	\item Price + ownership: -0.02796098 --> No effect visible.
+\end{itemize}
+
+When plotting the most obvious factors (MC score, length and price) the effects become visually graspable (see figures \ref{fig:rel-score-owners}, \ref{fig:rel-combinedlength-owners} and \ref{fig:rel-price-owners}).
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/rel-score-owners.pdf}
+	\caption{Relationship Metacritic score to ownership}
+\label{fig:rel-score-owners}
+\end{figure}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/rel-combinedlength-owners.pdf}
+	\caption{Relationship game length to ownership}
+\label{fig:rel-combinedlength-owners}
+\end{figure}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/rel-price-owners.pdf}
+	\caption{Relationship price to ownership}
+\label{fig:rel-price-owners}
+\end{figure}
+
+However, when having a look at figures \ref{fig:rel-price-category-owners} and \ref{fig:rel-score-category-owners}, some details remain unclear: Despite having a relatively low Metacritic score, especially games within the 11-20 range seem to have quite a number of owners - why? Also, either games for free or expensive games seem to be popular. Maybe this is an indicator for the differentiation between hardcore and casual gamers? (Probably it would be interesting as well to track the price over the years and also weigh the ownership count relatively to a game's age.)
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/rel-price-category-owners.pdf}
+	\caption{Relationship price category to ownership (\textbf{TODO: Bars need sorting})}
+\label{fig:rel-price-category-owners}
+\end{figure}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/rel-score-category-owners.pdf}
+	\caption{Relationship score category to ownership (\textbf{TODO: Bars need sorting})}
+\label{fig:rel-score-category-owners}
+\end{figure}
+
