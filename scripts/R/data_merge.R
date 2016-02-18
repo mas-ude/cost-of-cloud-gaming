@@ -8,6 +8,8 @@ setwd("/Users/sv/Desktop/cost-of-cloud-gaming/scripts/R/")
 df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",")
 df.metacritic <- read.csv("metacritic-20160209.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 df.hltb <- read.csv("howlongtobeat-20160209.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
+df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
+df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
 
 # === MERGING DATA SETS ===
 
