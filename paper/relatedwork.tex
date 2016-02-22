@@ -3,48 +3,57 @@
 \section{Related Work}
 \label{sec:relatedwork}
 
+As this work aims to investigate Cloud Gaming services, several lines of research are touched. 
+First, work that deals with operational benefits of Cloud Gaming and cloud services in general. This also encompasses energy consumption issues.
+And second, literature covering \gls{QoE} aspects of gaming in general and Cloud Gaming in particular. These reflect the users' quality expectations but can also outline the requirement for a service's operation.
+
+% Area 1:
+% Operational, energy and business investigations and issues
+% of cloud, gaming, cloud gaming, especially focus on mobile cloud gaming and device energy preservation
+
+% Area 2:
+% QoS/QoE in gaming literature is also relevant as it impacts service quality as well as gives requirements for service operation
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Cost of Cloud Gaming}
+\subsection{Operational and Efficiency Factors}
 
-``Mobile Cloud Gaming: Issues and Challenges'' \cite{Soliman2013}
-short overview of some possible issues
-
-``Will Mobile Cloud Gaming Work? Findings on Latency, Energy, and Cost'' \cite{Lampe:2013:MCG:2514943.2515398}
-client-side costs (monetary, energy, latency) of mobile devices; however underestimates energy costs in comparison to local gaming, display is the biggest factor, which is not factored in (this factor is also the same in local as well as cloud gaming); the monetary cost factor also underestimates the contractual situation in countries like Germany
-And despite all this, it still finds mobile cloud gaming rather unfeasible (except in WiFi)
-
-``Where Did My Battery Go? Quantifying the Energy Consumption of Cloud Gaming'' \cite{6924295}
-Similar notion as previous paper, more in-depth, focus only on energy costs
-test impl of local running game artificially increases cpu/gpu load
-especially for low load games only marginal energy savings for cloud approach (~12\%)
-even best case (and unrealistically high load) only 38\% energy savings
-considering all the other drawbacks that cloud streaming incurs, this might not be enough
-
-``Measuring the Client Performance and Energy Consumption in Mobile Cloud Gaming'' \cite{Huang:2014:MCP:2755535.2755542}
-Similar findings, only 30\% energy savings
+Unfortunately, many publications on Cloud Gaming only concern themselves with the client's side often even looking at just mobile Cloud Gaming. For example \cite{Soliman2013} overviews some general issues of mobile cloud gaming. Several other publications, e.g. \cite{6924295} and \cite{Huang:2014:MCP:2755535.2755542} investigate the client device's energy saving potential of mobile Cloud Gaming but find rather marginal energy savings.
 
 
 ``Cloud gaming: a green solution to massive multiplayer online games'' \cite{6882299}
 (TODO: need to read the full text yet)
 Argues that removing computation intense tasks from (mobile) user devices leads to overall energy savings
 
+``Placing Virtual Machines to Optimize Cloud Gaming Experience'' \cite{6853364}
+latter paper includes many server cost optimization parameters, that might be worth looking at
+
+Looking at more general work...
+
 
 Also approaches that select (and cost-optimize the selection of) data-centers might not be applicable due to the stringent latency and BW requirements and the need for dedicated hardware (GPUs) and the statefulness of gaming, e.g.
 ``QoS-Aware, Cost-Efficient Selection of Cloud Data Centers'' \cite{6740249}
 ``Cost-efficient Capacitation of Cloud Data Centers for QoS-aware Multimedia Service Provision.'' \cite{hans2014cost} optimization to geographically clustered users
-``Placing Virtual Machines to Optimize Cloud Gaming Experience'' \cite{6853364}
-latter paper includes many server cost optimization parameters, that might be worth looking at
+
 
 Another optimization TODO: read fulltext
 ``QoS-Aware Revenue-Cost Optimization for Latency-Sensitive Services in IaaS Clouds'' \cite{6365107}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Cloud Gaming in General}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{QoS/QoE of Gaming in General}
+\subsection{Gaming QoS/QoE}
+
+Trifecta of quality influencer:
+
+Concept of end-to-end lag, even in offline games especially in cloud games. No opportunity for lag compensation techniques in cloud games. Needs to be kept as low as possible (ergo the need for regional data centers)
+
+sufficiently high image quality of the stream (no noticeable loss of quality compared to local game, even for ``difficult''games with complex scenes or with much noise). Ergo also demand for high throughput for both the data center as well as the user (ideally 15-30Mbit/s per stream)
+but also adequately chosen graphical settings; trade-off between resource demands and visual fidelity
+
+
+sufficiently high frame rate; stuttering; interactivity; but also end-to-end lag influencer, see also \cite{metzger16lagmodel}.
+
+
 
 ``On the Impact of Delay on Real-time Multiplayer Games'' \cite{Pantel:2002:IDR:507670.507674}
 
@@ -52,21 +61,21 @@ Another optimization TODO: read fulltext
 
 ``An experimental estimation of latency sensitivity in multiplayer Quake 3'' \cite{1266180}
 
-``QoE Assessment of Interactivity and Fairness in First Person Shooting with Group Synchronization Control'' \cite{Ida:2010:QAI:1944796.1944806}
+% ``QoE Assessment of Interactivity and Fairness in First Person Shooting with Group Synchronization Control'' \cite{Ida:2010:QAI:1944796.1944806}
 
 ``Assessing the Impact of Game Type, Display Size and Network Delay on Mobile Gaming QoE'' \cite{beyer2014typedisplaydelayimpact}
 
 ``Latency and Player Actions in Online Games'' \cite{Claypool:2006:LPA:1167838.1167860}
 
 %%%%%%%%%%%%
-\subsection{Models}
-``A Comprehensive End-to-End Lag Model for Online and Cloud Video Gaming'' \cite{metzger16lagmodel}
+% \subsubsection{Models}
+% ``A Comprehensive End-to-End Lag Model for Online and Cloud Video Gaming'' \cite{metzger16lagmodel}
 
 
 %%%%%%%%%%%%
-\subsection{Measurements and Methods}
+% \subsubsection{Measurements and Methods}
 
-``A Method For Feedback Delay Measurement Using a Low-cost Arduino Microcontroller'' \cite{beyermethod}
+% ``A Method For Feedback Delay Measurement Using a Low-cost Arduino Microcontroller'' \cite{beyermethod}
 
 ``Towards a New {ITU-T} Recommendation for Subjective Methods Evaluating Gaming {QoE}'' \cite{mollertowards}
 
@@ -75,7 +84,7 @@ Another optimization TODO: read fulltext
 ``An Empirical Study of Cloud Gaming'' \cite{Manzano:2012:ESC:2501560.2501582}
 
 %%%%%%%%%%%%
-\subsection{Studies}
+% \subsubsection{Studies}
 
 ``How Sensitive Are Online Gamers to Network Quality?'' \cite{Chen:2006:SOG:1167838.1167859}
 
@@ -84,11 +93,8 @@ Another optimization TODO: read fulltext
 ``Empirical study of subjective quality for Massive Multiplayer Games'' \cite{4604397}
 
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{QoS/QoE of Cloud Gaming}
-
-
+% \subsection{QoS/QoE of Cloud Gaming}
 
 ``Modeling and Characterizing User Experience in a Cloud Server Based Mobile Gaming Approach'' (Shaoxuan Wang, Sujit Dey): http://esdat.ucsd.edu/projects/gaming/papers/globecom09.pdf
 
@@ -98,8 +104,8 @@ Another optimization TODO: read fulltext
 
 
 %%%%%%%%%%%%
-\subsection{Measurements and Methods}
-``Using Electroencephalography and Subjective Self-Assessment to Measure the Influence of Quality Variations in Cloud Gaming'' \cite{beyerusing}
+% \subsection{Measurements and Methods}
+% ``Using Electroencephalography and Subjective Self-Assessment to Measure the Influence of Quality Variations in Cloud Gaming'' \cite{beyerusing}
 
 ``Cloud gaming: architecture and performance'' \cite{6574660}
 
@@ -110,7 +116,7 @@ Another optimization TODO: read fulltext
 ``The Brewing Storm in Cloud Gaming: A Measurement Study on Cloud to End-user Latency'' \cite{Choy:2012:BSC:2501560.2501563}
 
 %%%%%%%%%%%%
-\subsection{Subjective Studies}
+% \subsubsection{Subjective Studies}
 
 ``Gaming in the clouds: QoE and the users’ perspective'' \cite{Jarschel20132883}
 
@@ -120,45 +126,68 @@ Another optimization TODO: read fulltext
 
 ``An Evaluation of {QoE} in Cloud Gaming Based on Subjective Tests'' \cite{5976180}
 
+
+
+
+% ``Mobile Cloud Gaming: Issues and Challenges'' \cite{Soliman2013}
+% short overview of some possible issues
+
+% ``Will Mobile Cloud Gaming Work? Findings on Latency, Energy, and Cost'' \cite{Lampe:2013:MCG:2514943.2515398}
+% client-side costs (monetary, energy, latency) of mobile devices; however underestimates energy costs in comparison to local gaming, display is the biggest factor, which is not factored in (this factor is also the same in local as well as cloud gaming); the monetary cost factor also underestimates the contractual situation in countries like Germany
+% And despite all this, it still finds mobile cloud gaming rather unfeasible (except in WiFi)
+
+% ``Where Did My Battery Go? Quantifying the Energy Consumption of Cloud Gaming'' \cite{6924295}
+% Similar notion as previous paper, more in-depth, focus only on energy costs
+% test impl of local running game artificially increases cpu/gpu load
+% especially for low load games only marginal energy savings for cloud approach (~12\%)
+% even best case (and unrealistically high load) only 38\% energy savings
+% considering all the other drawbacks that cloud streaming incurs, this might not be enough
+
+% ``Measuring the Client Performance and Energy Consumption in Mobile Cloud Gaming'' \cite{Huang:2014:MCP:2755535.2755542}
+% Similar findings, only 30\% energy savings
+
+
+
+
 %%%%%%%%%%%%
-\subsection{QoE Adaptations}
+% \subsubsection{QoE Adaptations}
 
-video rate adaptations
-``Addressing Response Time and Video Quality in Remote Server Based Internet Mobile Gaming'' \cite{5506572}
+% video rate adaptations
+% ``Addressing Response Time and Video Quality in Remote Server Based Internet Mobile Gaming'' \cite{5506572}
 
-``Adaptive Mobile Cloud Computing to Enable Rich Mobile Multimedia Applications'' \cite{6413270}
-
-
+% ``Adaptive Mobile Cloud Computing to Enable Rich Mobile Multimedia Applications'' \cite{6413270}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Other}
+% \subsection{Other}
 
 
-High frame rates:
-``The Application of Sampling Theory to Television Frame Rate Requirements''
-\url{http://www.bbc.co.uk/rd/publications/whitepaper282}
-``High Frame-Rate Television''
-\url{http://www.bbc.co.uk/rd/publications/whitepaper169}
-``Higher Frame rates for more Immersive Video and Television''
-\url{http://www.bbc.co.uk/rd/publications/whitepaper209}
+% High frame rates:
+% ``The Application of Sampling Theory to Television Frame Rate Requirements''
+% \url{http://www.bbc.co.uk/rd/publications/whitepaper282}
+% ``High Frame-Rate Television''
+% \url{http://www.bbc.co.uk/rd/publications/whitepaper169}
+% ``Higher Frame rates for more Immersive Video and Television''
+% \url{http://www.bbc.co.uk/rd/publications/whitepaper209}
 
 
-Fundamental findings on framerates
-``Experimentelle Studien über das Sehen von Bewegung'' \cite{wertheimer1912experimentelle}
+% Fundamental findings on framerates
+% ``Experimentelle Studien über das Sehen von Bewegung'' \cite{wertheimer1912experimentelle}
 
-VR:
-``How Do New Visual Immersive Systems Influence Gaming QoE?'' \cite{7148110}
-
-
-Hybrid Cloud/Local
-``Kahawai: High-Quality Mobile Gaming Using GPU Offload'' \cite{Cuervo:2015:KHM:2742647.2742657}
+% VR:
+% ``How Do New Visual Immersive Systems Influence Gaming QoE?'' \cite{7148110}
 
 
-Speculative Rendering of Future Frames
-``Outatime: Using Speculation to Enable Low-Latency Continuous Interaction for Mobile Cloud Gaming'' \cite{Lee:2015:OUS:2742647.2742656}
+% Hybrid Cloud/Local
+% ``Kahawai: High-Quality Mobile Gaming Using GPU Offload'' \cite{Cuervo:2015:KHM:2742647.2742657}
 
-``Security issues in online games'' \cite{doi:10.1108/02640470210424455}
+
+% Speculative Rendering of Future Frames
+% ``Outatime: Using Speculation to Enable Low-Latency Continuous Interaction for Mobile Cloud Gaming'' \cite{Lee:2015:OUS:2742647.2742656}
+
+% ``Security issues in online games'' \cite{doi:10.1108/02640470210424455}
+
+
 
 
 
