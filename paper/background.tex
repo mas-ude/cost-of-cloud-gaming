@@ -11,7 +11,7 @@ This section aims to cover all basic information on Cloud Gaming and their busin
 To evaluate the costs and benefits of individual gaming platforms, one should first take a look at the vastly different price models --- as well as the supporting competitive ecosystem surrounding them --- these services offer to their customers. For this investigation only currently active services, Cloud and otherwise, are examined which narrows the number of services considerable. The information presented here was collected in February 2016 and is subject to change. All costs shown here are from an European, specifically German, perspective. If a product is not available in this region, the prices are converted accordingly to the current exchange rates.
 
 
-\paragraph{Video Game Consoles}
+\subsubsection{Video Game Consoles}
 
 One of the classical approaches to video games is using dedicated consoles with physical copies of a game bought at a retailer. The price for (non-portable) consoles varies but usually lies between \SI{300}[\EUR] and \SI{400}[\EUR] for the latest console generation, i.e. currently \textit{Wii U}, \textit{PlayStation 4}, and \textit{Xbox One}. New, major game releases are mostly priced at either \SI{60}[\EUR] or \SI{70}[\EUR]. The decline in price is rather slow for individual console games, often only happening over the course of several years.
 
@@ -22,9 +22,11 @@ In order to utilize a game's multiplayer component, some services require you to
 % \paragraph{Historical Example: OnLive}
 
 
-\paragraph{The PC Gaming Ecosystem}
+\subsubsection{The PC Gaming Ecosystem}
 
-The rise of easy-to-use digital distribution platforms and the independent (i.e. ``indie'') game scene a few years back reinvigorated PC gaming. Today, PC gaming is dominated by large digital marketplaces, and Steam in particular. The platform has fully embraced its digital and online-only nature and periodically offers large sales of recent games at greatly reduced prices (rebates of 75\% for a year-old game are not uncommon). In addition, many resellers offer digital codes for other platforms, often at much lower prices. Alternative storefronts, entirely independent of Steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}, and enrich the competition even more.
+The rise of easy-to-use digital distribution platforms and the independent (i.e. ``indie'') game scene a few years back reinvigorated PC gaming. Today, PC gaming is dominated by large digital marketplaces, and Steam in particular. The platform, with about $10$ million concurrent users at every time of day, has fully embraced its digital and online-only nature and periodically offers large (seasonal) sales of recent games at greatly reduced prices (rebates of 75\% for a year-old game are not uncommon). 
+
+In addition, many resellers offer digital codes for other platforms, often at much lower prices. Alternative storefronts, entirely independent of Steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}, and enrich the competition even more.
 
 Another recent trend are game bundles, especially prevalent in indie games, which bundle together a number of games for either a low price or, more commonly, with a pay-what-you-want model with parts of the money going to charities. \textit{Humble Bundle}\footnote{\url{https://www.humblebundle.com/}} is a prominent example for this. The official prices for new major releases on PC are comparable to that of console titles. However, due to the competition the street prices are significantly lower even at launch, and also drop more quickly.
 
@@ -33,23 +35,30 @@ The barrier to entry to PC gaming is a bit steeper than for consoles, albeit wit
 %recurring bundles/subscriptions (humble monthly)
 %	console/netflix similarities
 
+% Steam Sales:
+% Large seasonal sales (christmas, summer, lunar new year, halloween, fall, spring, ...) of many/most games on the platform usually rebates of 50\% and up.
+% Weekly sales
+% Daily sales
+% Weekend sales
+% Free weekends
 
-\paragraph{Geforce Now}
 
-\textit{Geforce NOW}\footnote{\url{http://shield.nvidia.com/game-streaming-with-geforce-now}} is a Cloud Gaming service by NVIDIA available in North America as well as some European countries. In Germany the service currently offers access to $68$ PC titles for a monthly subscription fee of \SI{10}[\EUR]. The more prominent and recent $19$ of those titles however require an additional one-time payment between \SI{13}[\EUR] and \SI{60}[\EUR]. The service is delivered from six specialized data center locations, with Dublin and Frankfurt responsible for Europe. 
+\subsubsection{Geforce Now}
 
-The requirements to use this service are rather steep, demanding \SI{50}{\mega\bit\per\second} for a full 1080p60 stream (\SI{10}{\mega\bit\per\second} in order to use the service at all) and a maximum \acrshort{RTT} of \SI{60}{\milli\second} to one of the data centers. In addition, streaming is exclusive to one of NVIDIA's \textit{SHIELD} devices which start at \SI{200}[\EUR].
+\textit{Geforce NOW}\footnote{\url{http://shield.nvidia.com/game-streaming-with-geforce-now}} is a Cloud Gaming service by NVIDIA available in North America as well as some European countries. In Germany the service currently offers access to $68$ PC titles for a monthly subscription fee of \SI{10}[\EUR]. The more prominent and recent $19$ of those titles however require an additional one-time payment between \SI{13}[\EUR] and \SI{60}[\EUR]. The service is delivered from six specialized data center locations, with Dublin and Frankfurt responsible for Europe.
+
+The requirements to use this service are rather steep, demanding \SI{50}{\mega\bit\per\second} for a full 1080p60\footnote{\label{foot:rate}Please note: This frame rate of \SI{60}{\hertz} represents the rate of the video encoder and not the game's actual frame rate, which might be considerably lower depending on the complexity of the game.} stream (\SI{10}{\mega\bit\per\second} in order to use the service at all) and a maximum \acrshort{RTT} of \SI{60}{\milli\second} to one of the data centers. In addition, streaming is exclusive to one of NVIDIA's \textit{SHIELD} devices which start at \SI{200}[\EUR].
 
 % Started in parts of Europe in Q4/2015
 
 
-\paragraph{Playstation Now}
+\subsubsection{Playstation Now}
 
 In the absence of backwards compatibility in the latest PlayStation generation, the \textit{PlayStation Now} service was put in place to stream titles from the PlayStation 2 and 3 generation to the current iteration of Sony's consoles. It is currently available in North America and the UK, with a closed beta running in some other European countries as well as Japan.
 
 Both the offered titles as well as the precise pricing vary from country to country. As stated this work will focus on the European perspective. For the UK, about $150$ titles are available. A large portion of them is included in the subscription service, incurring a monthly fee of about \SI{17}[\EUR]. All titles are also available through a separate rental service, costing about \SI{4}[\EUR] for \SI{48}{\hour} of access, and \SI{10}[\EUR] for a week. This is in addition for the device cost, as the service is only available to the PlayStation 4 and 3 consoles as well as some select Sony TVs and other devices (which would however necessitate the purchase of a game controller).
 
-The streaming itself is performed at a resolution of 720p60 requiring a \SI{5}{\mega\bit\per\second} connection. Reports on the video quality have been rather mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands-on-with-playstation-now}}
+The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requiring a \SI{5}{\mega\bit\per\second} connection. Reports on the video quality have been rather mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands-on-with-playstation-now}} Sony is also reportedly using specialized hardware, adopted from regular PlayStation 3s, on their server side, effectively eliminating any chance for multi-purpose uses of these devices.
 
 % cost and some more infos:
 % http://www.pocket-lint.com/news/126394-playstation-now-subscription-service-comes-to-the-uk-what-is-it-and-how-can-you-get-it
@@ -57,121 +66,74 @@ The streaming itself is performed at a resolution of 720p60 requiring a \SI{5}{\
 % (US/UK only?) Deuschlandbeta seit ~Q4/2015
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Platform Provider Cost Factors}
-Backend/Service Requirements and Demands
-
-%%%%%%%%%%%%
-\subsubsection{CAPEX}
-
-\begin{itemize}
-	\item Regionale Data Center
-	\item Gaming Server (GPU-Enabled)
-	\item Entwicklungskosten für Software-Plattform(?)
-\end{itemize}
-
-\paragraph{Hardware}
-
-\url{https://www.nvidia.com/object/cloud-gaming-gpu-boards.html}
-\url{https://www.nvidia.com/object/grid-technology.html}
-
-
-%%%%%%%%%%%%
-\subsubsection{OPEX}
-
-\paragraph{Verkehrsvolumen}
-
-\begin{itemize}
-	\item Internetanbindung?
-	\item Caching of basic resources is probably not applicable?
-\end{itemize}
-
-\paragraph{Serverlaufzeiten}
-
-\begin{itemize}
-	\item Energie
-	\item Verschleiß
-	\item Wartungs- und Betriebspersonal oder Anmietung
-	\item Frage: Rechnet sich Anmietung von Ressourcen bei großen generischen Rechenzentren? Annahme nein, da man selbst ein großer Anbieter wäre u. die Margin wegfallen. Auf der anderen Seite gibt es Hardware die für Games im Serverbereich besser skalieren? Wenn ja, kann umso mehr kein generischer Anbieter die Lösung sein
-\end{itemize}
-
-\paragraph{Spiele-Lizenzen und -Adaptionskosten (?)}
-Modelannahme: Kosten pro Nutzung (realistisch eher in Blöcken verrechnet)
-
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Data}
+\subsection{Gaming Measures and Datasets}
 
-The leading question for the user side of the cost-benefit analysis is: ``How can we properly estimate the value a user gets from a specific service?'' with an additional question of ``What is the definition of value in this context?''
+The leading question for the user side of the cost-benefit analysis is: ``How can we properly estimate the value a user gets from a specific service?'' with an additional question of ``What is the definition of value in this context?''. To answer these some means to meter user engagement is required, as this represents the core of those questions. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective.
 
-Simply counting the number of games one gets for a specific amount of money may be the easiest value metric but may also fall short. Therefore, this paper evaluates further approaches that also take game lengths and press review scores into account.
-
-In order to achieve this, data had to be collected from various sources and merged into a consistent data base. All the scraping and merging code as well as the data itself can be found in the repositories at TODO to be verified by third parties. The following sections describe the individual data sources.
+However, there are still a number of metrics independent of ones own subjective opinion that can give a more objective impression of the popularity and the value of individual titles. Both these attributes usually play a role in one's decision to play a certain game. In order to investigate such metrics, data had to be collected from various sources and merged into a consistent data base. All the code, data as well as this paper itself can be found in public code repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}} in the interest of repeatability and reproducibility. The following paragraphs describe the individual sets.
 
 %%%%%%%%%%%%
-\subsubsection{Steam API + SteamSpy Datensätze+Graphen}
+\subsubsection{Game Prices and Ownership}
 
-Steam Sales:
-Large seasonal sales (christmas, summer, lunar new year, halloween, fall, spring, ...) of many/most games on the platform usually rebates of 50\% and up.
-Weekly sales
-Daily sales
-Weekend sales
-Free weekends
-
-
-
-\url{https://github.com/mas-ude/steam-data-stats} Steam + SteamSpy REST API Datensammler + ein paar Graphplotter (und eher ergebnislose Clustering-Versuche); für sinnvolle Analsyen müsste man dazu aber viel häufiger Datensätze generieren. Beispielausgaben:
-
-CDF der Preise auf Steam (Juli ‘15) \ref{fig:steam-prices}
+An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the Steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points of time. The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during Steam's Lunar New Year Sale.
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/steam-prices.pdf}
-	\caption{CDF of games on the steam platform at two distinct dates.}
+	\caption{CDF of games on the steam platform at three distinct dates. The February data was collected in a sales period.}
 \label{fig:steam-prices}
 \end{figure}
 
-Violinenplot der durchschnittlichen Spielzeit aufgeteilt auf unterschiedliche Preiskategorien. \ref{fig:steam-cost-vs-playtime-violin}
+This was combined with \acrshort{API}-data from the 3rd-party Web site SteamSpy\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible Steam user profiles and from this estimates statistics on the size of the playerbase and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on Steam. Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible.
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/steam-cost-vs-playtime.pdf}
-	\caption{Violin plot of the average playtime (as recorded by SteamSpy) of games categorized by their prices.}
+	\caption{Violin plot of the average playtime of Steam games, broadly categorized by their prices.}
 \label{fig:steam-cost-vs-playtime-violin}
 \end{figure}
 
-%%%%%%%%%%%%
-\subsubsection{HowLongToBeat Data}
+Due to the strong popularity of Steam in PC gaming (even physical retail copies often require using the service nowadays) this set also gives a good general overview of the dimensions of PC gaming in general.
 
-Data scraped from \url{howlongtobeat.com}. This site allows for manual reporting of playthrough times of games on any platform. Times are separated into different play styles (e.g. ``main story'', ``completionist'') and only an aggregated time is shown. For this analysis only the average playtime of all play styles is taken into account.
-It should however be stressed again, that this is a self-reporting site without strong validity checks. This has to be considered when contemplating the accuracy and validity of the data.
+
+
+%%%%%%%%%%%%
+\subsubsection{Game Lengths}
+
+While the previous dataset included numbers on the average playtime, but this is not necessarily representative of the length of one ``playthrough'' of a game. The latter might be another indicator of the amount (albeit not the quality) of content a game offers. To encompass this, data from the site HowLongToBeat\footnote{\url{http://howlongtobeat.com/}} was collected\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}. This site allows for manual reporting of playthrough times of games on any platform. Times are separated into different play styles (e.g. ``main story'' or ``completionist'') and only an aggregated time is shown. For this analysis only the average playtime of all play styles is taken into account. It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/gamelengths-density.pdf}
-	\caption{Density plot of the average game lengths over all play styles.}
+	\caption{Density plot of the average game lengths over all play styles as recorded on HowLongToBeat.}
 \label{fig:gamelengths-density}
 \end{figure}
 
-Nonetheless, the distribution of game lengths from this set can still be worth to look at in the context of putting value to games for consumers of different platforms. As seen in Figure~\ref{fig:gamelengths-density} the play lengths vary greatly, with the median at \SI{7.5}{\hour} and a long tail of long play times reaching \SI{420}{\hour}.
+Nonetheless, the distribution of game lengths from this set can still be worth to look at in the context of putting value to games for consumers of different platforms. As seen in Figure~\ref{fig:gamelengths-density} the play lengths vary greatly, with the median at \SI{7.5}{\hour} and a long tail of play times reaching \SI{420}{\hour}.
+
+%Game lengths can not only serve as an indicator of the amount of content a game has to offer, but can also serve as an engagement metric to estimate a user's amount of satisfaction. More fitting engagement metrics could also be employed.
 
 
 %%%%%%%%%%%%
-\subsubsection{Metacritic Data}
+\subsubsection{Review Scores}
 
-Game lengths can not only serve as an indicator of the amount of content a game has to offer, but can also serve as an engagement metric to estimate a user's amount of satisfaction. More fitting engagement metrics could also be employed.
+A final indirect measure of value and user satisfaction are review score as given by professional gaming media outlets. The largest dataset of such scores is available through Metacritic\footnote{\url{http://www.metacritic.com/}} and also included for this examination\footnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
+
+This set covers all gaming platforms, current and historic. The review scores are aggregated to a single average scores of $0$--$100$, although some internal weighing factors are applied, signifying the importance of some media outlets over others.
+
+The exact release date of every title is also included, leading to another possible engagement metric: the game's age. Barring some highly favored classic titles, more recent games are usually much more popular than older ones.
+
 
 % TODO: include or compare with data from opencritic.com as soon as their API is public/usable
 
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/releases-per-year.pdf}
-	\caption{Number of game releases per platform according to the Metacritic data.}
-\label{fig:releases-per-year}
-\end{figure}
+% \begin{figure}[!t]
+% 	\centering
+% 	\includegraphics[width=1.0\columnwidth]{images/releases-per-year.pdf}
+% 	\caption{Number of game releases per platform according to the Metacritic data.}
+% \label{fig:releases-per-year}
+% \end{figure}
 
 
 

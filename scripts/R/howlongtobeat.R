@@ -13,7 +13,11 @@ median(df.hltb$combined_length, na.rm = TRUE)
 
 
 ggplot(df.hltb, aes(x = combined_length, color=as.factor(platform))) + stat_ecdf() + scale_x_log10()
-ggplot(df.hltb, aes(x = combined_length)) + stat_density()  + scale_x_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
+
+p <- ggplot(df.hltb, aes(x = combined_length)) + stat_density()  + scale_x_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
+p <- p + xlab("avg. combined playthrough length (h)") + ylab("density")
+p <- p + theme(text = element_text(size=20))
+p
 ggsave("gamelengths-density.pdf", width=12, height=8)
 
 
