@@ -74,6 +74,23 @@ The leading question for the user side of the cost-benefit analysis is: ``How ca
 
 However, there are still a number of metrics independent of ones own subjective opinion that can give a more objective impression of the popularity and the value of individual titles. Both these attributes usually play a role in one's decision to play a certain game. In order to investigate such metrics, data had to be collected from various sources and merged into a consistent data base. All the code, data as well as this paper itself can be found in public code repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}} in the interest of repeatability and reproducibility. The following paragraphs describe the individual sets.
 
+\begin{table}
+\caption{Metadata for the \steam, \metacritic, \hltb, \psnow, and \gfnow datasets. Records with a * note include games from other platforms than PC, PlayStation, and GeForce Shield.}
+\label{tab:dataset-metadata}
+\centering
+\begin{tabular}{c|c|r|c}
+\toprule
+Product & Date generated & \# of records & Method of generation\\
+\steam & 2015-07-14 & \num{5996} & SteamSpy API\\
+\steam & 2015-10-30 & \num{6769} & SteamSpy API\\
+\steam & 2016-02-06 & \num{7749} & SteamSpy API\\
+\psnow & 2016-02-09??? & \num{252} & Wikipedia scraping???\\
+\gfnow & 2016-02-12 & \num{69} & Manual screen scraping\\
+\metacritic & 2016-02-09 & * \num{45803} & Web scraping\\
+\hltb & 2016-02-09 & * \num{18129} & Web scraping\\
+\end{tabular}
+\end{table}
+
 %%%%%%%%%%%%
 \subsubsection{Game Prices and Ownership}
 
