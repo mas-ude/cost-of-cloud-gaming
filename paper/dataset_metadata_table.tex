@@ -1,0 +1,18 @@
+%!TEX root = paper.tex
+
+\begin{table}
+\caption{Metadata for the \steam, \metacritic, \hltb, \psnow, and \gfnow datasets. Records with a * note include games from other platforms than PC, PlayStation, and GeForce Shield.}
+\label{tab:dataset-metadata}
+\centering
+\begin{tabular}{c|c|r|c}
+\toprule
+Product & Date generated & \# of records & Method of generation\\
+\steam & 2015-07-14 & \num{5996} & SteamSpy API\\
+\steam & 2015-10-30 & \num{6769} & SteamSpy API\\
+\steam & 2016-02-06 & \num{7749} & SteamSpy API\\
+\psnow & 2016-02-09??? & \num{252} & Wikipedia scraping???\\
+\gfnow & 2016-02-12 & \num{69} & Manual screen scraping\\
+\metacritic & 2016-02-09 & * \num{45803} & Web scraping\\
+\hltb & 2016-02-09 & * \num{18129} & Web scraping\\
+\end{tabular}
+\end{table}
