@@ -11,6 +11,9 @@ summary(df.hltb)
 mean(df.hltb$combined_length, na.rm = TRUE)
 median(df.hltb$combined_length, na.rm = TRUE)
 
+orig_df.hltb <- df.hltb
+
+df.hltb <- subset(df.hltb, platform %in% c("PC", "OnLive", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation Now", "PSP"))
 
 ggplot(df.hltb, aes(x = combined_length, color=as.factor(platform))) + stat_ecdf() + scale_x_log10()
 
@@ -20,7 +23,7 @@ p <- p + theme(text = element_text(size=20))
 p
 ggsave("gamelengths-density.pdf", width=12, height=8)
 
-
+ggplot(df.hltb, aes(x=combined_length, fill=as.factor(platform))) + stat_density() + scale_x_log10()
 
 ## dataset merging efforts
 # work-in-progress and TODO!
