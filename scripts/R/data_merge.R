@@ -5,7 +5,9 @@ setwd("/Users/sv/Desktop/cost-of-cloud-gaming/scripts/R/")
 
 # === LOADING DATA ===
 
-df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",")
+#df.steamdata <- read.csv(file="steamdata-20150714.csv", head=TRUE, sep=",")
+#df.steamdata <- read.csv(file="steamdata-20151030.csv", head=TRUE, sep=",")
+df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
 df.metacritic <- read.csv("metacritic-20160209.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 df.hltb <- read.csv("howlongtobeat-20160209.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
 df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
