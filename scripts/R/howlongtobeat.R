@@ -5,17 +5,22 @@ library(ggplot2)
 
 #setwd("git/cost-of-cloud-gaming/data/")
 
-df.hltb <- read.csv("howlongtobeat-20160209.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
+df.hltb <- read.csv("howlongtobeat-20160301.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
 
 summary(df.hltb)
 mean(df.hltb$combined_length, na.rm = TRUE)
 median(df.hltb$combined_length, na.rm = TRUE)
 
 orig_df.hltb <- df.hltb
-
 df.hltb <- subset(df.hltb, platform %in% c("PC", "OnLive", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation Now", "PSP"))
 
 ggplot(df.hltb, aes(x = combined_length, color=as.factor(platform))) + stat_ecdf() + scale_x_log10()
+
+
+
+ggplot(df.hltb, aes(x = combined_length, color=as.factor(platform))) + stat_ecdf() + scale_x_log10()
+
+
 
 p <- ggplot(df.hltb, aes(x = combined_length)) + stat_density()  + scale_x_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
 p <- p + xlab("avg. combined playthrough length (h)") + ylab("density")
@@ -49,11 +54,18 @@ ggplot(df.steammetascorehltb, aes(x = score)) + stat_ecdf()
 
 
 
-## merge with gamelengths.com dataset
-# optional, as it contains only very entries 
-#df.lengths <- read.csv("data/gamelengths.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "character"))
 
-## average the lengths over each occurence on the individual platforms and count the reports
-#tmp1 <- aggregate(average_length ~ title, data = df.lengths,FUN="mean")
-#tmp2 <- aggregate(times_reported ~ title, data = df.lengths,FUN="sum")
-#df.lengths.cross <- merge(tmp1, tmp2, by = "title")
+df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
+df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
+
+
+df.hltb$title <- tolower(df.hltb$title)
+df.gfnow$name <- tolower(df.gfnow$name)
+df.psnow$Title <- tolower(df.psnow$Title)
+
+df.hltb.pc = subset(df.hltb, platform == "PC")
+df.hltb.ps = subset(df.hltb, platform %in% c("Playstation", "Playstation 2", "Playstation 3"))
+
+
+
+df.consolidated <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
