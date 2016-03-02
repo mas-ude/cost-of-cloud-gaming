@@ -12,7 +12,7 @@ mean(df.hltb$combined_length, na.rm = TRUE)
 median(df.hltb$combined_length, na.rm = TRUE)
 
 orig_df.hltb <- df.hltb
-df.hltb <- subset(df.hltb, platform %in% c("PC", "OnLive", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation Now", "PSP"))
+#df.hltb <- subset(df.hltb, platform %in% c("PC", "OnLive", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation Now", "PSP"))
 
 ggplot(df.hltb, aes(x = combined_length, color=as.factor(platform))) + stat_ecdf() + scale_x_log10()
 
@@ -54,7 +54,7 @@ ggplot(df.steammetascorehltb, aes(x = score)) + stat_ecdf()
 
 
 
-
+#############################
 df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
 df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
 
@@ -64,8 +64,10 @@ df.gfnow$name <- tolower(df.gfnow$name)
 df.psnow$Title <- tolower(df.psnow$Title)
 
 df.hltb.pc = subset(df.hltb, platform == "PC")
-df.hltb.ps = subset(df.hltb, platform %in% c("Playstation", "Playstation 2", "Playstation 3"))
+df.hltb.ps = subset(df.hltb, platform %in% c("PlayStation", "PlayStation 2", "PlayStation 3"))
 
 
 
-df.consolidated <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
+df.consolidated.gfnow <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
+
+df.consolidated.psnow <- merge(df.psnow, df.hltb.ps, by.x = "Title", by.y = "title", all.x = TRUE)

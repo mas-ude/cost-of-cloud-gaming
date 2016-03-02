@@ -16,10 +16,11 @@ df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("char
 # === MERGING DATA SETS ===
 
 # Delete all platforms which are not 'pc'
-df.metacritic = subset(df.metacritic, platform == "pc")
+df.metacritic.pc = subset(df.metacritic, platform == "pc")
 
 # Delete all platforms which are not 'PC', 'Mac' or 'Linux'
-df.hltb1 = subset(df.hltb, platform == "PC")
+#df.hltb1 = subset(df.hltb, platform == "PC")
+df.hltb.pc = subset(df.hltb, platform == "PC")
 #df.hltb2 = subset(df.hltb, platform == "Mac")
 #df.hltb3 = subset(df.hltb, platform == "Linux")
 df.hltb = df.hltb1
