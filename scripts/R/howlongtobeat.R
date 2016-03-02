@@ -77,6 +77,7 @@ df.lengths <- data.frame()
 df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.psnow$Title, platform = "PlayStation Now", combined_length = df.consolidated.psnow$combined_length))
 df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.gfnow$name, platform = "Geforce Now", combined_length = df.consolidated.gfnow$combined_length))
 df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.steam$name, platform = "Steam", combined_length = df.consolidated.steam$combined_length))
+df.lengths <- rbind(df.lengths, data.frame(title = df.hltb$title, platform = "overall", combined_length = df.hltb$combined_length))
 
 
 ## density plot
