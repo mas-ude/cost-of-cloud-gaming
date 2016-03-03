@@ -17,15 +17,17 @@ the results
 generally in favor of conventional gaming, but only by a 
 tiny margin. Some publications even praise the method and attest high 
 \gls{QoE} values.
+\todo[inline]{PZ: praise and \gls{QoE} values .. is there a ref on that? .. maybe acceptable/reasonable \gls{QoE} levels?}
 
 So, if there are only negligible quality drawbacks --- according to the 
-literature --- what about the commercial success of cloud gaming? In 
-theory, there could be large economic benefits for users that should 
-foster a quick adaptation of such services. 
-However, quite a few commercial services have already come and gone, 
-with a rather high rate of fluctuation. For example, one of the most 
-prominent services in the past, \textsc{OnLive}, shut down and was forced to 
+literature --- what about the commercial success of cloud gaming? Intuitively one would assume that users could yield substantial cost and flexibility benefits as a result of scaling effects of the used cloud gamin hardware in comparison to equipment-heavy classical home gaming approaches. However, the cloud gaming market seems to stagnate with a high rate of fluctuation on the market, i.e., a constant stream of market entrances and exits. For example, one of the most prominent services in the past, \textsc{OnLive}, shut down and was forced to 
 sell off its remaining assets.
+
+\todo[inline]{PZ: ``sell off its remaining assets'' -- means?}
+
+%In theory, there could be large economic benefits for users that should foster a quick adaptation of such services. 
+%quite a few commercial services have already come and gone, 
+%with a rather high rate of fluctuation. 
 
 All cloud gaming services, current as well 
 as past, come with some subtle differences in their service, including 
@@ -80,10 +82,11 @@ cases the Cloud Gaming services' offer is very limited yet still
 charges relatively high prices, thus limiting the attractiveness for 
 users in comparison to alternative services.
 
+\todo[inline]{PZ: Dieser Teil ist fuer mich fast eher Motivation u. konnete vor die Forschungsfragen gezogen werden.}
 Due to the limited amount of freely available data on operating a Cloud 
 Gaming service, the perspective of the Cloud Gaming operator is 
-investigated by setting up efficiency models centered around the 
-overbooking rate. Our initial results hint at the problematic 
+investigated by setting up efficiency models centered around the analysis of 
+overbooking practices for server resources. Our initial results hint at the problematic 
 nature of Cloud Gaming in terms of scaling and cost efficiency. When 
 compared to other cloud services that achieve high values of cost 
 efficiency and capacity utilization, we believe that Cloud Gaming 
@@ -91,10 +94,11 @@ platforms will be much more peak-oriented and thus achieve much
 lower values of server utilization. The end-to-end lag requirements of 
 games demand a server placement in the vicinity of the user, which 
 eliminates most multiplexing gains that a centralized data center could 
-garner over the course of a day. Additionally, games require dedicated 
+garner over the course of a day. Thus, the scaling benefits may be substantially lower than for other cloud services. Additionally, games require dedicated 
 hardware support, which is of less use to most other cloud use 
 cases, diminishing the potential of cross-service reuse.
 
+\todo[inline]{PZ: Brauchen wir den Absatz? (bewusst provokant gefragt; Nachschaerfung macht eventuell dennoch Sinn.}
 These initial insights do not shed a good light on the commercial 
 future of Cloud Gaming services in general. Unless major cost reductions 
 are achieved, while the streaming quality is maintained or even improved, 
@@ -107,7 +111,7 @@ aspects and provide more detailed models in the future.
 This paper is structured as follows. Sec.~\ref{sec:relatedwork} 
 provides a brief overview of the related work. Afterwards, 
 Sec.~\ref{sec:background} explains all the necessary terms and 
-technical details to understand the topic. The main part of this work 
+technical details. The main part of this work 
 encompass Sections \ref{sec:engagement} and 
 \ref{sec:suppliermodelling}, which conduct the dual-perspective 
 investigation of the Cloud Gaming providers' and their competitions' 
