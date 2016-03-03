@@ -7,7 +7,7 @@ library(plyr)
 # and place it in the data folder
 
 
-df.metacritic <- read.csv("metacritic-20160209.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
+df.metacritic <- read.csv("metacritic-20160302.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 df.metacritic$platform <- as.factor(df.metacritic$platform)
 df.metacritic$release <- as.Date(df.metacritic$release, format = "%B %d, %Y")
 ggplot(df.metacritic, aes(x=score, color=platform)) + stat_ecdf()
@@ -46,13 +46,13 @@ df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("char
 df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
 
 
-df.metacritic$title <- tolower(df.hltb$title)
+df.metacritic$title <- tolower(df.metacritic$title)
 df.gfnow$name <- tolower(df.gfnow$name)
 df.psnow$Title <- tolower(df.psnow$Title)
 
-df.hltb.pc = subset(df.hltb, platform == "PC")
-df.hltb.ps = subset(df.hltb, platform %in% c("Playstation", "Playstation 2", "Playstation 3"))
+df.metacritic.pc = subset(df.metacritic, platform == "pc")
+df.metacritic.ps = subset(df.metacritic, platform == "ps3")
 
-
-
-df.consolidated <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
+df.consolidated.gfnow <- merge(df.gfnow, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
+df.consolidated.psnow <- merge(df.psnow, df.metacritic.ps, by.x = "Title", by.y = "title", all.x = TRUE)
+df.consolidated.steam <- merge(df.steamdata, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
