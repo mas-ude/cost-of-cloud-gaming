@@ -56,3 +56,28 @@ df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
 df.consolidated.gfnow <- merge(df.gfnow, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
 df.consolidated.psnow <- merge(df.psnow, df.metacritic.ps, by.x = "Title", by.y = "title", all.x = TRUE)
 df.consolidated.steam <- merge(df.steamdata, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
+
+
+
+## generate data frame for multi-plat density plot
+
+df.scores <- data.frame()
+df.scores <- rbind(df.scores, data.frame(title = df.consolidated.psnow$Title, platform = "PlayStation Now", score = df.consolidated.psnow$score))
+df.scores <- rbind(df.scores, data.frame(title = df.consolidated.gfnow$name, platform = "Geforce Now", score = df.consolidated.gfnow$score))
+df.scores <- rbind(df.scores, data.frame(title = df.consolidated.steam$name, platform = "Steam", score = df.consolidated.steam$score))
+df.scores <- rbind(df.scores, data.frame(title = df.metacritic$title, platform = "overall", score = df.metacritic$score))
+
+
+## density plot
+p <- ggplot(df.scores, aes(x = score, fill = as.factor(platform), color = as.factor(platform))) + geom_density(alpha = 0.4) #+ scale_x_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
+p <- p + xlab("score") + ylab("density")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("gamelengths-by-platform-density.pdf", width=12, height=8)
+
+## violins
+p <- ggplot(df.scores, aes(x = as.factor(platform), y = score)) + geom_violin(adjust = .5, scale = "area", draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE) #+ scale_y_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
+p <- p + xlab("platform") + ylab("score")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("gamelengths-by-platform-violin.pdf", width=12, height=8)
