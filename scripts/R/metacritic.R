@@ -44,11 +44,13 @@ median(df.merged$age, na.rm = TRUE)
 #########################
 df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
 df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
+df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
 
 
 df.metacritic$title <- tolower(df.metacritic$title)
 df.gfnow$name <- tolower(df.gfnow$name)
 df.psnow$Title <- tolower(df.psnow$Title)
+df.steamdata$name <- tolower(df.steamdata$name)
 
 df.metacritic.pc = subset(df.metacritic, platform == "pc")
 df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
@@ -57,7 +59,7 @@ df.consolidated.gfnow <- merge(df.gfnow, df.metacritic.pc, by.x = "name", by.y =
 df.consolidated.psnow <- merge(df.psnow, df.metacritic.ps, by.x = "Title", by.y = "title", all.x = TRUE)
 df.consolidated.steam <- merge(df.steamdata, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
 
-
+tmp <- data.frame(df.consolidated.steam$name, df.consolidated.steam$score, df.consolidated.steam$release)
 
 ## generate data frame for multi-plat density plot
 
@@ -80,4 +82,4 @@ p <- ggplot(df.scores, aes(x = as.factor(platform), y = score)) + geom_violin(ad
 p <- p + xlab("platform") + ylab("score")
 p <- p + theme(text = element_text(size=20))
 p
-ggsave("gamelengths-by-platform-violin.pdf", width=12, height=8)
+ggsave("scores-by-platform-violin.pdf", width=12, height=8)
