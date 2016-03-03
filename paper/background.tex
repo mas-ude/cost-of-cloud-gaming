@@ -24,9 +24,9 @@ In order to utilize a game's multiplayer component, some services require you to
 
 \subsubsection{The PC Gaming Ecosystem}
 
-The rise of easy-to-use digital distribution platforms and the independent (i.e. ``indie'') game scene a few years back reinvigorated PC gaming. Today, PC gaming is dominated by large digital marketplaces, and Steam in particular. The platform, with about $10$ million concurrent users at every time of day, has fully embraced its digital and online-only nature and periodically offers large (seasonal) sales of recent games at greatly reduced prices (rebates of 75\% for a year-old game are not uncommon). 
+The rise of easy-to-use digital distribution platforms and the independent (i.e. ``indie'') game scene a few years back reinvigorated PC gaming. Today, PC gaming is dominated by large digital marketplaces, and \steam in particular. The platform, with about $10$ million concurrent users at every time of day, has fully embraced its digital and online-only nature and periodically offers large (seasonal) sales of recent games at greatly reduced prices (rebates of 75\% for a year-old game are not uncommon). 
 
-In addition, many resellers offer digital codes for other platforms, often at much lower prices. Alternative storefronts, entirely independent of Steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}, and enrich the competition even more.
+In addition, many resellers offer digital codes for other platforms, often at much lower prices. Alternative storefronts, entirely independent of \steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}, and enrich the competition even more.
 
 Another recent trend are game bundles, especially prevalent in indie games, which bundle together a number of games for either a low price or, more commonly, with a pay-what-you-want model with parts of the money going to charities. \textit{Humble Bundle}\footnote{\url{https://www.humblebundle.com/}} is a prominent example for this. The official prices for new major releases on PC are comparable to that of console titles. However, due to the competition the street prices are significantly lower even at launch, and also drop more quickly.
 
@@ -80,40 +80,40 @@ However, there are still a number of metrics independent of ones own subjective 
 %%%%%%%%%%%%
 \subsubsection{Game Prices and Ownership}
 
-An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the Steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points of time. The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during Steam's Lunar New Year Sale.
+An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points of time. The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during \steam's Lunar New Year Sale.
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/steam-prices.pdf}
-	\caption{CDF of games on the steam platform at three distinct dates. The February data was collected in a sales period.}
+	\caption{CDF of games on the \steam platform at three distinct dates. The February data was collected in a sales period.}
 \label{fig:steam-prices}
 \end{figure}
 
-This was combined with \acrshort{API}-data from the 3rd-party Web site SteamSpy\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible Steam user profiles and from this estimates statistics on the size of the playerbase and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on Steam. Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible.
+This was combined with \acrshort{API}-data from the 3rd-party Web site SteamSpy\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles and from this estimates statistics on the size of the playerbase and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible.
 
 \todo[inline]{Ist ``free'' auch in-app Purchase Zeug?}
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/steam-cost-vs-playtime-non-sale.pdf}
-	\caption{Violin plot of the average playtime of Steam games, broadly categorized by their prices.}
+	\caption{Violin plot of the average playtime of \steam games, broadly categorized by their prices.}
 \label{fig:steam-cost-vs-playtime-violin}
 \end{figure}
 
 
 
-Due to the strong popularity of Steam in PC gaming (even physical retail copies often require using the service nowadays) this set also gives a good general overview of the dimensions of PC gaming in general.
+Due to the strong popularity of \steam in PC gaming (even physical retail copies often require using the service nowadays) this set also gives a good general overview of the dimensions of PC gaming in general.
 
 
 %%%%%%%%%%%%
 \subsubsection{Game Lengths}
 
-While the previous dataset included numbers on the average playtime, but this is not necessarily representative of the length of one ``playthrough'' of a game. The latter might be another indicator of the amount (albeit not the quality) of content a game offers. To encompass this, data from the site HowLongToBeat\footnote{\url{http://howlongtobeat.com/}} was collected\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}. This site allows for manual reporting of playthrough times of games on any platform. Times are separated into different play styles (e.g. ``main story'' or ``completionist'') and only an aggregated time is shown. For this analysis only the average playtime of all play styles is taken into account. It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
+While the previous dataset included numbers on the average playtime, but this is not necessarily representative of the length of one ``playthrough'' of a game. The latter might be another indicator of the amount (albeit not the quality) of content a game offers. To encompass this, data from the site \hltb\footnote{\url{http://howlongtobeat.com/}} was collected\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}. This site allows for manual reporting of playthrough times of games on any platform. Times are separated into different play styles (e.g. ``main story'' or ``completionist'') and only an aggregated time is shown. For this analysis only the average playtime of all play styles is taken into account. It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/gamelengths-by-platform-violin.pdf}
-	\caption{Violin plot of the average game lengths over all play styles and separated for the investigated platforms as recorded on HowLongToBeat.}
+	\caption{Violin plot of the average game lengths over all play styles and separated for the investigated platforms as recorded on \hltb.}
 \label{fig:gamelengths-violin}
 \end{figure}
 
