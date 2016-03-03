@@ -40,3 +40,19 @@ median(df.merged$age, na.rm = TRUE)
 
 
 
+
+#########################
+df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
+df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
+
+
+df.metacritic$title <- tolower(df.hltb$title)
+df.gfnow$name <- tolower(df.gfnow$name)
+df.psnow$Title <- tolower(df.psnow$Title)
+
+df.hltb.pc = subset(df.hltb, platform == "PC")
+df.hltb.ps = subset(df.hltb, platform %in% c("Playstation", "Playstation 2", "Playstation 3"))
+
+
+
+df.consolidated <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)

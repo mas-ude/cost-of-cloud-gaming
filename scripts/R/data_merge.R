@@ -5,7 +5,9 @@ setwd("/Users/sv/Desktop/cost-of-cloud-gaming/scripts/R/")
 
 # === LOADING DATA ===
 
-df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",")
+#df.steamdata <- read.csv(file="steamdata-20150714.csv", head=TRUE, sep=",")
+#df.steamdata <- read.csv(file="steamdata-20151030.csv", head=TRUE, sep=",")
+df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
 df.metacritic <- read.csv("metacritic-20160209.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 df.hltb <- read.csv("howlongtobeat-20160209.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
 df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
@@ -14,10 +16,11 @@ df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("char
 # === MERGING DATA SETS ===
 
 # Delete all platforms which are not 'pc'
-df.metacritic = subset(df.metacritic, platform == "pc")
+df.metacritic.pc = subset(df.metacritic, platform == "pc")
 
 # Delete all platforms which are not 'PC', 'Mac' or 'Linux'
-df.hltb1 = subset(df.hltb, platform == "PC")
+#df.hltb1 = subset(df.hltb, platform == "PC")
+df.hltb.pc = subset(df.hltb, platform == "PC")
 #df.hltb2 = subset(df.hltb, platform == "Mac")
 #df.hltb3 = subset(df.hltb, platform == "Linux")
 df.hltb = df.hltb1

@@ -1,4 +1,7 @@
 library(ggplot2)
+library(Cairo)
+
+cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
 
 # load the data file you want to plot
 
@@ -18,9 +21,14 @@ for (csv.file in csv.list) {
 ggplot(df.priced, aes(x=owners, color=as.factor(date))) + stat_ecdf() + scale_x_log10()
 
 # prices
-ggplot(df.priced, aes(x=price, color=as.factor(date))) + stat_ecdf() + scale_x_log10()
-ggsave("steam-prices.pdf", width=12, height=8)
-
+df.priced$euro <- df.priced$price/100
+p <- ggplot(df.priced, aes(x=euro, color=as.factor(date)))
+p <- p + stat_ecdf(lwd = 2) + scale_x_log10()
+p <- p + xlab("price (€)") + ylab("ECDF")
+p <- p + scale_color_manual(values = cbPalette, name="date", labels=c("2015-07-14", "2015-10-30", "2016-02-06"))
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("steam-prices.pdf", width=12, height=8, device = cairo_pdf)
 
 
 ##############
