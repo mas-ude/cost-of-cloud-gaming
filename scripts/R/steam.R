@@ -99,11 +99,6 @@ df.priced2$price_category <- as.factor(df.priced2$price_category)
 df.priced2$price_category <- ordered(df.priced2$price_category, levels=c("free", "<5", "5 to 10", "10 to 20", "20 to 40", "above 40"))
 ggplot(df.priced2, aes(x=price_category, y=players_forever)) + geom_violin(adjust=.5) + scale_y_log10()
 ggsave("dampfviolinen-players.pdf")
-ggplot(df.priced2, aes(x=price_category, y=average_forever)) + geom_violin(adjust=.5, scale="count") + scale_y_log10()
-ggsave("dampfviolinen-playtime.pdf")
-
-ggplot(df.priced2, aes(x=price_category, y=average_forever)) + geom_boxplot() + scale_y_log10()
-
 
 
 d1 <- subset(df.priced, price==0  | (price>1000))
@@ -111,3 +106,38 @@ graph <- ggplot(d1, aes(x=average_forever, color=as.factor(sign(price))))
 graph + stat_ecdf() + scale_x_log10()
 
 
+#### paper violin price range vs average playtime violin plot
+## standalone section
+
+df.steamdata <- read.csv(file="steamdata-20151030.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
+
+df.steamdata$average_playtime_hours <- df.steamdata$average_forever / 60
+
+df.steam.prizecategory <- data.frame()
+for (i in 1:nrow(df.steamdata)) {
+  row <- df.steamdata[i,]
+  
+  if(row$price <= 0) {
+    row$price_category <- "free"
+  } else if (row$price > 0 & row$price <= 500){
+    row$price_category <- "<5"
+  } else if (row$price > 500 & row$price <= 1000) {
+    row$price_category <- "5 to 10"
+  } else if (row$price > 1000 & row$price <= 2000) {
+    row$price_category <- "10 to 20"
+  } else if (row$price > 2000 & row$price <= 4000) {
+    row$price_category <- "20 to 40"
+  } else if (row$price > 4000) {
+    row$price_category <- "above 40"
+  }  
+  tmp <- data.frame(row)
+  df.steam.prizecategory <- rbind(df.steam.prizecategory, tmp)
+}
+df.steam.prizecategory$price_category <- as.factor(df.steam.prizecategory$price_category)
+df.steam.prizecategory$price_category <- ordered(df.steam.prizecategory$price_category, levels=c("free", "<5", "5 to 10", "10 to 20", "20 to 40", "above 40"))
+
+p <- ggplot(df.steam.prizecategory, aes(x=price_category, y=average_playtime_hours)) + geom_violin(adjust=.5, draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)  + scale_y_log10(breaks = c(0.1, 10, 1000), labels = c(0.1, 10, 1000))
+p <- p + xlab("price range (€)") + ylab("average playtime (h)")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("steam-cost-vs-playtime-non-sale.pdf", width=12, height=8, device = cairo_pdf)
