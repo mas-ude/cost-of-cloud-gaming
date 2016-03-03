@@ -51,7 +51,7 @@ df.gfnow$name <- tolower(df.gfnow$name)
 df.psnow$Title <- tolower(df.psnow$Title)
 
 df.metacritic.pc = subset(df.metacritic, platform == "pc")
-df.metacritic.ps = subset(df.metacritic, platform == "ps3")
+df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
 
 df.consolidated.gfnow <- merge(df.gfnow, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
 df.consolidated.psnow <- merge(df.psnow, df.metacritic.ps, by.x = "Title", by.y = "title", all.x = TRUE)
