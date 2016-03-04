@@ -64,12 +64,21 @@ df.gfnow$name <- tolower(df.gfnow$name)
 df.psnow$Title <- tolower(df.psnow$Title)
 df.steamdata$name <- tolower(df.steamdata$name)
 
+## trim leading/trailing whitespaces to increase matching
+df.metacritic$title <- trimws(df.metacritic$title)
+df.gfnow$name <- trimws(df.gfnow$name)
+df.psnow$Title <- trimws(df.psnow$Title)
+df.steamdata$name <- trimws(df.steamdata$name)
+
 df.hltb.pc = subset(df.hltb, platform == "PC")
 df.hltb.ps = subset(df.hltb, platform %in% c("PlayStation", "PlayStation 2", "PlayStation 3"))
 
 df.consolidated.gfnow <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
 df.consolidated.psnow <- merge(df.psnow, df.hltb.ps, by.x = "Title", by.y = "title", all.x = TRUE)
 df.consolidated.steam <- merge(df.steamdata, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
+
+
+tmp <- data.frame(df.consolidated.steam$name, df.consolidated.steam$platform, df.consolidated.steam$main_story_length)
 
 ## generate data frame for multi-plat density plot
 
