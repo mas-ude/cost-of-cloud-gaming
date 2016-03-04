@@ -52,6 +52,12 @@ df.gfnow$name <- tolower(df.gfnow$name)
 df.psnow$Title <- tolower(df.psnow$Title)
 df.steamdata$name <- tolower(df.steamdata$name)
 
+## trim leading/trailing whitespaces to increase matching
+df.metacritic$title <- trimws(df.metacritic$title)
+df.gfnow$name <- trimws(df.gfnow$name)
+df.psnow$Title <- trimws(df.psnow$Title)
+df.steamdata$name <- trimws(df.steamdata$name)
+
 df.metacritic.pc = subset(df.metacritic, platform == "pc")
 df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
 
@@ -59,15 +65,13 @@ df.consolidated.gfnow <- merge(df.gfnow, df.metacritic.pc, by.x = "name", by.y =
 df.consolidated.psnow <- merge(df.psnow, df.metacritic.ps, by.x = "Title", by.y = "title", all.x = TRUE)
 df.consolidated.steam <- merge(df.steamdata, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
 
-tmp <- data.frame(df.consolidated.steam$name, df.consolidated.steam$score, df.consolidated.steam$release)
-
 ## generate data frame for multi-plat density plot
 
 df.scores <- data.frame()
-df.scores <- rbind(df.scores, data.frame(title = df.consolidated.psnow$Title, platform = "PlayStation Now", score = df.consolidated.psnow$score))
-df.scores <- rbind(df.scores, data.frame(title = df.consolidated.gfnow$name, platform = "Geforce Now", score = df.consolidated.gfnow$score))
-df.scores <- rbind(df.scores, data.frame(title = df.consolidated.steam$name, platform = "Steam", score = df.consolidated.steam$score))
-df.scores <- rbind(df.scores, data.frame(title = df.metacritic$title, platform = "overall", score = df.metacritic$score))
+df.scores <- rbind(df.scores, data.frame(title = df.consolidated.psnow$Title, platform = "PlayStation Now", score = df.consolidated.psnow$score, user_score = df.consolidated.psnow$user_score))
+df.scores <- rbind(df.scores, data.frame(title = df.consolidated.gfnow$name, platform = "Geforce Now", score = df.consolidated.gfnow$score, user_score = df.consolidated.gfnow$user_score))
+df.scores <- rbind(df.scores, data.frame(title = df.consolidated.steam$name, platform = "Steam", score = df.consolidated.steam$score, user_score = df.consolidated.steam$user_score))
+df.scores <- rbind(df.scores, data.frame(title = df.metacritic$title, platform = "overall", score = df.metacritic$score, user_score = df.metacritic$user_score))
 
 
 ## density plot
@@ -83,3 +87,11 @@ p <- p + xlab("platform") + ylab("score")
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("scores-by-platform-violin.pdf", width=12, height=8)
+
+
+## violins user score
+p <- ggplot(df.scores, aes(x = as.factor(platform), y = score)) + geom_violin(adjust = .5, scale = "area", draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE) #+ scale_y_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
+p <- p + xlab("platform") + ylab("score")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("scores-by-platform-violin-userscore.pdf", width=12, height=8)
