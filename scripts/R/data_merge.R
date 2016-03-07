@@ -1,51 +1,88 @@
 library(ggplot2)
 
 # set the working directory
-setwd("/Users/sv/Desktop/cost-of-cloud-gaming/scripts/R/")
+#setwd("/Users/sv/Desktop/cost-of-cloud-gaming/scripts/R/")
+#setwd("git/cost-of-cloud-gaming/data/")
 
 # === LOADING DATA ===
 
-#df.steamdata <- read.csv(file="steamdata-20150714.csv", head=TRUE, sep=",")
-#df.steamdata <- read.csv(file="steamdata-20151030.csv", head=TRUE, sep=",")
+df.steamdata.july <- read.csv(file="steamdata-20150714.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
+df.steamdata.october <- read.csv(file="steamdata-20151030.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
 df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
 df.metacritic <- read.csv("metacritic-20160209.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 df.hltb <- read.csv("howlongtobeat-20160209.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
 df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
 df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
 
-# === MERGING DATA SETS ===
+## convert date strings to objects and calculate yaer
+df.metacritic$release <- as.Date(df.metacritic$release, format = "%B %d, %Y")
+df.metacritic$year = strftime(df.metacritic$release, "%Y")
 
-# Delete all platforms which are not 'pc'
+
+# === DATA PREPARATION ===
+# improve matching of game titles by better aligning the strings
+
+## lowercase all titles
+df.hltb$title <- tolower(df.hltb$title)
+df.metacritic$title <- tolower(df.metacritic$title)
+df.gfnow$name <- tolower(df.gfnow$name)
+df.psnow$Title <- tolower(df.psnow$Title)
+df.steamdata$name <- tolower(df.steamdata$name)
+
+## trim leading/trailing whitespaces to increase matching
+df.hltb$title <- trimws(df.hltb$title)
+df.metacritic$title <- trimws(df.metacritic$title)
+df.gfnow$name <- trimws(df.gfnow$name)
+df.psnow$Title <- trimws(df.psnow$Title)
+df.steamdata$name <- trimws(df.steamdata$name)
+
+## strip all "-" and ":" from the strings, as this is the most common mismatch
+df.hltb$title <- str_replace_all(df.hltb$title, "[:-]", "")
+df.metacritic$title <- str_replace_all(df.metacritic$title, "[:-]", "")
+df.gfnow$name <- str_replace_all(df.gfnow$name, "[:-]", "")
+df.psnow$Title <- str_replace_all(df.psnow$Title, "[:-]", "")
+df.steamdata$name <- str_replace_all(df.steamdata$name, "[:-]", "")
+
+## merge double space to one
+df.hltb$title <- str_replace_all(df.hltb$title, "  ", " ")
+df.metacritic$title <- str_replace_all(df.metacritic$title, "  ", " ")
+df.gfnow$name <- str_replace_all(df.gfnow$name, "  ", " ")
+df.psnow$Title <- str_replace_all(df.psnow$Title, "  ", " ")
+df.steamdata$name <- str_replace_all(df.steamdata$name, "  ", " ")
+
+
+# === SUBSETTING ===
+## generate subsets of metacritic/hltb to match against gfnow/psnow/steam
+
+df.hltb.pc = subset(df.hltb, platform == "PC")
 df.metacritic.pc = subset(df.metacritic, platform == "pc")
 
-# Delete all platforms which are not 'PC', 'Mac' or 'Linux'
-#df.hltb1 = subset(df.hltb, platform == "PC")
-df.hltb.pc = subset(df.hltb, platform == "PC")
-#df.hltb2 = subset(df.hltb, platform == "Mac")
-#df.hltb3 = subset(df.hltb, platform == "Linux")
-df.hltb = df.hltb1
-#df.hltb = rbind(df.hltb1, df.hltb2, df.hltb3)
+df.hltb.ps = subset(df.hltb, platform %in% c("PlayStation", "PlayStation 2", "PlayStation 3"))
+df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
 
-# Merge all three dataframes into one
-# https://stat.ethz.ch/R-manual/R-devel/library/base/html/merge.html
-df.merge_step1 <- merge(df.steamdata, df.metacritic, by.x = "name", by.y = "title")
-df.consolidated <- merge(df.merge_step1, df.hltb, by.x = "name", by.y = "title")
 
-# Added years to calculate age of the game
-df.consolidated$release <- as.Date(df.consolidated$release, format = "%B %d, %Y")
-df.consolidated$year = strftime(df.consolidated$release, "%Y")
+# === MERGING DATA SETS ===
 
-# Some ideas for better results
+df.consolidated.gfnow <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
+df.consolidated.gfnow <- merge(df.consolidated.gfnow, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
 
-# adist() returns the Levenshtein distance of two strings
-# https://stat.ethz.ch/R-manual/R-devel/library/utils/html/adist.html
-# Example: drop(adist("kitten", "sitting", ignore.case = FALSE)), returns Levenshtein distance as number
-# BUT: Games with different version numbers have low Levenshtein distance as well! Example: "Doom 1", "Doom 2"
-# - maybe it would be good to ignore numbers?
+df.consolidated.psnow <- merge(df.psnow, df.hltb.ps, by.x = "Title", by.y = "title", all.x = TRUE)
+df.consolidated.psnow <- merge(df.consolidated.psnow, df.metacritic.ps, by.x = "Title", by.y = "title", all.x = TRUE)
 
-# Applying function toupper() (strings as upper case) as a workaround for missing case insensitivity
+df.consolidated.steam <- merge(df.steamdata, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
+df.consolidated.steam <- merge(df.consolidated.steam, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
 
-#summary(df.consolidated)
+
+# === DATAFRAME GENERATION ===
+# combine all the invididual dfs into one big df
+
+df.everything <- data.frame(df.consolidated.steam, delivery_platform = "Steam")
+tmp <- data.frame(df.consolidated.gfnow, delivery_platform = " Geforce Now", appid = NA, owners = NA, owners_variance = NA, players_forever = NA, players_forever_variance = NA, players_2weeks = NA, players_2weeks_variance = NA, average_forever = NA, average_2weeks = NA, median_forever = NA, median_2weeks = NA)
+df.everything <- rbind(df.everything, tmp)
+tmp <- data.frame(price = NA, name = df.consolidated.psnow$Title, appid = NA, owners = NA, owners_variance = NA, players_forever = NA, players_forever_variance = NA, players_2weeks = NA, players_2weeks_variance = NA, average_forever = NA, average_2weeks = NA, median_forever = NA, median_2weeks = NA, main_story_length = df.consolidated.psnow$main_story_length, mainextra_length = df.consolidated.psnow$mainextra_length, completionist_length = df.consolidated.psnow$completionist_length, combined_length = df.consolidated.psnow$combined_length, platform.x = df.consolidated.psnow$platform.x, user_score = df.consolidated.psnow$user_score, publisher = df.consolidated.psnow$publisher, genre = df.consolidated.psnow$genre, score = df.consolidated.psnow$score, release = df.consolidated.psnow$release, platform.y = df.consolidated.psnow$platform.y, year = df.consolidated.psnow$year, delivery_platform = "PlayStation Now")
+df.everything <- rbind(df.everything, tmp)
+
+
 
 # == CUSTOM BINNING ===
 

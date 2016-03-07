@@ -47,16 +47,33 @@ df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("char
 df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
 
 
+df.hltb$title <- tolower(df.hltb$title)
 df.metacritic$title <- tolower(df.metacritic$title)
 df.gfnow$name <- tolower(df.gfnow$name)
 df.psnow$Title <- tolower(df.psnow$Title)
 df.steamdata$name <- tolower(df.steamdata$name)
 
 ## trim leading/trailing whitespaces to increase matching
+df.hltb$title <- trimws(df.hltb$title)
 df.metacritic$title <- trimws(df.metacritic$title)
 df.gfnow$name <- trimws(df.gfnow$name)
 df.psnow$Title <- trimws(df.psnow$Title)
 df.steamdata$name <- trimws(df.steamdata$name)
+
+## strip all "-" and ":" from the strings, as this is the most common mismatch
+df.hltb$title <- str_replace_all(df.hltb$title, "[:-]", "")
+df.metacritic$title <- str_replace_all(df.metacritic$title, "[:-]", "")
+df.gfnow$name <- str_replace_all(df.gfnow$name, "[:-]", "")
+df.psnow$Title <- str_replace_all(df.psnow$Title, "[:-]", "")
+df.steamdata$name <- str_replace_all(df.steamdata$name, "[:-]", "")
+
+## merge double space to one
+df.hltb$title <- str_replace_all(df.hltb$title, "  ", " ")
+df.metacritic$title <- str_replace_all(df.metacritic$title, "  ", " ")
+df.gfnow$name <- str_replace_all(df.gfnow$name, "  ", " ")
+df.psnow$Title <- str_replace_all(df.psnow$Title, "  ", " ")
+df.steamdata$name <- str_replace_all(df.steamdata$name, "  ", " ")
+
 
 df.metacritic.pc = subset(df.metacritic, platform == "pc")
 df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
