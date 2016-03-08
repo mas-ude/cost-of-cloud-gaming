@@ -95,7 +95,9 @@ The average monthly customer price $\bar{p}$ aggregates the monthly subscription
 	\Longrightarrow \mathcal{C}_{u} :=& \frac{\epsilon \cdot \bar{p}}{m}
 \end{align}
 
-When treating the costs of the regional data center as blackbox (operational and capital costs for the data center, and required game licensing fees), the analysis can concentrate on the required capacity and licensing cost $\mathcal{C}_{u}$ per connected user $u$.
+When treating the costs of the regional data center as blackbox (operational and capital costs for the data center, and required game licensing fees), the analysis can concentrate on the required capacity and licensing cost $\mathcal{C}_{u}$ per user $u$ that can be connected at peak times. 
+
+%connected user $u$ at peak .
 
 %\begin{equation}
 %	ce = \frac{C_{cap}}{Cap} \quad .
@@ -139,17 +141,45 @@ When treating the costs of the regional data center as blackbox (operational and
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\todo[inline]{NOW LET'S ADD THE DATA. Check the 12.4m. E.g. user older data. Introduce customer base data and reasoning above. Illustrate that epsilon will be around 6.}
+%\todo[inline]{NOW LET'S ADD THE DATA. Check the 12.4m. E.g. user older data. Introduce customer base data and reasoning above. Illustrate that epsilon will be around 6.}
 
-When considering a measurement iteration between Feb 16 and 18, the minimum and maximum number of simultaneously connected users\footnote{\url{http://store.steampowered.com/stats/}, accessed: Feb 18, 2016} is 6.53m and 11.65m	 resp. Setting the maximum in relationship with the 75 million active steam users\footnote{http://venturebeat.com/2014/01/15/steam-has-75-million-registered-users-third-party-steam-controllers-and-other-tidbits-from-valves-dev-days/, last accessed: Feb 18, 2016}, we can calculate an $\epsilon_{max}$ of $6.44$. For crossvalidation purposes, link load considerations for other media streaming services may also be considered: When comparing the relative load level change between the minimum and maximum utilisation of a large Vietnamese ISP's Video on Demand (VoD) streaming server as given in \cite{thanh2012enabling} (reconstructed data for Thursday in Fig 2. as most peaky day), with the comparable change in the case, we would obtain a maximum number of simultaneously connected users of 58.3 million and an $\epsilon_{min}$ of $1.2931034483$. While the discrepancy may appear high, the associated payment modalities may be at cause: While steam sells game licenses, VoD services often use a subscription services (a flat rate for a given time period). For the subsequent analysis we will consider the range between the minimum $\epsilon_{min}$ and maximum $\epsilon_{max}$.
+When considering a measurement iteration between Feb 16 and 18, the minimum and maximum number of simultaneously connected users\footnote{\url{http://store.steampowered.com/stats/}, accessed: Feb 18, 2016} is 6.53m and 11.65m	 resp. Setting the maximum in relationship to the 75 million active steam users\footnote{http://venturebeat.com/2014/01/15/steam-has-75-million-registered-users-third-party-steam-controllers-and-other-tidbits-from-valves-dev-days/, last accessed: Feb 18, 2016}, we can calculate an $\epsilon_{steam}$ of $6.44$. For crossvalidation purposes, link load considerations for other media streaming services may also be considered: When comparing the relative load level change between the minimum and maximum utilisation of a large Vietnamese ISP's Video on Demand (VoD) streaming server as given in \cite{thanh2012enabling} (reconstructed data for Thursday in Fig 2. as most peaky day), with the comparable change in the case, we would obtain a maximum number of simultaneously connected users of 58.3 million and an $\epsilon_{sub}$ of $1.29$. While the discrepancy may appear high, the associated payment modalities may be at cause: While steam sells game licenses, VoD services often use a subscription services (a flat rate for a given time period). For the subsequent analysis we will consider the range between the minimum of $\epsilon_{sub}$ and maximum of $\epsilon_{steam}$.
 
-As a result, the capacity and licensing cost per user $\mathcal{C}_u$ needs to be below XXXXXXXX (for $\epsilon_{max}$)  or XXXX Euro ($\epsilon_{min}$) for obtaining the required minimum margin $m$. Scaling theses costs to the population of $11.65m$ and  $58.3m$ users, we obtain a total server capacity cost $\mathcal{C}_{Cap}$, which should not exceed XXX and XXX Euro resp. 
+Moreover, the average price $\bar{p}$ is also parameterised on the basis of the collected Steam data. This data does, however, not reveal the actual $\bar{p}$ for a game, which also includes the historic price changes, but only the current price and the volume of sold games. In this respect, we can distinguish the average price for the current portfolio (portfolio price) and weighted according to the known volume (weighted price) for the assessment times of Summer 2015, end of October 2015 and March 2016 -- see~Table \ref{tab:dataset-stats}. To reflect the range of the collected data, subsequently the minimum, i.e.,  $\bar{p}_{min} = 5.30$, and the maximum values, i.e., $\bar{p}_{max} = 12.39$, are used as inputs for the subsequent cost considerations.
+
+\begin{table}
+\centering
+\caption{Average prices for steam games.}
+\label{tab:dataset-stats}
+\begin{tabular}{c|r|r|r}
+					& \textbf{Summer 15´} & \textbf{End of Oct/15´} & \textbf{March 16´} \\ \hline \hline
+	\textbf{Portfolio price} & EUR 10.10879	& EUR 8.472082		& EUR 5.648507 \\
+	\textbf{Weighted price} 	& \textbf{EUR 12.39184}	& EUR 10.21138		& \textbf{EUR 5.304493} \\
+\end{tabular}
+\end{table}
+
+%NOW CALCULATE:
+% EPSILON_SUB 1.2931034483
+% EPSILON_STEAM: 6.44 
+% EPSILON: Between 1.2931034483 AND 6.44
+% AVG PRICE: Between 5.304493 AND  12.39184 
+% M: 3% => 1.03
+% CALCULATION:
+%
+% Case 1: 1.2931034483 * 5.304493 / 1.03 = 6.6594739707
+% Case 2: 1.2931034483 * 12.39184 / 1.03 = 15.557214597
+% Case 3: 6.44 * 5.304493 / 1.03 = 33.165956233
+% Case 4: 6.44 * 12.39184 / 1.03 = 77.479077282
+
+When applying the data of Table~\ref{tab:dataset-stats} and the found $\epsilon$ values to \eqref{eq:computational_efficiency}, it can be inferred that the monthly capacity and licensing cost per peak time user $\mathcal{C}_u$ needs to be below EUR $6.659$ (lower bound scenario; $\epsilon_{sub}$ with $\bar{p}_{min}$) or EUR $77.479$ (upper bound scenario; $\epsilon_{steam}$ with $\bar{p}_{min}$ to obtain a minimum margin $m=1.03$. Scaling theses costs to the peaktime population of $11.65m$ we obtain the maximum server capacity costs $\mathcal{C}_{Cap}$ between EUR $77.577m$ and EUR $902.630m$ per month for a cloud game service of the size of Steam.
+
+%and  $58.3m$ users, we obtain a total server capacity cost $\mathcal{C}_{Cap}$, which should not exceed XXX and XXX Euro resp. 
+
+%the capacity and licensing cost per user $\mathcal{C}_u$ needs to be below XXXXXXXX (for $\epsilon_{max}$)  or XXXX Euro ($\epsilon_{min}$) for obtaining the required minimum margin $m$. 
+
 
 %Thus, we can characterise that the successful cloud game provider will have a maximum $C_{u}$ in the following bounds:
 % for a successful market operation.
-
-
-
 
 Due to the requirement of using special hardware that is focused on the gaming use case, hardware sharing with other cloud applications seems unrealistic. Thus $\mathcal{C}_u$ can hardly be reduced by cloud service collaboration. However, to lower the investment demands, the platform operator could aim at increasing the overbooking ratio $\epsilon_{min}$ for the subscription case closer to the $\epsilon_{max}$ of the classical purchasing model. The could provider could, for example, offer off-peak subscriptions that allow the access to the platform only outside of peak hours.
 
