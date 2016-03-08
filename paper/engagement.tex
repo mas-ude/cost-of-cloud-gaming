@@ -1,35 +1,43 @@
 %!TEX root = paper.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{User Engagement Metrics and Comparison}
+\section{User Perspective and Prospects}
 \label{sec:engagement}
 
-% wer ist die zielgruppe?
-% was ist die beste platform?
-% gibt es eine mainstream platform?
-% unterschiedliche ausrichtungen?
+To get a grasp of the value of the introduced platforms, this section examines the users' perspective of gaming services, following a two-pronged approach. The first part introduces and discusses possible engagement metrics applicable to such services, while the second portion assembles some temporal cost-benefit models for hypothetical platform customers.
 
-%%%%%%%%%%%%
-% \subsection{platform-market-comparison/games-per-year.R}
 
- hat den ersten Versuch einer Nutzenrechnung für Spieler auf verschiedenen Plattformen. Script könnte leicht angepasst und erweitert werden. Beispielausgabe \ref{fig:gamesperyear-over-budget}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Engagement Metrics}
 
-\todo[inline]{PZ: Ist Grafik \ref{fig:games-over-years} die Basis fuer die Steigung bei ps now usw. ab dem Eintritt in Fig.~\ref{fig:gamesperyear-over-budget}. Ps now wuerde ich als Club Good sehen.}
-\todo[inline]{FM: psnow/clubgood in the sense of a backwards compatibility service for devices that do not have native access to the streamed titles?.}
+Metrics for user engagement, defined as ``\textit{the quality of the user experience that emphasises the positive aspects of the interaction, and in particular the phenomena associated with being captivated by a web application, and so being motivated to use it}''\cite{Lehmann2012}, can be used to compare different services against each other. The problem with engagement is finding the right measures befitting the type of service under scrutiny, in this case gaming, and cloud gaming in particular.
 
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/gamesperyear-over-budget.pdf}
-	\caption{Models for several platforms showing the number of games per year that can be bought with a specific \$ budget.}
-\label{fig:gamesperyear-over-budget}
-\end{figure}
+So, what does engage gamers?
 
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/games-over-year.pdf}
-	\caption{Models for several platforms showing the number of games that can be bought over the years subscribed to / using this service.}
-\label{fig:games-over-years}
-\end{figure}
 
+\begin{table*}
+\centering
+\caption{Overview of datasets. Values with * are 99th percentiles chosen due to unrealistically large outliers.}
+\label{tab:dataset-stats}
+	\begin{tabu}{X[1.5]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
+	\toprule
+	Service & Titles & Age Mean & Age Var & Length Mean & Length Var & Score Mean & Score Var\\
+	\midrule
+	\gfnow & $68$ & $2.38$ & $3.80$ & -- & -- & -- & -- \\
+	\psnow & $252$ & $4.27$ & $5.00$ & -- & -- & -- & -- \\
+	\steam & $7749$ & $2.86$ & $15.71$ & -- & -- & -- & -- \\
+	\bottomrule
+	\end{tabu}
+\end{table*}
+
+% metacritic titles:
+% PC 16192
+% PS4 817
+% XB1 588
+% WiiU 474
+% 3DS 871
+% GFNOW 68
+% PSNOW 243
+% STEAM 7749
 
 
 \begin{figure}[!t]
@@ -115,4 +123,43 @@ However, when having a look at figures \ref{fig:rel-price-category-owners} and \
 	\caption{Relationship score category to ownership (\textbf{TODO: Bars need sorting})}
 \label{fig:rel-score-category-owners}
 \end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Cost-Benefit Models}
+
+Neglected in the previous engagement metrics was the factor price...
+
+
+
+ hat den ersten Versuch einer Nutzenrechnung für Spieler auf verschiedenen Plattformen. Script könnte leicht angepasst und erweitert werden. Beispielausgabe \ref{fig:gamesperyear-over-budget}
+
+\todo[inline]{PZ: Ist Grafik \ref{fig:games-over-years} die Basis fuer die Steigung bei ps now usw. ab dem Eintritt in Fig.~\ref{fig:gamesperyear-over-budget}. Ps now wuerde ich als Club Good sehen.}
+\todo[inline]{FM: psnow/clubgood in the sense of a backwards compatibility service for devices that do not have native access to the streamed titles?.}
+
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/gamesperyear-over-budget.pdf}
+	\caption{Models for several platforms showing the number of games per year that can be bought with a specific \$ budget.}
+\label{fig:gamesperyear-over-budget}
+\end{figure}
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/games-over-year.pdf}
+	\caption{Models for several platforms showing the number of games that can be bought over the years subscribed to / using this service.}
+\label{fig:games-over-years}
+\end{figure}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Discussion}
+
+PS Now specifically caters towards older titles and backwards compatability, may find a niche here
+% wer ist die zielgruppe?
+% was ist die beste platform?
+% gibt es eine mainstream platform?
+% unterschiedliche ausrichtungen?
 

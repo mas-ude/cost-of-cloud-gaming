@@ -1,12 +1,8 @@
 library(ggplot2)
 library(stringr)
 
-## TODO: unify category names across datasets and merge by title AND category
-## TODO: remove outliers, e.g. runescape @ 100000h
+### load data with data_merge.R first! ###
 
-#setwd("git/cost-of-cloud-gaming/data/")
-
-df.hltb <- read.csv("howlongtobeat-20160301.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
 
 summary(df.hltb)
 mean(df.hltb$combined_length, na.rm = TRUE)
@@ -16,8 +12,6 @@ orig_df.hltb <- df.hltb
 #df.hltb <- subset(df.hltb, platform %in% c("PC", "OnLive", "PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4", "PlayStation Now", "PSP"))
 
 ggplot(df.hltb, aes(x = combined_length, color=as.factor(platform))) + stat_ecdf() + scale_x_log10()
-
-
 
 ggplot(df.hltb, aes(x = combined_length, color=as.factor(platform))) + stat_ecdf() + scale_x_log10()
 
@@ -31,22 +25,6 @@ ggsave("gamelengths-density.pdf", width=12, height=8)
 
 ggplot(df.hltb, aes(x=combined_length, fill=as.factor(platform))) + stat_density() + scale_x_log10()
 
-## dataset merging efforts
-# work-in-progress and TODO!
-
-
-df.merged2 <- merge(df.merged, df.lengths.cross, by.x = "Title", by.y = "title", all.x = TRUE)
-df.merged2 <- merge(df.metacritic, df.hltb, by ="title", all.x = TRUE, all.y = TRUE)
-
-tmp <- df.hltb[order(-df.hltb$combined_length),]
-
-####  combine some stuff with steam datasets
-## TODO: consider using adist() for fuzzy string matching the titles
-## http://www.r-bloggers.com/fuzzy-string-matching-a-survival-skill-to-tackle-unstructured-information/
-string.matches <- adist(subset(df.priced, date = "20151015")$name, subset(df.metacritic, platform == "pc")$title, ignore.case = TRUE)
-
-df.steammetascore <- merge(df.priced, subset(df.metacritic, platform == "pc"), by.x = "name", by.y = "title", all.x = TRUE)
-df.steammetascorehltb <- merge(df.steammetascore, subset(df.hltb, platform == "PC"), by.x = "name", by.y = "title", all.x = TRUE)
 
 # hist of steam games metacritic score
 ggplot(df.steammetascorehltb, aes(x = score)) + geom_histogram(binwidth = 1)
@@ -55,47 +33,6 @@ ggplot(df.steammetascorehltb, aes(x = score)) + stat_ecdf()
 
 
 
-#############################
-df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
-df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
-df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
-
-df.hltb$title <- tolower(df.hltb$title)
-df.metacritic$title <- tolower(df.metacritic$title)
-df.gfnow$name <- tolower(df.gfnow$name)
-df.psnow$Title <- tolower(df.psnow$Title)
-df.steamdata$name <- tolower(df.steamdata$name)
-
-## trim leading/trailing whitespaces to increase matching
-df.hltb$title <- trimws(df.hltb$title)
-df.metacritic$title <- trimws(df.metacritic$title)
-df.gfnow$name <- trimws(df.gfnow$name)
-df.psnow$Title <- trimws(df.psnow$Title)
-df.steamdata$name <- trimws(df.steamdata$name)
-
-## strip all "-" and ":" from the strings, as this is the most common mismatch
-df.hltb$title <- str_replace_all(df.hltb$title, "[:-]", "")
-df.metacritic$title <- str_replace_all(df.metacritic$title, "[:-]", "")
-df.gfnow$name <- str_replace_all(df.gfnow$name, "[:-]", "")
-df.psnow$Title <- str_replace_all(df.psnow$Title, "[:-]", "")
-df.steamdata$name <- str_replace_all(df.steamdata$name, "[:-]", "")
-
-## merge double space to one
-df.hltb$title <- str_replace_all(df.hltb$title, "  ", " ")
-df.metacritic$title <- str_replace_all(df.metacritic$title, "  ", " ")
-df.gfnow$name <- str_replace_all(df.gfnow$name, "  ", " ")
-df.psnow$Title <- str_replace_all(df.psnow$Title, "  ", " ")
-df.steamdata$name <- str_replace_all(df.steamdata$name, "  ", " ")
-
-df.hltb.pc = subset(df.hltb, platform == "PC")
-df.hltb.ps = subset(df.hltb, platform %in% c("PlayStation", "PlayStation 2", "PlayStation 3"))
-
-df.consolidated.gfnow <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
-df.consolidated.psnow <- merge(df.psnow, df.hltb.ps, by.x = "Title", by.y = "title", all.x = TRUE)
-df.consolidated.steam <- merge(df.steamdata, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
-
-
-tmp <- data.frame(df.consolidated.steam$name, df.consolidated.steam$platform, df.consolidated.steam$main_story_length)
 
 ## generate data frame for multi-plat density plot
 

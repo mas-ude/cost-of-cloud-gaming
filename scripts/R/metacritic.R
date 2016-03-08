@@ -1,15 +1,10 @@
 library(ggplot2)
 library(plyr)
 
-### load and analyse metacritic data
-# Note: file not provided here
-# scrape the data with https://github.com/mas-ude/metacritic_scraper
-# and place it in the data folder
+### load data with data_merge.R first! ###
 
 
-df.metacritic <- read.csv("metacritic-20160302.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 df.metacritic$platform <- as.factor(df.metacritic$platform)
-df.metacritic$release <- as.Date(df.metacritic$release, format = "%B %d, %Y")
 ggplot(df.metacritic, aes(x=score, color=platform)) + stat_ecdf()
 ggplot(df.metacritic, aes(x=score, color=platform)) + stat_density(position = "dodge", fill=NA, lwd=1)
 
@@ -42,45 +37,6 @@ median(df.merged$age, na.rm = TRUE)
 
 
 #########################
-df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
-df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
-df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
-
-
-df.hltb$title <- tolower(df.hltb$title)
-df.metacritic$title <- tolower(df.metacritic$title)
-df.gfnow$name <- tolower(df.gfnow$name)
-df.psnow$Title <- tolower(df.psnow$Title)
-df.steamdata$name <- tolower(df.steamdata$name)
-
-## trim leading/trailing whitespaces to increase matching
-df.hltb$title <- trimws(df.hltb$title)
-df.metacritic$title <- trimws(df.metacritic$title)
-df.gfnow$name <- trimws(df.gfnow$name)
-df.psnow$Title <- trimws(df.psnow$Title)
-df.steamdata$name <- trimws(df.steamdata$name)
-
-## strip all "-" and ":" from the strings, as this is the most common mismatch
-df.hltb$title <- str_replace_all(df.hltb$title, "[:-]", "")
-df.metacritic$title <- str_replace_all(df.metacritic$title, "[:-]", "")
-df.gfnow$name <- str_replace_all(df.gfnow$name, "[:-]", "")
-df.psnow$Title <- str_replace_all(df.psnow$Title, "[:-]", "")
-df.steamdata$name <- str_replace_all(df.steamdata$name, "[:-]", "")
-
-## merge double space to one
-df.hltb$title <- str_replace_all(df.hltb$title, "  ", " ")
-df.metacritic$title <- str_replace_all(df.metacritic$title, "  ", " ")
-df.gfnow$name <- str_replace_all(df.gfnow$name, "  ", " ")
-df.psnow$Title <- str_replace_all(df.psnow$Title, "  ", " ")
-df.steamdata$name <- str_replace_all(df.steamdata$name, "  ", " ")
-
-
-df.metacritic.pc = subset(df.metacritic, platform == "pc")
-df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
-
-df.consolidated.gfnow <- merge(df.gfnow, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
-df.consolidated.psnow <- merge(df.psnow, df.metacritic.ps, by.x = "Title", by.y = "title", all.x = TRUE)
-df.consolidated.steam <- merge(df.steamdata, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
 
 ## generate data frame for multi-plat density plot
 
@@ -112,3 +68,32 @@ p <- p + xlab("platform") + ylab("score")
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("scores-by-platform-violin-userscore.pdf", width=12, height=8)
+
+
+
+
+##### age calculation
+
+# from https://stackoverflow.com/questions/3611314/calculating-ages-in-r
+age = function(from, to) {
+  from_lt = as.POSIXlt(from)
+  to_lt = as.POSIXlt(to)
+  
+  age = to_lt$year - from_lt$year
+  
+  ifelse(to_lt$mon < from_lt$mon |
+           (to_lt$mon == from_lt$mon & to_lt$mday < from_lt$mday),
+         age - 1, age)
+}
+
+# gfnow
+mean(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 2.38
+var(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 3.80
+
+# psnow
+mean(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 4.27
+var(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 5.00
+
+# steam
+mean(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 2.86
+var(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 15.71
