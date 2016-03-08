@@ -89,11 +89,46 @@ age = function(from, to) {
 # gfnow
 mean(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 2.38
 var(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 3.80
+sd(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 1.95
 
 # psnow
 mean(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 4.27
 var(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 5.00
+sd(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 2.24
 
 # steam
 mean(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 2.86
 var(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 15.71
+sd(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 3.96
+
+
+### score stats ###
+
+# gfnow
+mean(df.consolidated.gfnow$score, na.rm = TRUE) # 76.12
+var(df.consolidated.gfnow$score, na.rm = TRUE) # 91.60
+sd(df.consolidated.gfnow$score, na.rm = TRUE) # 9.57
+
+mean(df.consolidated.gfnow$user_score, na.rm = TRUE) * 10 # 72.55
+var(df.consolidated.gfnow$user_score, na.rm = TRUE) * 10 # 15.90
+sd(df.consolidated.gfnow$user_score, na.rm = TRUE) * 10 # 12.61
+
+
+# psnow
+mean(df.consolidated.psnow$score, na.rm = TRUE) # 73.33
+var(df.consolidated.psnow$score, na.rm = TRUE) # 173.66
+sd(df.consolidated.psnow$score, na.rm = TRUE) # 13.18
+
+mean(df.consolidated.psnow$user_score, na.rm = TRUE) * 10 # 70.77
+var(df.consolidated.psnow$user_score, na.rm = TRUE) * 10 # 17.66
+sd(df.consolidated.psnow$user_score, na.rm = TRUE) * 10 # 13.29
+
+
+# steam
+mean(df.consolidated.steam$score, na.rm = TRUE) # 71.00
+var(df.consolidated.steam$score, na.rm = TRUE) # 143.96
+sd(df.consolidated.steam$score, na.rm = TRUE) # 12.00
+
+mean(df.consolidated.steam$user_score, na.rm = TRUE) * 10 # 69.04
+var(df.consolidated.steam$user_score, na.rm = TRUE) * 10 # 23.23
+sd(df.consolidated.steam$user_score, na.rm = TRUE) * 10 # 15.24

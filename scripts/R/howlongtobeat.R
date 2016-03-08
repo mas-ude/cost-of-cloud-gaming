@@ -57,3 +57,24 @@ p <- p + xlab("platform") + ylab("avg. combined playthrough length (h)")
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("gamelengths-by-platform-violin.pdf", width=12, height=8)
+
+
+
+### lengths stats per set ###
+
+# gfnow
+mean(df.consolidated.gfnow$combined_length, na.rm = TRUE) # 14.59
+var(df.consolidated.gfnow$combined_length, na.rm = TRUE) # 218.98
+sd(df.consolidated.gfnow$combined_length, na.rm = TRUE) # 14.80
+
+
+# psnow
+mean(df.consolidated.psnow$combined_length, na.rm = TRUE) # 13.37
+var(df.consolidated.psnow$combined_length, na.rm = TRUE) # 288.36
+sd(df.consolidated.psnow$combined_length, na.rm = TRUE) # 16.98
+
+
+# steam
+mean(df.consolidated.steam$combined_length, na.rm = TRUE) # 13.06
+var(df.consolidated.steam$combined_length, na.rm = TRUE) # 437.33
+sd(df.consolidated.steam$combined_length, na.rm = TRUE) # 20.91

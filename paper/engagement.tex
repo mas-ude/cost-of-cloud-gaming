@@ -11,33 +11,28 @@ To get a grasp of the value of the introduced platforms, this section examines t
 
 Metrics for user engagement, defined as ``\textit{the quality of the user experience that emphasises the positive aspects of the interaction, and in particular the phenomena associated with being captivated by a web application, and so being motivated to use it}''\cite{Lehmann2012}, can be used to compare different services against each other. The problem with engagement is finding the right measures befitting the type of service under scrutiny, in this case gaming, and cloud gaming in particular.
 
-So, what does engage gamers?
-
-
 \begin{table*}
 \centering
-\caption{Overview of datasets. Values with * are 99th percentiles chosen due to unrealistically large outliers.}
-\label{tab:dataset-stats}
-	\begin{tabu}{X[1.5]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
+\caption{Overview of some simple engagement metrics comparing the three investigated services. Length data from \hltb, review scores from \metacritic.}
+\label{tab:basic-engagement}
+	\begin{tabu}{X[1.5]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
 	\toprule
-	Service & Titles & Age Mean & Age Var & Length Mean & Length Var & Score Mean & Score Var\\
+	Service & Titles & Age Mean & Age $\sigma$ & Length Mean & Length $\sigma$ & Score Mean & Score $\sigma$ & User Score Mean & User Score $\sigma$\\
 	\midrule
-	\gfnow & $68$ & $2.38$ & $3.80$ & -- & -- & -- & -- \\
-	\psnow & $252$ & $4.27$ & $5.00$ & -- & -- & -- & -- \\
-	\steam & $7749$ & $2.86$ & $15.71$ & -- & -- & -- & -- \\
+	\gfnow & $68$ & $2.38$ & $1.95$ & \SI{14.59}{\hour} & \SI{14.80}{\hour} & $76.12$ & $9.57$ & $72.55$ & $12.61$\\
+	\psnow & $252$ & $4.27$ & $2.24$ & \SI{14.59}{\hour} & \SI{16.98}{\hour} & $73.33$ & $13.18$ & $70.77$ & $13.29$\\
+	\steam & $7749$ & $2.86$ & $3.96$ & \SI{13.06}{\hour} & \SI{20.91}{\hour} & $71.00$ & $12.00$ & $69.04$ & $15.24$\\
 	\bottomrule
 	\end{tabu}
 \end{table*}
 
-% metacritic titles:
-% PC 16192
-% PS4 817
-% XB1 588
-% WiiU 474
-% 3DS 871
-% GFNOW 68
-% PSNOW 243
-% STEAM 7749
+So, what does engage gamers? Compared to video content and video streaming platforms this might be harder to answer due to the diversity of both games as well as gamers. Looking at some simple summary metrics in Tab.~\ref{tab:basic-engagement} does not give a very clear picture, with one exception: the number of titles. Being relatively young services, the two streaming platforms of note have a very limited total set of games available to them when compared to just the games available on \steam, which in itself again just represents a subset of all games available either solely on the PC (\metacritic lists $16192$) or across all platforms ($45803$ listed on the site). Due to the nature of the cloud services (streaming existing games) there are also no ``platform exclusive'' titles, which often increases the attractiveness of a specific platform for specific audiences. These limits on variety might be one reason why \steam is more compelling to wider audiences.
+
+The age of video games might also be a deciding factor for a service. Besides some memorable classics, people should expect the most recent games to be available due to social factors and driven by advertisements and public appearances of the game. Looking at the high age of games this might not apply to cloud gaming platforms. The historic nature of \steam also increases its average game age, however coupled with a higher $\sigma$ representing the wider range of games also in their age. Additionally, \psnow might be a special case, as it is specifically advertised as a backwards compatibility for games that do not run on the latest Sony platform any more (the PlayStation 4 does not provide compatibility with its predecessors).
+
+
+
+
 
 
 \begin{figure}[!t]
@@ -47,34 +42,13 @@ So, what does engage gamers?
 \label{fig:scores-by-platform}
 \end{figure}
 
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/scores-by-platform-violin-userscore.pdf}
-	\caption{Distribution of Metacritic user scores across the investigated platforms, depicted as violin plot with $25\%$, $50\%$, $75\%$ quantiles drawn.}
-\label{fig:userscores-by-platform}
-\end{figure}
 
 
-\subsection{E2E Lag}
-End-to-End Lag Model and Simulation in R. Now a standalone (submitted) paper at \url{https://github.com/mas-ude/onlinegame-lag-sim}. Can be referenced to argue the need for low E2E lag (meaning low network delay, but also the need for high fps).
 
 
-%%%%%%%%%%%%
-\subsection{Other Useful Data for Model Creation}
-
-\begin{itemize}
-	\item Game costs (current cost possible via Steam dataset; historic price data more difficult)
-	\item Length of games (either via howlongtobeat dataset (via \url{https://github.com/mas-ude/gamelengths-scraper}), SteamSpy data, or could also additionally manually parse more Steam data)
-	\item Gaming score/ratings/rankings (via Metacritic dataset (via \url{https://github.com/mas-ude/metacritic_scraper}), or might want to additionally scrape steam user review scores)
-	\item Other popularity measures? (e.g. steamspy owner data?)
-	\item Influence of E2E lag on games? (could be theorized indirectly through e2e lag sim + categorization attempts)
-	\item Hardware requirements of games?
-
-	\item Price History? Maybe using steamdb.info?
-\end{itemize}
-
-\subsection{Input by Svenja}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Validity of Metrics}
+% Input by Svenja
 After having had a closer look at the merged dataset, several possible relationships between metrics emerge. The success of a game in this case was associated with the ownership, so the more people own a game, the more successful it is.
 
 First of all a few correlation coefficients:
@@ -125,10 +99,26 @@ However, when having a look at figures \ref{fig:rel-price-category-owners} and \
 \end{figure}
 
 
+
+%%%%%%%%%%%%
+\subsubsection{Additional Factors}
+
+\begin{itemize}
+	\item Game costs and price history
+	\item Number of platform ``exclusive'' titles?
+	\item Other popularity measures? (e.g. steamspy owner data?)
+	\item Variety and quality of game mechanics
+	\item Required skill
+	\item Story?
+	\item Technical prowess, graphical fidelity, tightness/precision/quality of controls and game mechanics, e2e lag
+	\item Hardware requirements of games?
+\end{itemize}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cost-Benefit Models}
 
-Neglected in the previous engagement metrics was the factor price...
+Explicitly exempted in the previous engagement metrics was the factor price...
 
 
 
@@ -163,3 +153,29 @@ PS Now specifically caters towards older titles and backwards compatability, may
 % gibt es eine mainstream platform?
 % unterschiedliche ausrichtungen?
 
+
+
+
+
+% metacritic titles:
+% PC 16192
+% PS4 817
+% XB1 588
+% WiiU 474
+% 3DS 871
+% GFNOW 68
+% PSNOW 243
+% STEAM 7749
+
+
+
+% \begin{figure}[!t]
+% 	\centering
+% 	\includegraphics[width=1.0\columnwidth]{images/scores-by-platform-violin-userscore.pdf}
+% 	\caption{Distribution of Metacritic user scores across the investigated platforms, depicted as violin plot with $25\%$, $50\%$, $75\%$ quantiles drawn.}
+% \label{fig:userscores-by-platform}
+% \end{figure}
+
+
+% \subsection{E2E Lag}
+% End-to-End Lag Model and Simulation in R. Now a standalone (submitted) paper at \url{https://github.com/mas-ude/onlinegame-lag-sim}. Can be referenced to argue the need for low E2E lag (meaning low network delay, but also the need for high fps).
