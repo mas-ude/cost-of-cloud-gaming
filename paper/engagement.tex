@@ -48,6 +48,9 @@ The age of video games might also be a deciding factor for a service. Besides so
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{Validity of Metrics}
+
+\todo[inline]{SV: Die Korrelationskoeffizienten muessen auf Basis des neuen Datensatzes neu berechnet werden.}
+
 % Input by Svenja
 After having had a closer look at the merged dataset, several possible relationships between metrics emerge. The success of a game in this case was associated with the ownership, so the more people own a game, the more successful it is.
 
@@ -98,7 +101,21 @@ However, when having a look at figures \ref{fig:rel-price-category-owners} and \
 \label{fig:rel-score-category-owners}
 \end{figure}
 
+\subsubsection{Modelling Engagement Metrics}
 
+\todo[inline]{SV: Ich probiers einfach mal ganz platt... Sollte natuerlich alles noch genormt sein. Man kann einzelne Spiele modellieren oder Systeme.}
+
+\begin{equation}
+\begin{split}
+E_{game} = {newness} + {rating} +  {meanplaytime} \\+ {technicalprowess} - {specialhardwarecost} - {price}
+\end{split}
+\end{equation}
+
+\begin{equation}
+\begin{split}
+E_{platform} = {newness} + {numberofgames} \\+ {technicalprowess} - {specialhardwarecosts}\\ - {runningcosts}
+\end{split}
+\end{equation}
 
 %%%%%%%%%%%%
 \subsubsection{Additional Factors}
