@@ -109,9 +109,9 @@ mean(df.consolidated.gfnow$score, na.rm = TRUE) # 76.12
 var(df.consolidated.gfnow$score, na.rm = TRUE) # 91.60
 sd(df.consolidated.gfnow$score, na.rm = TRUE) # 9.57
 
-mean(df.consolidated.gfnow$user_score, na.rm = TRUE) * 10 # 72.55
-var(df.consolidated.gfnow$user_score, na.rm = TRUE) * 10 # 15.90
-sd(df.consolidated.gfnow$user_score, na.rm = TRUE) * 10 # 12.61
+mean(df.consolidated.gfnow$user_score * 10, na.rm = TRUE) # 72.55
+var(df.consolidated.gfnow$user_score * 10, na.rm = TRUE) # 159.05
+sd(df.consolidated.gfnow$user_score * 10, na.rm = TRUE) # 12.61
 
 
 # psnow
@@ -119,9 +119,9 @@ mean(df.consolidated.psnow$score, na.rm = TRUE) # 73.33
 var(df.consolidated.psnow$score, na.rm = TRUE) # 173.66
 sd(df.consolidated.psnow$score, na.rm = TRUE) # 13.18
 
-mean(df.consolidated.psnow$user_score, na.rm = TRUE) * 10 # 70.77
-var(df.consolidated.psnow$user_score, na.rm = TRUE) * 10 # 17.66
-sd(df.consolidated.psnow$user_score, na.rm = TRUE) * 10 # 13.29
+mean(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 70.77
+var(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 176.60
+sd(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 13.29
 
 
 # steam
@@ -129,6 +129,6 @@ mean(df.consolidated.steam$score, na.rm = TRUE) # 71.00
 var(df.consolidated.steam$score, na.rm = TRUE) # 143.96
 sd(df.consolidated.steam$score, na.rm = TRUE) # 12.00
 
-mean(df.consolidated.steam$user_score, na.rm = TRUE) * 10 # 69.04
-var(df.consolidated.steam$user_score, na.rm = TRUE) * 10 # 23.23
-sd(df.consolidated.steam$user_score, na.rm = TRUE) * 10 # 15.24
+mean(df.consolidated.steam$user_score * 10, na.rm = TRUE) # 69.04
+var(df.consolidated.steam$user_score * 10, na.rm = TRUE) # 232.33
+sd(df.consolidated.steam$user_score * 10, na.rm = TRUE) # 15.24
