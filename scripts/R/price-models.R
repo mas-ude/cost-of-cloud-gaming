@@ -73,37 +73,31 @@ p
 ggsave("gamesperyear-over-budget.pdf", width=12, height=8, device = cairo_pdf)
 
 
+
+
 ##########################################
 ## over a 10 year period at a fixed budget
 money <- 500
 year <- 1:10
-budget.annual <- year*money
+budget.annual <- year * money
 
-pc.annual <- ((year*money) - 167*year)/10.1
-console.annual <- pmax((year*money-80*year),0)/50
+steam.annual <- ((budget.annual) - steam.hw.peryear * year) / steam.meanprice
 
-psnow.annual <- (year*money)-(15+240)*year
-psnow.annual[psnow.annual>0] <- psnow.annual[psnow.annual>0]/15+134
-psnow.annual[psnow.annual <0] <- 0
+psnow.annual <- pmax((year * money) - (psnow.hw.peryear + psnow.yearly) * year, 0)
+psnow.annual[psnow.annual > 0] <- pmin(psnow.annual[psnow.annual > 0] / psnow.rental.price.30d, psnow.extra) + psnow.included
 
-df <- data.frame(year=year, games = pc.annual, platform = "pc")
+gfnow.annual <- pmax((year * money) - (gfnow.hw.peryear + gfnow.yearly) * year, 0)
+gfnow.annual[gfnow.annual > 0] <- pmin(gfnow.annual[gfnow.annual > 0] / gfnow.extraprice.mean, gfnow.extra) + gfnow.included
 
-tmp <- data.frame(year=year, games = console.annual, platform = "consoles")
+
+df <- data.frame(year=year, games = psnow.annual, platform = "PS Now")
+tmp <- data.frame(year=year, games = gfnow.annual, platform = "GF Now")
 df <- rbind(df, tmp)
-tmp <- data.frame(year=year, games = psnow.annual, platform = "ps now")
+tmp <- data.frame(year=year, games = steam.annual, platform = "Steam")
 df <- rbind(df, tmp)
 
-
-ggplot(df, aes(x=year, y=games, color=platform)) + geom_line() + geom_point(size=2)
-
-
-
-
-
-
-## script intended to look at the reverse model of games-per-year.R:
-# assume a fixed number of games
-# (maybe even certain individual games: a selection of recent popular titles for that timeframe (via e.g. metacritic))
-# and then calculate the cost for each individual service platform
-
-# TODO: update games-per-year.R first
+p <- ggplot(df, aes(x=year, y=games, color=platform)) + geom_line() + geom_point(size=2)
+p <- p + xlab("year") + ylab("games")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("games-over-year.pdf", width=12, height=8)
