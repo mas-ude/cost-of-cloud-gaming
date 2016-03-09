@@ -1,63 +1,79 @@
+library(ggplot2)
+library(Cairo)
+
+exchangerate.GBPtoEUR <- 1.27270
+exchangerate.USDtoEUR <- 0.882388
+
+
+### console cycle years
+# according to https://en.wikipedia.org/wiki/History_of_video_games
+console.lifetime <- round(mean(c(4, 7, 4, 6, 5, 7, 7))) # 5.7 years -> 6
 
 
 
+
+### gamesperyear over budget model ###
 
 # basis a yearly budget 
-budget <- seq(0, 1000, 50)
+budget <- seq(0, 1500, by = 1)
+
+########
+# ps now
+
+psnow.hw <- 329.9 # as of 2016/02/11
+psnow.hw.peryear <- psnow.hw / console.lifetime
+psnow.monthly <- 12.99 * exchangerate.GBPtoEUR
+psnow.yearly <- psnow.monthly * 12
+psnow.rental.price.30d <- 7.99 * exchangerate.GBPtoEUR
+psnow.included <- sum(df.psnow$Included.In.Subscription == TRUE)
+psnow.extra <- sum(df.psnow$Included.In.Subscription == FALSE)
+
+psnow <- pmax(((budget - psnow.hw.peryear) - psnow.yearly),0)
+psnow[psnow > 0] <- psnow[psnow > 0] / psnow.rental.price.30d + psnow.included
+
+
+########
+# gf now
+gfnow.monthly <- 9.99
+gfnow.yearly <- gfnow.monthly * 12
+gfnow.hw <- 201.99
+gfnow.hw.peryear <- gfnow.hw / console.lifetime
+
+gfnow.maxgames <- nrow(df.gfnow)
+gfnow.included <- nrow(subset(df.gfnow, price == 0))
+gfnow.extra <- gfnow.maxgames - gfnow.included
+gfnow.extraprice.mean <- mean(subset(df.gfnow, price != 0)$price)
+
+gfnow <- pmax(((budget - gfnow.hw.peryear) - gfnow.yearly), 0)
+gfnow[gfnow > 0] <- gfnow.included + pmin(gfnow[gfnow > 0]/gfnow.extraprice.mean , gfnow.extra)
+
+
+########
+# steam
+steam.hw <- 500
+steam.hw.peryear <- steam.hw / 3
+steam.meanprice <- mean(df.steamdata$price, na.rm = TRUE) / 100
+
+steam <- pmax((budget - steam.hw.peryear),0) / steam.meanprice
 
 
 
-## factor in additional cost factors
-# consider broadband Internet access costs (might not be available in rural areas)
-#  broadband.enabled <- FALSE
+## plot
 
-
-
-
-# CAPEX: 150 (device+controler over 10 years) 150/10
-# OPEX: subscription + rental cost (assumed 7 days rental for 1/day) + 20*12; 7 per title
-# plus assumed 100 titles in subscription service included
-psnow <- ((budget-15)-240)
-psnow[psnow>0] <- psnow[psnow>0]/15+134
-psnow[psnow <0] <- 0
-
-
-
-
-
-
-## console
-# CAPEX: 400 over 5 years: 400/5
-# OPEX: 50 per title
-console <- pmax((budget-80),0)/50
-
-## pc (steam)
-# CAPEX: 500 over 3 years: 500/3 (midrange pc)
-# OPEX: variant #1 buying AAA titles during steam sales: 15-20
-# variant #2 mean price of all steam titles (outside of sales period): 10.10€ (EU region 1)
-pc <- pmax((budget-167),0)/10.1
-
-df <- data.frame(budget = budget, gamesperyear = psnow, platform = "ps now")
-
-
-
-gamefly <- ifelse((budget)-15 > (7*6*12), 6*7,
-                  ifelse((budget)-15 > (7*5*12), 5*7,
-                         ifelse((budget)-15 > (7*4*12), 4*7,
-                                ifelse((budget)-15 > (7*3*12), 3*7,
-                                       ifelse((budget)-15 > (7*2*12), 2*7,
-                                              ifelse((budget)-15 > (7*1*12), 1*7, 0))))))
-
-tmp <- data.frame(budget=budget, gamesperyear = gamefly, platform = "gamefly")
+df <- data.frame(budget = budget, gamesperyear = psnow, platform = "PS Now")
+tmp <- data.frame(budget=budget, gamesperyear = gfnow, platform = "GF Now")
 df <- rbind(df, tmp)
-tmp <- data.frame(budget=budget, gamesperyear = console, platform = "consoles")
-df <- rbind(df, tmp)
-tmp <- data.frame(budget = budget, gamesperyear = pc, platform = "pc")
+tmp <- data.frame(budget = budget, gamesperyear = steam, platform = "Steam")
 df <- rbind(df, tmp)
 
-ggplot(df, aes(x=budget, y=gamesperyear, color=platform)) + geom_line() + geom_point(size=2)
+p <- ggplot(df, aes(x = budget, y = gamesperyear, color = platform, lty = platform)) + geom_line(size = 1) #+ geom_point(size=2)
+p <- p + xlab("budget (€)") + ylab("games per year")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("gamesperyear-over-budget.pdf", width=12, height=8, device = cairo_pdf)
 
 
+##########################################
 ## over a 10 year period at a fixed budget
 money <- 500
 year <- 1:10
@@ -70,27 +86,19 @@ psnow.annual <- (year*money)-(15+240)*year
 psnow.annual[psnow.annual>0] <- psnow.annual[psnow.annual>0]/15+134
 psnow.annual[psnow.annual <0] <- 0
 
-gamefly.annual <- ifelse((year*money - 15*year) > (6*7*12*year), 6*7,
-                         ifelse((year*money - 15*year) > (7*5*12*year), 5*7,
-                                ifelse((year*money - 15*year) > (7*4*12*year), 4*7,
-                                       ifelse((year*money - 15*year) > (7*3*12*year), 3*7,
-                                              ifelse((year*money - 15*year) > (7*2*12*year), 2*7,
-                                                     ifelse((year*money - 15*year) > (7*1*12*year), 1*7, 0))))))
-
 df <- data.frame(year=year, games = pc.annual, platform = "pc")
 
 tmp <- data.frame(year=year, games = console.annual, platform = "consoles")
 df <- rbind(df, tmp)
 tmp <- data.frame(year=year, games = psnow.annual, platform = "ps now")
 df <- rbind(df, tmp)
-tmp <- data.frame(year=year, games = gamefly.annual, platform = "gamefly")
-df <- rbind(df, tmp)
+
 
 ggplot(df, aes(x=year, y=games, color=platform)) + geom_line() + geom_point(size=2)
 
 
 
-library(ggplot2)
+
 
 
 ## script intended to look at the reverse model of games-per-year.R:
