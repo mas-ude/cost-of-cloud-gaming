@@ -25,11 +25,18 @@ psnow.hw.peryear <- psnow.hw / console.lifetime
 psnow.monthly <- 12.99 * exchangerate.GBPtoEUR
 psnow.yearly <- psnow.monthly * 12
 psnow.rental.price.30d <- 7.99 * exchangerate.GBPtoEUR
-psnow.included <- sum(df.psnow$Included.In.Subscription == TRUE)
-psnow.extra <- sum(df.psnow$Included.In.Subscription == FALSE)
+# no numbers for uk service, approximate by ratio of jp included vs rental titles as of
+# http://www.jp.playstation.com/psnow/list.html
+# included: 145, rental: 185
+# rental proportion: .56
+ps.maxgames <- nrow(df.psnow)
+ps.excluded <- ps.maxgames * 0.56
+psnow.included <- ps.maxgames - ps.excluded
+#psnow.included <- sum(df.psnow$Included.In.Subscription == TRUE)
+#psnow.extra <- sum(df.psnow$Included.In.Subscription == FALSE)
 
 psnow <- pmax(((budget - psnow.hw.peryear) - psnow.yearly),0)
-psnow[psnow > 0] <- psnow[psnow > 0] / psnow.rental.price.30d + psnow.included
+psnow[psnow > 0] <- pmin(psnow[psnow > 0] / psnow.rental.price.30d + psnow.included, ps.maxgames)
 
 
 ########
@@ -96,7 +103,7 @@ df <- rbind(df, tmp)
 tmp <- data.frame(year=year, games = steam.annual, platform = "Steam")
 df <- rbind(df, tmp)
 
-p <- ggplot(df, aes(x=year, y=games, color=platform)) + geom_line() + geom_point(size=2)
+p <- ggplot(df, aes(x = year, y = games, color = platform, lty = platform)) + geom_line(size = 1) + geom_point(size = 2)
 p <- p + xlab("year") + ylab("games")
 p <- p + theme(text = element_text(size=20))
 p

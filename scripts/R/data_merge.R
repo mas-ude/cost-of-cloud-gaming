@@ -12,7 +12,8 @@ df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colC
 df.metacritic <- read.csv("metacritic-20160302.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 df.hltb <- read.csv("howlongtobeat-20160301.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
 df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
-df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
+#df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
+df.psnow <- read.csv("psnow-games-uk.csv", header=TRUE, sep=";", colClasses=c("character", "numeric"))
 
 ## convert date strings to objects and calculate yaer
 df.metacritic$release <- as.Date(df.metacritic$release, format = "%B %d, %Y")
@@ -26,28 +27,28 @@ df.metacritic$year = strftime(df.metacritic$release, "%Y")
 df.hltb$title <- tolower(df.hltb$title)
 df.metacritic$title <- tolower(df.metacritic$title)
 df.gfnow$name <- tolower(df.gfnow$name)
-df.psnow$Title <- tolower(df.psnow$Title)
+df.psnow$name <- tolower(df.psnow$name)
 df.steamdata$name <- tolower(df.steamdata$name)
 
 ## trim leading/trailing whitespaces to increase matching
 df.hltb$title <- trimws(df.hltb$title)
 df.metacritic$title <- trimws(df.metacritic$title)
 df.gfnow$name <- trimws(df.gfnow$name)
-df.psnow$Title <- trimws(df.psnow$Title)
+df.psnow$name <- trimws(df.psnow$name)
 df.steamdata$name <- trimws(df.steamdata$name)
 
 ## strip all "-" and ":" from the strings, as this is the most common mismatch
 df.hltb$title <- str_replace_all(df.hltb$title, "[:-]", "")
 df.metacritic$title <- str_replace_all(df.metacritic$title, "[:-]", "")
 df.gfnow$name <- str_replace_all(df.gfnow$name, "[:-]", "")
-df.psnow$Title <- str_replace_all(df.psnow$Title, "[:-]", "")
+df.psnow$name <- str_replace_all(df.psnow$name, "[:-]", "")
 df.steamdata$name <- str_replace_all(df.steamdata$name, "[:-]", "")
 
 ## merge double space to one
 df.hltb$title <- str_replace_all(df.hltb$title, "  ", " ")
 df.metacritic$title <- str_replace_all(df.metacritic$title, "  ", " ")
 df.gfnow$name <- str_replace_all(df.gfnow$name, "  ", " ")
-df.psnow$Title <- str_replace_all(df.psnow$Title, "  ", " ")
+df.psnow$name <- str_replace_all(df.psnow$name, "  ", " ")
 df.steamdata$name <- str_replace_all(df.steamdata$name, "  ", " ")
 
 
@@ -66,8 +67,8 @@ df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
 df.consolidated.gfnow <- merge(df.gfnow, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
 df.consolidated.gfnow <- merge(df.consolidated.gfnow, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
 
-df.consolidated.psnow <- merge(df.psnow, df.hltb.ps, by.x = "Title", by.y = "title", all.x = TRUE)
-df.consolidated.psnow <- merge(df.consolidated.psnow, df.metacritic.ps, by.x = "Title", by.y = "title", all.x = TRUE)
+df.consolidated.psnow <- merge(df.psnow, df.hltb.ps, by.x = "name", by.y = "title", all.x = TRUE)
+df.consolidated.psnow <- merge(df.consolidated.psnow, df.metacritic.ps, by.x = "name", by.y = "title", all.x = TRUE)
 
 df.consolidated.steam <- merge(df.steamdata, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
 df.consolidated.steam <- merge(df.consolidated.steam, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)

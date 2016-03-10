@@ -37,7 +37,7 @@ ggplot(df.steammetascorehltb, aes(x = score)) + stat_ecdf()
 ## generate data frame for multi-plat density plot
 
 df.lengths <- data.frame()
-df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.psnow$Title, platform = "PlayStation Now", combined_length = df.consolidated.psnow$combined_length))
+df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.psnow$name, platform = "PlayStation Now", combined_length = df.consolidated.psnow$combined_length))
 df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.gfnow$name, platform = "Geforce Now", combined_length = df.consolidated.gfnow$combined_length))
 df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.steam$name, platform = "Steam", combined_length = df.consolidated.steam$combined_length))
 df.lengths <- rbind(df.lengths, data.frame(title = df.hltb$title, platform = "overall", combined_length = df.hltb$combined_length))
@@ -69,9 +69,9 @@ sd(df.consolidated.gfnow$combined_length, na.rm = TRUE) # 14.44
 
 
 # psnow
-mean(df.consolidated.psnow$combined_length, na.rm = TRUE) # 12.26
-var(df.consolidated.psnow$combined_length, na.rm = TRUE) # 239.47
-sd(df.consolidated.psnow$combined_length, na.rm = TRUE) # 15.47
+mean(df.consolidated.psnow$combined_length, na.rm = TRUE) # 13.28
+var(df.consolidated.psnow$combined_length, na.rm = TRUE) # 206.85
+sd(df.consolidated.psnow$combined_length, na.rm = TRUE) # 14.38
 
 
 # steam

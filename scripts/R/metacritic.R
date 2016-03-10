@@ -41,7 +41,7 @@ median(df.merged$age, na.rm = TRUE)
 ## generate data frame for multi-plat density plot
 
 df.scores <- data.frame()
-df.scores <- rbind(df.scores, data.frame(title = df.consolidated.psnow$Title, platform = "PlayStation Now", score = df.consolidated.psnow$score, user_score = df.consolidated.psnow$user_score * 10))
+df.scores <- rbind(df.scores, data.frame(title = df.consolidated.psnow$name, platform = "PlayStation Now", score = df.consolidated.psnow$score, user_score = df.consolidated.psnow$user_score * 10))
 df.scores <- rbind(df.scores, data.frame(title = df.consolidated.gfnow$name, platform = "Geforce Now", score = df.consolidated.gfnow$score, user_score = df.consolidated.gfnow$user_score * 10))
 df.scores <- rbind(df.scores, data.frame(title = df.consolidated.steam$name, platform = "Steam", score = df.consolidated.steam$score, user_score = df.consolidated.steam$user_score * 10))
 df.scores <- rbind(df.scores, data.frame(title = df.metacritic$title, platform = "overall", score = df.metacritic$score, user_score = df.metacritic$user_score * 10))
@@ -92,9 +92,9 @@ var(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 3.80
 sd(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 1.95
 
 # psnow
-mean(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 4.28
-var(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 4.96
-sd(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 2.23
+mean(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 4.63
+var(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 6.26
+sd(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 2.5
 
 # steam
 mean(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 2.86
@@ -115,13 +115,13 @@ sd(df.consolidated.gfnow$user_score * 10, na.rm = TRUE) # 12.49
 
 
 # psnow
-mean(df.consolidated.psnow$score, na.rm = TRUE) # 73.25
-var(df.consolidated.psnow$score, na.rm = TRUE) # 174.13
-sd(df.consolidated.psnow$score, na.rm = TRUE) # 13.2
+mean(df.consolidated.psnow$score, na.rm = TRUE) # 76.72
+var(df.consolidated.psnow$score, na.rm = TRUE) # 130.69
+sd(df.consolidated.psnow$score, na.rm = TRUE) # 11.43
 
-mean(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 70.54
-var(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 177.66
-sd(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 13.33
+mean(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 73.1
+var(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 165.5
+sd(df.consolidated.psnow$user_score * 10, na.rm = TRUE) # 12.86
 
 
 # steam

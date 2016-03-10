@@ -20,7 +20,7 @@ Metrics for user engagement, defined as ``\textit{the quality of the user experi
 	Service & Titles & Age $\mu$ & Age $\sigma$ & Length $\mu$ & Length $\sigma$ & Score $\mu$ & Score $\sigma$ & User Score $\mu$ & User Score $\sigma$\\
 	\midrule
 	\gfnow & $68$ & \SI{2.33}{\year} & \SI{1.95}{\year} & \SI{14.65}{\hour} & \SI{14.44}{\hour} & $75.9$ & $9.44$ & $72.41$ & $12.49$\\
-	\psnow & $252$ & \SI{4.28}{\year} & \SI{2.23}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $73.25$ & $13.2$ & $70.54$ & $13.33$\\
+	\psnow & $252$ & \SI{4.63}{\year} & \SI{2.5}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ & $73.1$ & $12.8$\\
 	\steam & $7749$ & \SI{2.86}{\year} & \SI{3.96}{\year} & \SI{13.02}{\hour} & \SI{20.49}{\hour} & $71$ & $12$ & $69$ & $15.27$\\
 	\bottomrule
 	\end{tabu}
@@ -48,6 +48,7 @@ Due to the limited amount of available data the number of currently observable p
 
 \begin{itemize}
 	\item the number of platform ``exclusive'' game titles,
+	\item the genre as well as other classifications of games,
 	\item the number of game sales and subscriber numbers,
 	\item more objective measures of the game's content (e.g. the variety and quality of game mechanics),
 	\item technical aspects of games (e.g. the graphical fidelity, the performance, or the precision and responsiveness of controls),
@@ -76,6 +77,7 @@ First of all a few correlation coefficients:
 \end{itemize}
 
 When plotting the most obvious factors (MC score, length and price) the effects become visually graspable (see figures \ref{fig:rel-score-owners}, \ref{fig:rel-combinedlength-owners} and \ref{fig:rel-price-owners}).
+
 
 \begin{figure}[!t]
 	\centering
@@ -136,8 +138,9 @@ E_{platform} = {newness} + {numberofgames} \\+ {technicalprowess} - {specialhard
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cost-Benefit Models}
 
-The previously discussed engagement metrics deliberately exempted the factor price, as this is worth its own investigation by a different approach.
+The previously discussed engagement metrics deliberately exempted the factor price, as this is worth its own investigation as the price models of cloud gaming services are vastly different to that of \steam. Moreover, the examined engagement metrics do not provide many means for a service distinction bar the number of games available. Therefore, the two simple models provided here use the number of affordable games on a specific budget. Naturally, this does not factor in any user preferences to specific games and their availability on just a subset of platforms. But the current curated nature of Cloud Gaming platforms would prevent this endeavor from succeeding regardless.
 
+For both models a few basic assumptions are made. The initial hardware costs are factored in proportionately to the expected life and depreciation time of the devices
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Affordable Games on a Budget Model}
@@ -150,7 +153,7 @@ assumed lifetime/depreciation time:
 consoles/cloud gaming devices $6$ years (rounded up average time before console releases)
 PC estimated 2-3 years before (partial) upgrade, so lets assume full upgrade every 3 (4)
 
-assume the aforemention 500 euro budget pc
+assume the aforementioned 500 euro budget pc
 
 Caution: 
 Steam means game ownership
@@ -189,6 +192,8 @@ assume fixed budget of 500 per year
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Discussion}
+
+Direct Impact of quality of Cloud Gaming not discussed here (yet?)
 
 PS Now specifically caters towards older titles and backwards compatibility, may find a niche here
 % wer ist die zielgruppe?
