@@ -89,8 +89,8 @@ df.everything <- rbind(df.everything, tmp)
 
 # Prices
 df.tmp <- data.frame()
-for (i in 1:nrow(df.consolidated)) {
-  row <- df.consolidated[i,]
+for (i in 1:nrow(df.everything)) {
+  row <- df.everything[i,]
   if(row$price == 0) {
     row$price_category <- "free"
   } else if (row$price > 0 & row$price <= 500){
@@ -106,12 +106,12 @@ for (i in 1:nrow(df.consolidated)) {
   }  
   df.tmp <- rbind(df.tmp, data.frame(row))
 }
-df.consolidated = df.tmp
+df.everything = df.tmp
 
 # Scores
 df.tmp <- data.frame()
-for (i in 1:nrow(df.consolidated)) {
-  row <- df.consolidated[i,]
+for (i in 1:nrow(df.everything)) {
+  row <- df.everything[i,]
   # First check if price has value or is NA
   if(!is.na(row$score)){
     if (row$score >= 0 & row$score <= 10){
@@ -140,43 +140,44 @@ for (i in 1:nrow(df.consolidated)) {
   }
   df.tmp <- rbind(df.tmp, data.frame(row))
 }
-df.consolidated = df.tmp
+df.everything = df.tmp
 
 
 # === BASIC STATISTICS ===
 
 # Correlation coefficient between owners and Metacritic score
-df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$score)),]
+df.cons.tmp <- df.consolidated.steam[!(is.na(df.consolidated.steam$score)),]
 cor(df.cons.tmp$score, df.cons.tmp$owners)
-# ~ 0.2174691
+# ~0.1998204
 
 # Correlation coefficient between owners and Metacritic user score
-df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$user_score)),]
+df.cons.tmp <- df.consolidated.steam[!(is.na(df.consolidated.steam$user_score)),]
 cor(df.cons.tmp$user_score, df.cons.tmp$owners)
-# ~ 0.1000701
+# ~ 0.1010024
 
 # Correlation coefficient between owners and game length
-df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$combined_length)),]
+df.cons.tmp <- df.consolidated.steam[!(is.na(df.consolidated.steam$combined_length)),]
 cor(df.cons.tmp$combined_length, df.cons.tmp$owners)
-# ~ 0.1767494
+# ~0.175819
 
 # Correlation coefficient between game length and Metacritic score
-df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$combined_length)),]
+df.cons.tmp <- df.consolidated.steam[!(is.na(df.consolidated.steam$combined_length)),]
 df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$score)),]
 cor(df.cons.tmp$score, df.cons.tmp$combined_length)
-# ~ 0.1926917
+# ~0.1952609
 
 # Correlation coefficient between Metacritic score and user score
-df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$user_score)),]
+df.cons.tmp <- df.consolidated.steam[!(is.na(df.consolidated.steam$user_score)),]
 df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$score)),]
 cor(df.cons.tmp$score, df.cons.tmp$user_score)
-# ~ 0.5996651
+# ~ 0.6220127
 
 # Correlation coefficient between price and owners
-df.cons.tmp <- df.consolidated[!(is.na(df.consolidated$price)),]
+df.cons.tmp <- df.consolidated.steam[!(is.na(df.consolidated.steam$price)),]
 df.cons.tmp <- df.cons.tmp[!(is.na(df.cons.tmp$owners)),]
 cor(df.cons.tmp$owners, df.cons.tmp$price)
-# ~ -0.02796098
+# ~ -0.02780982
+
 
 # Correlation coefficient between age and owners
 # df.consolidated$year = as.numeric(df.consolidated$year)
