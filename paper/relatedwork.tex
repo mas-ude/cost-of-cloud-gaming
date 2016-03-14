@@ -3,20 +3,23 @@
 \section{Related Work}
 \label{sec:relatedwork}
 
-As this work aims to investigate Cloud Gaming services, several lines of research are touched. 
-First, work that deals with operational benefits of Cloud Gaming and cloud services in general. This also encompasses energy consumption issues.
+%As this work aims to investigate Cloud Gaming services, several lines of research are touched. 
+
+This section first revisits operational benefits of Cloud Gaming and cloud services in general. This also encompasses energy consumption issues.
 And second, literature covering \gls{QoE} aspects of gaming in general and Cloud Gaming in particular. These reflect the users' quality expectations but can also outline the requirement for a service's operation.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Operational and Efficiency Factors}
 
-Unfortunately, many publications on Cloud Gaming only concern themselves with the client's side often even looking at just mobile Cloud Gaming. For example \cite{Soliman2013} overviews some general issues of mobile cloud gaming. Several other publications, e.g. \cite{6924295} and \cite{Huang:2014:MCP:2755535.2755542} investigate the client device's energy saving potential of mobile Cloud Gaming but find rather marginal energy savings.
+Many publications on Cloud Gaming only consider the client's side and often restrict their view to mobile Cloud Gaming. For example, \cite{Soliman2013} overviews some general issues of mobile cloud gaming. Several other publications, e.g., \cite{6924295} and \cite{Huang:2014:MCP:2755535.2755542} investigate the client device's energy saving potential of mobile Cloud Gaming but find rather marginal energy savings.
 
 
-A 2014 publication \cite{6882299} describes some potential benefits of a centralized cloud gaming platforms, however operates under assumption that can not be uphold under practical circumstances.
+A 2014 publication \cite{6882299} describes some potential benefits of a centralized cloud gaming platforms, however operates under questionable assumptions. %that can not be uphold under practical circumstances.
 
-Two further papers (\cite{6853364} and \cite{6365107}) suggest an optimization model to place and provision Cloud Gaming \acrshortpl{VM} in order for a service provider to operate at profits. The impact on \gls{QoE} however seems to be significant but is concealed through the lack of absolute data given. The problem of efficiently placing and selecting servers is a pervasive one for Cloud services (e.g. \cite{6740249}), it is however only partially applicable to Cloud Gaming due to the more stringent requirements both in terms of compute resource as well as latency, limiting the selection problem down to relatively narrow geographic regions.
+Two further papers (\cite{6853364} and \cite{6365107}) suggest an optimization model to place and provision Cloud Gaming \acrshortpl{VM} in order for a service provider to operate at profits. The impact on \gls{QoE} however seems to be significant but is concealed through the lack of absolute data given. The efficient placement and selection of servers is focal for Cloud services (e.g. \cite{6740249}), but optimisation potentials is limited for Cloud Gaming due to more stringent requirements both in terms of compute resource as well as latency, limiting the selection problem down to relatively narrow geographic regions.
+
+%it is however only partially applicable to Cloud Gaming due to the more stringent requirements both in terms of compute resource as well as latency, limiting the selection problem down to relatively narrow geographic regions.
 
 
 % Also approaches that select (and cost-optimize the selection of) data-centers might not be applicable due to the stringent latency and BW requirements and the need for dedicated hardware (GPUs) and the statefulness of gaming, e.g.
