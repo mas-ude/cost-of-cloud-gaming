@@ -2,8 +2,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%
 
-\todo[inline,color=red!10]{Other title could be: The Prospects of Cloud 
-Gaming: Do ... }
+%\todo[inline,color=red!10]{Other title could be: The Prospects of Cloud 
+%Gaming: Do ... }
 
 \section{Introduction}
 
@@ -20,26 +20,19 @@ tiny margin. Some publications even praise the method and attest high
 \todo[inline]{PZ: praise and \gls{QoE} values .. is there a ref on that? .. maybe acceptable/reasonable \gls{QoE} levels?}
 
 So, if there are only negligible quality drawbacks --- according to the 
-literature --- what about the commercial success of cloud gaming? Intuitively one would assume that users could yield substantial cost and flexibility benefits as a result of scaling effects of the used cloud gaming hardware in comparison to equipment-heavy classical home gaming approaches. However, the cloud gaming market seems to stagnate with a high rate of fluctuation on the market, i.e., a constant stream of market entrances and exits. For example, one of the most prominent services in the past, \textsc{OnLive}, shut down and was forced to 
-sell off its remaining assets.
+literature --- what about the commercial success of cloud gaming? Intuitively one would assume that users could yield substantial cost and flexibility benefits as a result of scaling effects of the used cloud gaming hardware in comparison to equipment-heavy classical home gaming approaches. However, the cloud gaming market seems to stagnate with a high rate of fluctuation on the market, i.e., a constant stream of market entrances and exits. For example, one of the most prominent services in the past, \textsc{OnLive}, ceased to exist.
 
-\todo[inline]{PZ: ``sell off its remaining assets'' -- means?}
-\todo[inline]{FM: intellectual property, mainly the remaining patent portfolio (to Sony)}
+%shut down and was forced to 
+%sell off its remaining assets.
+
+%\todo[inline]{PZ: ``sell off its remaining assets'' -- means?}
+%\todo[inline]{FM: intellectual property, mainly the remaining patent portfolio (to Sony)}
 
 %In theory, there could be large economic benefits for users that should foster a quick adaptation of such services. 
 %quite a few commercial services have already come and gone, 
 %with a rather high rate of fluctuation. 
 
-All cloud gaming services, current as well 
-as past, come with some subtle differences in their service, including 
-the technical aspects, the selection of games, and the pricing 
-model.
-Yet, differentiation has not helped to generate much more public 
-interest either. 
-This might be attributed to a circumstance that is easily  
-overlooked when evaluating cloud gaming services: the strong 
-competition with other non-cloud gaming platforms, such as the 
-individual console platforms or the large market for PC games --- with the 
+While many cloud gaming approaches have been tested so far that vary by means of technical, service and pricing model differences, the public interest remains low. This might be attributed to the broad range of available substitutes, e.g., from non-cloud gaming platforms such as console platforms or for PC games --- with the 
 Steam\footnote{\url{http://store.steampowered.com/}} platform as one of 
 its strongest contenders. The move to digital distribution has made the 
 PC platform quite popular, and PC games pricing has become 
@@ -49,16 +42,14 @@ On the surface, current Cloud Gaming services attempt to adopt a
 \textit{fixed fee subscription} model over the traditional 
 \textit{à la carte} model. 
 Fixed fee subscription proved to be hugely successful for other 
-types of media, be 
-it for example \textsc{Netflix} for movies and shows or 
-\textsc{Spotify} for music. However, these two types of services seem 
-to offer much more content at a comparable or even lower price point 
-than Cloud Gaming services do. Additionally, streaming asynchronous 
+types of media, e.g., \textsc{Netflix} for movies and shows or 
+\textsc{Spotify} for music. However, these two types of services  offer much more content at a comparable or even lower price  
+than Cloud Gaming services. Additionally, streaming asynchronous 
 non-interactive media is technically less demanding 
 (and thus cheaper to operate) than 
 maintaining a quality level on par with that of locally run games.
 
-The two main questions that this work aims to tackle are thus: 
+The two main research questions that this work aims to tackle are thus: 
 \textit{``Can Cloud Gaming be attractive for users in today's highly 
 competitive market?''} and \textit{``Can you operate a Cloud Gaming 
 service with acceptable margins while maintaining acceptable quality 
@@ -69,6 +60,7 @@ loss. In practice one could actually simplify both questions quite
 easily to one: \textit{``Can you compete with the PC gaming and Steam 
 ecosystem (in terms of quality, prices, and variety)?''}
 
+\todo[inline]{Was ist gemeint mit Budgetmodell?}
 In order to answer these questions, this paper looks at the perspectives 
 of users and service provider separately, and provides arguments backed 
 by data and simple models. To investigate the customer's perspective we 
@@ -83,7 +75,6 @@ cases the Cloud Gaming services' offer is very limited yet still
 charges relatively high prices, thus limiting the attractiveness for 
 users in comparison to alternative services.
 
-\todo[inline]{PZ: Dieser Teil ist fuer mich fast eher Motivation u. konnete vor die Forschungsfragen gezogen werden.}
 Due to the limited amount of freely available data on operating a Cloud 
 Gaming service, the perspective of the Cloud Gaming operator is 
 investigated by setting up efficiency models centered around the analysis of 
@@ -93,13 +84,12 @@ compared to other cloud services that achieve high values of cost
 efficiency and capacity utilization, we believe that Cloud Gaming 
 platforms will be much more peak-oriented and thus achieve much 
 lower values of server utilization. The end-to-end lag requirements of 
-games demand a server placement in the vicinity of the user, which 
+games demand servers close to the user, which 
 eliminates most multiplexing gains that a centralized data center could 
 garner over the course of a day. Thus, the scaling benefits may be substantially lower than for other cloud services. Additionally, games require dedicated 
 hardware support, which is of less use to most other cloud use 
 cases, diminishing the potential of cross-service reuse.
 
-\todo[inline]{PZ: Brauchen wir den Absatz? (bewusst provokant gefragt; Nachschaerfung macht eventuell dennoch Sinn.}
 These initial insights do not shed a good light on the commercial 
 future of Cloud Gaming services in general. Unless major cost reductions 
 are achieved, while the streaming quality is maintained or even improved, 
@@ -109,16 +99,18 @@ competition is less strong. We plan to take a deeper look at all these
 aspects and provide more detailed models in the future.
 
 ~\\
-This paper is structured as follows. Sec.~\ref{sec:relatedwork} 
+This paper is structured as follows: Sec.~\ref{sec:relatedwork} 
 provides a brief overview of the related work. Afterwards, 
-Sec.~\ref{sec:background} explains all the necessary terms and 
+Sec.~\ref{sec:background} explains the necessary terms and 
 technical details. The main part of this work 
 encompass Sections \ref{sec:engagement} and 
 \ref{sec:suppliermodelling}, which conduct the dual-perspective 
-investigation of the Cloud Gaming providers' and their competitions' 
-business models and engagement from the angle of the user and the 
-platform operator respectively. The paper concludes in 
+investigation of the Cloud Gaming providers' service offering and business case. The paper concludes in 
 Sec.~\ref{sec:conclusion} with some remarks and an outlook.
+
+%and their competitions' 
+%business models and engagement from the angle of the user and the 
+%platform operator respectively. 
 
 %%%%%%%%%%%%
 % \subsection{Fragestellungen}
