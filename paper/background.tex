@@ -51,7 +51,7 @@ Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically
 
 \subsubsection{Geforce Now}
 
-\textit{Geforce NOW}\footnote{\url{http://shield.nvidia.com/game-streaming-with-geforce-now}} is a Cloud Gaming service by NVIDIA available in North America as well as some European countries. In Germany the service currently offers access to $68$ PC titles for a monthly subscription fee of \SI{10}[\EUR]. The more prominent and recent $19$ of those titles however require an additional one-time payment between \SI{13}[\EUR] and \SI{60}[\EUR]. The service is delivered from six specialized data center locations, with Dublin and Frankfurt responsible for Europe.
+\textit{Geforce NOW}\footnote{\url{http://shield.nvidia.com/game-streaming-with-geforce-now}} is a Cloud Gaming service in North America as well as some European countries. In Germany the service currently offers $68$ PC titles for a monthly subscription fee of \SI{10}[\EUR]. An additional per-game one-time fee between \SI{13}[\EUR] and \SI{60}[\EUR] is charged for the access to the $19$ most prominent and recent games. The service is delivered from six specialized data center locations (Dublin and Frankfurt in Europe).
 
 The requirements to use this service are rather steep, demanding \SI{50}{\mega\bit\per\second} for a full 1080p60\footnote{\label{foot:rate}Please note: This frame rate of \SI{60}{\hertz} represents the rate of the video encoder and not the game's actual frame rate, which might be considerably lower depending on the complexity of the game.} stream (\SI{10}{\mega\bit\per\second} in order to use the service at all) and a maximum \acrshort{RTT} of \SI{60}{\milli\second} to one of the data centers. In addition, streaming is exclusive to one of NVIDIA's \textit{SHIELD} devices which start at \SI{200}[\EUR].
 
@@ -60,12 +60,14 @@ The requirements to use this service are rather steep, demanding \SI{50}{\mega\b
 
 \subsubsection{Playstation Now}
 
-In the absence of backwards compatibility in the latest PlayStation generation, the \textit{PlayStation Now} service was put in place to stream titles from the PlayStation 2 and 3 generation to the current iteration of Sony's consoles. It is currently available in North America and the UK, with a closed beta running in some other European countries as well as Japan.
+Due to the absence of backwards compatibility in the latest PlayStation generation, the \textit{PlayStation Now} service offers to stream titles from previous generations. It is currently available in North America and the UK, with a closed beta running in some other European countries as well as Japan.
 
-The offered titles and exact pricing vary from country to country. As stated this work will focus on the European perspective. For the UK, about $190$ titles are available. A large portion of them is included in the subscription service, incurring a monthly fee of about \SI{17}[\EUR]. All titles are also available through a separate rental service, costing about \SI{4}[\EUR] for \SI{48}{\hour} of access, and \SI{10}[\EUR] for a week. This is in addition for the device cost, as the service is only available to the PlayStation 4 and 3 consoles as well as some select Sony TVs and other devices (which would however necessitate the purchase of a game controller).
+The offered titles and exact pricing vary from country to country. As stated this work will focus on the European perspective. For the UK, about $190$ titles are available where most titles are covered by the monthly subscription fee of about \SI{17}[\EUR]. All titles are also available through a separate rental service, costing about \SI{4}[\EUR] for \SI{48}{\hour} of access, and \SI{10}[\EUR] for a week. This is in addition for the device cost, as the service is only available on  PlayStation 4 and 3 consoles as well as some select Sony TVs and other devices with extra game controller.
 
-The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requiring a \SI{5}{\mega\bit\per\second} connection. Reports on the video quality have been rather mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands-on-with-playstation-now}} Sony is also reportedly using specialized hardware, adopted from regular PlayStation 3s, on their server side, effectively eliminating any chance for multi-purpose uses of these devices.
-\todo[inline]{AR: It's unclear at this point why anyone, including Sony, should care for (lack of) ``multi-purpose.''}
+%(which would however necessitate the purchase of a game controller).
+
+The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requiring a \SI{5}{\mega\bit\per\second} connection. Reports on the video quality have been rather mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands-on-with-playstation-now}} Sony is also reportedly using specialized server hardware, adopted from regular PlayStation 3s, effectively eliminating any chance for multi-purpose uses of these devices. This could lower scalability gains.
+\todo[inline]{AR: It's unclear at this point why anyone, including Sony, should care for (lack of) ``multi-purpose.'' PZ: The server-sharing may suffer, I made a suggestion. PZ: Is ``adopted'' correct here. Could be, but sounded suspicious. ;)}
 
 % cost and some more infos:
 % http://www.pocket-lint.com/news/126394-playstation-now-subscription-service-comes-to-the-uk-what-is-it-and-how-can-you-get-it
@@ -77,9 +79,13 @@ The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Gaming Measures and Datasets}
 
-The leading question for the user side of the cost-benefit analysis is: ``How can we properly estimate the value a user gets from a specific service?'' with an additional question of ``What is the definition of value in this context?''. To answer these some means to meter user engagement is required, as this represents the core of those questions. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective.
+%of the cost-benefit analysis is
+\todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
+The leading question for investigating the customer side is ``How can we properly estimate the (perceived) value of a service for the customer?'' where the perceived value deserves a definition and specific attention. This is targeted by the means of assessing the user engagement. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective. However, with the help of further metrics  a more objective impression of the popularity and the value of individual titles can be formed. In order to investigate such metrics, data had to be collected from various sources and merged into a consistent data base. All the code, data and this paper itself can be found in public code repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}} in the interest of repeatability and reproducibility. The following paragraphs describe the individual sets.
 
-However, there are still a number of metrics independent of one's own subjective opinion that can give a more objective impression of the popularity and the value of individual titles. Both these attributes usually play a role in one's decision to play a certain game. In order to investigate such metrics, data had to be collected from various sources and merged into a consistent data base. All the code, data as well as this paper itself can be found in public code repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}} in the interest of repeatability and reproducibility. The following paragraphs describe the individual sets.
+%Both these attributes usually play a role in one's decision to play a certain game. 
+
+%with an additional question of ``What is the definition of value in this context?''. To answer these some means to meter user engagement is required, as this represents the core of those questions. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective.
 
 % \input{dataset_metadata_table}
 % \input{dataset_stats_table}
@@ -87,7 +93,7 @@ However, there are still a number of metrics independent of one's own subjective
 %%%%%%%%%%%%
 \subsubsection{Game Prices and Ownership}
 \todo[inline]{AR: Now with 100\% less ``ownership'' discussion!}
-An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points of time. The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during \steam's Lunar New Year Sale.
+An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points in time. The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during \steam's Lunar New Year Sale.
 
 \begin{figure}[!t]
 	\centering
@@ -98,8 +104,8 @@ An initial grasp of the popularity of individual titles can often be derived fro
 
 This was combined with \acrshort{API}-data from the 3rd-party Web site SteamSpy\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles and from this estimates statistics on the size of the playerbase and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible.
 
-\todo[inline]{Ist ``free'' auch in-app Purchase Zeug?}
-\todo[inline]{FM: This includes everything without any upfront costs: free, free-to-play with microtransactions, free to install but with subscriptions, ...}
+%\todo[inline]{Ist ``free'' auch in-app Purchase Zeug?}
+%\todo[inline]{FM: This includes everything without any upfront costs: free, free-to-play with microtransactions, free to install but with subscriptions, ...}
 
 
 \begin{figure}[!t]
@@ -117,7 +123,9 @@ Due to the strong popularity of \steam in PC gaming (even physical retail copies
 %%%%%%%%%%%%
 \subsubsection{Game Lengths}
 
-While the previous dataset included numbers on the average playtime, but this is not necessarily representative of the length of one ``playthrough'' of a game. The latter might be another indicator of the amount (albeit not the quality) of content a game offers. To encompass this, data from the site \hltb\footnote{\url{http://howlongtobeat.com/}} was collected\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}. This site allows for manual reporting of playthrough times of games on any platform. Times are separated into different play styles (e.g. ``main story'' or ``completionist'') and only an aggregated time is shown. For this analysis only the average playtime of all play styles is taken into account. It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
+While the previous dataset included numbers on the average playtime, this is not necessarily characteristic for a game's single ``playthrough'' time. The playthrough time may be an indicator for the amount of provided content (albeit not the quality). For this purpose, self-reported data from the site \hltb\footnote{\url{http://howlongtobeat.com/}} was collected\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}. This site allows for manual reporting of playthrough times on any platform. Times are separated into different play styles (e.g., ``main story'' or ``completionist'') and only an aggregate time is shown. For this analysis only the average playtime of all play styles is taken into account. %It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
+
+\todo[inline]{PZ: Of all styles? Why not per game? What is expressiveness?}
 
 \begin{figure}[!t]
 	\centering
@@ -126,6 +134,7 @@ While the previous dataset included numbers on the average playtime, but this is
 \label{fig:gamelengths-violin}
 \end{figure}
 
+\todo[inline]{PZ: Naechster Satz ist mir unklar.}
 Nonetheless, the distribution of game lengths from this set can still be worth to look at in the context of putting value to games for consumers of different platforms. As seen in Figure~\ref{fig:gamelengths-violin} the play lengths vary greatly, with the median at \SI{7.5}{\hour} and a long tail of play times reaching \SI{420}{\hour}.
 
 %Game lengths can not only serve as an indicator of the amount of content a game has to offer, but can also serve as an engagement metric to estimate a user's amount of satisfaction. More fitting engagement metrics could also be employed.
@@ -134,9 +143,11 @@ Nonetheless, the distribution of game lengths from this set can still be worth t
 %%%%%%%%%%%%
 \subsubsection{Review Scores}
 
-A final indirect measure of value and user satisfaction are review score as given by professional gaming media outlets. The largest dataset of such scores is available through Metacritic\footnote{\url{http://www.metacritic.com/}} and also included for this examination\footnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
 
-This set covers all gaming platforms, current and historic. The review scores are aggregated to a single average scores of $0$--$100$, although some internal weighing factors are applied, signifying the importance of some media outlets over others.
+A final indirect measure of value and user satisfaction are review score as given by professional gaming media outlets. The largest dataset of such scores is available through Metacritic\footnote{\url{http://www.metacritic.com/}}, which is included in the present analysis\footnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
+\todo[inline]{We only use the script, right.. maybe add clarification in footnote? Does the set really cover ``all'' plattforms?}
+
+This set covers all current and historic gaming platforms. The review scores are aggregated to average scores ranging between $0$ and $100$. Some internal weighing factors are applied that  signify the importance of some media outlets over others.
 
 The exact release date of every title is also included, leading to another possible engagement metric: the game's age. Barring some highly favored classic titles, more recent games are usually much more popular than older ones.
 
