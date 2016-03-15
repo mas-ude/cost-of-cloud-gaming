@@ -29,14 +29,14 @@ psnow.rental.price.30d <- 7.99 * exchangerate.GBPtoEUR
 # http://www.jp.playstation.com/psnow/list.html
 # included: 145, rental: 185
 # rental proportion: .56
-ps.maxgames <- nrow(df.psnow)
-ps.excluded <- ps.maxgames * 0.56
-psnow.included <- ps.maxgames - ps.excluded
+psnow.maxgames <- nrow(df.psnow)
+psnow.excluded <- psnow.maxgames * 0.56
+psnow.included <- psnow.maxgames - psnow.excluded
 #psnow.included <- sum(df.psnow$Included.In.Subscription == TRUE)
 #psnow.extra <- sum(df.psnow$Included.In.Subscription == FALSE)
 
 psnow <- pmax(((budget - psnow.hw.peryear) - psnow.yearly),0)
-psnow[psnow > 0] <- pmin(psnow[psnow > 0] / psnow.rental.price.30d + psnow.included, ps.maxgames)
+psnow[psnow > 0] <- pmin(psnow[psnow > 0] / psnow.rental.price.30d + psnow.included, psnow.maxgames)
 
 
 ########
@@ -91,7 +91,7 @@ budget.annual <- year * money
 steam.annual <- ((budget.annual) - steam.hw.peryear * year) / steam.meanprice
 
 psnow.annual <- pmax((year * money) - (psnow.hw.peryear + psnow.yearly) * year, 0)
-psnow.annual[psnow.annual > 0] <- pmin(psnow.annual[psnow.annual > 0] / psnow.rental.price.30d, psnow.extra) + psnow.included
+psnow.annual[psnow.annual > 0] <- pmin(pmin(psnow.annual[psnow.annual > 0] / psnow.rental.price.30d, psnow.extra) + psnow.included, psnow.maxgames)
 
 gfnow.annual <- pmax((year * money) - (gfnow.hw.peryear + gfnow.yearly) * year, 0)
 gfnow.annual[gfnow.annual > 0] <- pmin(gfnow.annual[gfnow.annual > 0] / gfnow.extraprice.mean, gfnow.extra) + gfnow.included
