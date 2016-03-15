@@ -93,16 +93,23 @@ The leading question for investigating the customer side is ``How can we properl
 %%%%%%%%%%%%
 \subsubsection{Game Prices and Ownership}
 \todo[inline]{AR: Now with 100\% less ``ownership'' discussion!}
-An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points in time. The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during \steam's Lunar New Year Sale.
+An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points in time. While details on the pricing are later on discussed around Table~\ref{tab:dataset-stats}, we can on a high level acknowledge the different prices obtained during sale and non-sale periods.
+\todo[inline]{PZ: The reference to the far away table shows a structural issue, which might be fixed with the reorganisation suggested by AR.}
 
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/steam-prices.pdf}
-	\caption{CDF of games on the \steam platform at three distinct dates. The February data was collected in a sales period.}
-\label{fig:steam-prices}
-\end{figure}
+%where sale periods, e.g., the Lunar New Year Sale, yield substantially different prices.
 
-This was combined with \acrshort{API}-data from the 3rd-party Web site SteamSpy\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles and from this estimates statistics on the size of the playerbase and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible.
+% On a high-level, the sale periods shine out 
+
+%The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during \steam's Lunar New Year Sale.
+
+%\begin{figure}[!t]
+%	\centering
+%	\includegraphics[width=1.0\columnwidth]{images/steam-prices.pdf}
+%	\caption{CDF of games on the \steam platform at three distinct dates. The February data was collected in a sales period.}
+%\label{fig:steam-prices}
+%\end{figure}
+
+This was combined with \acrshort{API}-data from the 3rd-party Web site SteamSpy\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles and from this estimates statistics on the size of the playerbase and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible. 
 
 %\todo[inline]{Ist ``free'' auch in-app Purchase Zeug?}
 %\todo[inline]{FM: This includes everything without any upfront costs: free, free-to-play with microtransactions, free to install but with subscriptions, ...}
@@ -130,7 +137,8 @@ While the previous dataset included numbers on the average playtime, this is not
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/gamelengths-by-platform-violin.pdf}
-	\caption{Violin plot of the average game lengths over all play styles and separated for the investigated platforms as recorded on \hltb.}
+	\caption{Violin plot of the per-platform average game lengths from \hltb, aggregated over all play styles.}	
+%	aggregated over all play styles (raw data source: \hltb).}
 \label{fig:gamelengths-violin}
 \end{figure}
 
