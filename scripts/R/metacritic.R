@@ -41,10 +41,19 @@ median(df.merged$age, na.rm = TRUE)
 ## generate data frame for multi-plat density plot
 
 df.scores <- data.frame()
-df.scores <- rbind(df.scores, data.frame(title = df.consolidated.psnow$name, platform = "PlayStation Now", score = df.consolidated.psnow$score, user_score = df.consolidated.psnow$user_score * 10))
 df.scores <- rbind(df.scores, data.frame(title = df.consolidated.gfnow$name, platform = "Geforce Now", score = df.consolidated.gfnow$score, user_score = df.consolidated.gfnow$user_score * 10))
+df.scores <- rbind(df.scores, data.frame(title = df.consolidated.psnow$name, platform = "PlayStation Now", score = df.consolidated.psnow$score, user_score = df.consolidated.psnow$user_score * 10))
 df.scores <- rbind(df.scores, data.frame(title = df.consolidated.steam$name, platform = "Steam", score = df.consolidated.steam$score, user_score = df.consolidated.steam$user_score * 10))
 df.scores <- rbind(df.scores, data.frame(title = df.metacritic$title, platform = "overall", score = df.metacritic$score, user_score = df.metacritic$user_score * 10))
+
+# Show how many games per platform we have Metacritic scores for.
+# https://github.com/mas-ude/cost-of-cloud-gaming/issues/4 : I'd love 
+#   for this information to go into the x labels, but multiline labels 
+#   are too hard for me (or R.)
+# Result (also showing that we couldn't match 100% of games between the datasets)
+#    Geforce Now PlayStation Now           Steam         overall 
+#             68             209            7759           46197 
+summary(df.scores$platform)
 
 
 ## density plot
