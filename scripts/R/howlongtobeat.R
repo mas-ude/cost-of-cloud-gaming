@@ -37,10 +37,21 @@ ggplot(df.steammetascorehltb, aes(x = score)) + stat_ecdf()
 ## generate data frame for multi-plat density plot
 
 df.lengths <- data.frame()
-df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.psnow$name, platform = "PlayStation Now", combined_length = df.consolidated.psnow$combined_length))
 df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.gfnow$name, platform = "Geforce Now", combined_length = df.consolidated.gfnow$combined_length))
+df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.psnow$name, platform = "PlayStation Now", combined_length = df.consolidated.psnow$combined_length))
 df.lengths <- rbind(df.lengths, data.frame(title = df.consolidated.steam$name, platform = "Steam", combined_length = df.consolidated.steam$combined_length))
 df.lengths <- rbind(df.lengths, data.frame(title = df.hltb$title, platform = "overall", combined_length = df.hltb$combined_length))
+
+
+# Show how many games per price category we have.
+# https://github.com/mas-ude/cost-of-cloud-gaming/issues/4 : I'd love 
+#   for this information to go into the x labels, but multiline labels 
+#   are too hard for me (or R.)
+# Result (also showing that we couldn't match 100% of games between the datasets)
+#    Geforce Now PlayStation Now           Steam        overall 
+#             68             209            7764          18433 
+summary(df.lengths$platform)
+
 
 
 ## density plot
@@ -52,7 +63,7 @@ ggsave("gamelengths-by-platform-density.pdf", width=12, height=8)
 
 ## violins
 # p <- ggplot(df.lengths, aes(x = as.factor(platform), y = combined_length)) + geom_violin(scale = "count") + scale_y_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
-p <- ggplot(df.lengths, aes(x = as.factor(platform), y = combined_length)) + geom_violin(adjust = .8, scale = "area", draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE) + scale_y_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
+p <- ggplot(df.lengths, aes(x = as.factor(platform), y = combined_length)) + geom_violin(adjust = .8, scale = "area", draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE) + scale_y_log10(breaks=10**seq(-1,2)) #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
 p <- p + xlab("platform") + ylab("avg. combined playthrough length (h)")
 p <- p + theme(text = element_text(size=20))
 p
