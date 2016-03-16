@@ -133,8 +133,19 @@ for (i in 1:nrow(df.steamdata)) {
   tmp <- data.frame(row)
   df.steam.prizecategory <- rbind(df.steam.prizecategory, tmp)
 }
+
 df.steam.prizecategory$price_category <- as.factor(df.steam.prizecategory$price_category)
 df.steam.prizecategory$price_category <- ordered(df.steam.prizecategory$price_category, levels=c("free", "<5", "5 to 10", "10 to 20", "20 to 40", "above 40"))
+
+# Show how many games per price category we have.
+# https://github.com/mas-ude/cost-of-cloud-gaming/issues/4 : I'd love 
+#   for this information to go into the x labels, but multiline labels 
+#   are too hard for me (or R.)
+# Result:
+#    free       <5  5 to 10 10 to 20 20 to 40 above 40 
+#    1122     2177     1946     1106      328       90 
+summary(df.steam.prizecategory$price_category)
+
 
 p <- ggplot(df.steam.prizecategory, aes(x=price_category, y=average_playtime_hours)) + geom_violin(adjust=.5, draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)  + scale_y_log10(breaks = c(0.1, 10, 1000), labels = c(0.1, 10, 1000))
 p <- p + xlab("price range (€)") + ylab("average playtime (h)")
