@@ -1,26 +1,24 @@
 %!TEX root = paper.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Game Services and Data}
+\section{Characterising Platforms and Games}
 \label{sec:background}
 
-This section aims to cover all basic information on Cloud Gaming and their business models. It also briefly introduces the employed datasets.
+This section covers the basic characteristics of different gaming platforms, including digital storefronts that sell copies of games for local use, and Cloud gaming approaches where the game is executed and rendered ``in the cloud'' (i.e. in remote datacenters), and an audio/video stream is sent back to the player. We also present observations about the properties of the games offered.
+Section~\ref{sec:engagement} will then use these characteristics to reason about player engagement and budget considerations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Service Costs}% of Gaming Platforms}
+\subsection{Platform Characteristics}
 
-%, one should first take a look at the vastly different price models --- as well as the supporting competitive ecosystem surrounding them --- these services offer to their customers.
-To evaluate the costs and benefits of individual gaming platforms are essentially influenced by the vastly varying price models (i.e., service costs for customers). For this investigation only currently active services, Cloud and otherwise, are examined which narrows the number of services considerably. The information presented here was collected in February 2016. All costs are from an European, specifically German, perspective. If a product is not available in this region, the prices are converted with the help of the most recent currency exchange rates.
-
-%accordingly to the current exchange rates.
+Below we examine currently active (cloud and other) gaming platforms with regards to pricing models, and hardware requirements and costs. The information presented was collected between July 2015 and February 2016. All costs are from an European, specifically German, perspective. If a product is not available in this region, the prices are converted using the most recent currency exchange rates.
 
 
 \subsubsection{Video Game Consoles}
 
-One of the classical approaches to video games is using dedicated consoles with physical copies of game media (e.g., a data DVD) bought at a retailer. The price for (non-portable) consoles varies but usually lies between \SI{300}[\EUR] and \SI{400}[\EUR] for the latest console generation, i.e., currently \textit{Wii U}, \textit{PlayStation 4}, and \textit{Xbox One}. New, major game releases are mostly priced at either \SI{60}[\EUR] or \SI{70}[\EUR]. Once on the market, the game price decreases rather slowly. In recent years retail stores have been more and more complemented with each console's proprietary digital distribution service that also offer the latest game at the full price. These official stores are usually exclusive vendors for digital game codes where competitors are excluded.
+A classical approach to video gaming is using dedicated consoles with physical copies of game media (e.g., a data DVD) bought at a retailer. The price for (non-portable) consoles varies but usually lies between \SI{300}[\EUR] and \SI{400}[\EUR] for the latest console generation, i.e., \textit{Wii U}, \textit{PlayStation 4}, and \textit{Xbox One}. New, major game releases are mostly priced at either \SI{60}[\EUR] or \SI{70}[\EUR]. Once on the market, the game prices decrease rather slowly. In recent years, retail stores have been complemented with console-specific, proprietary digital distribution services that also offer the latest game at the full price. These official stores are usually exclusive vendors for digital game codes where competitors are excluded.
 
 %, meaning that there will be no competition that quickly reduces prices.
 
-Subscriptions fees often apply for the multiplayer mode of games, e.g., \textit{PlayStation Plus} or \textit{Xbox Live Gold} with annual prices of \SI{50}[\EUR] and \SI{60}[\EUR] resp. These services also include a small monthly changing palette of older game titles.
+Subscriptions fees often apply for the multiplayer mode of games, e.g., \textit{PlayStation Plus} or \textit{Xbox Live Gold} with annual prices of \SI{50}[\EUR] and \SI{60}[\EUR], respectively. These services also include a small, monthly changing palette of older game titles.
 
 % generally offer a monthly rotating palette of (older or smaller) game titles included in the subscription.
 
@@ -30,11 +28,11 @@ Subscriptions fees often apply for the multiplayer mode of games, e.g., \textit{
 \subsubsection{The PC Gaming Ecosystem}
 \label{sec:pcgaming}
 
-The rise of easy-to-use digital distribution platforms and the independent (i.e., ``indie'') game scene reinvigorated PC gaming just a few years ago. Today, PC gaming is dominated by large digital marketplaces, and \steam in particular. The platform, with about $10$ million concurrent users at every time of day, has fully embraced its digital and online-only nature and periodically offers large (seasonal) sales of recent games at greatly reduced prices (rebates of 75\% for a year-old game are not uncommon). In addition, many resellers offer digital codes for other platforms, often at much lower prices. Alternative storefronts, entirely independent from \steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}.%, and enrich the competition even more.
+The rise of easy-to-use digital distribution platforms and the independent (``indie'') game scene reinvigorated PC gaming just a few years ago. Today, PC gaming is dominated by large digital marketplaces, and the \steam platform in particular. The platform has about $10$ million concurrent users at every time of day. It periodically offers large, often seasonal, sales of recent games at greatly reduced prices (rebates of 75\% for a year-old game are not uncommon). In addition, many resellers offer digital codes for other platforms, often at much lower prices. Alternative storefronts, entirely independent from \steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}.%, and enrich the competition even more.
 
-The official prices for new major releases on PC are comparable to that of console titles. However, due to the competition the street prices are significantly lower even at launch, and also drop more quickly. Another recent trend are bundles of games, especially prevalent in the indie games scene, which are offered for either a low price or, more commonly, with a pay-what-you-want model with parts of the money going to charities. \textit{Humble Bundle}\footnote{\url{https://www.humblebundle.com/}} is a prominent example. 
+The official prices for new major releases on PC are comparable to those of console titles. However, due to the competition between marketplaces, the street prices are significantly lower even at launch, and also drop more quickly. Another recent trend are bundles of games, especially prevalent in the indie games scene, which are offered for either a low price or, more commonly, with a pay-what-you-want model with parts of the money going to charities. \textit{Humble Bundle}\footnote{\url{https://www.humblebundle.com/}} is a prominent example. % Number of games >>> what consoles have
 
-Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically no upper limit for enthusiasts (especially the \gls{GPU} is a cost driver, but essential for modern  PC gaming). Thus, the barrier for customers to start PC gaming is a bit steeper than for consoles, which is, however, compensated by an increased flexibility and longevity of hardware.
+Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically no upper limit for enthusiasts (especially the \gls{GPU} is a cost driver, but essential for modern  PC gaming). Thus, the barrier for customers to start PC gaming is higher than for consoles, which is, however, compensated by an increased flexibility and longevity of hardware.
 
 %albeit with increased flexibility and longevity. Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically no upper limit for enthusiasts. The main spender will usually be the \gls{GPU}, often surpassing the \acrshort{CPU} in its performance impact in today's games by far.
 
@@ -49,25 +47,24 @@ Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically
 % Free weekends
 
 
-\subsubsection{Geforce Now}
+\subsubsection{Geforce NOW}
 
-\textit{Geforce NOW}\footnote{\url{http://shield.nvidia.com/game-streaming-with-geforce-now}} is a Cloud Gaming service in North America as well as some European countries. In Germany the service currently offers $68$ PC titles for a monthly subscription fee of \SI{10}[\EUR]. An additional per-game one-time fee between \SI{13}[\EUR] and \SI{60}[\EUR] is charged for the access to the $19$ most prominent and recent games. The service is delivered from six specialized data center locations (Dublin and Frankfurt in Europe).
+\textit{Geforce NOW}\footnote{\url{http://shield.nvidia.com/game-streaming-with-geforce-now}} This Cloud Gaming service is available in North America and selected European countries. In Germany the service currently offers $68$ PC titles for a monthly subscription fee of \SI{10}[\EUR]. An additional per-game one-time fee between \SI{13}[\EUR] and \SI{60}[\EUR] is charged for the access to the $19$ most prominent and recent games. The service is delivered from six specialized data center locations (Dublin and Frankfurt in Europe).
 
-The requirements to use this service are rather steep, demanding \SI{50}{\mega\bit\per\second} for a full 1080p60\footnote{\label{foot:rate}Please note: This frame rate of \SI{60}{\hertz} represents the rate of the video encoder and not the game's actual frame rate, which might be considerably lower depending on the complexity of the game.} stream (\SI{10}{\mega\bit\per\second} in order to use the service at all) and a maximum \acrshort{RTT} of \SI{60}{\milli\second} to one of the data centers. In addition, streaming is exclusive to one of NVIDIA's \textit{SHIELD} devices which start at \SI{200}[\EUR].
+The requirements to use this service are rather steep, demanding \SI{50}{\mega\bit\per\second} for a full 1080p60\footnote{\label{foot:rate}Please note: This frame rate of \SI{60}{\hertz} represents the rate of the video encoder and not the game's actual frame rate, which might be considerably lower depending on the complexity of the game.} stream (\SI{10}{\mega\bit\per\second} in order to use the service at all) and a maximum \acrshort{RTT} of \SI{60}{\milli\second} to one of the data centers. In addition, streaming is exclusive to NVIDIA's \textit{SHIELD} devices which start at \SI{200}[\EUR].
 
 % Started in parts of Europe in Q4/2015
 
 
 \subsubsection{Playstation Now}
 
-Due to the absence of backwards compatibility in the latest PlayStation generation, the \textit{PlayStation Now} service offers to stream titles from previous generations. It is currently available in North America and the UK, with a closed beta running in some other European countries as well as Japan.
+Sony's Cloud gaming service offers to stream titles from previous PlayStation generations, as the latest console generation lacks backwards compatibility. It is currently available in North America and the UK, with a closed beta running in  other European countries and Japan.
 
-The offered titles and exact pricing vary from country to country. As stated this work will focus on the European perspective. For the UK, about $190$ titles are available where most titles are covered by the monthly subscription fee of about \SI{17}[\EUR]. All titles are also available through a separate rental service, costing about \SI{4}[\EUR] for \SI{48}{\hour} of access, and \SI{10}[\EUR] for a week. This is in addition for the device cost, as the service is only available on  PlayStation 4 and 3 consoles as well as some select Sony TVs and other devices with extra game controller.
+The offered titles and exact pricing vary from country to country. For the UK, about $190$ titles are available, and most titles are covered by the monthly subscription fee of about \SI{17}[\EUR]. All titles are also available through a separate rental service, costing about \SI{4}[\EUR] for \SI{48}{\hour} and \SI{10}[\EUR] for one week of access. This is in addition for the device cost, as the service is only available on  PlayStation 4 and 3 consoles as well as some select Sony TVs and other devices with extra game controller.
 
 %(which would however necessitate the purchase of a game controller).
 
-The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requiring a \SI{5}{\mega\bit\per\second} connection. Reports on the video quality have been rather mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands-on-with-playstation-now}} Sony is also reportedly using specialized server hardware, adopted from regular PlayStation 3s, effectively eliminating any chance for multi-purpose uses of these devices. This could lower scalability gains.
-\todo[inline]{AR: It's unclear at this point why anyone, including Sony, should care for (lack of) ``multi-purpose.'' PZ: The server-sharing may suffer, I made a suggestion. PZ: Is ``adopted'' correct here. Could be, but sounded suspicious. ;)}
+The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requiring a \SI{5}{\mega\bit\per\second} connection. Reports on the video quality have been rather mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands-on-with-playstation-now}} % Sony is also reportedly using specialized server hardware, adapted from regular PlayStation 3s, effectively eliminating any chance for multi-purpose uses of these devices. This could lower scalability gains.
 
 % cost and some more infos:
 % http://www.pocket-lint.com/news/126394-playstation-now-subscription-service-comes-to-the-uk-what-is-it-and-how-can-you-get-it
@@ -78,6 +75,10 @@ The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requ
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Gaming Measures and Datasets}
+
+
+game prices, play lengths, and review scores.
+
 
 %of the cost-benefit analysis is
 \todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
