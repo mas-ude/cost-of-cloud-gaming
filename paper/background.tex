@@ -74,15 +74,14 @@ The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requ
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Gaming Measures and Datasets}
+\subsection{Characteristics of Games}
 
-
-game prices, play lengths, and review scores.
-
+Following the discussion of gaming platform characteristics, we now turn our attention to the properties of the games offered on the various platforms: number of games, prices, ages, play lengths, and review scores.
 
 %of the cost-benefit analysis is
-\todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
-The leading question for investigating the customer side is ``How can we properly estimate the (perceived) value of a service for the customer?'' where the perceived value deserves a definition and specific attention. This is targeted by the means of assessing the user engagement. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective. However, with the help of further metrics  a more objective impression of the popularity and the value of individual titles can be formed. In order to investigate such metrics, data had to be collected from various sources and merged into a consistent data base. All the code, data and this paper itself can be found in public code repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}} in the interest of repeatability and reproducibility. The following paragraphs describe the individual sets.
+%\todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
+%The leading question for investigating the customer side is ``How can we properly estimate the (perceived) value of a service for the customer?'' where the perceived value deserves a definition and specific attention. This is targeted by the means of assessing the user engagement. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective. However, with the help of further metrics  a more objective impression of the popularity and the value of individual titles can be formed. 
+In order to investigate these, data was collected from multiple sources and merged into a consistent data base. In the interest of repeatability and reproducibility, all of the data reported on in this work, and all of the code used to collect and process it, can be found in public repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Table~\ref{tab:game-stats} overviews the data.
 
 %Both these attributes usually play a role in one's decision to play a certain game. 
 
@@ -92,6 +91,22 @@ The leading question for investigating the customer side is ``How can we properl
 % \input{dataset_stats_table}
 
 %%%%%%%%%%%%
+
+\begin{table*}
+\centering
+\caption{Game characteristics on the investigated platforms. Title counts and price data from Web/API/screen scraping, lengths from \hltb, ages and review scores from \metacritic. \psnow price values are for \SI{4}{\hour} rentals.}
+\label{tab:game-stats}
+	\begin{tabu}{X[2]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
+	\toprule
+	Service & Titles & Age $\mu$ & Age $\sigma$ & Length $\mu$ & Length $\sigma$ & Score $\mu$ & Score $\sigma$ & Price $\mu$ & Price $\sigma$\\
+	\midrule
+	\gfnow & $68$ & \SI{2.33}{\year} & \SI{1.95}{\year} & \SI{14.65}{\hour} & \SI{14.44}{\hour} & $75.9$ & $9.44$ & $6.98$ & ---?---\\
+	\psnow & $252$ & \SI{4.63}{\year} & \SI{2.5}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ & $5.48$ & ---?---\\
+	\steam & $7749$ & \SI{2.86}{\year} & \SI{3.96}{\year} & \SI{13.02}{\hour} & \SI{20.49}{\hour} & $71$ & $12$ & $5.64$ & ---?---\\
+	\bottomrule
+	\end{tabu}
+\end{table*}
+
 \subsubsection{Game Prices and Ownership}
 \todo[inline]{AR: Now with 100\% less ``ownership'' discussion!}
 An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points in time. While details on the pricing are later on discussed around Table~\ref{tab:dataset-stats}, we can on a high level acknowledge the different prices obtained during sale and non-sale periods.
