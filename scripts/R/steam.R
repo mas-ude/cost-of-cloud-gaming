@@ -159,8 +159,8 @@ df.steam.prizecategory$price_category <- ordered(df.steam.prizecategory$price_ca
 #    1122     2177     1946     1106      328       90 
 summary(df.steam.prizecategory$price_category)
 
-
-p <- ggplot(df.steam.prizecategory, aes(x=price_category, y=average_playtime_hours)) + geom_violin(adjust=.5, draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)  + scale_y_log10(breaks = c(0.1, 10, 1000), labels = c(0.1, 10, 1000))
+nice_breaks <- c(0.1, 1, 10, 100, 1000)
+p <- ggplot(df.steam.prizecategory, aes(x=price_category, y=average_playtime_hours)) + geom_violin(adjust=.5, draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)  + scale_y_log10(breaks = nice_breaks, labels = nice_breaks)
 p <- p + xlab("price range (€)") + ylab("average playtime (h)")
 p <- p + theme(text = element_text(size=20))
 p

@@ -63,7 +63,8 @@ ggsave("gamelengths-by-platform-density.pdf", width=12, height=8)
 
 ## violins
 # p <- ggplot(df.lengths, aes(x = as.factor(platform), y = combined_length)) + geom_violin(scale = "count") + scale_y_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
-p <- ggplot(df.lengths, aes(x = as.factor(platform), y = combined_length)) + geom_violin(adjust = .8, scale = "area", draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE) + scale_y_log10(breaks=10**seq(-1,2)) #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
+nice_breaks <- c(0.1, 1, 10, 100, 1000)
+p <- ggplot(df.lengths, aes(x = as.factor(platform), y = combined_length)) + geom_violin(adjust = .8, scale = "area", draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE) + scale_y_log10(breaks=nice_breaks, labels=nice_breaks) #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
 p <- p + xlab("platform") + ylab("avg. combined playthrough length (h)")
 p <- p + theme(text = element_text(size=20))
 p
