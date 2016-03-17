@@ -144,12 +144,6 @@ Trying to compare the prices per game is a difficult endeavour, as both Cloud ga
 
 Nevertheless, for \steam it is possible to discuss unit prices: Using the official \acrshort{REST} \acrshort{API}, the name and the current price of each game was fetched at three different points in time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This data was combined with \acrshort{API} data from the 3rd-party Web site \textit{SteamSpy}\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles, and from these estimates statistics on the size of the player base and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Given the combined data, a few different perspectives can be given.
 
-Table~\ref{tab:steam-price-stats} shows the development of average \steam game prices for the three measurements taken. Two different types of averages are shown: The portfolio price averages over all current game prices, and the weighted price is the product of game price and estimated number of owners, averaged over the total number of games owned. Strong temporal effects are evident from either metric. Note that the last measurement shortly predates 2016's Lunar New Year, around which \steam ran a large seasonal sales campaign\footnote{\url{http://store.steampowered.com/news/20313/}}.
-
-
-
-An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used.
-
 \begin{table}
 \centering
 \caption{Average prices for \steam games.}
@@ -164,10 +158,8 @@ An initial grasp of the popularity of individual titles can often be derived fro
 \end{tabu}
 \end{table}
 
-
-%where sale periods, e.g., the Lunar New Year Sale, yield substantially different prices.
-
-% On a high-level, the sale periods shine out 
+Table~\ref{tab:steam-price-stats} shows the development of average \steam game prices for the three measurements taken. Two different types of averages are shown: The portfolio price averages over all current game prices, and the weighted price is the product of game price and estimated number of owners, averaged over the total number of games owned. Strong temporal effects are evident from either metric. Note that the last measurement shortly predates 2016's Lunar New Year, around which \steam ran a large seasonal sales campaign\footnote{\url{http://store.steampowered.com/news/20313/}}.
+% Looking at the distributions of game prices, we find that the number of games in the sub \SI{5}]\EUR] category has ... hmm, what ... doubled? ... care to check with R?
 
 %The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during \steam's Lunar New Year Sale.
 
@@ -178,19 +170,15 @@ An initial grasp of the popularity of individual titles can often be derived fro
 %\label{fig:steam-prices}
 %\end{figure}
 
-
-
-
-Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible. 
-
-%\todo[inline]{Ist ``free'' auch in-app Purchase Zeug?}
-%\todo[inline]{FM: This includes everything without any upfront costs: free, free-to-play with microtransactions, free to install but with subscriptions, ...}
+In combination with data from \textit{SteamSpy}, further insights are possible. Figure~\ref{fig:steam-cost-vs-playtime-violin} breaks down the distribution of average playtimes per game price range. We chose the game price ranges so as to roughly separate the modes of the price distribution. % AR: The modes would be approximately 1, 2, 5, 10, 15, and 20 Euros from visual inspection of images/steam-prices-density.pdf.
+Playtime in this context is defined as ...
+As can be seen, the playtimes generally increase with the price range; unfortunately, the data does not explain the cause: E.g., more expensive games might have more playable content, causing the playtime to increase. Conversely, higher upfront costs may incite players to spend more time even with a ``weaker'' game, thus avoiding regret for the expense. And still alternatively, there might exist an outside, common reason causing both parameters to increases. On the far left in the Figure, playtimes of ``free'' titles (including free-to-play games with monetization options other than an upfront payment) span almost the whole playtime range with less pronounced prevalences.
 
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/steam-cost-vs-playtime-non-sale.pdf}
-	\caption{Violin plot of the average playtime of \steam games, broadly categorized by their prices. The number of games per bin are roughly $1$\si{\kilo}, $2$\si{\kilo}, $2$\si{\kilo}, $1$\si{\kilo}, $300$, and $90$.}
+	\caption{Violin plot of the average playtime of \steam games, broadly categorized by their prices. The number of games per bin are $1122$, $2177$, $1946$, $1106$, $328$, and $90$.}
 \label{fig:steam-cost-vs-playtime-violin}
 \end{figure}
 
