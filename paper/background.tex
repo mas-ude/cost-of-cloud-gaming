@@ -76,12 +76,12 @@ The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Characteristics of Games}
 
-Following the discussion of gaming platform characteristics, we now turn our attention to the properties of the games offered on the various platforms: number of games, prices, ages, play lengths, and review scores.
+Following the discussion of gaming platform characteristics, we now turn our attention to the properties of the games offered on the various platforms: number of games, prices, ages, play lengths, and review scores. Table~\ref{tab:game-stats} provides an overview of the data.
 
 %of the cost-benefit analysis is
 %\todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
 %The leading question for investigating the customer side is ``How can we properly estimate the (perceived) value of a service for the customer?'' where the perceived value deserves a definition and specific attention. This is targeted by the means of assessing the user engagement. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective. However, with the help of further metrics  a more objective impression of the popularity and the value of individual titles can be formed. 
-In order to investigate these, data was collected from multiple sources and merged into a consistent data base. In the interest of repeatability and reproducibility, all of the data reported on in this work, and all of the code used to collect and process it, can be found in public repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Table~\ref{tab:game-stats} overviews the data.
+In order to investigate these characteristics, data was collected from multiple sources and merged into a consistent data base. In the interest of repeatability and reproducibility, all of the data reported on in this work, and all of the code used to collect and process it, can be found in public repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Please note that due to space constraints and the multidimensional nature of the dataset, we can only present a limited number of findings in this paper.
 
 %Both these attributes usually play a role in one's decision to play a certain game. 
 
@@ -100,16 +100,35 @@ In order to investigate these, data was collected from multiple sources and merg
 	\toprule
 	Service & Titles & Age $\mu$ & Age $\sigma$ & Length $\mu$ & Length $\sigma$ & Score $\mu$ & Score $\sigma$ & Price $\mu$ & Price $\sigma$\\
 	\midrule
-	\gfnow & $68$ & \SI{2.33}{\year} & \SI{1.95}{\year} & \SI{14.65}{\hour} & \SI{14.44}{\hour} & $75.9$ & $9.44$ & $6.98$ & ---?---\\
-	\psnow & $252$ & \SI{4.63}{\year} & \SI{2.5}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ & $5.48$ & ---?---\\
-	\steam & $7749$ & \SI{2.86}{\year} & \SI{3.96}{\year} & \SI{13.02}{\hour} & \SI{20.49}{\hour} & $71$ & $12$ & $5.64$ & ---?---\\
+	\gfnow & $68$ & \SI{2.87}{\year} & \SI{1.95}{\year} & \SI{14.65}{\hour} & \SI{14.44}{\hour} & $75.9$ & $9.44$ & $6.98$ & ---?---\\
+	\psnow & $252$ & \SI{5.24}{\year} & \SI{2.55}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ & $5.48$ & ---?---\\
+	\steam & $7749$ & \SI{3.36}{\year} & \SI{3.95}{\year} & \SI{13.02}{\hour} & \SI{20.49}{\hour} & $71$ & $12$ & $5.64$ & ---?---\\
 	\bottomrule
 	\end{tabu}
 \end{table*}
 
-\subsubsection{Game Prices and Ownership}
+
+\subsubsection{Number of Games}
+
+This basic metric quantifies the range of games on offer. The two Cloud platforms offer a very limited number of games when compared to the games available on \steam, which itself again only represents a subset of all games available either on the PC platform (\metacritic lists $16192$) or across all platforms ($45803$ listed on the site). Two possible, simple explanations for the low game count on the Cloud platforms come to mind: One is that they were launched relatively recently in comparison to \steam (2003). Two, the choice of games for a Cloud gaming platform is necessarily curated by the platform operator: The operator guarantees that all of the offered games do indeed can run on the Cloud's hardware, and are usable across the network at a satisfying level of quality. This burden shifts to the end user for digital storefronts like \steam, allowing these platforms to offer a larger variety of games, including ones that are very demanding on the hardware.
+
+
+\subsubsection{Game ages}
+
+The average age of games (as computable from their release dates) appears to be  relatively high for all of the investigated platforms. 
+
+
+While a similarly high value is observed for \steam, this is explained by the much wider range of offered games where despite the addition of new games older games are retained --- thus, the $\sigma$ for the game age is also higher. Additionally, \psnow might be a special case, as it is specifically advertised as a backwards compatibility for games that do not run on the latest Sony platform any more.% (the PlayStation 4 does not provide compatibility with its predecessors).
+
+%Coupled with a higher $\sigma$ representing the wider range of games also in their age. 
+
+
+ %The broad range of games available on \steam also increases the average age, seen here however 
+
+
+
 \todo[inline]{AR: Now with 100\% less ``ownership'' discussion!}
-An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points in time. While details on the pricing are later on discussed around Table~\ref{tab:dataset-stats}, we can on a high level acknowledge the different prices obtained during sale and non-sale periods.
+An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points in time. While details on the pricing are later on discussed around Table~\ref{1tab:dataset-stats}, we can on a high level acknowledge the different prices obtained during sale and non-sale periods.
 \todo[inline]{PZ: The reference to the far away table shows a structural issue, which might be fixed with the reorganisation suggested by AR.}
 
 %where sale periods, e.g., the Lunar New Year Sale, yield substantially different prices.
