@@ -117,7 +117,7 @@ This basic metric quantifies the range of games on offer. The two Cloud platform
 %%%%%%%%%%%%
 \subsubsection{Game Ages}
 
-The average age of games, as computable from their release dates, appears to be  relatively high for all of the investigated platforms, and particularly so for \psnow. However, the standard deviations ($\sigma$) indicate that these numbers should be interpreted carefully. First, \psnow might be considered a special case, as it is specifically advertised as a backwards compatibility for older, pre-PlayStation 4 games that do not run on the latest Sony platform any more. For \steam, we observe from the data that the distribution is significantly skewed towards recent titles (with the median below $15$ months), and sports a long tail that extends beyond $25$ years (due to re-releases of ``classic'' games on the platform).
+The average age of games is computable from their release dates. To this end, we scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}} the \textit{Metacritic}\footnote{\url{http://www.metacritic.com/}} webpage. Game ages appear to be  relatively high for all of the investigated platforms, and particularly so for \psnow. However, the standard deviations ($\sigma$) indicate that these numbers should be interpreted carefully. First, \psnow might be considered a special case, as it is specifically advertised as a backwards compatibility for older, pre-PlayStation 4 games that do not run on the latest Sony platform any more. For \steam, we observe from the data that the distribution is significantly skewed towards recent titles (with the median below $15$ months), and sports a long tail that extends beyond $25$ years (due to re-releases of ``classic'' games on the platform).
 
 
 %%%%%%%%%%%%
@@ -191,12 +191,7 @@ Due to the strong popularity of \steam in PC gaming (even physical retail copies
 \subsubsection{Review Scores}
 
 
-A final indirect measure of value and user satisfaction are review score as given by professional gaming media outlets. The largest dataset of such scores is available through Metacritic\footnote{\url{http://www.metacritic.com/}}, which is included in the present analysis\footnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
-\todo[inline]{We only use the script, right.. maybe add clarification in footnote? Does the set really cover ``all'' plattforms?}
-
-This set covers all current and historic gaming platforms. The review scores are aggregated to average scores ranging between $0$ and $100$. Some internal weighing factors are applied that  signify the importance of some media outlets over others.
-
-The exact release date of every title is also included, leading to another possible engagement metric: the game's age. Barring some highly favored classic titles, more recent games are usually much more popular than older ones.
+A final measure of value and user satisfaction are review score as given by professional gaming media outlets. We rely on the \metacritic dataset again. This set covers review scores for all current and historic gaming platforms. The review scores are aggregated to average scores ranging between $0$ and $100$. Some \metacritic-internal weighing factors are applied to express the importance of some media outlets over others.
 
 
 % TODO: include or compare with data from opencritic.com as soon as their API is public/usable
@@ -208,6 +203,12 @@ The exact release date of every title is also included, leading to another possi
 % \label{fig:releases-per-year}
 % \end{figure}
 
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/scores-by-platform-violin.pdf}
+	\caption{Violin plot of aggregated review scores per platform, with quartiles indicated by horizontal lines. The number of games per bin are $68$, $209$, $7759$, and $46197$.}
+\label{fig:scores-by-platform}
+\end{figure}
 
-
-
+The scores seem quite similar across all services, albeit with a slightly lower $\sigma$ for \gfnow. This can probably be attributed to both the small number of games that are available, and through manual curation of the offered games. However, the mean values do not expose the whole picture of review scores, as evident in the violin plots of Fig.~\ref{fig:scores-by-platform}. Both streaming services seem to favour certain score levels. Specifically, they both show a number of highly rated titles, followed by a bulge of average ratings and few but noticeable titles in the low score tail. % These could be indications of the different nature of today's cloud gaming ecosystems. AR: Removed due to wishy-washy
+\steam on the one side is a more or less open platform, where every game publisher can sell their games at their own volition (platform operator collects a commission fee for sales). Cloud gaming platforms have to acquire licenses from the individual games' publishers and therefore have to be selective and curated by nature.
