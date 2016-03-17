@@ -94,7 +94,7 @@ In order to investigate these characteristics, data was collected from multiple 
 
 \begin{table*}
 \centering
-\caption{Game characteristics on the investigated platforms. Title counts and price data from Web/API/screen scraping, lengths from \hltb, ages and review scores from \metacritic. (\psnow prices are time-rental based and thus omitted).}
+\caption{Game characteristics on the investigated platforms. Title counts from Web/API/screen scraping, lengths from \hltb, ages and review scores from \metacritic.}
 \label{tab:game-stats}
 	\begin{tabu}{X[2]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
 	\toprule
@@ -144,11 +144,11 @@ Trying to compare the prices per game is a difficult endeavour, as both Cloud ga
 
 Nevertheless, for \steam it is possible to discuss unit prices: Using the official \acrshort{REST} \acrshort{API}, the name and the current price of each game was fetched at three different points in time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This data was combined with \acrshort{API} data from the 3rd-party Web site \textit{SteamSpy}\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles, and from these estimates statistics on the size of the player base and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Given the combined data, a few different perspectives can be given.
 
-Table~\ref{tab:steam-price-stats} shows the development of average \steam game prices for the three measurements taken. Two different types of averages are shown: The portfolio price averages over all current game prices, and the weighted price is the product of game price and estimated number of owners, averaged over the total number of games owned. Strong temporal effects are evident from either metric. Note that the last measurement shortly predates 2016's Lunar New Year, around which \steam ran a large seasonal sales campaign.
+Table~\ref{tab:steam-price-stats} shows the development of average \steam game prices for the three measurements taken. Two different types of averages are shown: The portfolio price averages over all current game prices, and the weighted price is the product of game price and estimated number of owners, averaged over the total number of games owned. Strong temporal effects are evident from either metric. Note that the last measurement shortly predates 2016's Lunar New Year, around which \steam ran a large seasonal sales campaign\footnote{\url{http://store.steampowered.com/news/20313/}}.
 
 
 
-An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used. 
+An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used.
 
 \begin{table}
 \centering
@@ -160,7 +160,7 @@ An initial grasp of the popularity of individual titles can often be derived fro
 	\midrule
 	\textbf{Portfolio price (\si{\EUR})} & $10.11$ & $8.47$ & $5.65$ \\
 	\textbf{Weighted price (\si{\EUR})} & $12.39$ & $10.21$ & $5.30$ \\
-%	\bottomrule
+	\bottomrule
 \end{tabu}
 \end{table}
 
