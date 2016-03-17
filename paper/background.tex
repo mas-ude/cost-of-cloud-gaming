@@ -108,22 +108,32 @@ In order to investigate these characteristics, data was collected from multiple 
 \end{table*}
 
 
+%%%%%%%%%%%%
 \subsubsection{Number of Games}
 
 This basic metric quantifies the range of games on offer. The two Cloud platforms offer a very limited number of games when compared to the games available on \steam, which itself again only represents a subset of all games available either on the PC platform (\metacritic lists $16192$) or across all platforms ($45803$ listed on the site). Two possible, simple explanations for the low game count on the Cloud platforms come to mind: One is that they were launched relatively recently in comparison to \steam (2003). Two, the choice of games for a Cloud gaming platform is necessarily curated by the platform operator: The operator guarantees that all of the offered games do indeed can run on the Cloud's hardware, and are usable across the network at a satisfying level of quality. This burden shifts to the end user for digital storefronts like \steam, allowing these platforms to offer a larger variety of games, including ones that are very demanding on the hardware.
 
 
-\subsubsection{Game ages}
+%%%%%%%%%%%%
+\subsubsection{Game Ages}
 
-The average age of games (as computable from their release dates) appears to be  relatively high for all of the investigated platforms. 
-
-
-While a similarly high value is observed for \steam, this is explained by the much wider range of offered games where despite the addition of new games older games are retained --- thus, the $\sigma$ for the game age is also higher. Additionally, \psnow might be a special case, as it is specifically advertised as a backwards compatibility for games that do not run on the latest Sony platform any more.% (the PlayStation 4 does not provide compatibility with its predecessors).
-
-%Coupled with a higher $\sigma$ representing the wider range of games also in their age. 
+The average age of games, as computable from their release dates, appears to be  relatively high for all of the investigated platforms, and particularly so for \psnow. However, the standard deviations ($\sigma$) indicate that these numbers should be interpreted carefully. First, \psnow might be considered a special case, as it is specifically advertised as a backwards compatibility for older, pre-PlayStation 4 games that do not run on the latest Sony platform any more. For \steam, we observe from the data that the distribution is significantly skewed towards recent titles (with the median below $15$ months), and sports a long tail that extends beyond $25$ years (due to re-releases of ``classic'' games on the platform).
 
 
- %The broad range of games available on \steam also increases the average age, seen here however 
+%%%%%%%%%%%%
+\subsubsection{Game Lengths}
+
+Game publishers are usually not outspoken about the intended playthrough length of games (nor do all games necessarily end). However, players may self-report their experienced playthrough times on sites like \hltb\footnote{\url{http://howlongtobeat.com/}}, on whose data this analysis is based\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}. Reported times are separated into different play styles, e.g., ``main story'' for players that just finish the main objectives of a game, or ``completionist'' for those who explore the game to the fullest extent. Only an aggregate time over all reports per play style is shown for every game. (For our analysis, we average over all play styles for every game.) %It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
+Figure~\ref{fig:gamelengths-violin} shows the distribution of game lengths for the three platforms under investigation, and an ``overall'' distribution that includes further platforms and gaming systems. Among the three platforms, the mean and median reported game lengths (approximately $14$ hours) are largest for \gfnow. In contrast to the curated choice of games on the Cloud systems, \steam also offers shorter and longer games.
+
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/gamelengths-by-platform-violin.pdf}
+	\caption{Violin plot of the per-platform average game lengths from \hltb, aggregated over all play styles. The number of games per bin are $68$, $209$, $7764$, and $18433$.}
+%	aggregated over all play styles (raw data source: \hltb).}
+\label{fig:gamelengths-violin}
+\end{figure}
 
 
 
@@ -160,27 +170,6 @@ This was combined with \acrshort{API}-data from the 3rd-party Web site SteamSpy\
 
 
 Due to the strong popularity of \steam in PC gaming (even physical retail copies often require using the service nowadays) this set also gives a good general overview of the dimensions of PC gaming in general.
-
-
-%%%%%%%%%%%%
-\subsubsection{Game Lengths}
-
-While the previous dataset included numbers on the average playtime, this is not necessarily characteristic for a game's single ``playthrough'' time. The playthrough time may be an indicator for the amount of provided content (albeit not the quality). For this purpose, self-reported data from the site \hltb\footnote{\url{http://howlongtobeat.com/}} was collected\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}. This site allows for manual reporting of playthrough times on any platform. Times are separated into different play styles (e.g., ``main story'' or ``completionist'') and only an aggregate time is shown. For this analysis only the average playtime of all play styles is taken into account. %It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
-
-\todo[inline]{PZ: Of all styles? Why not per game? What is expressiveness?}
-
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/gamelengths-by-platform-violin.pdf}
-	\caption{Violin plot of the per-platform average game lengths from \hltb, aggregated over all play styles. The number of games per bin are $68$, $209$, $7764$, and $18433$.}
-%	aggregated over all play styles (raw data source: \hltb).}
-\label{fig:gamelengths-violin}
-\end{figure}
-
-\todo[inline]{PZ: Naechster Satz ist mir unklar.}
-Nonetheless, the distribution of game lengths from this set can still be worth to look at in the context of putting value to games for consumers of different platforms. As seen in Figure~\ref{fig:gamelengths-violin} the play lengths vary greatly, with the median at \SI{7.5}{\hour} and a long tail of play times reaching \SI{420}{\hour}.
-
-%Game lengths can not only serve as an indicator of the amount of content a game has to offer, but can also serve as an engagement metric to estimate a user's amount of satisfaction. More fitting engagement metrics could also be employed.
 
 
 %%%%%%%%%%%%
