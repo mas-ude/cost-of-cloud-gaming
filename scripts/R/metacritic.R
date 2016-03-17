@@ -132,13 +132,14 @@ subset_of_columns <- c("name", "price","main_story_length","mainextra_length",
     "completionist_length","combined_length","platform.x","user_score",
     "publisher","genre","score","release","platform.y","year")
 df.ages <- rbind(df.ages, data.frame(title=df.consolidated.steam[,subset_of_columns], platform="Steam", age=age(df.consolidated.steam$release, Sys.Date())))
+
 p <- ggplot(df.ages, aes(x=age, color=as.factor(platform))) + geom_density()
 p <- p + xlab("Game age (years)") + ylab("density")
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("game-ages-by-platform-density.pdf", width=12, height=8)
 
-p <- ggplot(df.ages, aes(x=as.factor(platform), y=age)) + geom_violin()
+p <- ggplot(df.ages, aes(x=as.factor(platform), y=age)) + geom_violin(adjust = .8, scale = "area", draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)
 p <- p + xlab("platform") + ylab("Game age (years)")
 p <- p + theme(text = element_text(size=20))
 p
