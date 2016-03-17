@@ -96,13 +96,13 @@ In order to investigate these characteristics, data was collected from multiple 
 \centering
 \caption{Game characteristics on the investigated platforms. Title counts and price data from Web/API/screen scraping, lengths from \hltb, ages and review scores from \metacritic. (\psnow prices are time-rental based and thus omitted).}
 \label{tab:game-stats}
-	\begin{tabu}{X[2]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
+	\begin{tabu}{X[2]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
 	\toprule
-	Service & Titles & Age $\mu$ & Age $\sigma$ & Length $\mu$ & Length $\sigma$ & Score $\mu$ & Score $\sigma$ & Price $\mu$ & Price $\sigma$\\
+	Service & Titles & Age $\mu$ & Age $\sigma$ & Length $\mu$ & Length $\sigma$ & Score $\mu$ & Score $\sigma$ \\
 	\midrule
-	\gfnow & $68$ & \SI{2.87}{\year} & \SI{1.95}{\year} & \SI{14.65}{\hour} & \SI{14.44}{\hour} & $75.9$ & $9.44$ & $6.98$ & ---?---\\
-	\psnow & $252$ & \SI{5.24}{\year} & \SI{2.55}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ & --- & ---\\
-	\steam & $7749$ & \SI{3.36}{\year} & \SI{3.95}{\year} & \SI{13.02}{\hour} & \SI{20.49}{\hour} & $71$ & $12$ & $5.64$ & ---?---\\
+	\gfnow & $68$ & \SI{2.87}{\year} & \SI{1.95}{\year} & \SI{14.65}{\hour} & \SI{14.44}{\hour} & $75.9$ & $9.44$ \\
+	\psnow & $252$ & \SI{5.24}{\year} & \SI{2.55}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ \\
+	\steam & $7749$ & \SI{3.36}{\year} & \SI{3.95}{\year} & \SI{13.02}{\hour} & \SI{20.49}{\hour} & $71$ & $12$ \\
 	\bottomrule
 	\end{tabu}
 \end{table*}
@@ -137,9 +137,33 @@ Figure~\ref{fig:gamelengths-violin} shows the distribution of game lengths for t
 
 
 
-\todo[inline]{AR: Now with 100\% less ``ownership'' discussion!}
-An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. Using the official \acrshort{REST} \acrshort{API} the name and the current price of each game was fetched at three different points in time. While details on the pricing are later on discussed around Table~\ref{1tab:dataset-stats}, we can on a high level acknowledge the different prices obtained during sale and non-sale periods.
-\todo[inline]{PZ: The reference to the far away table shows a structural issue, which might be fixed with the reorganisation suggested by AR.}
+%%%%%%%%%%%%
+\subsubsection{Game Prices}
+
+Trying to compare the prices per game is a difficult endeavour, as both Cloud gaming platforms include access to certain games in their subscription fees; at the same time, further titles may be bought in addition (on \gfnow), or an alternative, à la carte purchase option besides subscription exists (on \psnow). Furthermore, the exact subscription and rental modalities as well as prices are subject to adaptation over time, and differ between regional markets.
+
+Nevertheless, for \steam it is possible to discuss unit prices: Using the official \acrshort{REST} \acrshort{API}, the name and the current price of each game was fetched at three different points in time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This data was combined with \acrshort{API} data from the 3rd-party Web site \textit{SteamSpy}\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles, and from these estimates statistics on the size of the player base and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Given the combined data, a few different perspectives can be given.
+
+Table~\ref{tab:steam-price-stats} shows the development of average \steam game prices for the three measurements taken. Two different types of averages are shown: The portfolio price averages over all current game prices, and the weighted price is the product of game price and estimated number of owners, averaged over the total number of games owned. Strong temporal effects are evident from either metric. Note that the last measurement shortly predates 2016's Lunar New Year, around which \steam ran a large seasonal sales campaign.
+
+
+
+An initial grasp of the popularity of individual titles can often be derived from its price as well as the number of owners. Few platforms however publish sales numbers, though a few recurring studies on retail sales exist. For this work however, data from the \steam platform was used. 
+
+\begin{table}
+\centering
+\caption{Average prices for \steam games.}
+\label{tab:steam-price-stats}
+\begin{tabu}{X[2]|X[r]X[r]X[r]}
+	\toprule
+	& \textbf{2015-07-14} & \textbf{2015-10-30} & \textbf{2016-02-06} \\
+	\midrule
+	\textbf{Portfolio price (\si{\EUR})} & $10.11$ & $8.47$ & $5.65$ \\
+	\textbf{Weighted price (\si{\EUR})} & $12.39$ & $10.21$ & $5.30$ \\
+%	\bottomrule
+\end{tabu}
+\end{table}
+
 
 %where sale periods, e.g., the Lunar New Year Sale, yield substantially different prices.
 
@@ -154,7 +178,10 @@ An initial grasp of the popularity of individual titles can often be derived fro
 %\label{fig:steam-prices}
 %\end{figure}
 
-This was combined with \acrshort{API}-data from the 3rd-party Web site SteamSpy\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles and from this estimates statistics on the size of the playerbase and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible. 
+
+
+
+Using this data also immediately makes evident a relationship between the price category of a game and the average time it's being played (cf. Fig.~\ref{fig:steam-cost-vs-playtime-violin}). Free (but especially free-to-play titles with monetization options other than an upfront payment) titles seem to occupy a special position as no prevalence for specific playtimes is visible. 
 
 %\todo[inline]{Ist ``free'' auch in-app Purchase Zeug?}
 %\todo[inline]{FM: This includes everything without any upfront costs: free, free-to-play with microtransactions, free to install but with subscriptions, ...}
