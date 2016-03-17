@@ -84,7 +84,7 @@ ggsave("scores-by-platform-violin-userscore.pdf", width=12, height=8)
 ##### age calculation
 
 # from https://stackoverflow.com/questions/3611314/calculating-ages-in-r
-age = function(from, to) {
+age_in_integer_years = function(from, to) {
   from_lt = as.POSIXlt(from)
   to_lt = as.POSIXlt(to)
   
@@ -95,20 +95,54 @@ age = function(from, to) {
          age - 1, age)
 }
 
+# Adapted function to return the age as a real number of years.
+# XXX I'm glossing over the intricacies here.
+age = function(from, to) {
+  from_lt = as.POSIXlt(from)
+  to_lt = as.POSIXlt(to)
+  
+  age = as.numeric(to_lt - from_lt)/365
+}
+
+# Fix TODAY for the calculations so the results are reproducible.
+# Update with `TODAY <- as.POSIXlt(Sys.Date())` when you redo this!
+TODAY = "2016-03-17 UTC"
+
 # gfnow
-mean(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 2.33
-var(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 3.80
-sd(age(df.consolidated.gfnow$release, Sys.Date()), na.rm = TRUE) # 1.95
+mean(age(df.consolidated.gfnow$release, TODAY), na.rm = TRUE) # 2.87
+var(age(df.consolidated.gfnow$release, TODAY), na.rm = TRUE) # 3.82
+sd(age(df.consolidated.gfnow$release, TODAY), na.rm = TRUE) # 1.95
 
 # psnow
-mean(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 4.63
-var(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 6.26
-sd(age(df.consolidated.psnow$release, Sys.Date()), na.rm = TRUE) # 2.5
+mean(age(df.consolidated.psnow$release, TODAY), na.rm = TRUE) # 5.24
+var(age(df.consolidated.psnow$release, TODAY), na.rm = TRUE) # 6.49
+sd(age(df.consolidated.psnow$release, TODAY), na.rm = TRUE) # 2.55
 
 # steam
-mean(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 2.86
-var(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 15.71
-sd(age(df.consolidated.steam$release, Sys.Date()), na.rm = TRUE) # 3.96
+mean(age(df.consolidated.steam$release, TODAY), na.rm = TRUE) # 3.36
+var(age(df.consolidated.steam$release, TODAY), na.rm = TRUE) # 15.63
+sd(age(df.consolidated.steam$release, TODAY), na.rm = TRUE) # 3.95
+
+# Age plot
+df.ages <- NULL
+df.ages <- data.frame()
+df.ages <- rbind(df.ages, data.frame(title=df.consolidated.gfnow, platform="Geforce Now", age=age(df.consolidated.gfnow$release, Sys.Date())))
+df.ages <- rbind(df.ages, data.frame(title=df.consolidated.psnow, platform="PlayStation Now", age=age(df.consolidated.psnow$release, Sys.Date())))
+subset_of_columns <- c("name", "price","main_story_length","mainextra_length",
+    "completionist_length","combined_length","platform.x","user_score",
+    "publisher","genre","score","release","platform.y","year")
+df.ages <- rbind(df.ages, data.frame(title=df.consolidated.steam[,subset_of_columns], platform="Steam", age=age(df.consolidated.steam$release, Sys.Date())))
+p <- ggplot(df.ages, aes(x=age, color=as.factor(platform))) + geom_density()
+p <- p + xlab("Game age (years)") + ylab("density")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("game-ages-by-platform-density.pdf", width=12, height=8)
+
+p <- ggplot(df.ages, aes(x=as.factor(platform), y=age)) + geom_violin()
+p <- p + xlab("platform") + ylab("Game age (years)")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("game-ages-by-platform-violin.pdf", width=12, height=8)
 
 
 ### score stats ###
