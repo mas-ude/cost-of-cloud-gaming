@@ -1,6 +1,8 @@
 library(ggplot2)
 library(Cairo)
 
+# Use `data_merge.R` to read in the required platform dataframes.
+
 exchangerate.GBPtoEUR <- 1.27270
 exchangerate.USDtoEUR <- 0.882388
 
@@ -91,11 +93,10 @@ budget.annual <- year * money
 steam.annual <- ((budget.annual) - steam.hw.peryear * year) / steam.meanprice
 
 psnow.annual <- pmax((year * money) - (psnow.hw.peryear + psnow.yearly) * year, 0)
-psnow.annual[psnow.annual > 0] <- pmin(pmin(psnow.annual[psnow.annual > 0] / psnow.rental.price.30d, psnow.extra) + psnow.included, psnow.maxgames)
+psnow.annual[psnow.annual > 0] <- pmin(pmin(psnow.annual[psnow.annual > 0] / psnow.rental.price.30d, psnow.excluded) + psnow.included, psnow.maxgames)
 
 gfnow.annual <- pmax((year * money) - (gfnow.hw.peryear + gfnow.yearly) * year, 0)
 gfnow.annual[gfnow.annual > 0] <- pmin(gfnow.annual[gfnow.annual > 0] / gfnow.extraprice.mean, gfnow.extra) + gfnow.included
-
 
 df <- data.frame(year=year, games = psnow.annual, platform = "GF Now")
 tmp <- data.frame(year=year, games = gfnow.annual, platform = "PS Now")
