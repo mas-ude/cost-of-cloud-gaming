@@ -156,21 +156,7 @@ When treating the costs of the regional data center as a black box (operational 
 When considering a measurement iteration between Feb 16 and 18, the minimum and maximum number of simultaneously connected users\footnote{\url{http://store.steampowered.com/stats/}, accessed: Feb 18, 2016} is $6.53\text{m}$ and $11.65\text{m}$ respectively. Setting the maximum in relationship to the $75$ million active steam users\footnote{http://venturebeat.com/2014/01/15/steam-has-75-million-registered-users-third-party-steam-controllers-and-other-tidbits-from-valves-dev-days/, last accessed: Feb 18, 2016}, we can calculate an $\epsilon_{\text{Steam}}$ of $6.44$. For cross-validation purposes, link load considerations for other media streaming services may also be considered: When comparing the relative load level change between the minimum and maximum utilization of a large Vietnamese \acrshort{ISP}'s \gls{VoD} streaming server as given in \cite{thanh2012enabling}% (reconstructed data for Thursday in Fig 2. as most peaky day)
 , with the comparable change in the case, we would obtain a maximum number of simultaneously connected users of $58.3$ million and an $\epsilon_{\text{sub}}$ of $1.29$. While the discrepancy may appear high, the associated payment modalities may be at cause: While \steam sells game licenses, \gls{VoD} services often use a subscription services (a flat rate for a given time period). For the subsequent analysis we will consider the range between the minimum of $\epsilon_{\text{sub}}$ and maximum of $\epsilon_{\text{Steam}}$.
 
-Moreover, the average price $\bar{p}$ is also parameterized on the basis of the collected \steam data. This data does, however, not reveal the actual $\bar{p}$ for a game, which also includes the historic price changes, but only the current price and the volume of sold games. In this respect, we can distinguish the average price for the current portfolio (portfolio price) and weighted according to the known volume (weighted price) for the assessment times of Summer 2015, end of October 2015 and March 2016 --- see Tbl.~\ref{tab:dataset-stats}. To reflect the range of the collected data, subsequently the minimum, i.e., $\bar{p}_{\text{min}} = 5.30$, and the maximum values, i.e., $\bar{p}_{\text{max}} = 12.39$, are used as inputs for the subsequent cost considerations.
-
-\begin{table}
-\centering
-\caption{Average prices for steam games.}
-\label{tab:dataset-stats}
-\begin{tabu}{X[1.3]|X[r]X[r]X[r]}
-	\toprule
-	& \textbf{Summer 15´} & \textbf{End of Oct/15´} & \textbf{March 16´} \\
-	\midrule
-	\textbf{Portfolio price} & \SI{10.11}{\EUR}	& \SI{8.47}{\EUR} & \SI{5.65}{\EUR} \\
-	\textbf{Weighted price} & \textbf{\SI{12.39}{\EUR}}	& \SI{10.21}{\EUR} & \textbf{\SI{5.30}{\EUR}} \\
-	\bottomrule
-\end{tabu}
-\end{table}
+Moreover, the average price $\bar{p}$ is also parameterized on the basis of the collected \steam data. This data does, however, not reveal the actual $\bar{p}$ for a game, which also includes the historic price changes, but only the current price and the volume of sold games. In this respect, we can distinguish the average price for the current portfolio (portfolio price) and weighted according to the known volume (weighted price) for the assessment times of Summer 2015, end of October 2015 and March 2016 --- see Tbl.~\ref{tab:steam-price-stats}. To reflect the range of the collected data, subsequently the minimum, i.e., $\bar{p}_{\text{min}} = 5.30$, and the maximum values, i.e., $\bar{p}_{\text{max}} = 12.39$, are used as inputs for the subsequent cost considerations.
 
 %NOW CALCULATE:
 % EPSILON_SUB 1.2931034483
