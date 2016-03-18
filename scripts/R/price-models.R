@@ -104,7 +104,7 @@ df <- rbind(df, tmp)
 tmp <- data.frame(year=year, games = steam.annual, platform = "Steam")
 df <- rbind(df, tmp)
 
-p <- ggplot(df, aes(x = year, y = games, color = platform, lty = platform)) + geom_line(size = 1) + geom_point(size = 2)
+p <- ggplot(df, aes(x = year, y = games, color = platform, lty = platform)) + geom_line(size = 1) + geom_point(size = 2) + ylim(0, max(df$games))
 p <- p + xlab("year") + ylab("games")
 p <- p + theme(text = element_text(size=20))
 p
