@@ -3,10 +3,7 @@
 \section{Related Work}
 \label{sec:relatedwork}
 
-%As this work aims to investigate Cloud Gaming services, several lines of research are touched. 
-
-This section first revisits operational benefits of Cloud Gaming and cloud services in general. This also encompasses energy consumption issues.
-And second, literature covering \gls{QoE} aspects of gaming in general and Cloud Gaming in particular. These reflect the users' quality expectations but can also outline the requirement for a service's operation.
+This section first revisits operational benefits of Cloud Gaming and cloud services in general, but also encompasses energy consumption issues.  Furthermore, literature on \gls{QoE} aspects of gaming in general and Cloud Gaming in particular is covered. These reflect the users' quality expectations but can also outline the requirement for a service's operation.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -14,10 +11,29 @@ And second, literature covering \gls{QoE} aspects of gaming in general and Cloud
 
 Many publications on Cloud Gaming only consider the client's side and often restrict their view to mobile Cloud Gaming. For example, \cite{Soliman2013} overviews some general issues of mobile cloud gaming. Several other publications, e.g., \cite{6924295} and \cite{Huang:2014:MCP:2755535.2755542} investigate the client device's energy saving potential of mobile Cloud Gaming but find rather marginal energy savings.
 
+A 2014 publication \cite{6882299} describes some potential benefits of a centralized cloud gaming platforms, however operates under questionable assumptions. Two further papers (\cite{6853364} and \cite{6365107}) suggest an optimization model to place and provision Cloud Gaming \acrshortpl{VM} in order for a service provider to operate at profits. The impact on \gls{QoE} however seems to be significant but is concealed through the lack of absolute data given. The efficient placement and selection of servers is focal for Cloud services (e.g. \cite{6740249}), but optimisation potentials is limited for Cloud Gaming due to more stringent requirements both in terms of compute resource as well as latency, limiting the selection problem down to relatively narrow geographic regions.
 
-A 2014 publication \cite{6882299} describes some potential benefits of a centralized cloud gaming platforms, however operates under questionable assumptions. %that can not be uphold under practical circumstances.
 
-Two further papers (\cite{6853364} and \cite{6365107}) suggest an optimization model to place and provision Cloud Gaming \acrshortpl{VM} in order for a service provider to operate at profits. The impact on \gls{QoE} however seems to be significant but is concealed through the lack of absolute data given. The efficient placement and selection of servers is focal for Cloud services (e.g. \cite{6740249}), but optimisation potentials is limited for Cloud Gaming due to more stringent requirements both in terms of compute resource as well as latency, limiting the selection problem down to relatively narrow geographic regions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Gaming QoS/QoE}
+
+The quality of games is revisited along the axes of \gls{E2E} lag, image quality, and frame rates. \gls{E2E} lag describes the time between physically triggering an action and seeing the results on the screen \cite{metzger16lagmodel}. With the presence of an online component and in multiplayer games this lag increases as the remote server needs to verify the actions. Lag can be concealed with appropriate compensation techniques: The local game client updates the display contents from both the local player's inputs and data extrapolated from the last game state update by the game server. These techniques are not applicable in Cloud Gaming scenarios, where user input is also subject to network lag, and frames are rendered remotely. Instead, Cloud games need regional data centers to keep the overall lag low.
+
+Considerable research efforts have been put into the network delay component of the \gls{E2E} lag for both online games and Cloud Gaming, where results, however, remain inconclusive. Studies of multiplayer games often focused on \glspl{FPS} such as \textit{Quake 3}~\cite{1266180} or \textit{Unreal Tournament 2003}~\cite{Beigbeder:2004:ELL:1016540.1016556}. Concerning Cloud Gaming, Chen et al.~\cite{6670099} for example find very high and variable delay values even when neglecting the network delay. Furthermore, \cite{Choy:2012:BSC:2501560.2501563} gives some insights on the delay requirements of streamed games and the implications for data center distance as well as placement.
+
+\todo[inline]{Reference model / analysis: Why does it matter?}
+Second, image quality is also a large \gls{QoE} factor. The real-time requirements of game streaming restricts the use of more time-intense intra-frame coding options however. A full reference model is also suggested, as streamed games always have to compete with locally run game at full quality. Gaming also adds another dimension to image quality, as most games allow for changes to their graphical fidelity, be it either resolution or more demanding graphical features, such as ambient occlusion or anti-aliasing. Cloud gaming usually locks these options at one specific setting for a specific quality-to-resource-demand trade-off, resulting in an often lower source quality than what local games can offer. As an example, the work in \cite{slivarimpact} takes a look at different encoding parameters for Cloud Gaming, but does unfortunately not conduct a full-reference analysis nor investigates the impact of the coding latency.
+
+Finally, and often neglected, is the game's frame rate and the streaming frame rate. Due to the interactivity of the media the demands are generally higher than for video streaming, e.g., \SI{60}{\hertz} is an accepted standard for many games. Too low frame rates will result in a reduced quality due to observable stuttering. The frame rate further also influences the \gls{E2E} lag as observed in \cite{metzger16lagmodel}.
+
+An overview of some further \gls{QoE} taxonomy and influence factors especially for mobile games is given in \cite{beyer2014typedisplaydelayimpact}. Several efforts also set up subjective tests of Cloud Gaming services with specific \gls{QoS} parameters in mind. Such studies can be found in, e.g., \cite{Jarschel20132883} and  \cite{6614351}. Efforts have also been made towards an \acrshort{ITU-T} recommendation for subjective game testing as reported in \cite{mollertowards}.
+
+
+
+
+
+
+%As this work aims to investigate Cloud Gaming services, several lines of research are touched. 
 
 %it is however only partially applicable to Cloud Gaming due to the more stringent requirements both in terms of compute resource as well as latency, limiting the selection problem down to relatively narrow geographic regions.
 
@@ -27,30 +43,20 @@ Two further papers (\cite{6853364} and \cite{6365107}) suggest an optimization m
 
 % ``Cost-efficient Capacitation of Cloud Data Centers for QoS-aware Multimedia Service Provision.'' \cite{hans2014cost} optimization to geographically clustered users
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Gaming QoS/QoE}
-
 %\todo[inline]{trifecta? trinity? .. ?}
 %In order to compare different gaming services, one needs to first understand how to properly valuate them. For online video games, and Cloud Gaming in particular, a trifecta of objective quality influence factors is most relevant.
 %First is the concept of \gls{E2E} lag, that is even present in games played entirely offline.
 
-The quality of games is revisited along the axes of \gls{E2E} lag, image quality, and frame rates. \gls{E2E} lag describes the time between physically triggering an action and seeing the results on the screen \cite{metzger16lagmodel}. With the presence of an online component and in multiplayer games this lag increases as the remote server needs to verify the actions. Lag can be concealed with appropriate compensation techniques: The local game client updates the display contents from both the local player's inputs and data extrapolated from the last game state update by the game server. These techniques are not applicable in Cloud Gaming scenarios, where user input is also subject to network lag, and frames are rendered remotely. Instead, Cloud games need regional data centers to keep the overall lag low.
-
 % though the results vary greatly between each study and between different games.
-Considerable research efforts have been put into the network delay component of the \gls{E2E} lag for both online games and Cloud Gaming, where results, however, remain inconclusive. Studies of multiplayer games often focused on \glspl{FPS} such as \textit{Quake 3}~\cite{1266180} or \textit{Unreal Tournament 2003}~\cite{Beigbeder:2004:ELL:1016540.1016556}. Concerning Cloud Gaming, Chen et al.~\cite{6670099} for example find very high and variable delay values even when neglecting the network delay. Furthermore, \cite{Choy:2012:BSC:2501560.2501563} gives some insights on the delay requirements of streamed games and the implications for data center distance as well as placement.
 
 % conducted a study of \gls{E2E} lag of some former services and finds very high and variable delay values even when neglecting the network delay.
 %In addition this experiment was conducted by triggering a menu display, which is a lightweight operation compared to actual in-game actions, therefore this probably even underestimates the actual lag.  % Doesn't apply to \cite{6670099} only to \cite{Chen:2011:MLC:2072298.2071991}
 
 
 %just like in video streaming the streamed game's
-\todo[inline]{Reference model / analysis: Why does it matter?}
-Second, image quality is also a large \gls{QoE} factor. The real-time requirements of game streaming restricts the use of more time-intense intra-frame coding options however. A full reference model is also suggested, as streamed games always have to compete with locally run game at full quality. Gaming also adds another dimension to image quality, as most games allow for changes to their graphical fidelity, be it either resolution or more demanding graphical features, such as ambient occlusion or anti-aliasing. Cloud gaming usually locks these options at one specific setting for a specific quality-to-resource-demand trade-off, resulting in an often lower source quality than what local games can offer. As an example, the work in \cite{slivarimpact} takes a look at different encoding parameters for Cloud Gaming, but does unfortunately not conduct a full-reference analysis nor investigates the impact of the coding latency.
 
-Finally, and often neglected, is the game's frame rate and the streaming frame rate. Due to the interactivity of the media the demands are generally higher than for video streaming, e.g., \SI{60}{\hertz} is an accepted standard for many games. Too low frame rates will result in a reduced quality due to observable stuttering. The frame rate further also influences the \gls{E2E} lag as observed in \cite{metzger16lagmodel}.
 
-An overview of some further \gls{QoE} taxonomy and influence factors especially for mobile games is given in \cite{beyer2014typedisplaydelayimpact}. Several efforts also set up subjective tests of Cloud Gaming services with specific \gls{QoS} parameters in mind. Such studies can be found in, e.g., \cite{Jarschel20132883} and  \cite{6614351}. Efforts have also been made towards an \acrshort{ITU-T} recommendation for subjective game testing as reported in \cite{mollertowards}.
+
 
 
 %``How Sensitive Are Online Gamers to Network Quality?'' \cite{Chen:2006:SOG:1167838.1167859}
