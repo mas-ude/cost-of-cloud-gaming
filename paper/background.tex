@@ -147,11 +147,11 @@ Trying to compare the prices per game is a difficult endeavor, as both cloud gam
 
 %; at the same time, further titles may be bought in addition (on \gfnow), or an alternative, à la carte purchase option besides subscription exists (on \psnow). Furthermore, the exact subscription and rental modalities as well as prices are adapted over time, and differ between regional markets.
 
-\todo[inline]{SV: So, both platforms have a mixed approach? You rent the games, but can parallely buy them? I don't understand the second sentence and wonder if we could just erase it.}
+\todo[inline]{SV: So, both platforms have a mixed approach? You rent the games, but can parallely buy them? I didn't understand the second sentence and just erased it (/commented it out).}
 
-\todo[inline]{SV:The last sentence was somehow superfluous since variety over time is the case for all of our data.}
+\todo[inline]{SV:The last sentence was somehow superfluous since variety over time is the case for all of our data. --> erased it.}
 
-Nevertheless, for \steam it is possible to discuss unit prices: Using the official \acrshort{REST} \acrshort{API}, the name and the current price of each game was fetched at three different points in time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This data was combined with \acrshort{API} data from the 3rd-party Web site \textit{SteamSpy}\footnote{\url{https://steamspy.com}}. This site parses the portion of publicly visible \steam user profiles, and from these estimates statistics on the size of the player base and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using the combined data, additional perspectives can be given.
+Nevertheless, for \steam it is possible to discuss unit prices: Using the official \acrshort{REST} \acrshort{API}, we fetched name and  current price of each game at three different points in time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This data was combined with \acrshort{API} data from the 3rd-party site \textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all publicly visible \steam user profiles. Subsequently \textit{SteamSpy} estimates statistics on the size of the player base and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using the combined data, additional perspectives can be given.
 
 \begin{table}
 \centering
@@ -180,8 +180,10 @@ Table~\ref{tab:steam-price-stats} shows the development of average \steam game p
 %\end{figure}
 
 Figure~\ref{fig:steam-cost-vs-playtime-violin} breaks down the distribution of average playtimes per game price range. We chose the game price ranges so as to roughly separate the prevalent modes of the price distribution. % AR: The modes would be approximately 1, 2, 5, 10, 15, and 20 Euros from visual inspection of images/steam-prices-density.pdf.
-Playtime is defined as the time game owners spend playing a game, as recorded by the \steam platform and scraped by \textit{SteamSpy}. As can be seen, the playtimes generally increase with the price range; unfortunately, the data does not explain the cause: E.g., more expensive games might have more playable content, causing the playtime to increase. Conversely, higher upfront costs may incite players to spend more time regardless of game quality, thus avoiding regret for the expense. And still alternatively, there might exist an outside, common reason causing both parameters to increases. On the far left in the Figure, playtimes of ``free'' titles (including free-to-play games with monetization options other than an upfront payment) span almost the whole playtime range with less pronounced prevalences.
+Playtime is defined as the time game owners spend playing a game, as recorded by the \steam platform and scraped by \textit{SteamSpy}. As can be seen, the playtimes generally increase with the price range; unfortunately, the data does not explain the cause: E.g., more expensive games might have more playable content, causing the playtime to increase. Conversely, higher upfront costs may incite players to spend more time regardless of game quality, thus avoiding regret for the expense. On the far left in the Figure, playtimes of ``free'' titles (including free-to-play games with monetization options other than an upfront payment) span almost the whole playtime range with less pronounced prevalences.
 
+% Svenja deleted the following sentence since that can be the case anywhere:
+%And still alternatively, there might exist an outside, common reason causing both parameters to increases.
 
 \begin{figure}[!t]
 	\centering
