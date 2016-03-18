@@ -1,4 +1,5 @@
 library(ggplot2)
+library(stringr)
 
 # set the working directory
 #setwd("/Users/sv/Desktop/cost-of-cloud-gaming/scripts/R/")
