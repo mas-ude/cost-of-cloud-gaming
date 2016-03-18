@@ -108,30 +108,36 @@ age = function(from, to) {
 # Update with `TODAY <- as.POSIXlt(Sys.Date())` when you redo this!
 TODAY = "2016-03-17 UTC"
 
-# gfnow
-mean(age(df.consolidated.gfnow$release, TODAY), na.rm = TRUE) # 2.87
-var(age(df.consolidated.gfnow$release, TODAY), na.rm = TRUE) # 3.82
-sd(age(df.consolidated.gfnow$release, TODAY), na.rm = TRUE) # 1.95
-
-# psnow
-mean(age(df.consolidated.psnow$release, TODAY), na.rm = TRUE) # 5.24
-var(age(df.consolidated.psnow$release, TODAY), na.rm = TRUE) # 6.49
-sd(age(df.consolidated.psnow$release, TODAY), na.rm = TRUE) # 2.55
-
-# steam
-mean(age(df.consolidated.steam$release, TODAY), na.rm = TRUE) # 3.36
-var(age(df.consolidated.steam$release, TODAY), na.rm = TRUE) # 15.63
-sd(age(df.consolidated.steam$release, TODAY), na.rm = TRUE) # 3.95
-
-# Age plot
 df.ages <- NULL
 df.ages <- data.frame()
-df.ages <- rbind(df.ages, data.frame(title=df.consolidated.gfnow, platform="Geforce Now", age=age(df.consolidated.gfnow$release, Sys.Date())))
-df.ages <- rbind(df.ages, data.frame(title=df.consolidated.psnow, platform="PlayStation Now", age=age(df.consolidated.psnow$release, Sys.Date())))
+df.ages <- rbind(df.ages, data.frame(title=df.consolidated.gfnow, platform="Geforce Now", age=age(df.consolidated.gfnow$release, TODAY)))
+df.ages <- rbind(df.ages, data.frame(title=df.consolidated.psnow, platform="PlayStation Now", age=age(df.consolidated.psnow$release, TODAY)))
 subset_of_columns <- c("name", "price","main_story_length","mainextra_length",
     "completionist_length","combined_length","platform.x","user_score",
     "publisher","genre","score","release","platform.y","year")
-df.ages <- rbind(df.ages, data.frame(title=df.consolidated.steam[,subset_of_columns], platform="Steam", age=age(df.consolidated.steam$release, Sys.Date())))
+df.ages <- rbind(df.ages, data.frame(title=df.consolidated.steam[,subset_of_columns], platform="Steam", age=age(df.consolidated.steam$release, TODAY)))
+
+# Quick results
+summary(df.ages[df.ages$platform=="Geforce Now",]$age)
+sd(df.ages[df.ages$platform=="Geforce Now",]$age, na.rm=T)
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+# 0.08208 1.25200 2.44100 2.87500 3.96600 7.69600       1 
+# [1] 1.953594
+
+summary(df.ages[df.ages$platform=="PlayStation Now",]$age)
+sd(df.ages[df.ages$platform=="PlayStation Now",]$age, na.rm=T)
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#  1.252   3.318   4.781   5.149   6.454  14.850       1 
+# [1] 2.516632
+
+summary(df.ages[df.ages$platform=="Steam",]$age)
+sd(df.ages[df.ages$platform=="Steam",]$age, na.rm=T)
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+# 0.0465  0.7889  1.7530  3.3860  4.7380 27.2200    1696 
+# [1] 3.959703
+
+
+# Age plot
 
 p <- ggplot(df.ages, aes(x=age, color=as.factor(platform))) + geom_density()
 p <- p + xlab("Game age (years)") + ylab("density")
