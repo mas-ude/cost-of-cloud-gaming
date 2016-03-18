@@ -3,7 +3,7 @@
 \section{Characterizing Platforms and Games}
 \label{sec:background}
 
-This section covers the basic characteristics of different gaming platforms, including digital storefronts that sell copies of games for local use, and Cloud gaming approaches where the game is executed and rendered ``in the cloud'' (i.e. in remote data centers), and an audio/video stream is sent back to the player. We also present observations about the properties of the games offered.
+This section covers the basic characteristics of different gaming platform types, most notably the traditional  \textit{à la carte} model and \textit{fixed fee subscription} cloud gaming approaches. We also present observations about the properties of the games offered.
 Section~\ref{sec:engagement} will then use these characteristics to reason about player engagement and budget considerations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -11,14 +11,13 @@ Section~\ref{sec:engagement} will then use these characteristics to reason about
 
 Below we examine currently active (cloud and other) gaming platforms with regards to pricing models, and hardware requirements and costs. The information presented was collected between July 2015 and February 2016. All costs are from an European, specifically German, perspective. If a product is not available in this region, the prices are converted using the most recent currency exchange rates.
 
-
 \subsubsection{Video Game Consoles}
 
 A classical approach to video gaming is using dedicated consoles with physical copies of game media (e.g., a data DVD) bought at a retailer. The price for (non-portable) consoles varies but usually lies between \SI{300}[\EUR] and \SI{400}[\EUR] for the latest console generation, i.e., \textit{Wii U}, \textit{PlayStation 4}, and \textit{Xbox One}. New, major game releases are mostly priced at either \SI{60}[\EUR] or \SI{70}[\EUR]. Once on the market, the game prices decrease rather slowly. In recent years, retail stores have been complemented with console-specific, proprietary digital distribution services that also offer the latest game at the full price. These official stores are usually exclusive vendors for digital game codes where competitors are excluded.
 
 %, meaning that there will be no competition that quickly reduces prices.
 
-Subscriptions fees often apply for the multiplayer mode of games, e.g., \textit{PlayStation Plus} or \textit{Xbox Live Gold} with annual prices of \SI{50}[\EUR] and \SI{60}[\EUR], respectively. These services also include a small, monthly changing palette of older game titles.
+Subscription fees often apply for the multiplayer mode of games, e.g., \textit{PlayStation Plus} or \textit{Xbox Live Gold} with annual prices of \SI{50}[\EUR] and \SI{60}[\EUR], respectively. These services also include a small, monthly changing palette of older game titles.
 
 % generally offer a monthly rotating palette of (older or smaller) game titles included in the subscription.
 
@@ -30,7 +29,10 @@ Subscriptions fees often apply for the multiplayer mode of games, e.g., \textit{
 
 The rise of easy-to-use digital distribution platforms and the independent (``indie'') game scene reinvigorated PC gaming just a few years ago. Today, PC gaming is dominated by large digital marketplaces, and the \steam platform in particular. The platform has about $10$ million concurrent users at every time of day. It periodically offers large, often seasonal, sales of recent games at greatly reduced prices (rebates of 75\% for a year-old game are not uncommon). In addition, many resellers offer digital codes for other platforms, often at much lower prices. Alternative storefronts, entirely independent from \steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}.%, and enrich the competition even more.
 
+
 The official prices for new major releases on PC are comparable to those of console titles. However, due to the competition between marketplaces, the street prices are significantly lower even at launch, and also drop more quickly. Another recent trend are bundles of games, especially prevalent in the indie games scene, which are offered for either a low price or, more commonly, with a pay-what-you-want model with parts of the money going to charities. \textit{Humble Bundle}\footnote{\url{https://www.humblebundle.com/}} is a prominent example. % Number of games >>> what consoles have
+
+\todo[inline]{SV: What are street prices / where is this street?}
 
 Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically no upper limit for enthusiasts (especially the \gls{GPU} is a cost driver, but essential for modern  PC gaming). Thus, the barrier for customers to start PC gaming is higher than for consoles, which is, however, compensated by an increased flexibility and longevity of hardware.
 
@@ -49,7 +51,7 @@ Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically
 
 \subsubsection{Geforce NOW}
 
-\textit{Geforce NOW}\footnote{\url{http://shield.nvidia.com/game-streaming-with-geforce-now}} This Cloud Gaming service is available in North America and selected European countries. In Germany the service currently offers $68$ PC titles for a monthly subscription fee of \SI{10}[\EUR]. An additional per-game one-time fee between \SI{13}[\EUR] and \SI{60}[\EUR] is charged for the access to the $19$ most prominent and recent games. The service is delivered from six specialized data center locations (Dublin and Frankfurt in Europe).
+\textit{Geforce NOW}\footnote{\url{http://shield.nvidia.com/game-streaming-with-geforce-now}} This Cloud Gaming service is available in North America and selected European countries. Like in all cloud gaming services  games are executed and rendered ``in the cloud'' (i.e. in remote data centers), and an audio/video stream is sent back to the player. In Germany the service currently offers $68$ PC titles for a monthly subscription fee of \SI{10}[\EUR]. An additional per-game one-time fee between \SI{13}[\EUR] and \SI{60}[\EUR] is charged for the access to the $19$ most prominent and recent games. The service is delivered from six specialized data center locations (Dublin and Frankfurt in Europe).
 
 The requirements to use this service are rather steep, demanding \SI{50}{\mega\bit\per\second} for a full 1080p60\footnote{\label{foot:rate}Please note: This frame rate of \SI{60}{\hertz} represents the rate of the video encoder and not the game's actual frame rate, which might be considerably lower depending on the complexity of the game.} stream (\SI{10}{\mega\bit\per\second} in order to use the service at all) and a maximum \acrshort{RTT} of \SI{60}{\milli\second} to one of the data centers. In addition, streaming is exclusive to NVIDIA's \textit{SHIELD} devices which start at \SI{200}[\EUR].
 
@@ -58,7 +60,7 @@ The requirements to use this service are rather steep, demanding \SI{50}{\mega\b
 
 \subsubsection{Playstation Now}
 
-Sony's Cloud gaming service offers to stream titles from previous PlayStation generations, as the latest console generation lacks backwards compatibility. It is currently available in North America and the UK, with a closed beta running in  other European countries and Japan.
+Sony's Cloud gaming service offers to stream titles from previous PlayStation generations, as the latest console generation lacks backwards compatibility. It is currently available in North America and the UK, with a closed beta running in other European countries and Japan.
 
 The offered titles and exact pricing vary from country to country. For the UK, about $190$ titles are available, and most titles are covered by the monthly subscription fee of about \SI{17}[\EUR]. All titles are also available through a separate rental service, costing about \SI{4}[\EUR] for \SI{48}{\hour} and \SI{10}[\EUR] for one month of access. This is in addition for the device cost, as the service is only available on  PlayStation 4 and 3 consoles as well as some select Sony TVs and other devices with extra game controller.
 
@@ -111,13 +113,13 @@ In order to investigate these characteristics, data was collected from multiple 
 %%%%%%%%%%%%
 \subsubsection{Number of Games}
 
-This basic metric quantifies the range of games on offer. The two Cloud platforms offer a very limited number of games when compared to the games available on \steam, which itself again only represents a subset of all games available either on the PC platform (\metacritic lists $16192$) or across all platforms ($45803$ listed on the site). Two possible, simple explanations for the low game count on the Cloud platforms come to mind: One is that they were launched relatively recently in comparison to \steam (2003), leaving little time for the range of games to grow. Two, the choice of games for a Cloud gaming platform is necessarily curated by the platform operator: The operator guarantees that all of the offered games do indeed run on the Cloud's hardware, and are usable across the network at a satisfying level of quality. This usability burden shifts to the end user for digital storefronts like \steam, allowing these platforms to offer a larger variety of games, including ones that are very demanding on the hardware.
+This basic metric quantifies the range of games on offer. The two cloud platforms offer a very limited number of games when compared to the games available on \steam, which itself again only represents a subset of all games available either on the PC platform (\metacritic lists $16192$) or across all platforms ($45803$ listed on the site). Two possible, simple explanations for the low game count on the cloud platforms come to mind: One is that they were launched relatively recently in comparison to \steam (2003), leaving little time for the range of games to grow. Secondly, the choice of games for a cloud gaming platform is necessarily curated by the platform operator due to compatibility and performance reasons. This usability burden shifts to the end user for digital storefronts like \steam, allowing these platforms to offer a larger variety of games, including ones that are very demanding on the hardware.
 
 
 %%%%%%%%%%%%
 \subsubsection{Game Ages}
 
-The age of game is computable from its release date. To this end, we scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}} the \textit{Metacritic}\footnote{\url{http://www.metacritic.com/}} webpage which aggregates reviews of video games (and other media). Game ages appear to be  relatively high for all of the investigated platforms, and particularly so for \psnow. It might be considered a special case, as it is specifically advertised as a backwards compatibility for older, pre-PlayStation 4 games that do not run on the latest Sony platform any more. For \steam, we observe from the data that the distribution is significantly skewed towards recent titles: A quarter of games are less than $10$ months old, and the median is at $21$ months. The distribution's tail extends beyond $25$ years (due to re-releases of ``classic'' games on the platform).
+The age of a game is computable from its release date. To this end, we scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}} the \textit{Metacritic}\footnote{\url{http://www.metacritic.com/}} webpage which aggregates reviews of video games (and other media). Game ages appear to be relatively high for all of the investigated platforms, and particularly so for \psnow. It might be considered a special case, as it is specifically advertised as a backwards compatibility for older, pre-PlayStation 4 games that do not run on the latest Sony platform any more. For \steam, we observe from the data that the distribution is significantly skewed towards recent titles: A quarter of games are less than $10$ months old, and the median is at $21$ months. The distribution's tail extends beyond $25$ years (due to re-releases of ``classic'' games on the platform).
 
 
 %%%%%%%%%%%%
