@@ -120,20 +120,20 @@ df.ages <- rbind(df.ages, data.frame(title=df.consolidated.steam[,subset_of_colu
 # Quick results
 summary(df.ages[df.ages$platform=="Geforce Now",]$age)
 sd(df.ages[df.ages$platform=="Geforce Now",]$age, na.rm=T)
-#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-# 0.08208 1.25200 2.44100 2.87500 3.96600 7.69600       1 
+#    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's
+# 0.08208 1.25200 2.44100 2.87500 3.96600 7.69600       1
 # [1] 1.953594
 
 summary(df.ages[df.ages$platform=="PlayStation Now",]$age)
 sd(df.ages[df.ages$platform=="PlayStation Now",]$age, na.rm=T)
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-#  1.252   3.318   4.781   5.149   6.454  14.850       1 
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's
+#  1.252   3.318   4.781   5.149   6.454  14.850       1
 # [1] 2.516632
 
 summary(df.ages[df.ages$platform=="Steam",]$age)
 sd(df.ages[df.ages$platform=="Steam",]$age, na.rm=T)
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-# 0.0465  0.7889  1.7530  3.3860  4.7380 27.2200    1696 
+#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's
+# 0.0465  0.7889  1.7530  3.3860  4.7380 27.2200    1696
 # [1] 3.959703
 
 
