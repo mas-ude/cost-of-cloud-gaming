@@ -75,19 +75,20 @@ Based on the collected consumer price figures, this section will elaborate on th
 \label{fig:overbooking_datacenter}
 \end{figure}
 
-The computational efficiency considers the maximum overbooking rate $\epsilon \geq 1$, where $\epsilon = 1$ refers to no overbooking. Due to expected peaky demand curve, the overbooking rate $\epsilon$, as inverse of the capacity load $\rho$, is derived from the peak demand $L$ (simultaneously connected users) and the available data center capacity $Cap$ (number of users that can be handled),
+The computational efficiency considers the maximum overbooking rate $\epsilon \geq 1$, where $\epsilon = 1$ refers to no overbooking. Due to expected peaky demand curve, the overbooking rate $\epsilon$ is derived from the peak demand $L$ (simultaneously connected users) and the available data center capacity $Cap$ (number of users that can be handled). 
 
 \begin{align}
-	\rho :=& \frac{\lambda}{\mu} = \frac{L}{Cap} \quad\text{,} \\
-	\epsilon :=& \frac{1}{\rho} \quad\text{,}
+	%\rho := \frac{}{\mu} = \frac{L}{Cap}\text{,}\quad
+	\epsilon := \frac{Cap}{L}\text{,}
 	%\frac{Cap}{d_{peak}} \quad ,
 	%\epsilon = \frac{1/rho} = 
 \end{align}
 
-where $\lambda$ is the average arrival rate of new users requesting to play a game (at peak times; e.g., per minute) and $\mu$ is the corresponding average handling of such requests by the server. This modeling stands in contrast to the classical formulation of Little's law, which focuses on long-term averages. The maximum number of subscribers $d$ (maximum service demand) is, thus, given by
+%where $\lambda$ is the average arrival rate of new users requesting to play a game (at peak times; e.g., per minute) and $\mu$ is the corresponding average handling of such requests by the server. This modeling stands in contrast to the classical formulation of Little's law, which focuses on long-term averages. 
+The maximum number of subscribers $d$ (maximum service demand) is, thus, given by
 
 \begin{equation}
-	 d = Cap \cdot \epsilon \quad \text{.}
+	 d = Cap \cdot \epsilon \text{.}
 \end{equation}
 
 The average monthly customer price $\bar{p}$ aggregates the monthly subscription fee and the customer's depreciation costs for the hardware investments on a four years investment duration. We further consider a minimum profit margin $m = \SI{3}{\percent}$, which is in line with the average figure for the global game industry\footnote{\url{http://www.polygon.com/2012/10/1/3439738/the-state-of-games-state-of-aaa}} and substantially below the cloud computing figures that can range up to \SI{16.9}{\percent}\footnote{\url{http://www.forbes.com/sites/georgeanders/2015/04/23/amazons-web-services-delight-16-9-margins-more-joy-ahead/\#73324aa64b4e}} and potentially even higher\footnote{\url{http://www.bloomberg.com/news/articles/2015-12-02/microsoft-should-disclose-cloud-revenue-margins-ballmer-says}}.
@@ -100,9 +101,9 @@ The average monthly customer price $\bar{p}$ aggregates the monthly subscription
 % 	Microsoft 44% (2015) -- questionable: http://www.bloomberg.com/news/articles/2015-12-02/microsoft-should-disclose-cloud-revenue-margins-ballmer-says
 
 \begin{align} \label{eq:computational_efficiency}
-	\frac{\epsilon \cdot Cap \cdot \bar{p}}{Cap} :=& \underbrace{\frac{\mathcal{C}_{cap}}{Cap}}_{\mathcal{C}_{u}} \cdot m\\
+	\frac{\epsilon \cdot Cap \cdot \bar{p}}{Cap} := \frac{\mathcal{C}_{cap}}{Cap}  \cdot m = {\mathcal{C}_{u}} \cdot m\text{,}\quad
 	%= C_{u} = \frac{C_{cap}}{Cap} :=& \frac{\epsilon \cdot \bar{p}}{m}
-	\Longrightarrow \mathcal{C}_{u} :=& \frac{\epsilon \cdot \bar{p}}{m}
+	\Longrightarrow \quad \mathcal{C}_{u} := \frac{\epsilon \cdot \bar{p}}{m}
 \end{align}
 
 When treating the costs of the regional data center as a black box (operational and capital costs for the data center, and required game licensing fees), the analysis can concentrate on the required capacity and licensing cost $\mathcal{C}_{u}$ per user $u$ that can be connected at peak times. 
