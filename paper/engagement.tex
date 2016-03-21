@@ -77,38 +77,34 @@ Due to the limited amount of available data the number of currently observable p
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Cost-Benefit Models}
+\subsection{Cost-Benefit Models}\label{subsec:cost-benefit-models}
 
+This section now turns to modelling gamer benefit as a function of cost: The number of games playable, given the amount of money paid. The two models presented express how many games a given budget will buy on the different platforms, as a function of the customer's budget, and over years, given a constant yearly expenditure. (Other benefits could be modelled as well, e.g. the distribution of review scores or hours of gameplay, but this is left for future work.)
 
-The price models for cloud services, as deliberately excluded in the discussion of engagement metrics, largely differ from the approach of \steam. Setting the number of games, as noteworthy value metric, in relationship to the cost or budget (service price), two simple models are created. Naturally, this does not factor in any user preferences to specific games and their availability on just a subset of platforms. But the current curated nature of Cloud Gaming platforms would prevent this endeavour from succeeding regardless.
-
-\todo[inline]{PZ: Which models? Or what are the models?}
-
-%Moreover, the examined engagement metrics do not provide many means for a service distinction bar the number of games available. Therefore, the two simple models provided here use the number of affordable games on a specific budget. 
-
-For both models a few basic assumptions are made. The initial hardware costs are factored in proportionately to the expected life and depreciation time of the devices, which is assumed to be \SI{3}{\year} for PCs and \SI{7}{\year} for the consoles and devices necessary to receive the streaming service (\SI{7}{\year} is about the average life cycle of a video game console generation and should be representative in this case).
-
-What should also be noted is the difference in the service model between the ownership model of \steam, the hybrid subscription plus permanent rental model of \gfnow, as well as the subscription and timed rental model of \psnow. For the latter rentals subscription is also not a prerequisite. As this subtle differences are difficult to express in a simple cost-benefit model, they are all treated the same here. Therefore, they are all treated equally in the models as games, that one has access to and could have been played at one point. Other means of acquiring games cheaper from outside of the respective services, of which there are many for PC gaming as discussed in Sec.~\ref{sec:pcgaming}, are also omitted here.
+A few basic assumptions are made. The initial hardware costs are factored in proportionately to the expected life and depreciation time of the devices, which is assumed to be \SI{3}{\year} for PCs, and \SI{6}{\year} for the consoles and devices necessary to receive the streaming service. % (\SI{7}{\year} is about the average life cycle of a video game console generation and should be representative in this case).
+The difference in the service models between the ownership model of \steam, the hybrid subscription plus permanent rental model of \gfnow, as well as the subscription and timed rental model of \psnow were discussed in the previous section already. Since it is difficult to express the different notions of ``being able to play'' and ``owning'' a game in simple terms, our benefit models just consider the number of games that one has access to and that could have been played at one point. (This also ignores other means of acquiring games cheaper from alternative storefronts). This results in an averaged price per game of .., .., .. for .., .., and .., respectively. Lastly, we take the numbers of games available per platform and the game and subscription fees as fixed at their current values.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Affordable Games on a Budget Model}
 
 The first model assumes that one has a fixed budget to spend on video games. This model then shows, depending on the size of the budget, how many games one would be able to afford considering all initial and continual costs.
+Figure~\ref{fig:gamesperyear-over-budget} shows that all platforms start with relatively high fixed costs (including hardware depreciation and subscription fees as applicable). The subscription models provide instant access to a certain amount of titles (visible as ``steps upwards'' in the available game count) which could make them more attractive to newcomers on a low budget. However, both cloud platforms exhibit plateaus due to the relatively small selection of games available. On the other hand, \steam's offer of more than $7000$ titles is far from depleted at above \SI{1000}{\EUR}'s worth of games.
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/gamesperyear-over-budget.pdf}
-	\caption{Per-platform price models as relationship of offered games (y-axis) in customer expenditure (budget; x-axis).}
+	\caption{Affordable games per year on different platforms, given the customer's budget}
 \label{fig:gamesperyear-over-budget}
 \end{figure}
-
-As evident in Fig.~\ref{fig:gamesperyear-over-budget} all platforms start with relatively high fix costs, but only the subscription models provide instant access to a certain amount of titles, which could make them more attractive to newcomers on a low budget. Once one gets more interested in gaming and has access to a somewhat higher budget, the limited nature of both \psnow and \gfnow becomes evident.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \paragraph{Affordable Games per Year Model}
 
-The second model extends the previous budget model to a longer time period of several years, investigating the value one gets if only a very low annual budget is spent. For the exemplary model it is assumed to be \SI{500}{\EUR}
+The second model extends the previous one to span a period of multiple years, investigating the value one gets if a constant annual budget is spent. For the exemplary model, the budget is assumed to be \SI{500}{\EUR}.
+Figure~\ref{fig:games-over-years} depicts this example over ten years. On the two cloud platforms, the continual subscription costs limit the remaining budget for additional rental titles until the maximum number of titles is reached with that particular service, whereas the number of titles from \steam climbs steadily. The benefits of a multi-year commitment to these cloud Gaming services therefore seem to be very limited, especially when considering that no games are retained after ending the subscription.
+
+Increasing the annual budget further (to \SI{1000}{\EUR}) exhausts the limited number of games on \psnow and \gfnow in/after the first year, respectively. Conversely, if only \SI{260}{\EUR} per year are available to spend on gaming, the cloud platforms' offers are larger than \steam's for four to six years.
 
 \begin{figure}[!t]
 	\centering
@@ -117,13 +113,15 @@ The second model extends the previous budget model to a longer time period of se
 \label{fig:games-over-years}
 \end{figure}
 
-Fig.~\ref{fig:games-over-years} depicts this example over ten years. The continual subscription costs limit the remaining budget for additional rental titles until the maximum number of titles is reached with that particular service, whereas the number of titles from \steam will just climb steadily. The benefits of a multi-year commitment to these Cloud Gaming services therefore seem to be very limited, especially when considering, that no games are retained after ending the subscription.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Discussion}
 
-Summing this section up, the investigated simple engagement metrics somewhat expose the difference between an open market platform and the curated-by-necessity cloud gaming services. The size and sales-based price model of \steam poses challenges for direct competitors such as \gfnow. Services that cater to different audiences, such as \psnow which positions itself as a backwards compatibility service, may have more success in this regard. However, the limited target audience of \psnow becomes even narrower when the high subscription costs are taken into account, diminishing the benefits for many, not even considering the additional quality challenges that streaming video games brings along. All in all this may make curated Cloud Gaming services financially unattractive for the service's operator as is discussed in the following section.
+This section mapped game and platform characteristics into simple user engagement metrics. For example, it is plausible that platforms with more, newer, and better-rated games attract more gamers; diversely distributed game lengths could be seen as catering to casual and dedicated gamer crowds likewise.
+In terms of cost considerations, our models indicate that the current offers of \gfnow and \psnow best fit gamers on low budgets: Limitations on the amount of money that can be spent may somewhat mask the smaller range of offered games. If this is true, it further increases the economical pressure on cloud gaming platforms (as discussed in the following section). Overall, these investigations  expose the difference between an open market platform and the curated-by-necessity cloud gaming services.
+
+%The size and sales-based price model of \steam poses challenges for direct competitors such as \gfnow. Services that cater to different audiences, such as \psnow which positions itself as a backwards compatibility service, may have more success in this regard. However, the limited target audience of \psnow becomes even narrower when the high subscription costs are taken into account, diminishing the benefits for many, not even considering the additional quality challenges that streaming video games brings along. All in all this may make curated Cloud Gaming services financially unattractive for the service's operator as is discussed in the following section.
 
 % \todo[inline]{PZ: Ist Grafik \ref{fig:games-over-years} die Basis fuer die Steigung bei ps now usw. ab dem Eintritt in Fig.~\ref{fig:gamesperyear-over-budget}. Ps now wuerde ich als Club Good sehen.}
 % \todo[inline]{FM: psnow/clubgood in the sense of a backwards compatibility service for devices that do not have native access to the streamed titles?.}
