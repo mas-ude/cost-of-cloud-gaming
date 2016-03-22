@@ -7,10 +7,11 @@ steam.overall.users <- 75e6
 epsilon.steam <- steam.overall.users / steam.connected.users
 
 # Average game prices from this repository's `steam.R`,
-# representing Lunar New Year 2016's sale and plain Summer 2015 prices
+# representing Lunar New Year 2016's sale and plain Summer 2015 prices,
+# and `price-models.R` for the PlayStation Now UK subsciption fee.
 #
 # XXX We should reread them from there, not hardcode the values!
-p.bar <- matrix(c(5.30, 12.39), ncol=2, dimnames=list("p.bar", c("Steam low price", "Steam high price")))
+p.bar <- t(matrix(c(5.30, 12.39, 16.53), dimnames=list(c("Steam low price", "Steam high price", "PS Now UK price"), "p.bar")))
 
 
 # Video on Demand subscription (``sub'') data scraped from 
@@ -31,10 +32,12 @@ epsilon <- matrix(c(epsilon.sub, epsilon.steam), dimnames=list(c("sub eps", "Ste
 # Desired profit margin
 m <- 0.03
 
-# Cost per user (including margin) for different epsilons and p.bars,
+# Cost per user (without and with margin) for different epsilons and p.bars,
 # $\mathcal{C}_u$
+epsilon %*% p.bar
 epsilon %*% p.bar / (1 + m)
 
-# Cost for the whole capacity, $\mathcal{C}_{Cap}$
+# Cost for the whole capacity, $\mathcal{C}_{Cap}$, without and with margin
+epsilon %*% p.bar * steam.connected.users[1]
 epsilon %*% p.bar / (1 + m) * steam.connected.users[1]
 
