@@ -22,8 +22,7 @@ p.bar <- t(matrix(c(5.30, 12.39, 16.53), dimnames=list(c("Steam low price", "Ste
 #
 # Maximum bandwidth utilization at 17.530 (decimal) hours after midnight,
 # i.e. almost 6 PM.
-sub.bandwidth.utilization <- 0.71190
-epsilon.sub <- 1/sub.bandwidth.utilization
+epsilon.sub <- (steam.overall.users / steam.connected.users[2]) * 7.971 / 71.190
 
 
 # Collect all epsilons in a nice column vector
