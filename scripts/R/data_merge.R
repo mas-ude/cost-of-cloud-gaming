@@ -192,7 +192,7 @@ cor(df.cons.tmp$owners, df.cons.tmp$price)
 ggplot(df.consolidated, aes(x=score, y=owners, size=combined_length, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
 ggsave("rel-score-owners.pdf", width=12, height=8)
 
-ggplot(df.consolidated, aes(x=combined_length, y=owners, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
+ggplot(df.consolidated.steam, aes(x=combined_length, y=owners)) + geom_point() + scale_x_log10(breaks=c(1,10,100)) + scale_y_log10() + geom_smooth(method='lm',formula=y~x) + xlab("combined game length (h)") + ylab("number of owners")
 ggsave("rel-combinedlength-owners.pdf", width=12, height=8)
 
 ggplot(df.consolidated, aes(x=price, y=owners, color=price)) + geom_point() + scale_x_log10() + scale_y_log10() + geom_smooth(method='lm',formula=y~x)
