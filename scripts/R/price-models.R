@@ -68,9 +68,9 @@ steam <- pmax((budget - steam.hw.peryear),0) / steam.meanprice
 
 
 ## plot
-
-df <- data.frame(budget = budget, gamesperyear = psnow, platform = "GF Now")
-tmp <- data.frame(budget=budget, gamesperyear = gfnow, platform = "PS Now")
+df <- null
+df <- data.frame(budget = budget, gamesperyear = gfnow, platform = "GF Now")
+tmp <- data.frame(budget=budget, gamesperyear = psnow, platform = "PS Now")
 df <- rbind(df, tmp)
 tmp <- data.frame(budget = budget, gamesperyear = steam, platform = "Steam")
 df <- rbind(df, tmp)
@@ -98,8 +98,8 @@ psnow.annual[psnow.annual > 0] <- pmin(pmin(psnow.annual[psnow.annual > 0] / psn
 gfnow.annual <- pmax((year * money) - (gfnow.hw.peryear + gfnow.yearly) * year, 0)
 gfnow.annual[gfnow.annual > 0] <- pmin(gfnow.annual[gfnow.annual > 0] / gfnow.extraprice.mean, gfnow.extra) + gfnow.included
 
-df <- data.frame(year=year, games = psnow.annual, platform = "GF Now")
-tmp <- data.frame(year=year, games = gfnow.annual, platform = "PS Now")
+df <- data.frame(year=year, games = gfnow.annual, platform = "GF Now")
+tmp <- data.frame(year=year, games = psnow.annual, platform = "PS Now")
 df <- rbind(df, tmp)
 tmp <- data.frame(year=year, games = steam.annual, platform = "Steam")
 df <- rbind(df, tmp)
