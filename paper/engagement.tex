@@ -3,7 +3,7 @@
 \section{User Perspective and Prospects}
 \label{sec:engagement}
 
-This section interprets the previous results from the point of view of an end customer. Section~\ref{subsec:metrics} reviews game and platform characteristics as possible engagement metrics, i.e. measures for the attractiveness of a platform. Section~\ref{subsec:cost-benefit-models} constructs two simple cost/benefit models based on the platform costs and the number of games affordable as a benefit metric.
+This section interprets the previous results from the point of view of an end customer. Section~\ref{subsec:metrics} reviews game and platform characteristics as possible engagement metrics, i.e., measures for the attractiveness of a platform. Section~\ref{subsec:cost-benefit-models} constructs two simple cost/benefit models based on the platform costs and the number of games affordable as a benefit metric.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,7 +20,7 @@ The benefit that platform and game characteristics create for different types of
 
 \subsubsection{Number of games} The number of games for the three platforms are widely dissimilar, making the choice unanimous for gamers that favour wider ranges of offers. Other factors motivating different platform choices might be found in already-owned console hardware, or platform-exclusive titles.
 
-\subsubsection{Age of games} This has multiple possible effects on attractiveness. Older games might be more likely to be considered ``classics''. On the other hand, newer games tend to also be topics in the media (and in advertising, increasing their publicity), offer a greater diversity (e.g. regarding game mechanics and control), % Wii once was new!
+\subsubsection{Age of games} This has multiple possible effects on attractiveness. Older games might be more likely to be considered ``classics''. On the other hand, newer games tend to also be topics in the media (and in advertising, increasing their publicity), offer a greater diversity (e.g., regarding game mechanics and control), % Wii once was new!
 and feature improved technical quality (resolution, scene complexity).
 
 \subsubsection{Game lengths} It can be argued that engagement due to game length should be considered differently depending on the player type. For casual gamers, shorter games probably have more appeal, as their limited playtime is more likely to allow players to complete them. ``Hardcore'' gamers that spend more time gaming overall might find longer games more engaging. If a gaming platform wants to attract members of both crowds, it should thus offer a wide range of game lengths. Figure~\ref{fig:rel-combinedlength-owners} plots the number of owners of games on \steam over the combined game length from the \hltb dataset. A small positive effect exists (Pearson correlation $r = 0.175$), indicating that longer games attract more buyers, or (swapping cause and effect) that more people tend to buy longer games.
@@ -78,7 +78,7 @@ Due to the limited amount of available data the number of currently observable p
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Cost-Benefit Models}\label{subsec:cost-benefit-models}
 
-This section now turns to modeling gamer benefit as a function of cost: The number of games playable, given the amount of money paid. The two models presented express how many games a given budget will buy on the different platforms, as a function of the customer's budget, and over years, given a constant yearly expenditure. (Other benefits could be modeled as well, e.g. the distribution of review scores or hours of gameplay, but this is left for future work.)
+This section now turns to modeling gamer benefit as a function of cost: The number of games playable, given the amount of money paid. The two models presented express how many games a given budget will buy on the different platforms, as a function of the customer's budget, and over years, given a constant yearly expenditure. (Other benefits could be modeled as well, e.g., the distribution of review scores or hours of gameplay, but this is left for future work.)
 
 A few basic assumptions are made. The initial hardware costs are factored in proportionately to the expected life and depreciation time of the devices, which is assumed to be \SI{3}{\year} for PCs, and \SI{6}{\year} for the consoles and devices necessary to receive the streaming service. % (\SI{7}{\year} is about the average life cycle of a video game console generation and should be representative in this case).
 The difference in the service models between the ownership model of \steam, the hybrid subscription plus permanent rental model of \gfnow, as well as the subscription and timed rental model of \psnow were discussed in the previous section already. Since it is difficult to express the different notions of ``being able to play'' and ``owning'' a game in simple terms, our benefit models just consider the number of games that one has access to and that could have been played at one point. (This also ignores other means of acquiring games cheaper from alternative storefronts).
