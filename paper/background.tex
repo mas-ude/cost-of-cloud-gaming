@@ -76,7 +76,7 @@ Following the discussion of gaming platform characteristics, the attention now t
 %of the cost-benefit analysis is
 %\todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
 %The leading question for investigating the customer side is ``How can we properly estimate the (perceived) value of a service for the customer?'' where the perceived value deserves a definition and specific attention. This is targeted by the means of assessing the user engagement. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective. However, with the help of further metrics  a more objective impression of the popularity and the value of individual titles can be formed. 
-In order to investigate these characteristics, data was collected from multiple sources and merged into a consistent data base. In the interest of repeatability and reproducibility, all of the data reported on in this work, as well as the code used to collect and process it, can be found in public repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Please note that due to space constraints and the multidimensional nature of the dataset, only a limited number of findings can be  presented in this paper.
+In order to investigate these characteristics, data was collected from multiple sources and merged (with a few instances of omission and double-count) into a data base. In the interest of repeatability and reproducibility, all of the data reported on in this work, as well as the code used to collect and process it, can be found in public repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Please note that due to space constraints and the multidimensional nature of the dataset, only a limited number of findings can be  presented in this paper.
 
 %Both these attributes usually play a role in one's decision to play a certain game. 
 
@@ -96,7 +96,7 @@ In order to investigate these characteristics, data was collected from multiple 
 	Service & Titles & Age $\mu$ & Age $\sigma$ & Length $\mu$ & Length $\sigma$ & Score $\mu$ & Score $\sigma$ \\
 	\midrule
 	\gfnow & $68$ & \SI{2.87}{\year} & \SI{1.95}{\year} & \SI{14.65}{\hour} & \SI{14.44}{\hour} & $75.9$ & $9.44$ \\
-	\psnow & $252$ & \SI{5.24}{\year} & \SI{2.55}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ \\
+	\psnow & $191$ & \SI{5.24}{\year} & \SI{2.55}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ \\
 	\steam & $7749$ & \SI{3.36}{\year} & \SI{3.95}{\year} & \SI{13.02}{\hour} & \SI{20.49}{\hour} & $71$ & $12$ \\
 	\bottomrule
 	\end{tabu}
@@ -106,7 +106,7 @@ In order to investigate these characteristics, data was collected from multiple 
 %%%%%%%%%%%%
 \subsubsection{Number of Games}
 
-This basic metric quantifies the range of games on offer. The two cloud platforms offer a very limited number of games when compared to the games available on \steam, which itself again only represents a subset of all games available either on the PC platform (\metacritic lists $16192$) or across all platforms ($45803$ listed on the site). Two possible, simple explanations for the low game count on the cloud platforms come to mind: One is that they were launched relatively recently in comparison to \steam (2003), leaving little time for the range of games to grow. Secondly, the choice of games for a cloud gaming platform is necessarily curated by the platform operator due to compatibility and performance reasons. This usability burden shifts to the end user for digital storefronts like \steam, allowing these platforms to offer a larger variety of games, including ones that are very demanding on the hardware.
+This basic metric quantifies the range of games on offer. The two cloud platforms offer a very limited number of games when compared to the games available on \steam, which itself again only represents a subset of all games available either on the PC platform (\metacritic lists $16192$) or across all platforms ($45803$ listed on the site). Two possible, simple explanations for the low game count on the cloud platforms come to mind: One is that they were launched relatively recently (2015) in comparison to \steam (2003), leaving little time for the range of games to grow. Secondly, the choice of games for a cloud gaming platform is necessarily curated by the platform operator due to compatibility and performance reasons. This usability burden shifts to the end user for digital storefronts like \steam, allowing these platforms to offer a larger variety of games, including ones that are very demanding on the hardware.
 
 
 %%%%%%%%%%%%
