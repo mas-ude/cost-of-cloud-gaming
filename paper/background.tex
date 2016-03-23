@@ -3,7 +3,7 @@
 \section{Characterizing Platforms and Games}
 \label{sec:background}
 
-This section covers the basic characteristics of different gaming platform types, most notably the traditional  \textit{à la carte} model and \textit{fixed fee subscription} cloud gaming approaches. We also present observations about the properties of the games offered.
+This section covers the basic characteristics of different gaming platform types, most notably the traditional  \textit{à la carte} model and \textit{fixed fee subscription} cloud gaming approaches.%We also present observations about the properties of the games offered.
 Section~\ref{sec:engagement} will then use these characteristics to reason about player engagement and budget considerations.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -56,9 +56,7 @@ The requirements to use this service are rather steep, demanding \SI{50}{\mega\b
 
 \subsubsection{\psnow}
 
-Sony's cloud gaming service offers to stream titles from previous PlayStation generations, as the latest console generation lacks backwards compatibility. It is currently available in North America and the UK, with a closed beta running in other European countries and Japan.
-
-The offered titles and exact pricing vary from country to country. For the UK, about $190$ titles are available, and most titles are covered by the monthly subscription fee of about $\text{\texteuro} 17$. All titles are also available through a separate rental service, costing about $\text{\texteuro} 4$ for \SI{48}{\hour} and $\text{\texteuro} 10$ for one month of access. This is in addition for the device cost, as the service is only available on  PlayStation 4 and 3 consoles as well as some select Sony TVs and other devices with extra game controller.
+Sony's cloud gaming service offers to stream titles from previous PlayStation generations, as the latest console generation lacks backwards compatibility. It is currently available in North America and the UK, with a closed beta running in other European countries and Japan. The offered titles and exact pricing vary from country to country. For the UK, about $190$ titles are available, and most titles are covered by the monthly subscription fee of about $\text{\texteuro} 17$. All titles are also available through a separate rental service, costing about $\text{\texteuro} 4$ for \SI{48}{\hour} and $\text{\texteuro} 10$ for one month of access. This is in addition for the device cost, as the service is only available on PlayStation 4 and 3 consoles as well as some select Sony TVs and other devices with extra game controller.
 
 %(which would however necessitate the purchase of a game controller).
 
@@ -74,12 +72,11 @@ The streaming itself is performed at a resolution of 720p60\cref{foot:rate} requ
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Characteristics of Games}
 
-Following the discussion of gaming platform characteristics, we now turn our attention to the properties of the actual games offered on the various platforms: number of games, ages, lengths, prices, and review scores. Table~\ref{tab:game-stats} provides an overview of the data.
-
+Following the discussion of gaming platform characteristics, we now turn our attention to the properties of the actual games offered on the various platforms: number of games, ages, lengths, prices, and review scores. Tbl.~\ref{tab:game-stats} provides an overview of the data.
 %of the cost-benefit analysis is
 %\todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
 %The leading question for investigating the customer side is ``How can we properly estimate the (perceived) value of a service for the customer?'' where the perceived value deserves a definition and specific attention. This is targeted by the means of assessing the user engagement. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective. However, with the help of further metrics  a more objective impression of the popularity and the value of individual titles can be formed. 
-In order to investigate these characteristics, data was collected from multiple sources and merged into a consistent data base. In the interest of repeatability and reproducibility, all of the data reported on in this work, and all of the code used to collect and process it, can be found in public repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Please note that due to space constraints and the multidimensional nature of the dataset, we can only present a limited number of findings in this paper.
+In order to investigate these characteristics, data was collected from multiple sources and merged into a consistent data base. In the interest of repeatability and reproducibility, all of the data reported on in this work, as well as the code used to collect and process it, can be found in public repositories\footnote{The main repository can be found at \url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Please note that due to space constraints and the multidimensional nature of the dataset, we can only present a limited number of findings in this paper.
 
 %Both these attributes usually play a role in one's decision to play a certain game. 
 
@@ -92,7 +89,7 @@ In order to investigate these characteristics, data was collected from multiple 
 
 \begin{table*}
 \centering
-\caption{Game characteristics on the investigated platforms. Title counts from Web/API/screen scraping, lengths from \hltb, ages and review scores from \metacritic.}
+\caption{Game characteristics on the investigated platforms. Title counts from Web/API scraping, lengths from \hltb, ages and review scores from \metacritic.}
 \label{tab:game-stats}
 	\begin{tabu}{X[2]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
 	\toprule
@@ -115,21 +112,21 @@ This basic metric quantifies the range of games on offer. The two cloud platform
 %%%%%%%%%%%%
 \subsubsection{Game Ages}
 
-The age of a game is computable from its release date. To this end, we scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}} the \textit{Metacritic}\footnote{\url{http://www.metacritic.com/}} webpage which aggregates reviews of video games (and other media). Game ages appear to be relatively high for all of the investigated platforms, and particularly so for \psnow. It might be considered a special case, as it is specifically advertised as a backwards compatibility for older, pre-PlayStation 4 games that do not run on the latest Sony platform any more. For \steam, we observe a significantly skewed distribution towards recent titles: A quarter of games are less than $10$ months old, and the median is at $21$ months. The distribution's tail extends beyond $25$ years (due to re-releases of ``classic'' games on the platform).
+The age of a game is computable from its release date. To this end, we scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}} the \metacritic\footnote{\url{http://www.metacritic.com/}} page which aggregates reviews of video games (and other media). Game ages appear to be relatively high for all of the investigated platforms, and particularly so for \psnow. It might be considered a special case, as it is specifically advertised as a backwards compatibility for older, pre-PlayStation 4 games that do not run on the latest Sony platform any more. For \steam, we observe a significantly skewed distribution towards recent titles: A quarter of games are less than $10$ months old, and the median is at $21$ months. The distribution's tail extends well beyond $25$ years (due to re-releases of ``classic'' games on the platform).
 
 
 %%%%%%%%%%%%
 \subsubsection{Game Lengths}
 
-Game publishers are usually not outspoken about the intended playthrough length of games (nor do all games necessarily end). However, players may self-report their experienced playthrough times on sites like \hltb\footnote{\url{http://howlongtobeat.com/}}, on whose data this analysis is based\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}. 
+Game publishers are usually not outspoken about the intended playthrough length of games (nor do all games necessarily have a ). However, players may self-report their experienced playthrough times on sites like \hltb\footnote{\url{http://howlongtobeat.com/}}, on whose data this analysis is based\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}.
 %Reported times are separated into different play styles, e.g., ``main story'' for players that just finish the main objectives of a game, or ``completionist'' for those who explore the game to the fullest extent. Only an aggregate time over all reports per play style is shown for every game. (For our analysis, we average over all play styles for every game.) %It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
-Figure~\ref{fig:gamelengths-violin} shows the distribution of aggregated game lengths for the three platforms under investigation, and an ``overall'' distribution that includes further platforms and gaming systems. Among the three platforms, the mean and median reported game lengths (approximately $14$ hours) are largest for \gfnow. In contrast to the curated choice of games on the Cloud systems, \steam also offers shorter and longer games.
+Figure~\ref{fig:gamelengths-violin} shows the distribution of aggregated game lengths for the three platforms under investigation, and an ``overall'' distribution that includes further platforms and gaming systems. Among the three platforms, the mean and median reported game lengths (approximately \SI{14}{\hour}) are largest for \gfnow. In contrast to the curated choice of games on the Cloud systems, \steam also offers shorter and longer games.
 
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/gamelengths-by-platform-violin.pdf}
-	\caption{Violin plot of the per-platform average game lengths from \hltb, aggregated over all play styles. The number of games per bin are $68$, $209$, $7764$, and $18433$; quartiles indicated by horizontal lines.}
+	\caption{Violin plot of the per-platform average game lengths from \hltb. The number of games per bin are $68$, $209$, $7764$, and $18433$; quartiles indicated by horizontal lines.}
 %	aggregated over all play styles (raw data source: \hltb).}
 \label{fig:gamelengths-violin}
 \end{figure}
@@ -139,12 +136,12 @@ Figure~\ref{fig:gamelengths-violin} shows the distribution of aggregated game le
 %%%%%%%%%%%%
 \subsubsection{Game Prices}
 
-Trying to compare the prices per game is a difficult endeavor, due to the mixed approach of both cloud gaming platforms. The \gfnow subscription gives you access to a subset of its catalogue that can be extended by purchasing additional games. Similarly, \psnow has a base subscription catalogue and additional, rentable titles. But in addition, every title can also be rented without the need for an active subscription.
+Trying to compare the prices per game is a difficult endeavor, due to the mixed approach of both cloud gaming platforms. The \gfnow subscription gives you access to a subset of its catalog that can be extended by purchasing additional games. Similarly, \psnow has a base subscription catalog and additional, rentable titles. But in addition, every title can also be rented without the need for an active subscription.
 %; at the same time, further titles may be bought in addition (on \gfnow), or an alternative, à la carte purchase option besides subscription exists (on \psnow). 
 %\todo[inline]{SV: So, both platforms have a mixed approach? You rent the games, but can parallely buy them? I didn't understand the second sentence and just erased it (/commented it out).}
 %Furthermore, the exact subscription and rental modalities as well as prices are adapted over time, and differ between regional markets.
 %\todo[inline]{SV:The last sentence was somehow superfluous since variety over time is the case for all of our data. --> erased it.}
-Nevertheless, for \steam it is possible to discuss unit prices: Using the official \acrshort{REST} \acrshort{API}, we fetched name and  current price of each game at three different points in time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This data was combined with \acrshort{API} data from the 3rd-party site \textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all publicly visible \steam user profiles. Subsequently \textit{SteamSpy} estimates statistics on the size of the player base and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using the combined data, additional perspectives can be given.
+Nevertheless, for \steam it is possible to discuss unit prices: Using the official \acrshort{REST} \acrshort{API}, we fetched name and  current price of each game at three different points in time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This data was combined with \acrshort{API} data from the 3rd-party site \textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all publicly visible \steam user profiles. Subsequently, \textit{SteamSpy} estimates statistics on the size of the player base and the time each player spends with a title. Furthermore, the site provides a heuristic projection of the total number of owners of each listed title on \steam. Using the combined data, additional perspectives can be given.
 
 \begin{table}
 \centering
@@ -172,12 +169,6 @@ Table~\ref{tab:steam-price-stats} shows the development of average \steam game p
 %\label{fig:steam-prices}
 %\end{figure}
 
-Figure~\ref{fig:steam-cost-vs-playtime-violin} breaks down the distribution of average playtimes per game price range. We chose the game price ranges so as to roughly separate the prevalent modes of the price distribution. % AR: The modes would be approximately 1, 2, 5, 10, 15, and 20 Euros from visual inspection of images/steam-prices-density.pdf.
-Playtime is defined as the time game owners spend playing a game, as recorded by the \steam platform and scraped by \textit{SteamSpy}. As can be seen, the playtimes generally increase with the price range; unfortunately, the data does not explain the cause: E.g., more expensive games might have more playable content, causing the playtime to increase. Conversely, higher upfront costs may incite players to spend more time regardless of game quality, thus avoiding regret for the expense. On the far left in the Figure, playtimes of ``free'' titles (including free-to-play games with monetization options other than an upfront payment) span almost the whole playtime range with less pronounced prevalences.
-
-% Svenja deleted the following sentence since that can be the case anywhere:
-%And still alternatively, there might exist an outside, common reason causing both parameters to increases.
-
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/steam-cost-vs-playtime-non-sale.pdf}
@@ -185,20 +176,21 @@ Playtime is defined as the time game owners spend playing a game, as recorded by
 \label{fig:steam-cost-vs-playtime-violin}
 \end{figure}
 
-
-
+Figure~\ref{fig:steam-cost-vs-playtime-violin} breaks down the distribution of average playtimes per game price range. We chose the game price ranges so as to roughly separate the prevalent modes of the price distribution. % AR: The modes would be approximately 1, 2, 5, 10, 15, and 20 Euros from visual inspection of images/steam-prices-density.pdf.
+Playtime is defined as the time game owners spend playing a game, as recorded by the \steam platform and scraped from \textit{SteamSpy}. As can be seen, the playtimes generally increase with the price range; unfortunately, the data does not explain the cause: E.g., more expensive games might have more playable content, causing the playtime to increase. Conversely, higher upfront costs may incite players to spend more time regardless of game quality, thus avoiding regret for the expense. On the far left in the Figure, playtimes of ``free'' titles (including free-to-play games with monetization options other than an upfront payment) span almost the whole playtime range with less pronounced prevalences.
+% Svenja deleted the following sentence since that can be the case anywhere:
+%And still alternatively, there might exist an outside, common reason causing both parameters to increases.
 Due to the strong popularity of \steam in PC gaming (even physical retail copies often require using the service nowadays) this set also gives a good general overview of the dimensions of PC gaming in general.
-
 
 
 %%%%%%%%%%%%
 \subsubsection{Review Scores}
 
 The final characteristic in this analysis are game review scores as given by professional gaming media outlets. We rely on the \metacritic dataset again. This set covers review scores for all current and historic gaming platforms. The review scores are aggregated to average scores ranging between $0$ and $100$. Some \metacritic-internal weighing factors are applied to express the importance of some media outlets over others.
-The average scores seem quite similar across all services, albeit with a slightly lower $\sigma$ for \gfnow. Figure~\ref{fig:scores-by-platform} shows the distribution of review scores per platform. Both Cloud services seem to favour certain score levels. Specifically, their lowest quartiles (representing the worst-rated games on these platforms) reach much higher values than \steam's. This could be an effect of the Cloud systems curating the game offer to focus on highly-rated (and thus perhaps more attractive) titles. \steam on the other side is a more or less open platform, where every game publisher can sell their games at their own volition (platform operator collects a commission fee for sales). Consequently, it is reasonable to assume more variation in the quality of games, which could in turn lead to mixed reviews.
+The average scores seem quite similar across all services, albeit with a slightly lower $\sigma$ for \gfnow. Figure~\ref{fig:scores-by-platform} shows the distribution of review scores per platform. Both Cloud services seem to favor certain score levels. Specifically, their lowest quartiles (representing the worst-rated games on these platforms) reach much higher values than \steam's. This could be an effect of the Cloud systems curating the game offer to focus on highly-rated (and thus perhaps more attractive) titles. \steam on the other side is a more or less open platform, where every game publisher can sell their games at their own volition (platform operator collects a commission fee for sales). Consequently, it is reasonable to assume more variation in the quality of games, which could in turn lead to mixed reviews.
 %Cloud gaming platforms have to acquire licenses from the individual games' publishers and therefore have to be selective and curated by nature.
-\todo[inline]{AR: Should we mention other possible effects such as ``Metacritic probably isn't free of bias (gosh!)''?}
-
+%\todo[inline]{AR: Should we mention other possible effects such as ``Metacritic probably isn't free of bias (gosh!)''?}
+% that would only lead to a very, very lengthy off-topic discussion, so probably no
 
 % TODO: include or compare with data from opencritic.com as soon as their API is public/usable
 
