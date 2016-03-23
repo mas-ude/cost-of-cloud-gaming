@@ -13,6 +13,7 @@
   \usepackage[american]{babel}
   \usepackage{textcomp}
   %\DeclareUnicodeCharacter{20AC}{\euro{}}
+  %\usepackage{eurosym}
 \fi
 
 \usepackage[acronym, nomain, nowarn]{glossaries}
@@ -24,7 +25,7 @@
 \usepackage{algorithm2e}
 \usepackage{subcaption}
 \usepackage{siunitx}
-\DeclareSIUnit{\EUR}{\text{\texteuro}}
+%\DeclareSIUnit{\EUR}{\text{\texteuro}} % gulps up subsequent symbols, commented out
 \DeclareSIUnit\year{yrs}
 \sisetup{load-configurations = abbreviations,binary-units, per-mode=fraction}
 \usepackage{csquotes}
