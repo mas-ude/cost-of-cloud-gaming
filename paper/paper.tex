@@ -1,5 +1,5 @@
 %!TEX program = pdflatex
-\documentclass[conference,10pt,a4paper]{IEEEtran}
+\documentclass{llncs}
 
 \usepackage{ifluatex}
 \ifluatex
@@ -23,7 +23,7 @@
 \usepackage{mathtools}
 \usepackage{fixmath}
 \usepackage{algorithm2e}
-\usepackage{subcaption}
+%\usepackage{subcaption}
 \usepackage{siunitx}
 %\DeclareSIUnit{\EUR}{\text{\texteuro}} % gulps up subsequent symbols, commented out
 \DeclareSIUnit\year{yrs}
@@ -55,28 +55,28 @@
 
 \begin{document}
 
+\pagestyle{headings}
+
+\mainmatter
 
 \title{The Prospects of Cloud Gaming: Do the Benefits Outweigh the Costs?}
 
-\author{\IEEEauthorblockN{Florian Metzger}
-\IEEEauthorblockA{
-Chair of Modeling of Adaptive Systems\\
+\titlerunning{Cloud Gaming}
+
+\author{Florian Metzger \and Albert Rafetseder \and Patrick Zwickl \and Svenja Schröder}
+\authorrunning{F. Metzger et al.}
+
+\institute{Chair of Modeling of Adaptive Systems\\
 University of Duisburg-Essen, Germany\\
-%Essen, Germany\\
-florian.metzger@uni-due.de}
-\and
-\IEEEauthorblockN{Albert Rafetseder}
-\IEEEauthorblockA{
-Tandon School of Engineering\\
-New York University\\
-albert.rafetseder@univie.ac.at}
-\and
-\IEEEauthorblockN{Patrick Zwickl, Svenja Schröder}
-\IEEEauthorblockA{
-University of Vienna, Austria\\
-Faculty of Computer Science\\
-\{patrick.zwickl|svenja.schroeder\}@univie.ac.at}
-}
+\email{florian.metzger@uni-due.de}}
+
+%Tandon School of Engineering\\
+%New York University\\
+%albert.rafetseder@univie.ac.at}
+%
+%University of Vienna, Austria\\
+%Faculty of Computer Science\\
+%\{patrick.zwickl|svenja.schroeder\}@univie.ac.at}
 
 
 \maketitle
