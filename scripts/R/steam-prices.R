@@ -46,8 +46,10 @@ steamdata <- getData()
 gz <- gzfile("../data/steamdata_combined.csv.gz", "w")
 write.csv(steamdata, gz)
 close(gz)
-steamdata <- read.csv("../data/steamdata_combined.csv.gz")
 
+steamdata <- read.csv("../data/steamdata_combined.csv.gz", stringsAsFactors = FALSE)
+# TODO: restore columen data types
+steamdata$date <- ymd(steamdata$date)
 
 
 ##########################################
@@ -76,5 +78,32 @@ steamdata <- steamdata %>%
 ## plotting
 library(ggplot2)
 
-steamdata %>% group_by(date) %>% summarise(mean(price))
+meanprices <- steamdata %>% 
+  group_by(date) %>% 
+  summarise(mean = mean(price/100), sd = sd(price/100))
 
+ggplot(meanprices, aes(x = date, y = mean)) + geom_point() + scale_x_date() + scale_y_log10()
+ggsave("../plots/mean-steam-prices.pdf")
+
+
+#########################################
+## day-to-day owner difference 
+
+newowners <- steamdata %>%
+  group_by(appid) %>%
+  select(appid, name, date, owners) %>%
+  arrange(date) %>%
+  mutate(new_owners = owners - lag(owners)) %>%
+  ungroup() %>%
+  group_by(date) %>%
+  summarise(total_new_owners = sum(new_owners, na.rm = TRUE))
+
+ggplot(newowners, aes(x = date, y = total_new_owners)) + geom_line()
+ggsave("../plots/total-game-owners.pdf")
+
+#########################################
+## select only the latest set of data
+
+latest_date <- max(steamdata$date)
+steamdata_latest <- steamdata %>% 
+  filter(date == latest_date)
