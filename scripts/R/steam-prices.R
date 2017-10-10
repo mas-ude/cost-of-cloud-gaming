@@ -55,11 +55,10 @@ steamdata$date <- ymd(steamdata$date)
 ##########################################
 ## housekeeping
 
-library(dplyr)
-
 steamdata$price <- as.integer(steamdata$price)
 steamdata$metacritic_score <- as.integer(steamdata$metacritic_score)
 steamdata$recommendations <- as.integer(steamdata$recommendations)
+steamdata$is_free <- as.logical(steamdata$is_free)
 steamdata$release_date <- dmy(steamdata$release_date)
 steamdata <- as.tibble(steamdata)
 
@@ -101,9 +100,33 @@ newowners <- steamdata %>%
 ggplot(newowners, aes(x = date, y = total_new_owners)) + geom_line()
 ggsave("../plots/total-game-owners.pdf")
 
+
 #########################################
 ## select only the latest set of data
 
 latest_date <- max(steamdata$date)
-steamdata_latest <- steamdata %>% 
+steamdata.latest <- steamdata %>% 
   filter(date == latest_date)
+
+#########################################
+## correlogramm of steamdata.latest
+
+library(ggcorrplot)
+
+# remove non-numeric variables for cor
+corrdata <- steamdata.latest %>%
+  select(-name, -date) %>%
+  #select(-name, -date, -release_date) %>%
+  mutate(is_free = as.integer(is_free)) %>%
+  mutate(release_date = as.integer(format(release_date, "%Y%m%d")))
+
+corr <- round(cor(corrdata, use = "everything"), 1)
+
+ggcorrplot(corr, hc.order = TRUE, 
+           type = "lower", 
+           lab = TRUE, 
+           lab_size = 3, 
+           method="circle", 
+           colors = c("tomato2", "white", "springgreen3"), 
+           title="Correlogram of mtcars", 
+           ggtheme=theme_bw)
