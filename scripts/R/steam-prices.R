@@ -149,4 +149,23 @@ ggplot(larger.games, aes(x = date, y = owners, group = name)) + geom_line(alpha 
 ggsave("../plots/timeseries-owners-100k.pdf")
 
 
+## plot as timeseries based on x = date - release_date
+## this should shift all starts to the zero mark
 
+
+#########################################
+## bivariate plots
+
+latest.filtered <- steamdata.latest %>%
+  filter(price <= 15000) %>% # price out of the usual game price range
+  filter(metacritic_score > 0) # no or invalid metacritic score present
+  
+## let's try price vs recommendations vs total average playtime
+ggplot(latest.filtered, aes(x = price/100, y = metacritic_score)) + geom_point(aes(size = average_forever))
+ggsave("price-vs-metacritic-vs-playtime.pdf")
+
+ggplot(latest.filtered, aes(x =recommendations, y = metacritic_score)) + geom_point(aes(size = average_forever)) + scale_x_log10()
+ggsave("recommendations-vs-metacritic-vs-playtime.pdf")
+
+ggplot(latest.filtered, aes(x =players_2weeks, y = recommendations)) + geom_point() + geom_smooth() + scale_x_log10()
+ggsave("players2weeks-vs-recommendations.pdf")
