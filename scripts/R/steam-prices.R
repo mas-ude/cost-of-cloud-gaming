@@ -4,6 +4,7 @@ library(foreach)
 library(tibble)
 library(lubridate)
 library(dplyr)
+library(ggplot2)
 
 
 # set the timezone to something that produces no warnings (and is correct)
@@ -75,7 +76,6 @@ steamdata <- steamdata %>%
 
 #########################################
 ## plotting
-library(ggplot2)
 
 meanprices <- steamdata %>% 
   group_by(date) %>% 
@@ -116,17 +116,37 @@ library(ggcorrplot)
 # remove non-numeric variables for cor
 corrdata <- steamdata.latest %>%
   select(-name, -date) %>%
-  #select(-name, -date, -release_date) %>%
+  #select(-release_date) %>%
   mutate(is_free = as.integer(is_free)) %>%
   mutate(release_date = as.integer(format(release_date, "%Y%m%d")))
 
-corr <- round(cor(corrdata, use = "everything"), 1)
+corr <- round(cor(corrdata, use = "complete.obs"), 1)
 
 ggcorrplot(corr, hc.order = TRUE, 
            type = "lower", 
            lab = TRUE, 
            lab_size = 3, 
-           method="circle", 
+           method="square", 
            colors = c("tomato2", "white", "springgreen3"), 
-           title="Correlogram of mtcars", 
+           title="Correlogram of steamdata.latest", 
            ggtheme=theme_bw)
+ggsave("../plots/correlogram-steamdata-latest.pdf")
+
+
+#########################################
+## timeseries #1
+## owners of (larger) games on observed date
+
+# attempt to filter out all games that
+# have at least N owners on any of the observed days
+
+larger.games <- steamdata %>%
+  group_by(appid) %>%
+  filter(any(owners >= 100000)) %>%
+  ungroup
+
+ggplot(larger.games, aes(x = date, y = owners, group = name)) + geom_line(alpha = 0.1) + scale_y_log10()
+ggsave("../plots/timeseries-owners-100k.pdf")
+
+
+
