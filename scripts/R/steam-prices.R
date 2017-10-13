@@ -162,10 +162,10 @@ latest.filtered <- steamdata.latest %>%
   
 ## let's try price vs recommendations vs total average playtime
 ggplot(latest.filtered, aes(x = price/100, y = metacritic_score)) + geom_point(aes(size = average_forever))
-ggsave("price-vs-metacritic-vs-playtime.pdf")
+ggsave("../plots/price-vs-metacritic-vs-playtime.pdf")
 
 ggplot(latest.filtered, aes(x =recommendations, y = metacritic_score)) + geom_point(aes(size = average_forever)) + scale_x_log10()
-ggsave("recommendations-vs-metacritic-vs-playtime.pdf")
+ggsave("../plots/recommendations-vs-metacritic-vs-playtime.pdf")
 
 ggplot(latest.filtered, aes(x =players_2weeks, y = recommendations)) + geom_point() + geom_smooth() + scale_x_log10()
-ggsave("players2weeks-vs-recommendations.pdf")
+ggsave("../plots/players2weeks-vs-recommendations.pdf")
