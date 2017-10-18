@@ -12,7 +12,6 @@ the most recent currency exchange rates.
 Note that as mentioned before, browser and mobile games are out
 of scope for this work.
 
-\todo[inline]{Then there are datasets: Steam API, SteamSpy, HLTB; also the public web pages and in-system ``stores''.}
 \todo[inline]{Lastly, properties of games which are sort-of-proportional to types of utility: size of catalog, play-through lengths, game ages, prices, review scores, number of owners.}
 
 \input{service-table.tex}
@@ -143,10 +142,10 @@ specialized data center locations (Dublin and Frankfurt in Europe).
 
 The requirements to use this service are rather steep, demanding
 \SI{50}{\mega\bit\per\second} for a full
-1080p60\footnote{\label{foot:rate}Please note: This frame rate of
+1080p60 stream\footnote{\label{foot:rate}Please note: This frame rate of
 \SI{60}{\hertz} represents the rate of the video encoder and not the
 game's actual frame rate, which might be considerably lower depending on
-the complexity of the game.} stream (\SI{10}{\mega\bit\per\second} in
+the complexity of the game.} (\SI{10}{\mega\bit\per\second} in
 order to use the service at all) and a maximum \acrshort{RTT} of
 \SI{60}{\milli\second} to one of the data centers. In addition,
 streaming is exclusive to \textit{SHIELD} devices which start at
@@ -181,5 +180,52 @@ mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands
 
 % (US/UK only?) Deuschlandbeta seit ~Q4/2015
 
+\todo[inline]{\psnow On PC?}
 
 \todo[inline]{\liquid ist auch sehr schön!}
+
+
+
+\subsection{Utility Metrics}
+
+
+
+\subsection{Datasets}
+In order to investigate game characteristics, data was collected from
+multiple sources and merged (with a few instances of omission and
+double-count) into a data base. In the interest of repeatability and
+reproducibility, all of the data reported on in this work, as well as
+the code used to collect and process it, can be found in public
+repositories\footnote{The main repository can be found at
+\url{https://github.com/mas-ude/cost-of-cloud-gaming}}.
+Data were joined on game names and platforms (where appropriate).
+The different data sources are described in the following.
+
+For \steam, the public \acrshort{REST} \acrshort{API} was used to
+fetch the name and current price of each game at three different points in
+time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This
+data was combined with \acrshort{API} data from the 3rd-party site
+\textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all
+publicly visible \steam user profiles and
+estimates statistics on the size of the player base and the time each
+player spends with a title. \textit{SteamSpy} also provides a heuristic
+projection of the total number of owners of each listed title on \steam.
+For \gfnow, game names and prices were screen-scraped manually.
+Game names for \psnow is available from their website\footnote{\url{https://www.playstation.com/de-de/explore/playstation-now/ps-now-games/}}.
+\todo[inline]{What about \psnow prices then?}
+Through this, the portfolios can be compared between platforms.
+
+
+Game publishers are usually secretive about the intended playthrough
+length of games (nor do all games necessarily have one). However, players
+may self-report their experienced playthrough times on sites like
+\hltb\footnote{\url{http://howlongtobeat.com/}}, which was web-scraped
+for this analysis using a custom tool\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}.
+
+%Reported times are separated into different play styles, e.g., ``main story'' for players that just finish the main objectives of a game, or ``completionist'' for those who explore the game to the fullest extent. Only an aggregate time over all reports per play style is shown for every game. (For our analysis, we average over all play styles for every game.) %It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
+
+Lastly, the age of a game is computable from its release date. To this end, the
+\metacritic\footnote{\url{http://www.metacritic.com/}} page which
+aggregates reviews of video games (and other media) was
+scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
+

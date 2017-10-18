@@ -70,10 +70,6 @@ very demanding on the hardware.
 %%%%%%%%%%%%
 \subsubsection{Game Ages}
 
-The age of a game is computable from its release date. To this end, the
-\metacritic\footnote{\url{http://www.metacritic.com/}} page which
-aggregates reviews of video games (and other media) was
-scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
 Game ages appear to be relatively high for all of the investigated
 platforms, and particularly so for \psnow. It might be considered a
 special case, as it is specifically advertised as a backwards
@@ -87,15 +83,6 @@ of ``classic'' games on the platform).
 
 %%%%%%%%%%%%
 \subsubsection{Game Lengths}
-
-Game publishers are usually not outspoken about the intended playthrough
-length of games (nor do all games necessarily have a ). However, players
-may self-report their experienced playthrough times on sites like
-\hltb\footnote{\url{http://howlongtobeat.com/}}, on whose data this
-analysis is
-based\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}.
-
-%Reported times are separated into different play styles, e.g., ``main story'' for players that just finish the main objectives of a game, or ``completionist'' for those who explore the game to the fullest extent. Only an aggregate time over all reports per play style is shown for every game. (For our analysis, we average over all play styles for every game.) %It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
 Figure~\ref{fig:gamelengths-violin} shows the distribution of aggregated
 game lengths for the three platforms under investigation, and an
 ``overall'' distribution that includes further platforms and gaming
@@ -129,17 +116,7 @@ subscription.
 %\todo[inline]{SV: So, both platforms have a mixed approach? You rent the games, but can parallely buy them? I didn't understand the second sentence and just erased it (/commented it out).}
 %Furthermore, the exact subscription and rental modalities as well as prices are adapted over time, and differ between regional markets.
 %\todo[inline]{SV:The last sentence was somehow superfluous since variety over time is the case for all of our data. --> erased it.}
-Nevertheless, for \steam it is possible to discuss unit prices: Using
-the official \acrshort{REST} \acrshort{API}, name and current price of
-each game were fetched at three different points in
-time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This
-data was combined with \acrshort{API} data from the 3rd-party site
-\textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all
-publicly visible \steam user profiles. Subsequently, \textit{SteamSpy}
-estimates statistics on the size of the player base and the time each
-player spends with a title. Furthermore, the site provides a heuristic
-projection of the total number of owners of each listed title on \steam.
-Using the combined data, additional perspectives can be given.
+For \steam on the other hand, unit prices can be discussed.
 
 \begin{table}
 \centering
