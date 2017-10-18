@@ -12,8 +12,6 @@ the most recent currency exchange rates.
 Note that as mentioned before, browser and mobile games are out
 of scope for this work.
 
-\todo[inline]{Platforms are current PCs, consoles, and cloud systems as a whole. (We leave out mobile/browser/``classic'' consoles).}
-\todo[inline]{Platforms *also* are ecosystems. We need to draw the line somewhere.}
 \todo[inline]{Then there are datasets: Steam API, SteamSpy, HLTB; also the public web pages and in-system ``stores''.}
 \todo[inline]{Lastly, properties of games which are sort-of-proportional to types of utility: size of catalog, play-through lengths, game ages, prices, review scores, number of owners.}
 
@@ -34,30 +32,77 @@ hardware.
 Dedicated consoles represent the classical approach to video gaming.
 The price for (non-portable) consoles varies but usually lies between
 $\text{\texteuro} 300$ and $\text{\texteuro} 400$ for the latest console
-generation, i.e., \textit{Nintendo Switch}, \textit{PlayStation 4}, and
+generation, i.e., \textit{Switch}, \textit{PlayStation 4}, and
 \textit{Xbox One}.
 While priced lower than \glspl{PC}, console hardware is not componentized
 and not upgradeable as easily.
-\todo[inline]{PS4 can be used for CG.}
 
-\subsubsection{Streaming-Enabled Devices}
+\subsubsection{Cloud Gaming Hardware}
+One of the main claimed benefits of \gls{cg} is its low requirements
+on end user hardware. Thus, a less powerful \gls{PC} may suffice to
+use a \gls{cg} service as long as the network connection to the
+service provides an adequate latency and bandwidth. Furthermore,
+Sony's \psnow \gls{cg} service is available specifically for their
+PlayStation 3 and 4 consoles.
+
 Companies are also experimenting with devices that focus on streaming
 \gls{cg} content. The only standalone game streaming device currently
 in the market is NVIDIA's \textit{SHIELD} which starts at
-$\text{\texteuro} 200$ and is bound to their \gls{cg} service.
+$\text{\texteuro} 200$ and is bound to their \gls{cg} service, \gfnow.
 Sony (amongst others) have experimented with enabling game streaming
-on their TV sets, but removed the option again.
-
-g
-
-\subsection{Gaming Platforms}
-\todo[inline]{Vielleicht finden wir da einen treffenderen Subsec-Namen.}
+on their TV sets previously, but have removed the option again.
 
 
-Below, currently active (cloud and other) gaming platforms are examined
+
+\subsection{Gaming Ecosystems}
+This section highlights two main aspects concerning gaming ecosystems:
+First, how is game software is distributed to the end user (if at all)?
+Second, what online communities are available for a platform?
+Rough price estimates are offered; more in-depth views follow in
+Section~\ref{sec:eval}.
+
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Below, currently active (cloud and non-cloud) gaming platforms are examined
 with regards to pricing models and hardware requirements and costs. The
 information presented was collected between July 2015 and February 2016.
 \todo[inline]{Und was auch immer sonst noch.}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+\subsubsection{\gls{PC} Gaming: Something for everyone}
+\label{sec:pcgaming}
+
+The rise of easy-to-use digital distribution platforms and the
+independent (``indie'') game scene reinvigorated \gls{PC} gaming just a few
+years ago. Today, \gls{PC} gaming is dominated by large digital marketplaces,
+with \steam being the largest. The platform has about $10$ million
+concurrent users at most times of the day. It periodically offers large,
+often seasonal, sales of recent games at greatly reduced prices (rebates
+of 75\% for a year-old game are not uncommon). In addition, many
+resellers offer digital codes for other platforms, often at much lower
+prices.
+% Alternative storefronts, entirely independent from \steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}.%, and enrich the competition even more.
+Major releases on PC are usually priced between $\text{\texteuro} 50$
+and $\text{\texteuro} 60$. However, due to the competition between the
+vendors, the digital retail prices are significantly lower even at
+launch, and also drop more quickly. Another recent trend are game
+bundles, which especially prevalent in the indie games scene, commonly
+offered with a pay-what-you-want model. \textit{Humble
+Bundle}\footnote{\url{https://www.humblebundle.com/}} is a prominent
+example.
+% Number of games >>> what consoles have
+
+%recurring bundles/subscriptions (humble monthly)
+%	console/netflix similarities
+
+% Steam Sales:
+% Large seasonal sales (christmas, summer, lunar new year, halloween, fall, spring, ...) of many/most games on the platform usually rebates of 50\% and up.
+% Weekly sales
+% Daily sales
+% Weekend sales
+% Free weekends
+
+
+
 
 \subsubsection{Video Game Consoles}
 
@@ -78,60 +123,23 @@ older titles.
 
 % generally offer a monthly rotating palette of (older or smaller) game titles included in the subscription.
 
-% \paragraph{Historical Example: OnLive}
 
 
-\subsubsection{The PC Gaming Ecosystem}
-\label{sec:pcgaming}
+\subsubsection{\Gls{cg} Ecosystems}
 
-The rise of easy-to-use digital distribution platforms and the
-independent (``indie'') game scene reinvigorated PC gaming just a few
-years ago. Today, PC gaming is dominated by large digital marketplaces,
-with \steam being the largest. The platform has about $10$ million
-concurrent users at most times of the day. It periodically offers large,
-often seasonal, sales of recent games at greatly reduced prices (rebates
-of 75\% for a year-old game are not uncommon). In addition, many
-resellers offer digital codes for other platforms, often at much lower
-prices.
-% Alternative storefronts, entirely independent from \steam, also exist, such as \textit{GOG}\footnote{\url{https://www.gog.com/}}.%, and enrich the competition even more.
-Major releases on PC are usually priced between $\text{\texteuro} 50$
-and $\text{\texteuro} 60$. However, due to the competition between the
-vendors, the digital retail prices are significantly lower even at
-launch, and also drop more quickly. Another recent trend are game
-bundles, which especially prevalent in the indie games scene, commonly
-offered with a pay-what-you-want model. \textit{Humble
-Bundle}\footnote{\url{https://www.humblebundle.com/}} is a prominent
-example.
-% Number of games >>> what consoles have
+\todo[inline]{Warum beschreiben wir genau die?}
 
-% \todo[inline]{SV: What are street prices / where is this street? PZ: I tried to add a clarification, but Florian can overrule.} its fine!
-
-
-%albeit with increased flexibility and longevity. Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically no upper limit for enthusiasts. The main spender will usually be the \gls{GPU}, often surpassing the \acrshort{CPU} in its performance impact in today's games by far.
-
-%recurring bundles/subscriptions (humble monthly)
-%	console/netflix similarities
-
-% Steam Sales:
-% Large seasonal sales (christmas, summer, lunar new year, halloween, fall, spring, ...) of many/most games on the platform usually rebates of 50\% and up.
-% Weekly sales
-% Daily sales
-% Weekend sales
-% Free weekends
-
-
-\subsubsection{\gfnow}
-
-NVIDIA's cloud gaming service%\footnote{\url{https://shield.nvidia.com/games/geforce-now}}
-is available in North America and select European countries. Like in all
-cloud gaming services  games are executed and rendered ``in the cloud''
-(i.e., in remote data centers), and an audio/video stream is sent back
-to the player. In Germany the service currently offers $68$ PC titles
+NVIDIA's \gls{cg} platform%\footnote{\url{https://shield.nvidia.com/games/geforce-now}}
+\gfnow
+is available in North America and select European countries.
+In Germany the service currently offers $68$ PC titles
 for a monthly subscription fee of $\text{\texteuro} 10$. An additional
 per-game one-time fee between $\text{\texteuro} 13$ and
 $\text{\texteuro} 60$ is charged for the access to the $19$ most
 prominent and recent games. The service is delivered from six
 specialized data center locations (Dublin and Frankfurt in Europe).
+
+\todo[inline]{\gfnow for PC}
 
 The requirements to use this service are rather steep, demanding
 \SI{50}{\mega\bit\per\second} for a full
@@ -146,9 +154,7 @@ $\text{\texteuro} 200$.
 
 % Started in parts of Europe in Q4/2015
 
-\subsubsection{\psnow}
-
-Sony's cloud gaming service offers to stream titles from previous
+\psnow, Sony's cloud gaming service, offers to stream titles from previous
 PlayStation generations, as the latest console generation lacks
 backwards compatibility. It is currently available in North America and
 the UK, with a closed beta running in other European countries and
@@ -176,249 +182,4 @@ mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands
 % (US/UK only?) Deuschlandbeta seit ~Q4/2015
 
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Characteristics of Games}
-
-Following the discussion of gaming platform characteristics, the
-attention now turns to the properties of the actual games offered on the
-various platforms: number of games, ages, lengths, prices, and review
-scores. Tbl.~\ref{tab:game-stats} provides an overview of the data.
-%of the cost-benefit analysis is
-%\todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
-%The leading question for investigating the customer side is ``How can we properly estimate the (perceived) value of a service for the customer?'' where the perceived value deserves a definition and specific attention. This is targeted by the means of assessing the user engagement. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective. However, with the help of further metrics  a more objective impression of the popularity and the value of individual titles can be formed. 
-In order to investigate these characteristics, data was collected from
-multiple sources and merged (with a few instances of omission and
-double-count) into a data base. In the interest of repeatability and
-reproducibility, all of the data reported on in this work, as well as
-the code used to collect and process it, can be found in public
-repositories\footnote{The main repository can be found at
-\url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Please note that
-due to space constraints and the multidimensional nature of the dataset,
-only a limited number of findings can be presented in this paper.
-
-%Both these attributes usually play a role in one's decision to play a certain game. 
-
-%with an additional question of ``What is the definition of value in this context?''. To answer these some means to meter user engagement is required, as this represents the core of those questions. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective.
-
-% \input{dataset_metadata_table}
-% \input{dataset_stats_table}
-
-%%%%%%%%%%%%
-
-\begin{table*}
-\centering
-\caption{Game characteristics on the investigated platforms. Title counts from Web/API scraping, lengths from \hltb, ages and review scores from \metacritic.}
-\label{tab:game-stats}
-	\begin{tabu}{X[2]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
-	\toprule
-	Service & Titles & Age $\mu$ & Age $\sigma$ & Length $\mu$ & Length $\sigma$ & Score $\mu$ & Score $\sigma$ \\
-	\midrule
-	\gfnow & $68$ & \SI{2.87}{\year} & \SI{1.95}{\year} & \SI{14.65}{\hour} & \SI{14.44}{\hour} & $75.9$ & $9.44$ \\
-	\psnow & $191$ & \SI{5.24}{\year} & \SI{2.55}{\year} & \SI{12.26}{\hour} & \SI{15.47}{\hour} & $76.72$ & $11.43$ \\
-	\steam & $7749$ & \SI{3.36}{\year} & \SI{3.95}{\year} & \SI{13.02}{\hour} & \SI{20.49}{\hour} & $71$ & $12$ \\
-	\bottomrule
-	\end{tabu}
-\end{table*}
-
-
-%%%%%%%%%%%%
-\subsubsection{Number of Games}
-
-This basic metric quantifies the range of games on offer. The two cloud
-platforms offer a very limited number of games when compared to the
-games available on \steam, which itself again only represents a subset
-of all games available either on the PC platform (\metacritic lists
-$16192$) or across all platforms ($45803$ listed on the site). Two
-possible, simple explanations for the low game count on the cloud
-platforms come to mind: One is that they were launched relatively
-recently (2015) in comparison to \steam (2003), leaving little time for
-the range of games to grow. Secondly, the choice of games for a cloud
-gaming platform is necessarily curated by the platform operator due to
-compatibility and performance reasons. This usability burden shifts to
-the end user for digital storefronts like \steam, allowing these
-platforms to offer a larger variety of games, including ones that are
-very demanding on the hardware.
-
-
-%%%%%%%%%%%%
-\subsubsection{Game Ages}
-
-The age of a game is computable from its release date. To this end, the
-\metacritic\footnote{\url{http://www.metacritic.com/}} page which
-aggregates reviews of video games (and other media) was
-scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
-Game ages appear to be relatively high for all of the investigated
-platforms, and particularly so for \psnow. It might be considered a
-special case, as it is specifically advertised as a backwards
-compatibility for older, pre-PlayStation 4 games that do not run on the
-latest Sony platform any more. For \steam, the distribution is
-significantly skewed towards recent titles: A quarter of games are less
-than $10$ months old, and the median is at $21$ months. The
-distribution's tail extends well beyond $25$ years (due to re-releases
-of ``classic'' games on the platform).
-
-
-%%%%%%%%%%%%
-\subsubsection{Game Lengths}
-
-Game publishers are usually not outspoken about the intended playthrough
-length of games (nor do all games necessarily have a ). However, players
-may self-report their experienced playthrough times on sites like
-\hltb\footnote{\url{http://howlongtobeat.com/}}, on whose data this
-analysis is
-based\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}.
-
-%Reported times are separated into different play styles, e.g., ``main story'' for players that just finish the main objectives of a game, or ``completionist'' for those who explore the game to the fullest extent. Only an aggregate time over all reports per play style is shown for every game. (For our analysis, we average over all play styles for every game.) %It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
-Figure~\ref{fig:gamelengths-violin} shows the distribution of aggregated
-game lengths for the three platforms under investigation, and an
-``overall'' distribution that includes further platforms and gaming
-systems. Among the three platforms, the mean and median reported game
-lengths (approximately \SI{14}{\hour}) are largest for \gfnow. In
-contrast to the curated choice of games on the Cloud systems, \steam
-also offers shorter and longer games.
-
-
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/gamelengths-by-platform-violin.pdf}
-	\caption{Violin plot of the per-platform average game lengths from \hltb. The number of games per bin are $68$, $209$, $7764$, and $18433$; quartiles indicated by horizontal lines.}
-%	aggregated over all play styles (raw data source: \hltb).}
-\label{fig:gamelengths-violin}
-\end{figure}
-
-
-
-%%%%%%%%%%%%
-\subsubsection{Game Prices}
-
-Trying to compare the prices per game is a difficult endeavor, due to
-the mixed approach of both cloud gaming platforms. The \gfnow
-subscription gives you access to a subset of its catalog that can be
-extended by purchasing additional games. Similarly, \psnow has a base
-subscription catalog and additional, rentable titles. But in addition,
-every title can also be rented without the need for an active
-subscription.
-%; at the same time, further titles may be bought in addition (on \gfnow), or an alternative, à la carte purchase option besides subscription exists (on \psnow). 
-%\todo[inline]{SV: So, both platforms have a mixed approach? You rent the games, but can parallely buy them? I didn't understand the second sentence and just erased it (/commented it out).}
-%Furthermore, the exact subscription and rental modalities as well as prices are adapted over time, and differ between regional markets.
-%\todo[inline]{SV:The last sentence was somehow superfluous since variety over time is the case for all of our data. --> erased it.}
-Nevertheless, for \steam it is possible to discuss unit prices: Using
-the official \acrshort{REST} \acrshort{API}, name and current price of
-each game were fetched at three different points in
-time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This
-data was combined with \acrshort{API} data from the 3rd-party site
-\textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all
-publicly visible \steam user profiles. Subsequently, \textit{SteamSpy}
-estimates statistics on the size of the player base and the time each
-player spends with a title. Furthermore, the site provides a heuristic
-projection of the total number of owners of each listed title on \steam.
-Using the combined data, additional perspectives can be given.
-
-\begin{table}
-\centering
-\caption{Average prices for \steam games.}
-\label{tab:steam-price-stats}
-\begin{tabu}{X[2]|X[r]X[r]X[r]}
-	\toprule
-	& \textbf{2015-07-14} & \textbf{2015-10-30} & \textbf{2016-02-06} \\
-	\midrule
-	\textbf{Portfolio price (€)} & $10.11$ & $8.47$ & $5.65$ \\
-	\textbf{Weighted price (€)} & $12.39$ & $10.21$ & $5.30$ \\
-	\bottomrule
-\end{tabu}
-\end{table}
-
-Table~\ref{tab:steam-price-stats} shows the development of average
-\steam game prices for the three measurements taken. Two different types
-of averages are shown: The portfolio price which averages over all
-current game prices, and the weighted price which is the product of game
-price and estimated number of owners, averaged over the total number of
-games owned. Strong temporal effects are evident from either metric.
-Note that the last measurement shortly predates 2016's Lunar New Year,
-around which \steam ran a large seasonal sales
-campaign\footnote{\url{http://store.steampowered.com/news/20313/}}.
-
-% Looking at the distributions of game prices, we find that the number of games in the sub \SI{5}]\EUR] category has ... hmm, what ... doubled? ... care to check with R?
-
-%The influence of sales periods can be easily observed in the \acrshort{CDF} of prices in Fig. \ref{fig:steam-prices}, where the data from February was collected during \steam's Lunar New Year Sale.
-
-%\begin{figure}[!t]
-%	\centering
-%	\includegraphics[width=1.0\columnwidth]{images/steam-prices.pdf}
-%	\caption{CDF of games on the \steam platform at three distinct dates. The February data was collected in a sales period.}
-%\label{fig:steam-prices}
-%\end{figure}
-
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/steam-cost-vs-playtime-non-sale.pdf}
-	\caption{Violin plot of the average playtime of \steam games, broadly categorized by their prices. The number of games per bin are $1122$, $2177$, $1946$, $1106$, $328$, and $90$.}
-\label{fig:steam-cost-vs-playtime-violin}
-\end{figure}
-
-Figure~\ref{fig:steam-cost-vs-playtime-violin} breaks down the
-distribution of average playtimes per game price range. The game price
-ranges are chosen so as to roughly separate the prevalent modes of the
-price distribution.
-% AR: The modes would be approximately 1, 2, 5, 10, 15, and 20 Euros from visual inspection of images/steam-prices-density.pdf.
-Playtime is defined as the time game owners spend playing a game, as
-recorded by the \steam platform and scraped from \textit{SteamSpy}. As
-can be seen, the playtimes generally increase with the price range;
-unfortunately, the data does not explain the cause: E.g., more expensive
-games might have more playable content, causing the playtime to
-increase. Conversely, higher upfront costs may incite players to spend
-more time regardless of game quality, thus avoiding regret for the
-expense. On the far left in the Figure, playtimes of ``free'' titles
-(including free-to-play games with monetization options other than an
-upfront payment) span almost the whole playtime range with less
-pronounced prevalences.
-% Svenja deleted the following sentence since that can be the case anywhere:
-%And still alternatively, there might exist an outside, common reason causing both parameters to increases.
-Due to the strong popularity of \steam in PC gaming (even physical
-retail copies often require using the service nowadays) this set also
-gives a good general overview of the dimensions of PC gaming in general.
-
-
-%%%%%%%%%%%%
-\subsubsection{Review Scores}
-
-The final characteristic in this analysis are game review scores as
-given by professional gaming media outlets. This relies on the
-\metacritic dataset again. This set covers review scores for all current
-and historic gaming platforms. The review scores are aggregated to
-average scores ranging between $0$ and $100$. Some \metacritic-internal
-weighing factors are applied to express the importance of some media
-outlets over others.
-The average scores seem quite similar across all services, albeit with a
-slightly lower $\sigma$ for \gfnow. Figure~\ref{fig:scores-by-platform}
-shows the distribution of review scores per platform. Both Cloud
-services seem to favor certain score levels. Specifically, their lowest
-quartiles (representing the worst-rated games on these platforms) reach
-much higher values than \steam's. This could be an effect of the Cloud
-systems curating the game offer to focus on highly-rated (and thus
-perhaps more attractive) titles. \steam on the other side is a more or
-less open platform, where every game publisher can sell their games at
-their own volition (platform operator collects a commission fee for
-sales). Consequently, it is reasonable to assume more variation in the
-quality of games, which could in turn lead to mixed reviews.
-%Cloud gaming platforms have to acquire licenses from the individual games' publishers and therefore have to be selective and curated by nature.
-%\todo[inline]{AR: Should we mention other possible effects such as ``Metacritic probably isn't free of bias (gosh!)''?}
-% that would only lead to a very, very lengthy off-topic discussion, so probably no
-
-% TODO: include or compare with data from opencritic.com as soon as their API is public/usable
-
-% \begin{figure}[!t]
-% 	\centering
-% 	\includegraphics[width=1.0\columnwidth]{images/releases-per-year.pdf}
-% 	\caption{Number of game releases per platform according to the Metacritic data.}
-% \label{fig:releases-per-year}
-% \end{figure}
-
-\begin{figure}[!t]
-	\centering
-	\includegraphics[width=1.0\columnwidth]{images/scores-by-platform-violin.pdf}
-	\caption{Violin plot of aggregated review scores per platform. The number of games per bin are $68$, $209$, $7759$, and $46197$.}
-\label{fig:scores-by-platform}
-\end{figure}
-
+\todo[inline]{\liquid ist auch sehr schön!}
