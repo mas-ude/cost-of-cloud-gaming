@@ -1,7 +1,16 @@
 %!TEX root = paper.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Characterizing Platforms and Games}
+\section{Background}
 \label{sec:background}
+
+This section reviews the current hardware and software platforms
+for different types of gaming, introduces utility metrics for games,
+and describes the data sources used for the evaluations in this paper.
+All costs are from an European, specifically German, perspective. If a
+product is not available in this region, the prices are converted using
+the most recent currency exchange rates.
+Note that as mentioned before, browser and mobile games are out
+of scope for this work.
 
 \todo[inline]{Platforms are current PCs, consoles, and cloud systems as a whole. (We leave out mobile/browser/``classic'' consoles).}
 \todo[inline]{Platforms *also* are ecosystems. We need to draw the line somewhere.}
@@ -11,23 +20,48 @@
 \input{service-table.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Platform Characteristics}
+\subsection{Gaming Hardware}
+
+\subsubsection{Gaming \acrshort{PC}s}
+Hardware viable for \gls{PC} gaming starts at about $\text{\texteuro} 500$ but
+has practically no upper limit for enthusiasts. The \gls{GPU}
+is a cost driver, and it is essential for modern \gls{PC} gaming.
+This poses a certain financial barrier for customers to start \gls{PC} gaming,
+which is however compensated by an increased flexibility and longevity of
+hardware.
+
+\subsubsection{Video Game Consoles}
+Dedicated consoles represent the classical approach to video gaming.
+The price for (non-portable) consoles varies but usually lies between
+$\text{\texteuro} 300$ and $\text{\texteuro} 400$ for the latest console
+generation, i.e., \textit{Nintendo Switch}, \textit{PlayStation 4}, and
+\textit{Xbox One}.
+While priced lower than \glspl{PC}, console hardware is not componentized
+and not upgradeable as easily.
+\todo[inline]{PS4 can be used for CG.}
+
+\subsubsection{Streaming-Enabled Devices}
+Companies are also experimenting with devices that focus on streaming
+\gls{cg} content. The only standalone game streaming device currently
+in the market is NVIDIA's \textit{SHIELD} which starts at
+$\text{\texteuro} 200$ and is bound to their \gls{cg} service.
+Sony (amongst others) have experimented with enabling game streaming
+on their TV sets, but removed the option again.
+
+g
+
+\subsection{Gaming Platforms}
+\todo[inline]{Vielleicht finden wir da einen treffenderen Subsec-Namen.}
+
 
 Below, currently active (cloud and other) gaming platforms are examined
 with regards to pricing models and hardware requirements and costs. The
 information presented was collected between July 2015 and February 2016.
-All costs are from an European, specifically German, perspective. If a
-product is not available in this region, the prices are converted using
-the most recent currency exchange rates.
+\todo[inline]{Und was auch immer sonst noch.}
 
 \subsubsection{Video Game Consoles}
 
-A classical approach to video gaming is using dedicated consoles with
-physical copies of game media (e.g., a BD) bought at a retailer. The
-price for (non-portable) consoles varies but usually lies between
-$\text{\texteuro} 300$ and $\text{\texteuro} 400$ for the latest console
-generation, i.e., \textit{Wii U}, \textit{PlayStation 4}, and
-\textit{Xbox One}. New, major game releases are mostly priced at either
+New, major game releases are mostly priced at either
 $\text{\texteuro} 60$ or $\text{\texteuro} 70$. Once on the market, the
 game prices decrease rather slowly. In recent years, retail stores have
 been complemented with console-specific, proprietary digital
@@ -72,12 +106,6 @@ example.
 
 % \todo[inline]{SV: What are street prices / where is this street? PZ: I tried to add a clarification, but Florian can overrule.} its fine!
 
-Hardware viable for PC gaming starts at about $\text{\texteuro} 500$ but
-has practically no upper limit for enthusiasts (especially the \gls{GPU}
-is a cost driver, but essential for modern PC gaming). Thus, the barrier
-for customers to start PC gaming is higher than for consoles, which is,
-however, compensated by an increased flexibility and longevity of
-hardware.
 
 %albeit with increased flexibility and longevity. Hardware viable for PC gaming starts at about \SI{500}[\EUR] but has practically no upper limit for enthusiasts. The main spender will usually be the \gls{GPU}, often surpassing the \acrshort{CPU} in its performance impact in today's games by far.
 
