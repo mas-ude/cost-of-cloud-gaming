@@ -182,28 +182,73 @@ mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands
 \subsection{Utility Metrics}
 
 Utility metrics help to estimate the value of a service for a customer.
+It should be noted that no single metric is likely of value by itself,
+yet all metrics somehow influence customer decisions.
 
 The first basic metric is the number of games offered. A larger number
 means more choice for the customer, but ``spam'' phenomena need to
-be considered, as the offer might include many games of subpar quality.
+be considered, as large offers might include many games of sub-par quality.
 
-Second, the age of games (per their original release date) is of
-interest. Some players favor the newest games, others prefer ``classics'';
-any focus or combination thereof will likely attract a specific
-proportion of customers.
+Second, the number of players already owning a game can be a
+motivating factor for other customers to choose the same game.
+One may interpret this as a form of preferential attachment.
+This is particularly interesting for decidedly online games, i.e.
+such where players interact in the game environment over the network,
+so that more interactions are possible if more players are online.
 
-Then, game lengths come to mind. Games range from very short (on the order
+Then, games are priced differently, both within and across
+platforms. Many games are offered completely free of charge.
+Some are funded indirectly through in-game purchases. On the
+other end of the spectrum, titles whose development was expensive
+and for which the audience anticipation is high will probably sell
+for a correspondingly high price.
+
+Furthermore, game lengths come to mind. Games range from very short
+(on the order
 of minutes) to tens of hours (for games with an extensive storyline),
 but need not be limited at all (e.g. explorative or ``open world'' games).
-Again, there are fans of either mode.
+Game length should thus be considered differently depending on
+the player type. For casual gamers, shorter games probably have
+more appeal, as their limited playtime is more likely to allow
+players to complete them. ``Hardcore'' gamers that spend more
+time gaming overall might find longer games more engaging.
+Overall, neither mode intrinsically offers higher utility.
 
-\todo[inline]{Prices}
+Next, the age of games (per their original release date) is of
+interest. Some players favor the newest games, others prefer ``classics'';
+any focus or combination thereof will likely attract specific
+proportions of customers. Also, newer games tend to also be topics
+in the media (and in advertising, increasing their publicity),
+offer a greater diversity (e.g., regarding game mechanics and control),
+% Wii once was new!
+and feature improved technical quality (resolution, scene complexity).
 
-\todo[inline]{Review Scores}
+
+There also exist considerable amounts of secondary literature about
+games in the form of reviews. These can be viewed as social factor,
+in that gamers might be drawn to positively-reviewed titles more
+strongly, or rather stay away from less favorably reviewed ones.
+Some media aggregate reviews from many outlets and
+are thus of particular interest for an analysis.
+
+Many other utility metrics are imaginable, e.g.
+the number of platform ``exclusive'' game titles,
+the game genre and other classifications,
+the number of game sales and subscriber numbers,
+technical aspects like graphical fidelity, performance, precision
+and responsiveness of controls,
+measures of the game's content like variety and quality of game mechanics,
+or other content-centric factors.
+
+Lastly, any combination of the metrics mentioned above has its
+merits for assessing the utility of a gaming platform. For example,
+the combined expected playthrough length of the top 10\% of games
+across platforms could be evaluated, and judged against the amount
+of money required to equip each platform like this.
 
 
-\subsection{Datasets}
-In order to investigate game characteristics, data was collected from
+\subsection{Data Sources}
+In order to investigate the utility metrics described, data was collected from
 multiple sources and merged (with a few instances of omission and
 double-count) into a data base. In the interest of repeatability and
 reproducibility, all of the data reported on in this work, as well as
@@ -214,7 +259,7 @@ Data were joined on game names and platforms (where appropriate).
 The different data sources are described in the following.
 
 For \steam, the public \acrshort{REST} \acrshort{API} was used to
-fetch the name and current price of each game at three different points in
+fetch the name and current price of each game at different points in
 time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This
 data was combined with \acrshort{API} data from the 3rd-party site
 \textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all
@@ -227,9 +272,8 @@ Game names for \psnow is available from their website\footnote{\url{https://www.
 \todo[inline]{What about \psnow prices then?}
 Through this, the portfolios can be compared between platforms.
 
-
-Game publishers are usually secretive about the intended playthrough
-length of games (nor do all games necessarily have one). However, players
+Game publishers seldom publish intended playthrough
+length of games, and not all games necessarily have one. However, players
 may self-report their experienced playthrough times on sites like
 \hltb\footnote{\url{http://howlongtobeat.com/}}, which was web-scraped
 for this analysis using a custom tool\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}.
