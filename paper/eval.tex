@@ -3,29 +3,14 @@
 \section{Evaluation}
 \label{sec:eval}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Characteristics of Games}
+This section investigates the properties of the actual games offered on the
+various platforms, so as to provide a backdrop against which utility
+metrics can be viewed.
+Table~\ref{tab:game-stats} provides an overview of the data.
 
-Following the discussion of gaming platform characteristics, the
-attention now turns to the properties of the actual games offered on the
-various platforms: number of games, ages, lengths, prices, and review
-scores. Tbl.~\ref{tab:game-stats} provides an overview of the data.
-%of the cost-benefit analysis is
-%\todo[inline]{PZ: Naive but not untrue. What is engagement in this context? Is engagement the value metric?}
-%The leading question for investigating the customer side is ``How can we properly estimate the (perceived) value of a service for the customer?'' where the perceived value deserves a definition and specific attention. This is targeted by the means of assessing the user engagement. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective. However, with the help of further metrics  a more objective impression of the popularity and the value of individual titles can be formed. 
-In order to investigate these characteristics, data was collected from
-multiple sources and merged (with a few instances of omission and
-double-count) into a data base. In the interest of repeatability and
-reproducibility, all of the data reported on in this work, as well as
-the code used to collect and process it, can be found in public
-repositories\footnote{The main repository can be found at
-\url{https://github.com/mas-ude/cost-of-cloud-gaming}}. Please note that
-due to space constraints and the multidimensional nature of the dataset,
-only a limited number of findings can be presented in this paper.
+\todo[inline]{Umsortieren um mit Background kohärent zu sein?}
+\todo[inline]{Besitzzahlen für \steam anschauen?}
 
-%Both these attributes usually play a role in one's decision to play a certain game. 
-
-%with an additional question of ``What is the definition of value in this context?''. To answer these some means to meter user engagement is required, as this represents the core of those questions. Simply counting the number of games available for a specific service or for a specific amount of money may be the easiest value metric but may also fall short, as the enjoyment of a specific game can be very subjective.
 
 % \input{dataset_metadata_table}
 % \input{dataset_stats_table}
@@ -51,7 +36,7 @@ only a limited number of findings can be presented in this paper.
 %%%%%%%%%%%%
 \subsubsection{Number of Games}
 
-This basic metric quantifies the range of games on offer. The two cloud
+The two cloud
 platforms offer a very limited number of games when compared to the
 games available on \steam, which itself again only represents a subset
 of all games available either on the PC platform (\metacritic lists
@@ -60,7 +45,7 @@ possible, simple explanations for the low game count on the cloud
 platforms come to mind: One is that they were launched relatively
 recently (2015) in comparison to \steam (2003), leaving little time for
 the range of games to grow. Secondly, the choice of games for a cloud
-gaming platform is necessarily curated by the platform operator due to
+gaming platform is most likely curated by the platform operator for
 compatibility and performance reasons. This usability burden shifts to
 the end user for digital storefronts like \steam, allowing these
 platforms to offer a larger variety of games, including ones that are
@@ -160,6 +145,8 @@ campaign\footnote{\url{http://store.steampowered.com/news/20313/}}.
 \label{fig:steam-cost-vs-playtime-violin}
 \end{figure}
 
+\subsubsection{Price versus Playtime}
+Again focusing on \steam,
 Figure~\ref{fig:steam-cost-vs-playtime-violin} breaks down the
 distribution of average playtimes per game price range. The game price
 ranges are chosen so as to roughly separate the prevalent modes of the
@@ -180,7 +167,7 @@ pronounced prevalences.
 %And still alternatively, there might exist an outside, common reason causing both parameters to increases.
 Due to the strong popularity of \steam in PC gaming (even physical
 retail copies often require using the service nowadays) this set also
-gives a good general overview of the dimensions of PC gaming in general.
+gives a good overview of the dimensions of PC gaming in general.
 
 
 %%%%%%%%%%%%
