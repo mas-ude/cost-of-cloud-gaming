@@ -4,33 +4,38 @@
 \centering
 \caption{Content and price models of cloud gaming services and select digital distribution platforms. Services are described from the EU/Germany region unless stated otherwise.}
 \label{tab:game-services}
-	\begin{tabu}{X|X[c]X[c]X[c]X[c]X[c]X[c]}
+	\begin{tabu}{X|X[c]X[c]X[c]X[c]X[c]X[c]X[c]}
 	\toprule
-	Service & Model & Monthly Subscription Fee & Usage-based cost & No. of Titles & Regional Restrictions  & Notes\\
+	Service & Model & Hardware & Monthly Subscription Fee & Usage-based cost & No. of Titles & Regional Restrictions  & Notes\\
 	\midrule
 	\midrule
-	\gfnow for PC & \gls{cr} & None & \$25 for 10 or 20h, quality dependent & n/a & North America & currently in free beta, prices based on latest announcement\footnote{\url{https://arstechnica.com/gaming/2017/01/nvidia-geforce-now-streaming-pc-mac-price-release-date/}}\\
+	\gfnow & \gls{GaaS} & SHIELD device & $\text{\texteuro} 9.99$ & None & 55 included, 63 surcharge & North America, Europe, Japan & \\ %device cost >=200€, price in germany, lower in US
 	\midrule
-	\gfnow & \gls{GaaS} & 9.99€ & --- & 55 included, 63 surcharge & North America, Europe, Japan & Only available on SHIELD devices \\ %device cost >=200€, price in germany, lower in US
+	\gfnow for \gls{PC} & \gls{cr} & \gls{PC} & None & $\$25$ for \SIrange{10}{20}{\hour}, quality dependent & n/a & North America & currently in free beta, prices based on latest announcement\footnote{\url{https://arstechnica.com/gaming/2017/01/nvidia-geforce-now-streaming-pc-mac-price-release-date/}}\\
 	\midrule
-	\psnow & \gls{GaaS} & 16,99€ & None & $432$ & \SI{12.26}{\hour} & selected PS3/PS4 games\\
+	\psnow & \gls{GaaS} & PS3/4 consoles & $\text{\texteuro} 16.99$ & None & $432$ & \SI{12.26}{\hour} & selected PS3/PS4 games\\
 	\midrule
-	\psnow on \gls{PC} & \gls{GaaS} & --- & --- & --- & --- & identical with \psnow\\
+	\psnow on \gls{PC} & \gls{GaaS} & \gls{PC} & \multicolumn{5}{c}{\textit{--- (otherwise identical with \psnow) ---}}\\
 	\midrule
-	LiquidSky & \gls{cr} & 19.99\$ & for usage exceeding 80h & n/a & NA, EU, Hong Kong & Limited storage\\
+	LiquidSky & \gls{cr} & \gls{PC} or smartphone & $\$19.99$ & for usage exceeding \SI{80}{\hour} & n/a & North America, Europe, Hong Kong & Limited storage\\
+	% Also has a "pay-as-you-go" tier with 25h for $9.99
 	\midrule
-	GameFly & ? & ? & ? & ? & ? & Only for specific set-top boxes\\
+	GameFly & ? & ? & ? & ? & ? & ? & Only for specific set-top boxes\\
 	\midrule
-	\steam & direct game sales & None & None & $17111$ & pricing and availability of games differ across regions & \\
+	\steam & direct game sales & \gls{PC} & None & None & $17,111$ & pricing and availability of games differ across regions & \\
 
 
 	\midrule
-	Defunct Services & & & & & \\
+	\midrule
+	Defunct Services & Model & \multicolumn{6}{l}{Notes} \\
+	\midrule
 
-	OnLive & & & & & Bankrupt, most patents sold to Sony (2015) [Source?]\\
-	Gaikai & \gls{GaaS} in web browser & n/a & n/a & n/a & Bought by Sony (2012)\footnote{https://arstechnica.com/gaming/2012/07/what-sonys-gaikai-purchase-means-to-playstations-cloud-gaming-future/}\\
-	Gface (CryTek) & & & & &  Did not leave beta (2012), now just a company game launcher (also defunct)[Source?]\\
-	Playcast & unknown & unknown & 50 (est.) & Only select ISP installations (Israel, Portugal, South Korea, France)& Only for specific set-top boxes, Merged with gamefly (2015) [Source?]\\
+	OnLive & \gls{GaaS} & \multicolumn{6}{l}{Bankrupt, most patents sold to Sony (2015) [Source?]}\\
+	Gaikai & \gls{GaaS} in web browser & \multicolumn{6}{l}{Bought by Sony (2012)\footnote{https://arstechnica.com/gaming/2012/07/what-sonys-gaikai-purchase-means-to-playstations-cloud-gaming-future/}}\\
+	Gface (CryTek) & unknown & \multicolumn{6}{l}{Did not leave beta (2012), now just a company game launcher (also defunct)[Source?]}\\
+	Playcast & unknown & \multicolumn{6}{l}{50 games, selected ISPs,% in Israel, Portugal, South Korea, France.
+	only for specific set-top boxes. Merged with GameFly (2015) [Source?]
+	}\\
 
 	\bottomrule
 	\end{tabu}
