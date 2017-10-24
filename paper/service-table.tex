@@ -4,21 +4,23 @@
 \centering
 \caption{Content and price models of cloud gaming services and select digital distribution platforms. Services are described from the EU/Germany region unless stated otherwise.}
 \label{tab:game-services}
-	\begin{tabu}{X|X[r]X[r]X[r]X[r]X[r]}
+	\begin{tabu}{X|X[c]X[c]X[c]X[c]X[c]X[c]}
 	\toprule
-	Service & Price Model & Model & No. of Titles & Regional Restrictions  & Notes\\
+	Service & Model & Monthly Subscription Fee & Usage-based cost & No. of Titles & Regional Restrictions  & Notes\\
 	\midrule
-	\gfnow for PC &  time-based \$25 for 20h resp. 10h & bring-your-own-PC-games & n/a & NA & service currently in free beta, prices based on latest announcement\footnote{\url{https://arstechnica.com/gaming/2017/01/nvidia-geforce-now-streaming-pc-mac-price-release-date/}}\\
-
-	\gfnow & base fee, 9.99€ monthly, some games incur additional charge & curated PC games & 55 included, 63 surcharge & NA, EU, JP & Only available on SHIELD devices \\ %device cost >=200€, price in germany, lower in US
-
-
-	\psnow & flat subscription, 16,99€ monthly & select PS3/PS4 games & $432$ & \SI{12.26}{\hour}\\
-
+	\midrule
+	\gfnow for PC & \gls{cr} & None & \$25 for 10 or 20h, quality dependent & n/a & North America & currently in free beta, prices based on latest announcement\footnote{\url{https://arstechnica.com/gaming/2017/01/nvidia-geforce-now-streaming-pc-mac-price-release-date/}}\\
+	\midrule
+	\gfnow & \gls{GaaS} & 9.99€ & --- & 55 included, 63 surcharge & North America, Europe, Japan & Only available on SHIELD devices \\ %device cost >=200€, price in germany, lower in US
+	\midrule
+	\psnow & \gls{GaaS} & 16,99€ & None & $432$ & \SI{12.26}{\hour} & selected PS3/PS4 games\\
+	\midrule
+	\psnow on \gls{PC} & \gls{GaaS} & --- & --- & --- & --- & identical with \psnow\\
+	\midrule
+	LiquidSky & \gls{cr} & 19.99\$ & for usage exceeding 80h & n/a & NA, EU, Hong Kong & Limited storage\\
+	\midrule
 	GameFly & ? & ? & ? & ? & Only for specific set-top boxes\\
-	LiquidSky & time-based + subscription, 19.99\$ for the first 80h per month & bring-your-own-PC-games & n/a & NA, EU, Hong Kong & Limited storage\\
-
-
+	\midrule
 	\steam & direct sales, 3rd party vendors and bundles & open publication (100\$ fee) & $17111$ & pricing and availability differing across regions & \\
 
 
