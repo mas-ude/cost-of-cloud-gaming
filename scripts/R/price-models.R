@@ -3,8 +3,10 @@ library(Cairo)
 
 # Use `data_merge.R` to read in the required platform dataframes.
 
-exchangerate.GBPtoEUR <- 1.27270
-exchangerate.USDtoEUR <- 0.882388
+### Foreign-currency exchange rates
+# via https://www.oenb.at/zinssaetzewechselkurse/zinssaetzewechselkurse
+exchangerate.GBPtoEUR <- 1/0.89303
+exchangerate.USDtoEUR <- 1/1.1761
 
 
 ### console cycle years
@@ -22,36 +24,33 @@ budget <- seq(0, 1500, by = 1)
 ########
 # ps now
 
-psnow.hw <- 329.9 # as of 2016/02/11
+psnow.hw <- 299 # as of 2017/10/24 on Amazon.de and Libro.at
 psnow.hw.peryear <- psnow.hw / console.lifetime
-psnow.monthly <- 12.99 * exchangerate.GBPtoEUR
+psnow.monthly <- 16.99
 psnow.yearly <- psnow.monthly * 12
-psnow.rental.price.30d <- 7.99 * exchangerate.GBPtoEUR
-# no numbers for uk service, approximate by ratio of jp included vs rental titles as of
-# http://www.jp.playstation.com/psnow/list.html
-# included: 145, rental: 185
-# rental proportion: .56
-psnow.maxgames <- nrow(df.psnow)
-psnow.excluded <- psnow.maxgames * 0.56
-psnow.included <- psnow.maxgames - psnow.excluded
-#psnow.included <- sum(df.psnow$Included.In.Subscription == TRUE)
-#psnow.extra <- sum(df.psnow$Included.In.Subscription == FALSE)
+
+# XXX Hardcoded to the latest manual count
+psnow.maxgames <- 432
 
 psnow <- pmax(((budget - psnow.hw.peryear) - psnow.yearly),0)
-psnow[psnow > 0] <- pmin(psnow[psnow > 0] / psnow.rental.price.30d + psnow.included, psnow.maxgames)
+psnow[psnow > 0] <- psnow.maxgames
 
 
 ########
 # gf now
 gfnow.monthly <- 9.99
 gfnow.yearly <- gfnow.monthly * 12
-gfnow.hw <- 201.99
+gfnow.hw <- 229
 gfnow.hw.peryear <- gfnow.hw / console.lifetime
 
-gfnow.maxgames <- nrow(df.gfnow)
-gfnow.included <- nrow(subset(df.gfnow, price == 0))
-gfnow.extra <- gfnow.maxgames - gfnow.included
-gfnow.extraprice.mean <- mean(subset(df.gfnow, price != 0)$price)
+# XXX More hardcoded numbers ahead
+# XXX Fix this when the main `df` is updated!
+gfnow.maxgames <- 55+63 # nrow(df.gfnow)
+gfnow.included <- 55 # nrow(subset(df.gfnow, price == 0))
+gfnow.extra <- 63 # gfnow.maxgames - gfnow.included
+# XXX From a few glances into GFnow's game offering and
+# XXX Steam's prices
+gfnow.extraprice.mean <- 15 # mean(subset(df.gfnow, price != 0)$price)
 
 gfnow <- pmax(((budget - gfnow.hw.peryear) - gfnow.yearly), 0)
 gfnow[gfnow > 0] <- gfnow.included + pmin(gfnow[gfnow > 0]/gfnow.extraprice.mean , gfnow.extra)
@@ -61,14 +60,16 @@ gfnow[gfnow > 0] <- gfnow.included + pmin(gfnow[gfnow > 0]/gfnow.extraprice.mean
 # steam
 steam.hw <- 500
 steam.hw.peryear <- steam.hw / 3
-steam.meanprice <- mean(df.steamdata$price, na.rm = TRUE) / 100
+# XXX Do update this too! I snapped it from visual
+# XXX inspection of the old graph.
+steam.meanprice <- 6.25 # mean(df.steamdata$price, na.rm = TRUE) / 100
 
 steam <- pmax((budget - steam.hw.peryear),0) / steam.meanprice
 
 
 
 ## plot
-df <- null
+df <- NULL
 df <- data.frame(budget = budget, gamesperyear = gfnow, platform = "GF Now")
 tmp <- data.frame(budget=budget, gamesperyear = psnow, platform = "PS Now")
 df <- rbind(df, tmp)
@@ -76,7 +77,7 @@ tmp <- data.frame(budget = budget, gamesperyear = steam, platform = "Steam")
 df <- rbind(df, tmp)
 
 p <- ggplot(df, aes(x = budget, y = gamesperyear, color = platform, lty = platform)) + geom_line(size = 1) #+ geom_point(size=2)
-p <- p + xlab("budget (€)") + ylab("games per year")
+p <- p + xlab("Annual budget (€)") + ylab("Games per year")
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("gamesperyear-over-budget.pdf", width=12, height=8, device = cairo_pdf)
@@ -92,8 +93,7 @@ budget.annual <- year * money
 
 steam.annual <- ((budget.annual) - steam.hw.peryear * year) / steam.meanprice
 
-psnow.annual <- pmax((year * money) - (psnow.hw.peryear + psnow.yearly) * year, 0)
-psnow.annual[psnow.annual > 0] <- pmin(pmin(psnow.annual[psnow.annual > 0] / psnow.rental.price.30d, psnow.excluded) + psnow.included, psnow.maxgames)
+psnow.annual <-  psnow.maxgames
 
 gfnow.annual <- pmax((year * money) - (gfnow.hw.peryear + gfnow.yearly) * year, 0)
 gfnow.annual[gfnow.annual > 0] <- pmin(gfnow.annual[gfnow.annual > 0] / gfnow.extraprice.mean, gfnow.extra) + gfnow.included
