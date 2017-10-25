@@ -85,6 +85,18 @@ latest_date <- max(steamdata$date)
 steamdata.latest <- steamdata %>% 
   filter(date == latest_date)
 
+# A quick stat
+quantile(steamdata.latest$price/100, probs=seq(0,1,0.01), na.rm=TRUE)
+# Some modes:
+#         10% of games are free
+# (18-13)= 5% of games cost  0.99
+# (30-26)= 4% of games cost  2.99
+# (48-36)=12% of games cost  4.99
+# (76-63)=13% of games cost  9.99
+# (87-82)= 5% of games cost 14.99
+# (93-89)= 4% of games cost 19.99
+# The top  6% of games cost more than that
+
 #########################################
 ## correlogramm of steamdata.latest
 
