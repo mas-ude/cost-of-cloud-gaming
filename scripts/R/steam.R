@@ -16,12 +16,13 @@ for (csv.file in csv.list) {
   tmp$date <- date
   df.priced <- rbind(df.priced, tmp)
 }
+df.priced$euro <- df.priced$price/100
+
 
 # date as.factor color'd
 ggplot(df.priced, aes(x=owners, color=as.factor(date))) + stat_ecdf() + scale_x_log10()
 
 # prices ECDF
-df.priced$euro <- df.priced$price/100
 p <- ggplot(df.priced, aes(x=euro, color=as.factor(date)))
 p <- p + stat_ecdf(lwd = 2) + scale_x_log10()
 p <- p + xlab("price (€)") + ylab("ECDF")
