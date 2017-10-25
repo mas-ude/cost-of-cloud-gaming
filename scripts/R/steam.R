@@ -26,7 +26,7 @@ ggplot(df.priced, aes(x=owners, color=as.factor(date))) + stat_ecdf() + scale_x_
 p <- ggplot(df.priced, aes(x=euro, color=as.factor(date)))
 p <- p + stat_ecdf(lwd = 2) + scale_x_log10()
 p <- p + xlab("price (€)") + ylab("ECDF")
-p <- p + scale_color_manual(values = cbPalette, name="date", labels=c("2015-07-14", "2015-10-30", "2016-02-06"))
+p <- p + scale_color_manual(values = cbPalette, name="date", labels=c("2015-07-14", "2015-10-30", "2016-02-06", "2016-06-30", "2016-09-05", "2016-11-26"))
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("steam-prices.pdf", width=12, height=8, device = cairo_pdf)
@@ -38,7 +38,7 @@ p <- ggplot(df.priced, aes(x=euro, color=as.factor(date)))
 p <- p + geom_density() #+ scale_x_log10()
 p <- p + xlim(c(0,40))
 p <- p + xlab("price (€)") + ylab("Probability")
-p <- p + scale_color_manual(values = cbPalette, name="date", labels=c("2015-07-14", "2015-10-30", "2016-02-06"))
+p <- p + scale_color_manual(values = cbPalette, name="date", labels=c("2015-07-14", "2015-10-30", "2016-02-06", "2016-06-30", "2016-09-05", "2016-11-26"))
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("steam-prices-density.pdf", width=12, height=8, device = cairo_pdf)
