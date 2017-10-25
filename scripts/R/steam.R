@@ -1,7 +1,8 @@
 library(ggplot2)
 library(Cairo)
+library(dplyr)
 
-cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+cbPalette <- c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#000000")
 
 # load the data file you want to plot
 
@@ -18,6 +19,14 @@ for (csv.file in csv.list) {
 }
 df.priced$euro <- df.priced$price/100
 
+# Let's take a look at average (aka "portfolio") prices, grouped by date
+aggregate(df.priced$euro, list(Date=df.priced$date), mean)
+aggregate(df.priced$euro, list(Date=df.priced$date), sd)
+
+
+thedates <- c("2015-07-14", "2015-10-30", "2016-02-06", "2016-06-30",
+    "2016-09-05", "2016-11-26", "2017-04-19", "2017-10-09")
+
 
 # date as.factor color'd
 ggplot(df.priced, aes(x=owners, color=as.factor(date))) + stat_ecdf() + scale_x_log10()
@@ -26,7 +35,7 @@ ggplot(df.priced, aes(x=owners, color=as.factor(date))) + stat_ecdf() + scale_x_
 p <- ggplot(df.priced, aes(x=euro, color=as.factor(date)))
 p <- p + stat_ecdf(lwd = 2) + scale_x_log10()
 p <- p + xlab("price (€)") + ylab("ECDF")
-p <- p + scale_color_manual(values = cbPalette, name="date", labels=c("2015-07-14", "2015-10-30", "2016-02-06", "2016-06-30", "2016-09-05", "2016-11-26"))
+p <- p + scale_color_manual(values = cbPalette, name="date", labels=thedates)
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("steam-prices.pdf", width=12, height=8, device = cairo_pdf)
@@ -38,7 +47,7 @@ p <- ggplot(df.priced, aes(x=euro, color=as.factor(date)))
 p <- p + geom_density() #+ scale_x_log10()
 p <- p + xlim(c(0,40))
 p <- p + xlab("price (€)") + ylab("Probability")
-p <- p + scale_color_manual(values = cbPalette, name="date", labels=c("2015-07-14", "2015-10-30", "2016-02-06", "2016-06-30", "2016-09-05", "2016-11-26"))
+p <- p + scale_color_manual(values = cbPalette, name="date", labels=thedates)
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("steam-prices-density.pdf", width=12, height=8, device = cairo_pdf)
