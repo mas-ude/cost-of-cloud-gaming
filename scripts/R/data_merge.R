@@ -89,25 +89,15 @@ df.everything <- rbind(df.everything, tmp)
 # == CUSTOM BINNING ===
 
 # Prices
-df.tmp <- data.frame()
-for (i in 1:nrow(df.everything)) {
-  row <- df.everything[i,]
-  if(row$price == 0) {
-    row$price_category <- "free"
-  } else if (row$price > 0 & row$price <= 500){
-    row$price_category <- "<5"
-  } else if (row$price > 500 & row$price <= 1000) {
-    row$price_category <- "5 to 10"
-  } else if (row$price > 1000 & row$price <= 2000) {
-    row$price_category <- "10 to 20"
-  } else if (row$price > 2000 & row$price <= 4000) {
-    row$price_category <- "20 to 40"
-  } else if (row$price > 4000) {
-    row$price_category <- "above 40"
-  }  
-  df.tmp <- rbind(df.tmp, data.frame(row))
-}
-df.everything = df.tmp
+# (df has prices in cents, we label categories as Euros though)
+df.everything$price_category <-
+  ifelse(df.everything$price>4000,"above 40",
+    ifelse(df.everything$price>2000,"20 to 40",
+      ifelse(df.everything$price>1000,"10 to 20",
+        ifelse(df.everything$price>500,"5 to 10",
+          ifelse(df.everything$price>0,"<5","free")))))
+
+
 
 # Scores
 df.tmp <- data.frame()
