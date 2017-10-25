@@ -16,7 +16,7 @@ df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("char
 #df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
 df.psnow <- read.csv("psnow-games-uk.csv", header=TRUE, sep=";", colClasses=c("character", "numeric"))
 
-## convert date strings to objects and calculate yaer
+## convert date strings to objects and calculate year
 df.metacritic$release <- as.Date(df.metacritic$release, format = "%B %d, %Y")
 df.metacritic$year = strftime(df.metacritic$release, "%Y")
 
