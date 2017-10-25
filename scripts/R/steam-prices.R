@@ -1,3 +1,6 @@
+# First evaluations of Steam prices, owners, review scores,
+# and recommendations in the 2017-04 to 2017-10 timeframe.
+
 library(stringr)
 library(stringdist)
 library(foreach)
@@ -6,55 +9,28 @@ library(lubridate)
 library(dplyr)
 library(ggplot2)
 
-
-# set the timezone to something that produces no warnings (and is correct)
-Sys.setenv(TZ="Europe/Berlin")
-options(tz="Europe/Berlin")
-
-setwd("~/git/cost-of-cloud-gaming/scripts/")
-datafolder <- "../data/gamedata"
-
-getData <- function() {
-  steam.files <- list.files(recursive = TRUE, datafolder, pattern = "steamdata.\\d*.csv")
-  steam.files <- steam.files[order(steam.files,decreasing = TRUE)]
-  
-  df <- data.frame()
-  for(f in steam.files){
-    d <- read.csv(paste(datafolder, "/" , f, sep = ""),stringsAsFactors = FALSE, sep = ";")
-    
-    # don't forget to add the steamspy data
-    fold <- paste(datafolder, "/", str_extract(f, "(201[7-9][0-1][0-9][0-3][0-9]-[0-9]{6}-GameCollection/)"), sep = "")
-    spyfile <- list.files(fold, pattern = "steamSpyData.\\d*.csv")
-    spy <- read.csv(paste(fold, spyfile, sep = ""), stringsAsFactors = FALSE)
-    
-    merged <- left_join(d, spy, by = "appid")
-    
-    
-    ## add the recording date to the current set
-    datestring <- str_extract(f, "(201[7-9][0-1][0-9][0-3][0-9])")
-    print(datestring)
-    merged$date <- ymd(datestring)
-    df <- rbind(df, merged)
-  }
-  return(df)
-}
-
-
-##########################################
-## store and load
-
-steamdata <- getData()
-gz <- gzfile("../data/steamdata_combined.csv.gz", "w")
-write.csv(steamdata, gz)
-close(gz)
-
-steamdata <- read.csv("../data/steamdata_combined.csv.gz", stringsAsFactors = FALSE)
-# TODO: restore columen data types
+# Shorthands for column class declarations
+# XXX Unused ATM, the cells in the file are all quoted (also the numeric ones)
+CHR = "character"
+INT = "integer"
+NUM = "numeric"
+BOOL = "logical"
+NIL = "NULL"
+steamdata <- read.csv("../data/steamdata_combined.csv.gz",
+    stringsAsFactors = FALSE)
+# XXX These would be the required colClasses
+#, colClasses = c(
+#        NIL, INT, CHR, INT, NIL,
+#        BOOL, INT, INT, CHR, NIL,
+#        INT, NUM, INT, NUM, INT,
+#        NUM, INT, NUM, INT, NUM,
+#        CHR))
 steamdata$date <- ymd(steamdata$date)
 
 
 ##########################################
 ## housekeeping
+# XXX Remove once the source's colClasses are fixed
 
 steamdata$price <- as.integer(steamdata$price)
 steamdata$metacritic_score <- as.integer(steamdata$metacritic_score)
@@ -64,7 +40,8 @@ steamdata$release_date <- dmy(steamdata$release_date)
 steamdata <- as.tibble(steamdata)
 
 ## keep one name column
-## currency column seems to contain genres, but only sometimes and very inconsistent, drop it
+## currency column seems to contain genres, but only sometimes
+## and very inconsistent, drop it
 
 steamdata <- steamdata %>% 
   select(-name.y, -currency) %>%
