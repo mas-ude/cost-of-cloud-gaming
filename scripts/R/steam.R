@@ -23,6 +23,11 @@ df.priced$euro <- df.priced$price/100
 aggregate(df.priced$euro, list(Date=df.priced$date), mean)
 aggregate(df.priced$euro, list(Date=df.priced$date), sd)
 
+# How many games were there
+aggregate(df.priced$euro, list(Date=df.priced$date), length)
+
+
+
 
 thedates <- c("2015-07-14", "2015-10-30", "2016-02-06", "2016-06-30",
     "2016-09-05", "2016-11-26", "2017-04-19", "2017-10-09")
@@ -165,3 +170,13 @@ p <- p + xlab("price range (€)") + ylab("average playtime (h)")
 p <- p + theme(text = element_text(size=20))
 p
 ggsave("steam-cost-vs-playtime-non-sale.pdf", width=12, height=8, device = cairo_pdf)
+
+
+
+# Steam price violins over time
+p <- ggplot(df.priced, aes(x=date, y=price/100)) + geom_violin(adjust=.5, draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)
+p <- p + scale_x_discrete(labels=thedates) + scale_y_continuous(limits=c(0,25))
+p <- p + xlab("date") + ylab("game prices")
+p <- p + theme(text = element_text(size=20))
+p
+ggsave("steam-price-violins-over-time.pdf", width=12, height=8, device = cairo_pdf)
