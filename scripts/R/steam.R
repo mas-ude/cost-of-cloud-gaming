@@ -132,45 +132,35 @@ graph + stat_ecdf() + scale_x_log10()
 #### paper violin price range vs average playtime violin plot
 ## standalone section
 
-df.steamdata <- read.csv(file="steamdata-20151030.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
+df.steamdata <- read.csv(file="steamdata-20171009.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
 
 df.steamdata$average_playtime_hours <- df.steamdata$average_forever / 60
 
-df.steam.prizecategory <- data.frame()
-for (i in 1:nrow(df.steamdata)) {
-  row <- df.steamdata[i,]
-  
-  if(row$price <= 0) {
-    row$price_category <- "free"
-  } else if (row$price > 0 & row$price <= 500){
-    row$price_category <- "<5"
-  } else if (row$price > 500 & row$price <= 1000) {
-    row$price_category <- "5 to 10"
-  } else if (row$price > 1000 & row$price <= 2000) {
-    row$price_category <- "10 to 20"
-  } else if (row$price > 2000 & row$price <= 4000) {
-    row$price_category <- "20 to 40"
-  } else if (row$price > 4000) {
-    row$price_category <- "above 40"
-  }  
-  tmp <- data.frame(row)
-  df.steam.prizecategory <- rbind(df.steam.prizecategory, tmp)
-}
+df.steamdata$prizecategory <-
+  ifelse(df.steamdata$price>4000,"above 40",
+         ifelse(df.steamdata$price>2000,"20 to 40",
+                ifelse(df.steamdata$price>1000,"10 to 20",
+                       ifelse(df.steamdata$price>500,"5 to 10",
+                              ifelse(df.steamdata$price>0,"<5","free")))))
 
-df.steam.prizecategory$price_category <- as.factor(df.steam.prizecategory$price_category)
-df.steam.prizecategory$price_category <- ordered(df.steam.prizecategory$price_category, levels=c("free", "<5", "5 to 10", "10 to 20", "20 to 40", "above 40"))
+df.steam.prizecategory <- df.steamdata$prizecategory
+
+df.steam.prizecategory <- as.factor(df.steam.prizecategory)
+df.steam.prizecategory <- ordered(df.steam.prizecategory, levels=c("free", "<5", "5 to 10", "10 to 20", "20 to 40", "above 40"))
+
+df.steamdata$price_category <- df.steam.prizecategory
 
 # Show how many games per price category we have.
 # https://github.com/mas-ude/cost-of-cloud-gaming/issues/4 : I'd love 
 #   for this information to go into the x labels, but multiline labels 
 #   are too hard for me (or R.)
 # Result:
-#    free       <5  5 to 10 10 to 20 20 to 40 above 40 
-#    1122     2177     1946     1106      328       90 
-summary(df.steam.prizecategory$price_category)
+# free       <5  5 to 10 10 to 20 20 to 40 above 40
+# 1541     5269     4019     2445      658      188
+summary(df.steamdata$price_category)
 
 nice_breaks <- c(0.1, 1, 10, 100, 1000)
-p <- ggplot(df.steam.prizecategory, aes(x=price_category, y=average_playtime_hours)) + geom_violin(adjust=.5, draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)  + scale_y_log10(breaks = nice_breaks, labels = nice_breaks)
+p <- ggplot(df.steamdata, aes(x=price_category, y=average_playtime_hours)) + geom_violin(adjust=.5, draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)  + scale_y_log10(breaks = nice_breaks, labels = nice_breaks)
 p <- p + xlab("price range (€)") + ylab("average playtime (h)")
 p <- p + theme(text = element_text(size=20))
 p
