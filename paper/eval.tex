@@ -126,6 +126,15 @@ At least for \steam, unit prices can be discussed.
 	\caption{Violin plot of prices of \steam games over time. Quartiles indicated by horizontal lines.}
 \label{fig:steam-price-violins}
 \end{figure}
+%# Some modes for 2017-10-09, see steam-prices.R
+%#         10% of games are free
+%# (18-13)= 5% of games cost  0.99
+%# (30-26)= 4% of games cost  2.99
+%# (48-36)=12% of games cost  4.99
+%# (76-63)=13% of games cost  9.99
+%# (87-82)= 5% of games cost 14.99
+%# (93-89)= 4% of games cost 19.99
+%# The top  6% of games cost more than that
 
 
 Table~\ref{tab:steam-price-stats} shows the development of average
@@ -168,18 +177,28 @@ Figure~\ref{fig:steam-cost-vs-playtime-violin} breaks down the
 distribution of average playtimes per game price range. The game price
 ranges are chosen so as to roughly separate the prevalent modes of the
 price distribution.
-% AR: The modes would be approximately 1, 2, 5, 10, 15, and 20 Euros from visual inspection of images/steam-prices-density.pdf.
 Playtime is defined as the time game owners spend playing a game, as
-recorded by the \steam platform and scraped from \textit{SteamSpy}. As
-can be seen, the playtimes generally increase with the price range;
+recorded by the \steam platform and scraped from \textit{SteamSpy}.
+On the far left in the Figure, playtimes of ``free'' titles
+(including free-to-play games with monetization options other than an
+upfront payment) span almost the whole playtime range with an
+inter-quartile range of 45 minutes to about seven hours.
+For games that cost less than $\texteuro 5$, the mode is around
+3.5 hours of playtime, and values are concentrate around it. The
+latter is of special interest because it is a recent trend that only
+manifested itself in datasets in the last ten months. It seems that
+game producers see this combination of price and playtime as a sweet
+spot, as the number of games in this category grew by a factor of
+2.4 in that timeframe --- for comparison, the number of games
+increased by 37 percent in the free price range, and roughly doubled
+in the other price ranges.
+
+Other than that, the median playtime increases with the price range;
 unfortunately, the data does not explain the cause: E.g., more expensive
 games might have more playable content, causing the playtime to
 increase. Conversely, higher upfront costs may incite players to spend
 more time regardless of game quality, thus avoiding regret for the
-expense. On the far left in the Figure, playtimes of ``free'' titles
-(including free-to-play games with monetization options other than an
-upfront payment) span almost the whole playtime range with less
-pronounced prevalences.
+expense.
 % Svenja deleted the following sentence since that can be the case anywhere:
 %And still alternatively, there might exist an outside, common reason causing both parameters to increases.
 Due to the strong popularity of \steam in PC gaming (even physical

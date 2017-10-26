@@ -164,6 +164,9 @@ df.steamdata$price_category <- df.steam.prizecategory
 # 1541     5269     4019     2445      658      188
 summary(df.steamdata$price_category)
 
+# Average playtime stats per category (in hours):
+summary(df.steamdata[df.steamdata$price_category=="free","average_forever"])/60
+
 nice_breaks <- c(0.1, 1, 10, 100, 1000)
 p <- ggplot(df.steamdata, aes(x=price_category, y=average_playtime_hours)) + geom_violin(adjust=.5, draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE)  + scale_y_log10(breaks = nice_breaks, labels = nice_breaks)
 p <- p + xlab("price range (€)") + ylab("average playtime (h)")
