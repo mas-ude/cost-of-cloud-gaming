@@ -160,3 +160,7 @@ pythontex-files-*/
 # Latexian
 TSWLatexianTemp*
 paper.pdf
+
+# Mac filesystem cruft
+.DS_Store
+
