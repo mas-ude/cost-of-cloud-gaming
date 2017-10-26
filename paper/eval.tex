@@ -91,17 +91,16 @@ also offers shorter and longer games.
 \subsubsection{Game Prices}
 
 Trying to compare the prices per game is a difficult endeavor, due to
-the mixed approach of both cloud gaming platforms. The \gfnow
-subscription gives you access to a subset of its catalog that can be
-extended by purchasing additional games. Similarly, \psnow has a base
-subscription catalog and additional, rentable titles. But in addition,
-every title can also be rented without the need for an active
-subscription.
-%; at the same time, further titles may be bought in addition (on \gfnow), or an alternative, à la carte purchase option besides subscription exists (on \psnow). 
-%\todo[inline]{SV: So, both platforms have a mixed approach? You rent the games, but can parallely buy them? I didn't understand the second sentence and just erased it (/commented it out).}
+the mixed approach of the gaming platforms. The \gfnow subscription
+gives customers access to a subset of its catalog that can be
+extended by purchasing additional games; \gfnowpc and \liquid
+on the other hand require the customer to buy games on their
+own and pay for the
+time spent playing.
+\psnow and \psnowpc have a flat rate for all of their catalog.
 %Furthermore, the exact subscription and rental modalities as well as prices are adapted over time, and differ between regional markets.
 %\todo[inline]{SV:The last sentence was somehow superfluous since variety over time is the case for all of our data. --> erased it.}
-For \steam on the other hand, unit prices can be discussed.
+At least for \steam, unit prices can be discussed.
 
 \begin{table}
 \centering
@@ -120,18 +119,30 @@ For \steam on the other hand, unit prices can be discussed.
 \end{tabu}
 \end{table}
 
+
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=1.0\columnwidth]{images/steam-price-violins-over-time.pdf}
+	\caption{Violin plot of prices of \steam games for measurements. Quartiles indicated by horizontal lines.}
+\label{fig:steam-price-violins}
+\end{figure}
+
+
 Table~\ref{tab:steam-price-stats} shows the development of average
 \steam game prices with standard deviations and the number of available
-games for all \steam measurements taken so far.
-\todo[inline]{Update this!}
- Two different types
-of averages are shown: The portfolio price which averages over all
-current game prices, and the weighted price which is the product of game
-price and estimated number of owners, averaged over the total number of
-games owned. Strong temporal effects are evident from either metric.
-Note that the last measurement shortly predates 2016's Lunar New Year,
-around which \steam ran a large seasonal sales
-campaign\footnote{\url{http://store.steampowered.com/news/20313/}}.
+games for all \steam measurements taken so far, spanning a time interval
+of more than two years. As can be seen, the number of games offered
+has more than doubled since the first data point, while the average
+prices fluctuate over time.
+Figure~\ref{fig:steam-price-violins} complements the table, showing
+smoothed density functions of the game price distributions in \steam's
+store over time in the form of a violin plot.
+Evidently, all distributions have modes (most prominently at nonegative
+multiples of $\texteuro 5$), and exhibit strong temporal effects.
+The variability can be explained by \steam's regular offer of sales
+periods with reduced prices. For instance, the shift towards lower
+prices in February 2016 coincides with a seasonal sales campaign
+for Lunar New Year\footnote{\url{http://store.steampowered.com/news/20313/}}.
 
 % Looking at the distributions of game prices, we find that the number of games in the sub \SI{5}]\EUR] category has ... hmm, what ... doubled? ... care to check with R?
 
