@@ -59,9 +59,8 @@ gfnow[gfnow > 0] <- gfnow.included + pmin(gfnow[gfnow > 0]/gfnow.extraprice.mean
 # steam
 steam.hw <- 500
 steam.hw.peryear <- steam.hw / 3
-# XXX Do update this too! I snapped it from visual
-# XXX inspection of the old graph.
-steam.meanprice <- 6.25 # mean(df.steamdata$price, na.rm = TRUE) / 100
+# From steamdata-20171009
+steam.meanprice <- 8.83 # mean(df.steamdata$price, na.rm = TRUE) / 100
 
 steam <- pmax((budget - steam.hw.peryear),0) / steam.meanprice
 
