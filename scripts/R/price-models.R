@@ -48,9 +48,8 @@ gfnow.hw.peryear <- gfnow.hw / console.lifetime
 gfnow.maxgames <- 55+63 # nrow(df.gfnow)
 gfnow.included <- 55 # nrow(subset(df.gfnow, price == 0))
 gfnow.extra <- 63 # gfnow.maxgames - gfnow.included
-# XXX From a few glances into GFnow's game offering and
-# XXX Steam's prices
-gfnow.extraprice.mean <- 15 # mean(subset(df.gfnow, price != 0)$price)
+# XXX Guesstimate from merging in Steam's prices
+gfnow.extraprice.mean <- 9.54 # mean(subset(df.gfnow, price != 0)$price)
 
 gfnow <- pmax(((budget - gfnow.hw.peryear) - gfnow.yearly), 0)
 gfnow[gfnow > 0] <- gfnow.included + pmin(gfnow[gfnow > 0]/gfnow.extraprice.mean , gfnow.extra)
