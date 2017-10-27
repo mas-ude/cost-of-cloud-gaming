@@ -7,18 +7,15 @@ library(stringr)
 
 # === LOADING DATA ===
 
-#df.steamdata.july <- read.csv(file="steamdata-20150714.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
-#df.steamdata.october <- read.csv(file="steamdata-20151030.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
-#df.steamdata <- read.csv(file="steamdata-20160206.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
-
 df.steamdata <- read.csv(file="steamdata-20171009.csv", head=TRUE, sep=",", colClasses=c("numeric", "character", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric", "numeric"))
 
+df.metacritic <- read.csv("metacritic.20171008230001.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
 
-df.metacritic <- read.csv("metacritic-20160302.csv", header=TRUE, sep=";", colClasses=c("numeric", "character", "character", "character", "numeric", "character", "character"))
-df.hltb <- read.csv("howlongtobeat-20160301.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
-df.gfnow <- read.csv("gfnow-games.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
-#df.psnow <- read.csv("psnow-games.csv", header=TRUE, sep=";", colClasses=c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
-df.psnow <- read.csv("psnow-games-uk.csv", header=TRUE, sep=";", colClasses=c("character", "numeric"))
+df.hltb <- read.csv("howlongtobeat-20171027.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "character"))
+
+df.gfnow <- read.csv("gfnow-games-DE-shield-2017.csv", header=TRUE, sep=",", colClasses=c("character", "numeric"))
+
+df.psnow <- read.csv("psnow-titles-de-2017.txt", header=TRUE, sep=";", colClasses=c("character"))
 
 ## convert date strings to objects and calculate year
 df.metacritic$release <- as.Date(df.metacritic$release, format = "%B %d, %Y")
