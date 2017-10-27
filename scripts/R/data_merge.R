@@ -17,6 +17,8 @@ df.gfnow <- read.csv("gfnow-games-DE-shield-2017.csv", header=TRUE, sep=",", col
 
 df.psnow <- read.csv("psnow-titles-de-2017.txt", header=TRUE, sep=";", colClasses=c("character"))
 
+df.match <- read.csv("titles_matchlist.csv", header=TRUE, sep=";")
+
 ## convert date strings to objects and calculate year
 df.metacritic$release <- as.Date(df.metacritic$release, format = "%B %d, %Y")
 df.metacritic$year = strftime(df.metacritic$release, "%Y")
@@ -25,33 +27,27 @@ df.metacritic$year = strftime(df.metacritic$release, "%Y")
 # === DATA PREPARATION ===
 # improve matching of game titles by better aligning the strings
 
-## lowercase all titles
-df.hltb$title <- tolower(df.hltb$title)
-df.metacritic$title <- tolower(df.metacritic$title)
-df.gfnow$name <- tolower(df.gfnow$name)
-df.psnow$name <- tolower(df.psnow$name)
-df.steamdata$name <- tolower(df.steamdata$name)
+sanitize <- function(string) {
+  ## lowercase all titles
+  ## strip non-alphanumeric characters from the strings, as this is the most common mismatch
+  ## merge double space to one
+  ## trim leading/trailing whitespaces to increase matching
+  string <- tolower(string)
+  string <- str_replace_all(string, "[:[-]+[.]'[’]]", "")
+  string <- str_replace_all(string, "  ", " ")
+  string <- trimws(string)
+  return(string)
+}
 
-## trim leading/trailing whitespaces to increase matching
-df.hltb$title <- trimws(df.hltb$title)
-df.metacritic$title <- trimws(df.metacritic$title)
-df.gfnow$name <- trimws(df.gfnow$name)
-df.psnow$name <- trimws(df.psnow$name)
-df.steamdata$name <- trimws(df.steamdata$name)
-
-## strip all "-" and ":" from the strings, as this is the most common mismatch
-df.hltb$title <- str_replace_all(df.hltb$title, "[:-]", "")
-df.metacritic$title <- str_replace_all(df.metacritic$title, "[:-]", "")
-df.gfnow$name <- str_replace_all(df.gfnow$name, "[:-]", "")
-df.psnow$name <- str_replace_all(df.psnow$name, "[:-]", "")
-df.steamdata$name <- str_replace_all(df.steamdata$name, "[:-]", "")
-
-## merge double space to one
-df.hltb$title <- str_replace_all(df.hltb$title, "  ", " ")
-df.metacritic$title <- str_replace_all(df.metacritic$title, "  ", " ")
-df.gfnow$name <- str_replace_all(df.gfnow$name, "  ", " ")
-df.psnow$name <- str_replace_all(df.psnow$name, "  ", " ")
-df.steamdata$name <- str_replace_all(df.steamdata$name, "  ", " ")
+df.hltb$title <- sanitize(df.hltb$title)
+df.metacritic$title <- sanitize(df.metacritic$title)
+df.gfnow$name <- sanitize(df.gfnow$name)
+df.psnow$name <- sanitize(df.psnow$name)
+df.steamdata$name <- sanitize(df.steamdata$name)
+df.match$gfnow.name <- sanitize(df.match$gfnow.name)
+df.match$psnow.name <- sanitize(df.match$psnow.name)
+df.match$steam.name <- sanitize(df.match$steam.name)
+df.match$metacritic.name <- sanitize(df.match$metacritic.name)
 
 
 # === SUBSETTING ===
@@ -60,8 +56,8 @@ df.steamdata$name <- str_replace_all(df.steamdata$name, "  ", " ")
 df.hltb.pc = subset(df.hltb, platform == "PC")
 df.metacritic.pc = subset(df.metacritic, platform == "pc")
 
-df.hltb.ps = subset(df.hltb, platform %in% c("PlayStation", "PlayStation 2", "PlayStation 3"))
-df.metacritic.ps = subset(df.metacritic, platform %in% c("ps3", "ps2"))
+df.hltb.ps = subset(df.hltb, platform %in% c("PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4"))
+df.metacritic.ps = subset(df.metacritic, platform %in% c("ps", "ps2", "ps3", "ps4"))
 
 
 # === MERGING DATA SETS ===
@@ -74,6 +70,29 @@ df.consolidated.psnow <- merge(df.consolidated.psnow, df.metacritic.ps, by.x = "
 
 df.consolidated.steam <- merge(df.steamdata, df.hltb.pc, by.x = "name", by.y = "title", all.x = TRUE)
 df.consolidated.steam <- merge(df.consolidated.steam, df.metacritic.pc, by.x = "name", by.y = "title", all.x = TRUE)
+
+
+
+# Add prices from Steam
+gfnow.guess.prices <- merge(df.consolidated.gfnow, df.match, by.x = "name", by.y = "metacritic.name", all.x = TRUE)
+gfnow.guess.prices <- merge(gfnow.guess.prices, df.consolidated.steam[,c("name","price")],
+                               by.x = "steam.name", by.y = "name", all.x = TRUE)
+gfnow.guess.prices <- merge(gfnow.guess.prices, df.consolidated.steam[,c("name","price")],
+                               by.x = "name", by.y = "name", all.x = TRUE)
+# Note: The df has three price columns now: price.x (from the GFnow dataset),
+# price.y (from the first merge by the name matchlist) and price (from the second merge).
+# We are interested in prices for where the original data said "-1" (i.e. unknown).
+# Included GFnow titles stay at 0, surcharged ones get their price from Steam filled
+# in, or get a NA if there is no match from Steam.
+gfnow.guess.prices$price.consolidated <-
+  ifelse(gfnow.guess.prices$price.x == -1,
+         ifelse(!is.na(gfnow.guess.prices$price.y), gfnow.guess.prices$price.y,
+                ifelse(!is.na(gfnow.guess.prices$price), gfnow.guess.prices$price, NA))
+         ,0)
+
+df.consolidated.gfnow <- merge(df.consolidated.gfnow,
+    gfnow.guess.prices[,c("name", "price.consolidated")],
+    by="name", all.x=TRUE)
 
 
 # === DATAFRAME GENERATION ===
