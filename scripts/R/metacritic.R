@@ -18,16 +18,15 @@ ggsave("releases-per-year.pdf", width=12, height=8)
 
 
 ##############
-df.psnow <- read.csv("data/psnow-games.csv", sep = ";", colClasses = c("character", "numeric", "numeric", "numeric", "numeric", "logical"))
 df.metacritic.ps3 <- subset(df.metacritic, platform == "ps3")
-df.merged <- merge(df.psnow, df.metacritic.ps3, by.x = "Title", by.y = "title", all.x = TRUE)
+df.merged <- merge(df.psnow, df.metacritic.ps3, by.x = "name", by.y = "title", all.x = TRUE)
 
 ## scores
 mean(df.merged$score, na.rm = TRUE)
 
 ## age
 df.merged$year <- as.numeric(strftime(df.merged$release, "%Y"))
-df.merged$age <- 2015 - df.merged$year
+df.merged$age <- 2017 - df.merged$year
 
 hist(df.merged$age)
 mean(df.merged$age, na.rm = TRUE)
@@ -52,7 +51,8 @@ df.scores <- rbind(df.scores, data.frame(title = df.metacritic$title, platform =
 #   are too hard for me (or R.)
 # Result (also showing that we couldn't match 100% of games between the datasets)
 #    Geforce Now PlayStation Now           Steam         overall 
-#             68             209            7759           46197 
+#            118             803           14159           57308
+# XXX PSnow only has 432 games, so obviously something broke when merging.
 summary(df.scores$platform)
 
 
@@ -61,7 +61,7 @@ p <- ggplot(df.scores, aes(x = score, fill = as.factor(platform), color = as.fac
 p <- p + xlab("score") + ylab("density")
 p <- p + theme(text = element_text(size=20))
 p
-ggsave("gamelengths-by-platform-density.pdf", width=12, height=8)
+ggsave("scores-by-platform-density.pdf", width=12, height=8)
 
 ## violins
 p <- ggplot(df.scores, aes(x = as.factor(platform), y = score)) + geom_violin(adjust = .5, scale = "area", draw_quantiles = c(0.25,0.5,0.75), na.rm = TRUE) #+ scale_y_log10() #+ xlim(0, 75)#+ scale_x_log10() # + xlim(0, 100)
@@ -132,10 +132,9 @@ sd(df.ages[df.ages$platform=="PlayStation Now",]$age, na.rm=T)
 
 summary(df.ages[df.ages$platform=="Steam",]$age)
 sd(df.ages[df.ages$platform=="Steam",]$age, na.rm=T)
-#   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's
-# 0.0465  0.7889  1.7530  3.3860  4.7380 27.2200    1696
-# [1] 3.959703
-
+# Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+#  0.058   0.940   1.727   2.764   3.184  26.068    3287 
+# [1] 3.245867
 
 # Age plot
 

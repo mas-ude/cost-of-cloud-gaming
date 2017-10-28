@@ -75,18 +75,19 @@ ggsave("gamelengths-by-platform-violin.pdf", width=12, height=8)
 ### lengths stats per set ###
 
 # gfnow
-mean(df.consolidated.gfnow$main_story_length, na.rm = TRUE) # 14.65
-var(df.consolidated.gfnow$main_story_length, na.rm = TRUE) # 208.50
-sd(df.consolidated.gfnow$main_story_length, na.rm = TRUE) # 14.44
-
+mean(df.consolidated.gfnow$main_story_length, na.rm = TRUE) # 10.70
+var(df.consolidated.gfnow$main_story_length, na.rm = TRUE) # 
+sd(df.consolidated.gfnow$main_story_length, na.rm = TRUE) # 8.23
+median(df.consolidated.gfnow$main_story_length, na.rm = TRUE) # 9
 
 # psnow
-mean(df.consolidated.psnow$main_story_length, na.rm = TRUE) # 13.28
-var(df.consolidated.psnow$main_story_length, na.rm = TRUE) # 206.85
-sd(df.consolidated.psnow$main_story_length, na.rm = TRUE) # 14.38
-
+mean(df.consolidated.psnow$main_story_length, na.rm = TRUE) # 8.75
+var(df.consolidated.psnow$main_story_length, na.rm = TRUE) # 
+sd(df.consolidated.psnow$main_story_length, na.rm = TRUE) # 8.77
+median(df.consolidated.psnow$main_story_length, na.rm = TRUE) # 6
 
 # steam
 mean(df.consolidated.steam$main_story_length, na.rm = TRUE) # 13.02
-var(df.consolidated.steam$main_story_length, na.rm = TRUE) # 419.79
+var(df.consolidated.steam$main_story_length, na.rm = TRUE) # 
 sd(df.consolidated.steam$main_story_length, na.rm = TRUE) # 20.49
+median(df.consolidated.steam$main_story_length, na.rm = TRUE) # 4

@@ -56,8 +56,8 @@ df.match$metacritic.name <- sanitize(df.match$metacritic.name)
 df.hltb.pc = subset(df.hltb, platform == "PC")
 df.metacritic.pc = subset(df.metacritic, platform == "pc")
 
-df.hltb.ps = subset(df.hltb, platform %in% c("PlayStation", "PlayStation 2", "PlayStation 3", "PlayStation 4"))
-df.metacritic.ps = subset(df.metacritic, platform %in% c("ps", "ps2", "ps3", "ps4"))
+df.hltb.ps = subset(df.hltb, platform %in% c("PlayStation 4", "PlayStation 3")) #, "PlayStation 2", "PlayStation"))
+df.metacritic.ps = subset(df.metacritic, platform %in% c("ps4", "ps3")) #, "ps2", "ps"))
 
 
 # === MERGING DATA SETS ===
@@ -73,7 +73,8 @@ df.consolidated.steam <- merge(df.consolidated.steam, df.metacritic.pc, by.x = "
 
 
 
-# Add prices from Steam
+# Estimate GFnow prices from Steam
+# (Not used in the greater context)
 gfnow.guess.prices <- merge(df.consolidated.gfnow, df.match, by.x = "name", by.y = "metacritic.name", all.x = TRUE)
 gfnow.guess.prices <- merge(gfnow.guess.prices, df.consolidated.steam[,c("name","price")],
                                by.x = "steam.name", by.y = "name", all.x = TRUE)
@@ -90,9 +91,6 @@ gfnow.guess.prices$price.consolidated <-
                 ifelse(!is.na(gfnow.guess.prices$price), gfnow.guess.prices$price, NA))
          ,0)
 
-df.consolidated.gfnow <- merge(df.consolidated.gfnow,
-    gfnow.guess.prices[,c("name", "price.consolidated")],
-    by="name", all.x=TRUE)
 
 
 # === DATAFRAME GENERATION ===
