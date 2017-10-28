@@ -1,13 +1,67 @@
 %!TEX root = paper.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion}
+\section{Conclusion And Future Work}
 \label{sec:conclusion}
 
-While cloud gaming is a topic of strong interest, it comes with a series of problems and limitations, both of technical and economic nature. Our user-side analysis makes apparent the curated nature of current cloud gaming services which entails a narrow offer of hand-selected games and sometimes even a narrow target group (see the case of \psnow). This naturally limits the value of a subscription-based service model for customers, when insufficient convenience and price advantages can be yielded.
+This paper investigates the prospects of \gls{cg} from a new
+perspective: game utility. Complementing the existing literature
+on technical and perceptual quality, it
+investigates the characteristics of the entire game catalog
+that cloud-based and software distribution gaming
+platforms offer, and discusses the customer benefit.
+%that a customer might get from these offers.
+For this, data from a number of sources are combined and evaluated:
+Game titles are scraped from the platforms (\gfnow, \psnow, and \steam),
+game lengths from \hltb, and summarized review scores from
+\metacritic.
+The datasets used span a timeframe from 2015 to 2017, and are
+available from the authors' public repositories.
+The utility metrics proposed include the number (and thus variety)
+of games, playtimes, prices, review scores, and combinations of these,
+plus some historic aspects.
 
-In addition to that, the operator-side also reveals major issues due to the need for highly regional data-centers and specialized hardware. This eliminates any chance for the efficiency gains that general cloud services are intended for. Moreover, subscription-based models suffer from the expected higher peak utilisation in comparison to à la carte game purchasing models, which creates a high cost pressure due to enormous infrastructure investments and limited scaling advantages.
+The gaming platforms are compared based on these metrics, and a
+cost/utility model is presented that makes the different pricing
+policies (flat rate, subscription with included and surcharged
+games, or open à la carte) comparable between platforms.
+Currently, \psnow's policy offers the largest number of games
+for annual spendings up to $\text{\texteuro} 1,500$. However,
+note that, the platform has changed its policy
+in 2017; it used a subscription/surcharge model like \gfnow
+before. Second, \steam's current catalog (while more expensive
+assuming the average game price) is 30 times as large as
+\psnow's.
 
-However, there might be some niches for specific games or audiences that could be sustained at reduced operational efforts. This might be an angle worth of investigation in the future, especially with better engagement metrics and more detailed models of gaming data center operations. Another economically more feasible alternative to cloud gaming could be game streaming in the local network. This option would still require all the usual gaming hardware and services like \steam but would bring all the convenience and flexibility of cloud gaming.
+The dataset presented leaves many possibilities
+for future work. For example, many additional investigations of
+combined utility metrics and costs per platform are possible.
+Furthermore, it was mentioned that utility metrics may be
+interpreted differently. If the behavior of prototypical customers
+can be estimated from the dataset, then combined and comparable
+utility scores could be calculated.
+Also, the \gls{cr} platforms deserve a closer look. Superficially,
+they currently serve but a niche market, and combine the negative
+aspects of subscriptions, usage-based billing, and per-game costs
+for a presumed gain in game \gls{QoE}. It remains to be seen
+if there exist less apparent benefits for customers, or if the
+\gls{cr} model fails to establish in the market.
 
-%Even without revisiting
-%This limits the attractiveness of any such service, even without looking at more intricate engagement metrics which would require more data than what was available.
+Moreover, direct user studies can complement the data-driven
+approach followed in this paper. The utility metrics presented
+follow from the personal experience of the authors, but do not
+necessarily represent gaming public's opinion. Besides, self-reporting
+from game customers can explain conjectured effects like preferential
+attachment for popular games.
+
+Finally, it would be interesting to investigate the operator-side
+issues of \gls{cg} to understand their cost pressure better.
+\Gls{cg} requires highly regional data-centers and specialized
+hardware to function well. This eliminates many of the efficiency
+gains that generic cloud services are intended for.
+The efficiency problem is aggravated by high regional peak
+(and consequent low average) utilization that require substantial
+infrastructure investments at limited scaling advantages.
+
+At any rate, computer gaming and \gls{cg} in particular will
+remain interesting topics for research in the years to come,
+as new business models and ways to consume games evolve.
