@@ -2,8 +2,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
 \label{sec:background}
-
-This section reviews the current hardware and software platforms
+This section reviews some terminology used in this paper,
+presents the current hardware and software platforms
 for different types of gaming, introduces utility metrics for games,
 and describes the data sources used for the evaluations in this paper.
 All costs are from an European, specifically German, perspective. If a
@@ -15,13 +15,28 @@ of scope for this work.
 \input{service-table.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{How Gaming Works (WORKING TITLE)}
-\todo[inline]{Explain the three cases of ``local gaming'', \acrlong{cr}
-(aka rent-a-VM-and-BYO-games, effectively), and \acrlong{GaaS} where the
-cloud platform also curates, installs, configures, patches and runs the
-games for you.}
+%\subsection{Gaming Models}
+A game application collects user input, manages local game state,
+possibly synchronizes with remote entities, and renders audio and
+video contents in response. In the simplest case, these tasks all
+run collocated on the gamer's local machine.
+In \gls{cg}, games are executed and rendered ``in the cloud''
+(i.e., in remote data centers), and an audio/video stream is sent back
+to the player over the network. The user's local gaming device displays
+the stream, records input and sends it back to the remote side for
+processing. Video decoding is less computationally demanding, so
+the local device need not be as powerful. However, requirements
+are higher for the network connecting the cloud and the local device.
 
-
+There are two approaches to \gls{cg} on the market currently that
+differ in who provides the actual game applications that can be
+executed in the cloud. One, the provider chooses, installs, configures,
+and updates the game applications. This is termed \acrfull{GaaS} in
+this paper.
+In the other approach, the gamer leases a virtual machine from the
+provider, but must supply own games. The provider takes care of
+provisioning sufficient resources so that games can be run. This
+is termed \gls{cr} here.
 
 \subsection{Gaming Hardware}
 
@@ -68,6 +83,8 @@ Here, too, a stream-to-\gls{PC} option has become available recently
 Below, currently active (cloud and non-cloud) gaming platforms are examined
 with regards to pricing models and hardware requirements and costs. The
 information presented was collected between July 2015 and October 2017.
+Table~\ref{tab:game-services} overviews these platforms, and also
+mentions some that shut down in the timeframe.
 
 \subsubsection{\gls{PC} Gaming: Something for everyone}
 \label{sec:pcgaming}
@@ -128,16 +145,14 @@ older titles.
 
 \subsubsection{\Gls{cg} Ecosystems}
 
-\todo[inline]{Warum beschreiben wir genau die?}
-
 NVIDIA's \gls{cg} platform%\footnote{\url{https://shield.nvidia.com/games/geforce-now}}
 \gfnow
 is available in North America and select European countries.
-In Germany the service currently offers $68$ PC titles
+In Germany the service currently offers $55$ PC titles
 for a monthly subscription fee of $\text{\texteuro} 10$. An additional
-per-game one-time fee between $\text{\texteuro} 13$ and
-$\text{\texteuro} 60$ is charged for the access to the $19$ most
-prominent and recent games. The service is delivered from six
+per-game one-time fee
+is charged for the access to $63$ other games.
+The service is delivered from six
 specialized data center locations (Dublin and Frankfurt in Europe).
 
 The requirements to use this service are rather steep, demanding
@@ -150,21 +165,28 @@ order to use the service at all) and a maximum \acrshort{RTT} of
 \SI{60}{\milli\second} to one of the data centers. In addition,
 streaming is exclusive to \textit{SHIELD} devices.
 
+The \gfnowpc beta program streams to \glspl{PC}, and costs
+\$\SIrange{10}{20} per hour of usage depending on the desired
+visual quality.
+
 % Started in parts of Europe in Q4/2015
 
 \psnow, Sony's cloud gaming service, offers to stream titles from previous
 PlayStation generations, as the latest console generation lacks
-backwards compatibility. It is currently available in North America and
-the UK, with a closed beta running in other European countries and
-Japan. The offered titles and exact pricing vary from country to
-country. For the UK, about $190$ titles are available, and most titles
-are covered by the monthly subscription fee of about $\text{\texteuro}
-17$. All titles are also available through a separate rental service,
-costing about $\text{\texteuro} 4$ for \SI{48}{\hour} and
-$\text{\texteuro} 10$ for one month of access. This is in addition for
+backwards compatibility.
+% It is currently available in North America and
+%the UK, with a closed beta running in other European countries and
+%Japan. The offered titles and exact pricing vary from country to
+%country. For the UK, about $190$ titles are available, and most titles
+%are covered by the monthly subscription fee of about $\text{\texteuro}
+%17$. All titles are also available through a separate rental service,
+%costing about $\text{\texteuro} 4$ for \SI{48}{\hour} and
+%$\text{\texteuro} 10$ for one month of access.
+The service offers 432 games for a monthly flat rate of
+$\text{\texteuro}17$.
+This is in addition to
 the device cost, as the service is only available on PlayStation 4 and 3
-consoles as well as some select Sony TVs and other devices with extra
-game controller.
+consoles.
 
 %(which would however necessitate the purchase of a game controller).
 
@@ -179,8 +201,13 @@ mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands
 
 % (US/UK only?) Deuschlandbeta seit ~Q4/2015
 
-\todo[inline]{\liquid ist auch sehr schön!}
+Like \gfnowpc, \liquid is a \gls{cr} service. Here, \SI{80}{\hour} of
+gameplay are included in the $\text{\texteuro}20$ monthly subscription;
+games must be purchased separately, and a local streaming device
+(of any kind) is needed.
 
+\textsc{GameFly} is a recent offer for set-top boxes, but little
+other detail is public at the time of writing.
 
 
 \subsection{Utility Metrics}
