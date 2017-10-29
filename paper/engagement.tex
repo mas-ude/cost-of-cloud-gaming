@@ -11,8 +11,7 @@ buy on the different platforms, as a function of the customer's
 budget. This basic model was chosen for requiring as few assumptions
 as possible;
 however, other utility metrics can be modeled from the data,
-e.g., the distribution of review scores or hours of
-gameplay.
+e.g., the number of hours of gameplay that a given expenditure buys.
 
 A few basic assumptions are made. The initial hardware costs are
 factored in proportionately to the expected life and depreciation time
@@ -25,8 +24,8 @@ The difference in the service models between the ownership model of
 and the flat rate model of \psnow were discussed previously already.
 Since it is difficult to express the different notions of ``being able
 to play'' and ``owning'' a game in simple terms, our utility model just
-considers the number of games that one has access to and that could have
-been played at one point. (This also ignores other means of acquiring
+considers the number of games that one has access to and could have
+played at one point. (This also ignores other means of acquiring
 games cheaper from alternative storefronts).
 Furthermore, there exists no pricing data for \gfnow games yet,
 so prices were extrapolated from the \steam dataset for those
@@ -56,14 +55,14 @@ attractive to newcomers on a low budget. On the other end, both cloud
 platforms exhibit plateaus due to the relatively small selection of
 games available. There, additional expenditures cannot buy further
 games. On the other hand, \steam's offer of more than $14,000$
-titles is far from depleted at above $\text{\texteuro} 1000$'s worth of
-games.
+titles is far from depleted in this picture, and its $1,500$ free
+games could also be included in its affordable games count.
 
 
 \begin{figure}[!t]
 	\centering
 	\includegraphics[width=1.0\columnwidth]{images/gamesperyear-over-budget.pdf}
-	\caption{Affordable games per year on different platforms, given the customer's budget}
+	\caption{Affordable games per year on different platforms, given the customer's budget, assuming averaged prices and excluding free \steam games.}
 \label{fig:gamesperyear-over-budget}
 \end{figure}
 

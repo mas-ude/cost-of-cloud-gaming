@@ -3,14 +3,14 @@
 \section{Background}
 \label{sec:background}
 This section reviews some terminology used in this paper,
-presents the current hardware and software platforms
+presents the current hardware and software platforms and ecosystems
 for different types of gaming, introduces utility metrics for games,
 and describes the data sources used for the evaluations in this paper.
 All costs are from an European, specifically German, perspective. If a
 product is not available in this region, the prices are converted using
 the most recent currency exchange rates.
-Note that as mentioned before, browser and mobile games are out
-of scope for this work.
+%Note that as mentioned before, browser and mobile games are out
+%of scope for this work.
 
 \input{service-table.tex}
 
@@ -24,7 +24,8 @@ In \gls{cg}, games are executed and rendered ``in the cloud''
 (i.e., in remote data centers), and an audio/video stream is sent back
 to the player over the network. The user's local gaming device displays
 the stream, records input and sends it back to the remote side for
-processing. Video decoding is less computationally demanding, so
+processing. Video decoding is less computationally demanding than
+rendering a game, so
 the local device need not be as powerful. However, requirements
 are higher for the network connecting the cloud and the local device.
 
@@ -69,7 +70,7 @@ instead.
 % https://www.playstation.com/en-gb/explore/playstation-now/ps-now-on-pc/
 
 Companies also experiment with devices that focus exclusively on streaming
-\gls{cg} content. The only standalone game streaming device currently
+\gls{cg} content. The most recent standalone game streaming device currently
 in the market is NVIDIA's \textit{SHIELD} which starts at
 $\text{\texteuro} 230$ and is bound to their \gls{cg} service, \gfnow.
 % Price via Amazon.de
@@ -81,17 +82,17 @@ Here, too, a stream-to-\gls{PC} option has become available recently
 
 \subsection{Gaming Ecosystems}
 Below, currently active (cloud and non-cloud) gaming platforms are examined
-with regards to pricing models and hardware requirements and costs. The
+with regards to pricing models, other requirements, and costs. The
 information presented was collected between July 2015 and October 2017.
 Table~\ref{tab:game-services} overviews these platforms, and also
 mentions some that shut down in the timeframe.
 
-\subsubsection{\gls{PC} Gaming: Something for everyone}
+\subsubsection{\gls{PC} Gaming}
 \label{sec:pcgaming}
 
 The rise of easy-to-use digital distribution platforms and the
 independent (``indie'') game scene reinvigorated \gls{PC} gaming just a few
-years ago. Today, \gls{PC} gaming is dominated by large digital marketplaces,
+years ago. Today, \gls{PC} gaming is dominated by digital marketplaces,
 with \steam being the largest. The platform has about $10$ million
 concurrent users at most times of the day. It periodically offers large,
 often seasonal, sales of recent games at greatly reduced prices (rebates
@@ -103,7 +104,7 @@ Major releases on PC are usually priced between $\text{\texteuro} 50$
 and $\text{\texteuro} 60$. However, due to the competition between the
 vendors, the digital retail prices are significantly lower even at
 launch, and also drop more quickly. Another recent trend are game
-bundles, which especially prevalent in the indie games scene, commonly
+bundles, which especially prevail in the indie games scene, commonly
 offered with a pay-what-you-want model. \textit{Humble
 Bundle}\maybefootnote{\url{https://www.humblebundle.com/}} is a prominent
 example.
@@ -166,7 +167,7 @@ order to use the service at all) and a maximum \acrshort{RTT} of
 streaming is exclusive to \textit{SHIELD} devices.
 
 The \gfnowpc beta program streams to \glspl{PC}, and costs
-\$\SIrange{10}{20} per hour of usage depending on the desired
+\$\SIrange{10}{20}{} per hour of usage depending on the desired
 visual quality.
 
 % Started in parts of Europe in Q4/2015
@@ -185,8 +186,8 @@ backwards compatibility.
 The service offers 432 games for a monthly flat rate of
 $\text{\texteuro}17$.
 This is in addition to
-the device cost, as the service is only available on PlayStation 4 and 3
-consoles.
+the device cost: the service is available on PlayStation 4 and 3
+consoles and, recently, \glspl{PC}.
 
 %(which would however necessitate the purchase of a game controller).
 
