@@ -25,55 +25,53 @@ services in the past, \textsc{OnLive}, ceased to exist in 2015.
 
 %In theory, there could be large economic benefits for users that should foster a quick adaptation of such services. quite a few commercial services have already come and gone, with a rather high rate of fluctuation.
 
-Many \gls{cg} approaches that vary by means of technical, service
-and pricing model differences, have been tested so far, but the public
+\Gls{cg} platforms have tested many different technical, service
+and pricing models already. They currently adopt either
+\textsc{Netflix}-like pure subscription models, surcharge for
+additional games, or employ usage-based billing. Regardless, the public
 interest remains low. This might be attributed to the broad range of
 available, established substitutes, e.g., non-\gls{cg} platforms
 such as video game consoles or PCs ---
 with \steam\maybefootnote{\url{http://store.steampowered.com/}} as one of the
 largest contenders. The move to digital distribution made gaming on PCs
 quite popular, and PC games pricing became much more dynamic and
-affordable in the process.
+affordable in the process. Additionally, their offer is much larger
+and more diverse.
 
-On the surface, current \gls{cg} services attempt to adopt a
-\textit{fixed fee subscription} model over the traditional \textit{à la
-carte} model. Fixed fee subscription proved to be hugely successful for
-other types of media, e.g., \textsc{Netflix} for movies and shows or
-\textsc{Spotify} for music. However, these two types of services offer a
-much larger catalogue of content at a comparable or even lower price
-than \gls{cg} services. Additionally, streaming asynchronous
-non-interactive media is technically less demanding (and thus cheaper to
-operate) than maintaining a quality level on par with that of locally
-running games.
+%On the surface, current \gls{cg} services attempt to adopt a
+%\textit{fixed fee subscription} model over the traditional \textit{à la
+%carte} model. Fixed fee subscription proved to be hugely successful for
+%other types of media, e.g., \textsc{Netflix} for movies and shows or
+%\textsc{Spotify} for music. However, these two types of services offer a
+%much larger catalogue of content at a comparable or even lower price
+%than \gls{cg} services. Additionally, streaming asynchronous
+%non-interactive media is technically less demanding (and thus cheaper to
+%operate) than maintaining a quality level on par with that of locally
+%running games.
 
-\todo[inline]{Research question: What utility do existing \gls{cg}
-platforms offer to consumers, as compared to gaming platforms for
-consoles and PCs?}
-\todo[inline]{Perspective: user-oriented utility metrics}
-\todo[inline]{Based on combining and investigating large public datasets of user choice and game properties.}
-
-The contributions of this paper are as follows.
-We characterize the offers of platforms based on properties such
-as the number of offered games, play-through length, review scores,
-and price.
-We investigate \gls{cg} platforms, and discuss the various
-business models offered by these platforms over the last X years.
-Lastly, we use these data to develop models for customer utility
-in different gaming platforms. The models provide data-driven
+The research question explored in this work considers the
+utility offered to customers by current \gls{cg}
+platforms, as compared to gaming platforms for the \acrshort{PC}.
+Various utility metrics such as the number of offered games,
+play-through lengths, review scores, and prices are investigated.
+The evaluation is based on combining and investigating large
+datasets of user choice and game properties.
+Finally, a model is proposed that expresses customer utilityg
+as a function of cost in different gaming platforms.
+The se results provide data-driven
 insight into potential causes for and against \gls{cg}.
 
-
-~\\
 This paper is structured as follows: §~\ref{sec:relatedwork} provides a
-brief overview of the related work. Afterwards, §~\ref{sec:background}
-explains the necessary terms and technical details.
+brief overview of the related work. §~\ref{sec:background}
+explains the technical background, ecosystems, and utility metrics.
 §§~\ref{sec:eval} and \ref{sec:utilitymodel} investigate the utility of
-gaming and \gls{cg} providers' service offerings and business cases,
+(cloud) gaming providers' service offerings and business cases,
 and present a cost utility model for comparing the offers.
 The analysis is based on a dataset spanning more than two years and
 multiple platforms.
-The paper concludes in §~\ref{sec:conclusion} with some
-remarks and directions for future work.
+The paper concludes in §~\ref{sec:conclusion} with
+%some remarks and
+directions for future work.
 
 %and their competitions' business models and engagement from the angle of the user and the platform operator respectively.
 
