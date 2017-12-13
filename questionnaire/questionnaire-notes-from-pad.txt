@@ -1,0 +1,25 @@
+Notes
+
+The online survey can hopefully complement the "objective" API etc. data; we can also think about asking other questions besides the users' perception of platform offers.
+
+Format of the lists below: question --- reasoning behind posing the question
+
+    How often do you start playing new games? --- Is novelty an important factor for a platform?
+    List the last X games you bought recently.
+    Can we see you Steam (et al.) stats? --- Provides ground truth for the answers of individuals.
+    Which types of controllers do you use? --- Input method as the technical basis for in-game interaction quality
+    How do you customize your controller? --- key bindings etc.
+    Rate the install / startup / patching... time / frequency of your favorite game. --- Explore other interactions besides actual gameplay.
+    Rate the effort required to set up your favorite game before you could first play it.
+    Rate the effort required to launch into your favorite game after you have already set it up.
+    Which online stores do you use? --- Win 10 store offers "cross-play" so that games are available across devices (?)
+    Do you care about $PLATFORM_METRIC? --- Check the users' points of view of the game platform utility metrics we proposed in the ex-MMB'18 paper.
+
+Rough ideas we could also consider
+
+    .... --- Ask about genres and game/gamer classifications
+    .... --- "Die Cloud-Gaming-Warteschlange"
+    .... --- Quality of Game Shopping Experience
+    .... --- Hardware, frame rates, (graphics) quality
+    .... --- Bundles, subscriptions
+    .... --- replayability (collectibles, Steam Achievements, completionists)
