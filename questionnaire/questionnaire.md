@@ -79,11 +79,14 @@ SV: Faellt Euch noch was zusaetzlich ein?
 ** What are for you the most important factors for buying a new gaming system? **
 
 (Scale from 1 - Not important at all - to 5 - Very important)
-* Offered franchises (e.g. Zelda, Super Mario)
+* System exclusive games (e.g. Zelda, Super Mario)
 * Newest games
 * Graphics
-* Downloadable Content
-* ???
+* Price (e.g. special offers)
+* Downloadable content
+* Local multiplayer capabilities
+* Online multiplayer capabilities
+* Other: ____________
 ```
 SV: Fallen Euch da noch mehr Optionen ein? Evtl. ganz konkret mit Verweis auf die Utility Metrics?
 ```
@@ -109,7 +112,8 @@ SV: Geht es darum zu fragen, ob evtl. noch eine weitere Konsole angeschafft werd
 (Allow multiple choices)
 
 * Home video game consoles
-* Handhald game consoles
+* Handheld game consoles
+* Smartphone / tablet
 * Desktop or laptop computer
 * I don't know
 
@@ -150,8 +154,13 @@ SV: Geht es darum zu fragen, ob evtl. noch eine weitere Konsole angeschafft werd
 (Free text entry, numerical only, or preset ranges?)
 ```
 SV: Kann man das ueberhaupt sagen? Und gehts da auch um alte Spiele aus der DOS-Zeit, die in Disketten auf dem Dachboden verstauben? Das muessen wir konkreter fragen. Evtl. nur fuer die Systeme, die man besitzt und aktuell spielt?
+
+FM: Ich könnte dir zumindest sagen, wie hoch mein Zähler auf Steam ist (>1500); aber generell grobe Bereiche vorgeben, oder lieber nur nach wie viele Spiele man pro Zeiteinheit kauft fragen.
 ```
 
+** How many games did you buy in the past 12 months, approximately? **
+
+(Free text entry)
 
 ** How many of them have you played for a few minutes at least? **
 
@@ -212,9 +221,11 @@ SV: Sehr redundant zur Frage davor?
 
 * From friends
 * Vlogs
+* Live streams / Let's Plays
+* Reviews
 * News on gaming sites
 * From gaming bundles
-* Suggestions in stores
+* Recommended in Online stores
 * In a physical store
 * Other: __________
 (Free text entry)
