@@ -79,7 +79,7 @@ SV: Faellt Euch noch was zusaetzlich ein?
 ** What are for you the most important factors for buying a new gaming system? **
 
 (Scale from 1 - Not important at all - to 5 - Very important)
-* System exclusive games (e.g. Zelda, Super Mario)
+* System exclusive games (e.g. Gran Turismo, Halo, Zelda, Super Mario)
 * Newest games
 * Graphics
 * Price (e.g. special offers)
