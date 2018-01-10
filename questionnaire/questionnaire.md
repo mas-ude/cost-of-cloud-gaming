@@ -190,51 +190,31 @@ I collect video games.
 
 ** How many games do you own, approximately? **
 
-(Free text entry, numerical only, or preset ranges?)
-```
-SV: Kann man das ueberhaupt sagen? Und gehts da auch um alte Spiele aus der DOS-Zeit, die in Disketten auf dem Dachboden verstauben? Das muessen wir konkreter fragen. Evtl. nur fuer die Systeme, die man besitzt und aktuell spielt?
+(TODO: Predefined ranges?)
 
-FM: Ich könnte dir zumindest sagen, wie hoch mein Zähler auf Steam ist (>1500); aber generell grobe Bereiche vorgeben, oder lieber nur nach wie viele Spiele man pro Zeiteinheit kauft fragen.
-```
+
+** How much do you approximately spend on video games each month, in USD?**
+
+(TODO: Predefined ranges?)
+
 
 ** How many games did you buy in the past 12 months, approximately? **
 
-(Free text entry)
+(TODO: Predefined ranges?)
 
 
 ** How many of them have you played for a few minutes at least? **
 
-(Free text entry, numerical only, or preset ranges?)
-```
-SV: Siehe oben.
-```
+(Free text entry, or percentage?)
 
 
 ** How many did you complete? **
 
-(Free text entry)
-```
-SV: Vielleicht kann man da fragen, wie viele Spiele man im letzten Jahr / in den letzten Jahren durchgespielt hat?
-```
-
-** Which game do you miss the most on the gaming system(s) you own? **
-
-(Free text entry)
-```
-SV: Geht es darum zu fragen, ob evtl. noch eine weitere Konsole angeschafft werden moechte?
-```
-
-** Estimate the total value of your game catalog, in USD (approx).**
-
-(Question is probably too speculative; maybe rather how much do you spend on video games each year/month, or how many do you buy?)
+(Free text entry, or percentage?)
 
 
 ** Which games did you buy most recently? List up to three. **
 (at least remember the most in the recent past)
-
-(Free text entry)
-
-** Which recently published games (in the last 2-3 months) did you buy most recently? List up to three.**
 
 (Free text entry)
 
