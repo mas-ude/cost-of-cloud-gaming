@@ -190,30 +190,43 @@ I collect video games.
 
 ** How many games do you own, approximately? **
 
-(TODO: Predefined ranges?)
+0-10
+11 - 50
+50 - 100
+101 - 500
+501 - 1000
+1000+
 
 
 ** How much do you approximately spend on video games each month, in USD?**
 
-(TODO: Predefined ranges?)
+0 - 20
+21 - 50
+51 - 100
+101 - 500
+500+
 
 
 ** How many games did you buy in the past 12 months, approximately? **
 
-(TODO: Predefined ranges?)
+0-3
+3-10
+10-100
+100+
 
 
 ** How many of them have you played for a few minutes at least? **
 
-(Free text entry, or percentage?)
+(Free text entry, Schieberegler?)
 
 
 ** How many did you complete? **
 
-(Free text entry, or percentage?)
+(Free text entry, Schieberegler?)
 
 
 ** Which games did you buy most recently? List up to three. **
+
 (at least remember the most in the recent past)
 
 (Free text entry)
