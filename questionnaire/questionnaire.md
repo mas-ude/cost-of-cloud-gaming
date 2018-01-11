@@ -12,7 +12,7 @@ on various issues related to gaming systems, purchases,
 motivations, user experience and so on.
 
 Please answer the questions without looking up your personal gaming stats
-etc.
+etc. It's perfectly fine if you only have rough estimates on the top of your head.
 
 The study will take approximately XX minutes of your time. All gathered data will be handled anonymously and only be used for scientific purposes.
 
@@ -82,7 +82,8 @@ SV: Das wuerde ich so mit Freitext lassen und nachtraeglich kategorisieren, vorg
 SV: Faellt Euch noch was zusaetzlich ein?
 ```
 
-** What are for you the most important factors for buying a new gaming system? **
+** What are the most important factors for you for buying a new
+gaming system? **
 
 (Scale from 1 - Not important at all - to 5 - Very important)
 * System exclusive games (e.g. Gran Turismo, Halo, Zelda, Super Mario)
@@ -130,9 +131,9 @@ SV: Was faellt Euch noch ein?
 
 (1 -- "Does not apply to me at all", 5 -- "Totally applies to me")
 
-I have a large backlog of games (I haven't played).
+I have a large backlog of games which I haven’t played yet.
 I don't care about new releases at all.
-I buy only what professional game reviewers (slash video game critics) tell me to.
+I buy only what professional game reviewers, video game critics, etc., tell me to.
 I buy and play what's popular on Twitch.
 I have spent a fortune on games.
 5-10 hours of gameplay is way too little for a 60 USD game.
