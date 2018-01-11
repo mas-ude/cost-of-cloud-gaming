@@ -12,7 +12,7 @@ on various issues related to gaming systems, purchases,
 motivations, user experience and so on.
 
 Please answer the questions without looking up your personal gaming stats
-etc. It's perfectly fine if you only have rough estimates on the top of your head.
+etc. It's perfectly fine if you only have rough estimates off the top of your head.
 
 The study will take approximately XX minutes of your time. All gathered data will be handled anonymously and only be used for scientific purposes.
 
