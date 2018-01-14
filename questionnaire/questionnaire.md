@@ -21,27 +21,12 @@ Thank you very much for your participation! If you have any questions concerning
 --------------------------------------------------------------
 ## General Demographics
 
-** Gender **
-
-* Female
-* Male 
-* Other / Not Applicable
-
-** Age **
-
-(Free numeral entry)
-
-** Current occupation: **
-
-(Free text entry)
-```
-SV: Das wuerde ich so mit Freitext lassen und nachtraeglich kategorisieren, vorgruppieren macht IMHO keinen Sinn.
-```
+(wurde noch mal geaendert, finale version siehe soscisurvey)
 
 --------------------------------------------------------------
 ## Gaming Demographics
 
-** How many hours a day do you spend on average with computer gaming? **
+** How many hours a day do you spend on average with video gaming? **
 
 * < 1 hour
 * 1-3 hours
@@ -77,6 +62,7 @@ SV: Das wuerde ich so mit Freitext lassen und nachtraeglich kategorisieren, vorg
 * Xbox One
 * Xbox 360
 * Nintendo 3DS
+* Smartphone / Tablet
 * Other: _______________
 ```
 SV: Faellt Euch noch was zusaetzlich ein?
@@ -138,7 +124,7 @@ I buy and play what's popular on Twitch.
 I have spent a fortune on games.
 5-10 hours of gameplay is way too little for a 60 USD game.
 A high replay value is important to me.
-I prefer a flat-rate access fee over a large game catalog.
+I prefer a flat-rate access fee over buying individual games.
 Gameplay beats graphics, hands down.
 Graphics beat gameplay, hands down.
 For me in a game the story is the most important part.
@@ -196,7 +182,8 @@ I collect video games.
 50 - 100
 101 - 500
 501 - 1000
-1000+
+1001 - 5000
+5000+
 
 
 ** How much do you approximately spend on video games each month, in USD?**
@@ -248,7 +235,7 @@ I collect video games.
 * Motion Controls (e.g. Wii Remote, Kinect, Playstation Move, VR controls)
 
 
-** Mind sharing your Steam ID with us (you don't have to)? **
+** Mind sharing your Steam ID (or a link to your public steam profile) with us? You don't have to. **
 
 WARNING: If you share your Steam ID with us, the questionnaire won't be private anymore. Knowing your Steam ID helps us to get more information on your gaming behavior, but your identity isn't anonymous anymore. Please don't answer this question if this bothers you!
 
