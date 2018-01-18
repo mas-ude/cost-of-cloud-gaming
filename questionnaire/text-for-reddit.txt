@@ -1,37 +1,22 @@
-
-
-
 ===============
-https://www.reddit.com/r/DotA2/comments/5aefzy/play_dota_2_for_science/
-
-Play Dota 2 for Science
-
-eingereicht vor 1 Jahr * von LordOfLatency
+Help us find out your gaming motivations (for science)!
 ===============
-Dear /r/DotA2 Community!
+Dear /r/ Community!
 
-My Name is Fabian Allendorf. I am a student at the University of Wuerzburg Germany. I am currently working on my master thesis at the chair of communication networks. The topic of my work is:
+My Name is Svenja Schröder. I am a PhD student at the University of Vienna in Austria. Together with my colleagues Dr. Albert Rafetseder and Dr. Florian Metzger we're trying to have a deeper look on motivations and preferences regarding video games in the gaming community.
 
-Assessing the Impact of Network Impairments on the Performance of Players in DOTA 2
+We've already gathered "objective" data (see: XXX, link, what did we already do with it...), which we now want to complement with your "subjective" data by the means of an online questionnaire (you know what comes now...).
 
-That means, it would like to observe how, for example, lags influence the performance of a player. We decided to choose Dota 2 for that purpose, because it has a large community and a big economic impact due to tournaments like The International. What we did, rather than conveying a boring old study in a room with a fixed setup, was that we created a mod with the help of Dota 2 Workshop Tools. And this is where I need your help!
+With this post we'd like to invite you to participate in our 5-10 minute long online questionnaire: https://www.soscisurvey.de/univie-cosy-gaming/
 
-In order to gather enough data for meaningful results, we need players that play our mod. It is really that simple. All you have to do is subscribe to our mod at the workshop and play it as often and as long as you like. You can either go directly to the Dota 2 Workshop and search for a custom game named Lords of Latency or visit our homepage which provides you with background information, steps to install the mod, highscores and a detailed explanation of how the mod works. A short explanation of how the mod is built up follows now:
+(The topic of our work is ...)
 
-Lords of Latency consists of three challenges. Every challenge tests a typical skill which is crucial when playing Dota.
 
-    Last Hits Challenge: As the name suggests it tests your last hit skills.
-    Hook Challenge: This challenge test your ability to time a perfect skillshot.
-    Dodge Challenge: This challenge tests your ability to dodge skillshots.
 
-At the start, you decide which challenge you want to play. During a session, we modify the delay or lag that you experience, which will be showed at the top right corner of the UI. This will later determine how good you performed under different levels of lag. Once a session is finished (timer at the top left corner at 00:00) you can choose another challenge or leave the game. This can be done all the time, but playing a full session is recommended. If you want your score to appear at www.lords-of-latency.com/highscore you have to play a full session.
-
-This would really help doing a great evaluation and provide insights on how delay really influences gameplay performance.
 
 Thank you and have a very good day!
 
-TL;DR: We made a mod to assess the player performance under lags for a master thesis. We need help to gather enough data, therefore we are looking for supportive users here. More information at www.lords-of-latency.com
+Svenja from UNIVIE
 
-Edit 1: Thank you all for your time. We have some great new data to play with! Please keep it coming! I'm so thrilled that a I convinced some people to play LoL at a Dota sub :)
 
-Edit 2: We updated our results on the background page with more exciting data. And thanks to /u/DimitrijaT a small mod update was released.
+TL;DR: We're doing an online survey regarding motivations in video gaming. Please help us out!
