@@ -106,7 +106,7 @@ vendors, the digital retail prices are significantly lower even at
 launch, and also drop more quickly. Another recent trend are game
 bundles, which especially prevail in the indie games scene, commonly
 offered with a pay-what-you-want model. \textit{Humble
-Bundle}\maybefootnote{\url{https://www.humblebundle.com/}} is a prominent
+Bundle}\footnote{\url{https://www.humblebundle.com/}} is a prominent
 example.
 % Number of games >>> what consoles have
 
@@ -194,7 +194,7 @@ consoles and, recently, \glspl{PC}.
 The streaming itself is performed at a resolution of
 720p60\cref{foot:rate} requiring a \SI{5}{\mega\bit\per\second}
 connection. Reports on the video quality have been rather
-mixed.\maybefootnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands-on-with-playstation-now}}
+mixed.\footnote{\url{http://www.eurogamer.net/articles/digitalfoundry-2015-hands-on-with-playstation-now}}
 % Sony is also reportedly using specialized server hardware, adapted from regular PlayStation 3s, effectively eliminating any chance for multi-purpose uses of these devices. This could lower scalability gains.
 
 % cost and some more infos:
@@ -293,7 +293,7 @@ The different data sources are described in the following.
 
 For \steam, the public \acrshort{REST} \acrshort{API} was used to
 fetch the name and current price of each game at different points in
-time\maybefootnote{\url{https://github.com/mas-ude/steam-data-stats}}. This
+time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This
 data was combined with \acrshort{API} data from the 3rd-party site
 \textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all
 publicly visible \steam user profiles and
@@ -302,19 +302,19 @@ player spends with a title. \textit{SteamSpy} also provides a heuristic
 projection of the total number of owners of each listed title on \steam.
 For \gfnow, game names and prices were screen-scraped manually.
 Game names for \psnow is available from the PlayStation
-website\maybefootnote{\url{https://www.playstation.com/de-de/explore/playstation-now/ps-now-games/}}.
+website\footnote{\url{https://www.playstation.com/de-de/explore/playstation-now/ps-now-games/}}.
 Through this, the portfolios can be compared between platforms.
 
 Game publishers seldom publish intended playthrough
 length of games, and not all games necessarily have one. However, players
 may self-report their experienced playthrough times on sites like
 \hltb\footnote{\url{http://howlongtobeat.com/}}, which was web-scraped
-for this analysis using a custom tool\maybefootnote{\url{https://github.com/mas-ude/gamelengths-scraper}}.
+for this analysis using a custom tool\footnote{\url{https://github.com/mas-ude/gamelengths-scraper}}.
 
 %Reported times are separated into different play styles, e.g., ``main story'' for players that just finish the main objectives of a game, or ``completionist'' for those who explore the game to the fullest extent. Only an aggregate time over all reports per play style is shown for every game. (For our analysis, we average over all play styles for every game.) %It should however be stressed again, that this is a self-reporting site without strong validity checks, which has to be considered when contemplating the accuracy of the data.
 
 Lastly, the age of a game is computable from its release date. To this end, the
 \metacritic\footnote{\url{http://www.metacritic.com/}} page which
 aggregates reviews of video games (and other media) was
-scraped\maybefootnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
+scraped\footnote{\url{https://github.com/mas-ude/metacritic_scraper}}.
 
