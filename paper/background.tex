@@ -2,42 +2,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Background}
 \label{sec:background}
-This section reviews some terminology used in this paper,
-presents the current hardware and software platforms and ecosystems
+This section introduces system influencing factors and service factors
+of current gaming systems:
+It presents the hardware and software platforms and ecosystems
 for different types of gaming, introduces utility metrics for games,
 and describes the data sources used for the evaluations in this paper.
 All costs are from an European, specifically German, perspective. If a
 product is not available in this region, the prices are converted using
 the most recent currency exchange rates.
-%Note that as mentioned before, browser and mobile games are out
-%of scope for this work.
-
-%\input{service-table.tex}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Gaming Models}
-A game application collects user input, manages local game state,
-possibly synchronizes with remote entities, and renders audio and
-video contents in response. In the simplest case, these tasks all
-run collocated on the gamer's local machine.
-In \gls{cg}, games are executed and rendered ``in the cloud''
-(i.e., in remote data centers), and an audio/video stream is sent back
-to the player over the network. The user's local gaming device displays
-the stream, records input and sends it back to the remote side for
-processing. Video decoding is less computationally demanding than
-rendering a game, so
-the local device need not be as powerful. However, requirements
-are higher for the network connecting the cloud and the local device.
-
-There are two approaches to \gls{cg} on the market currently that
-differ in who provides the actual game applications that can be
-executed in the cloud. One, the provider chooses, installs, configures,
-and updates the game applications. This is termed \acrfull{GaaS} in
-this paper.
-In the other approach, the gamer leases a virtual machine from the
-provider, but must supply own games. The provider takes care of
-provisioning sufficient resources so that games can be run. This
-is termed \gls{cr} here.
 
 \subsection{Gaming Hardware}\label{sec:gaming-hardware}
 
@@ -280,20 +252,23 @@ the combined expected playthrough length of the top 10\% of games
 across platforms could be evaluated, and judged against the amount
 of money required to equip each platform like this.
 
-\subsection{Data Sources}
+\subsection{Objective Data Sources}
 In order to investigate the utility metrics described, data was collected from
 multiple sources and merged (with a few instances of omission and
 double-count) into a data base. In the interest of repeatability and
 reproducibility, all of the data reported on in this work, as well as
 the code used to collect and process it, can be found in public
-repositories\footnote{The repository resides at
-\url{https://github.com/mas-ude/cost-of-cloud-gaming}}.
+repositories~[anonymized].
+%\footnote{The repository resides at
+%\url{https://github.com/mas-ude/cost-of-cloud-gaming}}.
 Data were joined on game names and platforms (where appropriate).
 The different data sources are described in the following.
 
 For \steam, the public \acrshort{REST} \acrshort{API} was used to
 fetch the name and current price of each game at different points in
-time\footnote{\url{https://github.com/mas-ude/steam-data-stats}}. This
+time.
+%\footnote{\url{https://github.com/mas-ude/steam-data-stats}}.
+This
 data was combined with \acrshort{API} data from the 3rd-party site
 \textit{SteamSpy}\footnote{\url{https://steamspy.com}}, which parses all
 publicly visible \steam user profiles and
