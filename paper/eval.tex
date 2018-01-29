@@ -153,8 +153,9 @@ gaming platform is most likely curated by the platform operator for
 compatibility and performance reasons. This usability burden shifts to
 the end user for digital storefronts like \steam, allowing these
 platforms to offer a larger variety of games, including ones that are
-very demanding on the hardware. Furthermore, the business models
-of the \gls{cg} platforms are still in flux, as described earlier.
+very demanding on the hardware.
+%Furthermore, the business models
+%of the \gls{cg} platforms are still in flux, as described earlier.
 
 
 %%%%%%%%%%%%
@@ -201,31 +202,37 @@ yet larger range.
 Trying to compare the prices per game is a difficult endeavor, due to
 the mixed approach of the gaming platforms. The \gfnow subscription
 gives customers access to a subset of its catalog that can be
-extended by purchasing additional games; \gfnowpc and \liquid
-on the other hand require the customer to buy games on their
+extended by purchasing additional games; \gfnowpc %and \liquid
+on the other hand requires the customer to buy games on their
 own and pay for the
 time spent playing.
 \psnow and \psnowpc have a flat rate for all of their catalog.
 %Furthermore, the exact subscription and rental modalities as well as prices are adapted over time, and differ between regional markets.
 %\todo[inline]{SV:The last sentence was somehow superfluous since variety over time is the case for all of our data. --> erased it.}
 At least for \steam, unit prices can be discussed.
+Between mid-2015 when the authors started monitoring \steam's catalog,
+and late 2017 when the last measurement was taken,
+its average price has decreased from 10.11\$ to 8.83\$. In the same
+timeframe, the number of games more than doubled, from $5,996$ to
+$14,120$. The prices vary a lot over time, for instance due to
+seasonal sales periods.
 
-\begin{table}
-\centering
-\caption{Overview of average prices and counts for \steam games.}
-\label{tab:steam-price-stats}
-\begin{tabu}{X[2]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
-	\toprule
-	\textbf{Date} & 2015-07 & 2015-10 & 2016-02 & 2016-06 & 2016-09 & 2016-11 & 2017-04 & 2017-10 \\
-	\midrule
-	\textbf{Average price (€)} & $10.11$ & $8.47$ & $5.65$ & $4.72$ & $8.77$ & $5.33$ & $9.95$ & $8.83$ \\
-	\midrule
-	\textbf{Standard deviation (€)} & $\pm12.03$ & $\pm9.74$ & $\pm7.88$ & $\pm7.02$ & $\pm10.83$ & $\pm11.08$ & $\pm29.94$ & $\pm12.2$ \\
-	\midrule
-	\textbf{Number of games} & $5,996$ & $6,769$ & $7,749$ & $9,187$ & $10,191$ & $10,077$ & $11,612$ & $14,120$ \\
-	\bottomrule
-\end{tabu}
-\end{table}
+%\begin{table}
+%\centering
+%\caption{Overview of average prices (€) and counts for \steam games.}
+%\label{tab:steam-price-stats}
+%\begin{tabu}{X[2]|X[r]X[r]X[r]X[r]X[r]X[r]X[r]X[r]}
+%	\toprule
+%	\textbf{Date} & 2015-07 & 2015-10 & 2016-02 & 2016-06 & 2016-09 & 2016-11 & 2017-04 & 2017-10 \\
+%	\midrule
+%	\textbf{Price} & $10.11$ & $8.47$ & $5.65$ & $4.72$ & $8.77$ & $5.33$ & $9.95$ & $8.83$ \\
+%	\midrule
+%	\textbf{Standard deviation (€)} & $\pm12.03$ & $\pm9.74$ & $\pm7.88$ & $\pm7.02$ & $\pm10.83$ & $\pm11.08$ & $\pm29.94$ & $\pm12.2$ \\
+%	\midrule
+%	\textbf{Count} & $5,996$ & $6,769$ & $7,749$ & $9,187$ & $10,191$ & $10,077$ & $11,612$ & $14,120$ \\
+%	\bottomrule
+%\end{tabu}
+%\end{table}
 
 
 %\begin{figure}[!t]
@@ -245,22 +252,22 @@ At least for \steam, unit prices can be discussed.
 %# The top  6% of games cost more than that
 
 
-Table~\ref{tab:steam-price-stats} shows the development of average
-\steam game prices with standard deviations and the number of available
-games for all \steam measurements taken so far, spanning a time interval
-of more than two years. As can be seen, the number of games offered
-has more than doubled since the first data point, while the average
-prices fluctuate over time.
+%Table~\ref{tab:steam-price-stats} shows the development of average
+%\steam game prices with standard deviations and the number of available
+%games for all \steam measurements taken so far, spanning a time interval
+%of more than two years. As can be seen, the number of games offered
+%has more than doubled since the first data point, while the average
+%prices fluctuate over time.
 %Figure~\ref{fig:steam-price-violins} complements the table, showing
 %smoothed density functions of the game price distributions in \steam's
 %store over time in the form of a violin plot.
 %Evidently, all distributions have modes (most prominently at nonegative
 %multiples of $\text{\texteuro} 5$), and exhibit strong temporal effects.
-The variability can be explained by \steam's regular offer of sales
-periods with reduced prices. For instance, the shift towards lower
-average
-prices in February 2016 coincides with a seasonal sales campaign
-for Lunar New Year\footnote{\url{http://store.steampowered.com/news/20313/}}.
+%The variability can be explained by \steam's regular offer of sales
+%periods with reduced prices. For instance, the shift towards lower
+%average
+%prices in February 2016 coincides with a seasonal sales campaign
+%for Lunar New Year\footnote{\url{http://store.steampowered.com/news/20313/}}.
 
 % Looking at the distributions of game prices, we find that the number of games in the sub \SI{5}]\EUR] category has ... hmm, what ... doubled? ... care to check with R?
 
