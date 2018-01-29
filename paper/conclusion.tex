@@ -3,36 +3,63 @@
 \section{Conclusion And Future Work}
 \label{sec:conclusion}
 
-\todo[inline]{Check for applicability!}
+This paper investigates context influence factors for video gaming
+through an online survey among 488 gamers, and an evaluation of
+game platform offers from the \steam, \psnow, and \gfnow systems.
+The results provide a practical evaluation of influence factors
+described in the recent \acrshort{ITU-T} Recommendation
+G.1032~\cite{itutg1032}.
 
-This paper investigates the prospects of \gls{cg} from a new
-perspective: game utility. Complementing the existing literature
-on technical and perceptual quality, it
-investigates the characteristics of the game catalog
-that cloud-based and software distribution gaming
-platforms offer, and discusses the customer benefit.
-%that a customer might get from these offers.
-For this, data from a number of sources are combined and evaluated:
+The subjective data from the online survey provide an insight into
+the gaming demographics of survey participants.
+Social context factors influence their buying decisions in the
+form of recommendations and news about games, as do technical and
+economical aspects.
+Respondents buy games mostly from digital storefronts these days,
+with \steam as a virtually ubiquitous mention.
+Furthermore, Other important service factors, i.e. context factors
+that relate to the online platforms offering and operating games,
+are investigated.
+
+The objective data are combined from a number of sources:
 Game titles are scraped from the platforms (\gfnow, \psnow, and \steam),
 game lengths from \hltb, and summarized review scores from
 \metacritic.
-The datasets used span a timeframe from 2015 to 2017, and are
+The datasets used span a timeframe from 2015 to 2017, and will
+be made
 available from the authors' public repositories.
-The utility metrics proposed include the number (and thus variety)
+The utility metrics evaluated include the number (and thus variety)
 of games, playtimes, prices, review scores, and combinations of these,
 plus some historic aspects.
+For example, the \steam ecosystem grew from roughly 6,000 to roughly
+14,000 games offered between mid-2015 and late 2017.
 
-The gaming platforms are compared based on these metrics, and a
-cost utility model is presented that makes the different pricing
-policies (flat rate, subscription with included and surcharged
-games, or open à la carte) comparable between platforms.
-Currently, \psnow's policy offers the largest number of games
-for annual spendings up to approximately $\text{\texteuro} 3,000$. However,
-note that the platform has changed its policy
-in 2017; it used a subscription/surcharge model like \gfnow
-before. Second, \steam's current catalog (while more expensive
-assuming the average game price) is 30 times larger than
-\psnow's.
+Lastly, the survey also asked for subjective assessments of objective
+platform properties.
+
+
+
+
+
+
+Many other utility metrics are imaginable, e.g.
+the motivation to buy games for a platform that the gamer already
+possesses,
+the number of platform ``exclusive'' game titles,
+the game genre and other classifications,
+the number of game sales and subscriber numbers,
+technical aspects like graphical fidelity, performance, precision
+and responsiveness of controls,
+measures of the game's content like variety and quality of game mechanics,
+or other content-centric factors.
+
+Lastly, any combination of the metrics mentioned above has its
+merits for assessing the utility of a gaming platform. For example,
+the combined expected playthrough length of the top 10\% of games
+across platforms could be evaluated, and judged against the amount
+of money required to equip each platform like this.
+
+
 
 The dataset presented leaves many possibilities
 for future work. For example, many additional investigations of
@@ -41,12 +68,6 @@ Furthermore, it was mentioned that utility metrics may be
 interpreted differently. If the behavior of prototypical customers
 can be estimated from the dataset, then combined and comparable
 utility scores could be calculated.
-Also, the \gls{cr} platforms deserve a closer look. Superficially,
-they currently serve but a niche market, and combine the negative
-aspects of subscriptions, usage-based billing, and per-game costs
-for a presumed gain in game \gls{QoE}. It remains to be seen
-if there exist less apparent benefits for customers, or if the
-\gls{cr} model fails to establish in the market.
 
 Moreover, direct user studies can complement the data-driven
 approach followed in this paper. The utility metrics presented
@@ -54,15 +75,6 @@ follow from the personal experience of the authors, but do not
 necessarily represent gaming public's opinion. Besides, self-reporting
 from game customers can explain conjectured effects like preferential
 attachment for popular games.
-
-Finally, it would be interesting to investigate the operator-side
-issues of \gls{cg} to understand their cost pressure better.
-\Gls{cg} requires highly regional data-centers and specialized
-hardware to function well. This eliminates many of the efficiency
-gains that generic cloud services are intended for.
-The efficiency problem is aggravated by high regional peak
-(and consequent low average) utilization that require substantial
-infrastructure investments at limited scaling advantages.
 
 At any rate, computer gaming and \gls{cg} in particular will
 remain interesting topics for research in the years to come,
